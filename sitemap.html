@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Структура сайта · прототип Darlein Defense</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Tektur:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2308090A'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Helvetica,Arial,sans-serif' font-weight='700' font-size='26' letter-spacing='1' fill='%23F4F5F5'%3EDD%3C/text%3E%3C/svg%3E">
+</head>
+<body data-page="sitemap">
+<div id="site-header"></div>
+<main>
+
+<section class="phero wrap" style="padding-bottom:var(--gap)">
+  <h1 class="phero__title phero__title--md">Структура сайта</h1>
+  <div class="phero__meta">
+    <div><div class="cap">Служебная страница прототипа</div><div class="tag">13 страниц · 3 уровня</div></div>
+    <p class="phero__desc">Вся архитектура сайта в одной схеме: главная, семь разделов меню, страницы второго уровня, служебные страницы, внешний контур и резерв расширения. Каждый узел кликабелен и ведет на страницу прототипа.</p>
+    <div class="phero__side"><div class="smap-legend"><span><i class="lg lg--root"></i>вход</span><span><i class="lg lg--unique"></i>уникальный макет</span><span><i class="lg lg--template"></i>шаблон</span><span><i class="lg lg--service"></i>служебная</span><span><i class="lg lg--external"></i>внешний сервис</span><span><i class="lg lg--reserve"></i>резерв</span></div></div>
+  </div>
+</section>
+
+<!-- Дерево страниц -->
+<section class="wrap" style="padding-top:clamp(24px,4vh,48px)">
+  <div class="panel smap reveal">
+    <div class="tree">
+      <ul>
+        <li>
+          <a class="snode snode--root" href="index.html"><span class="snode__top"><span class="svc">01</span><span class="snode__type">уникальный макет</span></span><span class="snode__title">Главная</span><span class="snode__desc">Позиционирование, экосистема, продукты, направления, новости</span><span class="snode__act">Открыть продукт →</span></a>
+          <ul>
+            <li>
+              <a class="snode snode--unique" href="company.html"><span class="snode__top"><span class="svc">02</span><span class="snode__type">уникальный</span></span><span class="snode__title">Компания</span><span class="snode__desc">Модель, направления, принципы, экспертиза, юридический контур</span><span class="snode__act">Связаться</span></a>
+              <ul><li><a class="snode snode--template" href="investors.html"><span class="snode__top"><span class="svc">07</span><span class="snode__type">шаблон текстовой</span></span><span class="snode__title">Инвесторам</span><span class="snode__desc">Модель, стадия, рынок, контакт. Вход из подвала и «Компании»</span><span class="snode__act">Написать</span></a></li></ul>
+            </li>
+            <li>
+              <a class="snode snode--unique" href="arsenal.html"><span class="snode__top"><span class="svc">03</span><span class="snode__type">макет продукта</span></span><span class="snode__title latin">ARSENAL</span><span class="snode__desc">Что это, категории, для кого, чем отличается, действие</span><span class="snode__act">Сообщить о запуске</span></a>
+              <ul><li><a class="snode snode--external" href="#"><span class="snode__top"><span class="svc">→</span><span class="snode__type">внешний сервис</span></span><span class="snode__title">Площадка ARSENAL</span><span class="snode__desc">Каталог, карточки, сделка. Живет на своем домене</span></a></li></ul>
+            </li>
+            <li>
+              <a class="snode snode--unique" href="agata.html"><span class="snode__top"><span class="svc">04</span><span class="snode__type">тот же макет продукта</span></span><span class="snode__title latin">AGATA</span><span class="snode__desc">Что это, модули, для кого, чем отличается, запрос</span><span class="snode__act">Запросить презентацию</span></a>
+            </li>
+            <li>
+              <a class="snode snode--unique" href="partners.html"><span class="snode__top"><span class="svc">05</span><span class="snode__type">два маршрута</span></span><span class="snode__title">Партнерам</span><span class="snode__desc">Партнер экосистемы · вендор ARSENAL · сравнение · заявка</span><span class="snode__act">Подать заявку</span></a>
+            </li>
+            <li>
+              <a class="snode snode--unique" href="careers.html"><span class="snode__top"><span class="svc">06</span><span class="snode__type">уникальный</span></span><span class="snode__title">Карьера</span><span class="snode__desc">Направления, как работаем, вакансии, открытый отклик</span><span class="snode__act">Откликнуться</span></a>
+              <ul><li><div class="snode snode--reserve"><span class="snode__top"><span class="svc">+</span><span class="snode__type">шаблон · резерв</span></span><span class="snode__title">Вакансия</span><span class="snode__desc">Появляется, если вакансий станет больше пяти</span></div></li></ul>
+            </li>
+            <li>
+              <a class="snode snode--unique" href="intel.html"><span class="snode__top"><span class="svc">08</span><span class="snode__type">лента</span></span><span class="snode__title">Новости</span><span class="snode__desc">Рубрики: компания, проекты, инженерные заметки, для СМИ</span><span class="snode__act">Открыть материал</span></a>
+              <ul><li><a class="snode snode--template" href="intel-article.html"><span class="snode__top"><span class="svc">09</span><span class="snode__type">шаблон карточки</span></span><span class="snode__title">Материал</span><span class="snode__desc">Шапка, текст, иллюстрация, цитата, связанное</span><span class="snode__act">Читать дальше</span></a></li></ul>
+            </li>
+            <li>
+              <a class="snode snode--unique" href="contacts.html"><span class="snode__top"><span class="svc">10</span><span class="snode__type">уникальный</span></span><span class="snode__title">Контакты</span><span class="snode__desc">Каналы по назначению, форма, реквизиты, время ответа</span><span class="snode__act">Отправить обращение</span></a>
+              <ul><li><a class="snode snode--template" href="legal.html"><span class="snode__top"><span class="svc">11</span><span class="snode__type">шаблон · 3 наполнения</span></span><span class="snode__title">Юридический документ</span><span class="snode__desc">Политика ПДн · согласие · пользовательское соглашение</span></a></li></ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Служебные · внешний контур · резерв -->
+<section class="section--s wrap" style="padding-top:var(--gap)">
+  <div class="cells cells-3">
+    <div class="cell smap-group">
+      <span class="svc">Служебные · не в меню</span>
+      <div class="smap-chips">
+        <a class="snode snode--service" href="404.html"><span class="snode__top"><span class="svc">12</span><span class="snode__type">служебная</span></span><span class="snode__title">404</span><span class="snode__desc">Вернуть на маршрут: главная, ARSENAL, AGATA, контакты</span></a>
+        <a class="snode snode--service" href="thanks.html?from=contact"><span class="snode__top"><span class="svc">13</span><span class="snode__type">служебная</span></span><span class="snode__title">Спасибо</span><span class="snode__desc">Текст подстраивается под источник формы: партнер, вендор, соискатель</span></a>
+      </div>
+    </div>
+    <div class="cell smap-group">
+      <span class="svc">Внешний контур · ссылки, не страницы</span>
+      <div class="smap-chips">
+        <a class="snode snode--external" href="#"><span class="snode__top"><span class="svc">→</span><span class="snode__type">внешний</span></span><span class="snode__title">Площадка ARSENAL</span><span class="snode__desc">Каталог и сделка на своем домене</span></a>
+        <a class="snode snode--external" href="#"><span class="snode__top"><span class="svc">→</span><span class="snode__type">внешний</span></span><span class="snode__title">DARLEIN ID · ЛК</span><span class="snode__desc">Кнопка «Войти» в шапке появится с готовностью сервиса</span></a>
+        <a class="snode snode--external" href="#"><span class="snode__top"><span class="svc">→</span><span class="snode__type">внешний</span></span><span class="snode__title">Соцсети и каналы</span><span class="snode__desc">Иконки в подвале и в разделе для СМИ</span></a>
+      </div>
+    </div>
+    <div class="cell smap-group">
+      <span class="svc">Резерв · добавляется без редизайна</span>
+      <div class="smap-chips">
+        <div class="snode snode--reserve"><span class="snode__top"><span class="svc">+</span><span class="snode__type">резерв</span></span><span class="snode__title">Продукт · N</span><span class="snode__desc">Узел на схеме, строка направлений, страница по макету продукта</span></div>
+        <div class="snode snode--reserve"><span class="snode__top"><span class="svc">+</span><span class="snode__type">резерв</span></span><span class="snode__title">Проекты · хаб</span><span class="snode__desc">Когда продуктов станет четыре и больше</span></div>
+        <div class="snode snode--reserve"><span class="snode__top"><span class="svc">+</span><span class="snode__type">резерв</span></span><span class="snode__title">EN-версия</span><span class="snode__desc">Зеркало утвержденных русских страниц, переключатель в шапке</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Маршруты аудиторий -->
+<section class="section wrap" id="routes">
+  <div class="sec-head reveal"><h2 class="h2">Маршруты аудиторий</h2><span class="svc">Где каждая аудитория получает ответ и совершает действие</span></div>
+  <div class="smap-routes reveal">
+    <div class="smap-route"><span class="svc">B2B / B2G-заказчик</span><div class="smap-path"><a href="index.html">Главная</a><i></i><a href="agata.html">AGATA · запросить презентацию</a><i></i><a href="company.html">Компания</a><i></i><a href="contacts.html">Контакты</a><i></i><a href="thanks.html?from=contact">Спасибо</a></div></div>
+    <div class="smap-route"><span class="svc">Пользователь ARSENAL</span><div class="smap-path"><a href="index.html">Главная</a><i></i><a href="arsenal.html">ARSENAL · перейти на площадку</a><i></i><span class="ext">Площадка</span></div></div>
+    <div class="smap-route"><span class="svc">Вендор ARSENAL</span><div class="smap-path"><a href="index.html">Главная</a><i></i><a href="arsenal.html">ARSENAL</a><i></i><a href="partners.html#vendor">Партнерам · маршрут «Вендор»</a><i></i><a href="thanks.html?from=vendor">Спасибо</a></div></div>
+    <div class="smap-route"><span class="svc">Технологический партнер</span><div class="smap-path"><a href="index.html">Главная</a><i></i><a href="company.html">Компания</a><i></i><a href="partners.html#partner">Партнерам · маршрут «Партнер»</a><i></i><a href="thanks.html?from=partner">Спасибо</a></div></div>
+    <div class="smap-route"><span class="svc">Инвестор</span><div class="smap-path"><a href="index.html">Главная</a><i></i><a href="company.html">Компания</a><i></i><a href="investors.html">Инвесторам · написать</a></div></div>
+    <div class="smap-route"><span class="svc">СМИ</span><div class="smap-path"><a href="intel.html">Новости</a><i></i><a href="intel.html#media">Для СМИ · медиакит и пресс-контакт</a></div></div>
+    <div class="smap-route"><span class="svc">Соискатель</span><div class="smap-path"><a href="index.html">Главная</a><i></i><a href="careers.html">Карьера · откликнуться</a><i></i><a href="thanks.html?from=career">Спасибо</a></div></div>
+  </div>
+</section>
+
+</main>
+<div id="site-footer"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

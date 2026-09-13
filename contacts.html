@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Контакты · Darlein Defense</title>
+<meta name="description" content="Как связаться с Darlein Defense: каналы по назначению, форма обращения, реквизиты компании.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Tektur:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2308090A'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Helvetica,Arial,sans-serif' font-weight='700' font-size='26' letter-spacing='1' fill='%23F4F5F5'%3EDD%3C/text%3E%3C/svg%3E">
+</head>
+<body data-page="contacts">
+<div id="site-header"></div>
+<main>
+
+<section class="phero wrap" style="padding-bottom:var(--gap)">
+  <h1 class="phero__title phero__title--md">Контакты</h1>
+  <div class="phero__meta">
+    <div><div class="cap">Как с нами связаться</div><div class="tag">Mon–Fri · 10:00–19:00 msk</div></div>
+    <p class="phero__desc">Четыре канала по назначению и одна форма. Отвечаем в рабочие дни: общие вопросы — в течение двух рабочих дней, пресс-запросы — в течение одного.</p>
+    <div class="phero__side"><a class="btn btn--primary" href="#form">Написать <span class="ic-down"></span></a></div>
+  </div>
+</section>
+
+<!-- Каналы -->
+<section class="wrap" id="channels" style="padding-top:clamp(24px,4vh,48px)">
+  <div class="cells cells-4 reveal">
+    <div class="channel"><span class="svc">Общие вопросы</span><b>Компания и продукты</b><a href="mailto:info@darlein.ru">info@darlein.ru</a><p>Заказчикам, пользователям, всем остальным вопросам.</p></div>
+    <div class="channel"><span class="svc">Партнерам и вендорам</span><b>Экосистема и ARSENAL</b><a href="mailto:partners@darlein.ru">partners@darlein.ru</a><p>Быстрее — через <a href="partners.html">форму заявки</a> с выбором роли.</p></div>
+    <div class="channel"><span class="svc">Для СМИ</span><b>Пресс-контакт</b><a href="mailto:press@darlein.ru">press@darlein.ru</a><p>Комментарии, интервью, медиакит. Подробнее в <a href="intel.html#media">разделе для СМИ</a>.</p></div>
+    <div class="channel"><span class="svc">Карьера</span><b>Отклики и вакансии</b><a href="mailto:hr@darlein.ru">hr@darlein.ru</a><p>Или <a href="careers.html#apply">открытый отклик</a> на странице «Карьера».</p></div>
+  </div>
+  <p class="note">Вопрос 6 к заказчику: один почтовый адрес с темами или четыре адреса. Показан вариант с четырьмя.</p>
+</section>
+
+<!-- Форма -->
+<section class="section wrap" id="form">
+  <div class="cta cta--bone reveal">
+    <div><span class="svc">Действие</span><h2 class="h2" style="margin-top:14px">Написать нам</h2><p class="muted" style="margin-top:16px;max-width:40ch">Выберите тему — обращение уйдет ответственному сотруднику с уведомлением на почту и в мессенджер.</p>
+      <div class="frame frame--4-3" style="margin-top:36px"><div class="visual visual--bone"></div></div></div>
+    <form class="form" data-thanks="contact">
+      <div class="field"><label for="k-topic">Тема обращения</label><select class="select" id="k-topic" required><option value="" selected disabled>Выберите тему</option><option>Общий вопрос</option><option>Запрос презентации AGATA</option><option>Запуск ARSENAL</option><option>Партнерство или размещение на ARSENAL</option><option>Инвесторам</option><option>Для СМИ</option><option>Карьера</option></select></div>
+      <div class="form-row"><div class="field"><label for="k-name">Имя</label><input class="input" id="k-name" type="text" placeholder="Имя и фамилия" required></div><div class="field"><label for="k-org">Организация</label><input class="input" id="k-org" type="text" placeholder="Название"></div></div>
+      <div class="field"><label for="k-email">Почта</label><input class="input" id="k-email" type="email" placeholder="name@company.ru" required></div>
+      <div class="field"><label for="k-msg">Сообщение</label><textarea class="textarea" id="k-msg" placeholder="Коротко о задаче" required></textarea></div>
+      <label class="check"><input type="checkbox" required> <span>Согласен на обработку персональных данных в соответствии с <a href="legal.html#policy">политикой</a> и <a href="legal.html#consent">согласием</a>.</span></label>
+      <div class="form__foot"><button class="btn btn--dark btn--lg" type="submit">Отправить обращение <span class="ic-ne"></span></button><span class="form__hint">Ответ в течение двух рабочих дней</span></div>
+    </form>
+  </div>
+</section>
+
+<!-- Реквизиты -->
+<section class="section wrap" id="requisites">
+  <div class="sec-head reveal"><h2 class="h2">Реквизиты</h2><span class="svc">Только юридический адрес</span></div>
+  <div class="req reveal">
+    <div><span class="svc">Полное наименование</span><b>Общество с ограниченной ответственностью «ДАРЛЕЙН ДЕФЕНС»</b><span>Darlein Defense</span></div>
+    <div><span class="svc">ИНН · КПП · ОГРН</span><b>ХХХХХХХХХХ · ХХХХХХХХХ · ХХХХХХХХХХХХХ</b><span>Подставляются из реквизитов заказчика</span></div>
+    <div><span class="svc">Юридический адрес</span><b>г. Москва, ул. ХХХХХХХ, д. ХХ</b><span>Без карты и без адреса, куда нельзя приезжать</span></div>
+    <div><span class="svc">Время ответа</span><b>Понедельник — пятница, 10:00–19:00 мск</b><span>Общие вопросы — до двух рабочих дней, СМИ — один рабочий день</span></div>
+  </div>
+</section>
+
+</main>
+<div id="site-footer"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

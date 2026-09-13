@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Почему AGATA модульная · Новости Darlein Defense</title>
+<meta name="description" content="Инженерная заметка: независимость от одного поставщика как требование архитектуры платформы AGATA.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Tektur:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2308090A'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Helvetica,Arial,sans-serif' font-weight='700' font-size='26' letter-spacing='1' fill='%23F4F5F5'%3EDD%3C/text%3E%3C/svg%3E">
+</head>
+<body data-page="article">
+<div id="site-header"></div>
+<main>
+
+<article class="wrap">
+  <div class="article">
+    <header class="article__head">
+      <div style="display:flex;gap:16px;flex-wrap:wrap"><a class="svc svc--fg" href="intel.html">Инженерные заметки</a><span class="svc">19.08.2026</span><span class="svc">5 минут</span></div>
+      <h1 class="h1">Почему AGATA модульная: независимость от одного поставщика как требование архитектуры</h1>
+      <p class="article__sub">Связь, карты, задачи и логистика как заменяемые модули над единой шиной данных. Что это дает заказчику и чего стоит команде.</p>
+    </header>
+  </div>
+  <div class="frame frame--xl frame--21-9 reveal"><div class="visual visual--teal visual--ring"></div></div>
+  <div class="article" style="padding-top:clamp(40px,5vw,72px)">
+    <div class="article__body">
+      <p>Самый частый страх заказчика перед внедрением любой платформы управления — зависимость. Систему покупают на годы, а через год выясняется, что модуль карт устарел, поставщик связи сменил условия, а заменить одно без другого нельзя. Мы проектируем AGATA так, чтобы этот сценарий был невозможен архитектурно, а не по обещанию.</p>
+      <h2>Шина вместо монолита</h2>
+      <p>В основе платформы — единая шина данных и общая модель прав доступа. Модули связи, карт, задач, логистики и управления не знают друг о друге напрямую: они публикуют и читают события в шине по открытой спецификации. Любой модуль можно заменить аналогом, в том числе стороннего производителя, без остановки остальных.</p>
+      <figure><div class="frame frame--16-9"><div class="visual visual--steel visual--ui"></div></div><figcaption>Каждый модуль обменивается данными только через шину.</figcaption></figure>
+      <h2>Что это дает заказчику</h2>
+      <p>Три вещи. Данные принадлежат заказчику и экспортируются в открытых форматах. Модули подключаются по мере готовности, и заказчик не платит за то, что не использует. Технологический партнер подключает свое устройство или модуль без нашего участия в каждом шаге: спецификация открыта, среда одна.</p>
+      <blockquote class="quote">Централизация не скрывается. Она обеспечивает качество и ответственность, а не привязку к поставщику.<cite>Представитель Darlein Defense</cite></blockquote>
+      <h2>Чего это стоит команде</h2>
+      <p>Модульность дороже монолита на старте: спецификация шины, версионирование событий, тесты совместимости для каждого модуля. Мы считаем это правильной ценой. Платформа, которую нельзя развивать по частям, устаревает целиком.</p>
+      <p>Готовность каждого модуля сообщается отдельно и честно. Ничего не показывается как готовое, пока не прошло испытания.</p>
+    </div>
+    <div style="margin-top:48px;padding-top:28px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between">
+      <div class="actions"><a class="btn btn--ghost btn--sm" href="#" rel="noopener">Telegram</a><button class="btn btn--ghost btn--sm" type="button" onclick="navigator.clipboard&&navigator.clipboard.writeText(location.href);this.textContent='Ссылка скопирована'">Копировать ссылку</button></div>
+      <a class="lnk" href="agata.html">О продукте AGATA <span class="ic-ne"></span></a>
+    </div>
+  </div>
+</article>
+
+<section class="section wrap" style="padding-top:clamp(64px,8vw,112px)">
+  <div class="sec-head reveal"><h2 class="h2">Читать дальше</h2><a class="lnk" href="intel.html">Все материалы <span class="ic-ne"></span></a></div>
+  <div class="intel-cards reveal">
+    <a class="intel-card" href="intel-article.html"><div class="frame frame--16-9"><div class="visual visual--dusk"></div></div><span class="svc">Инженерные заметки · 22.07.2026</span><h3 class="h4">Интерфейс для плохой связи: принципы носимого клиента AGATA</h3></a>
+    <a class="intel-card" href="intel-article.html"><div class="frame frame--16-9"><div class="visual visual--steel visual--ui"></div></div><span class="svc">Проекты · 28.08.2026</span><h3 class="h4">ARSENAL: как устроен каталог и что входит в единую карточку товара</h3></a>
+    <a class="intel-card" href="intel-article.html"><div class="frame frame--16-9"><div class="visual visual--graphite visual--shafts"></div></div><span class="svc">Новости компании · 02.09.2026</span><h3 class="h4">Поданы заявки на регистрацию товарных знаков Darlein, Darlein Defense и Darlein Arsenal</h3></a>
+  </div>
+</section>
+
+</main>
+<div id="site-footer"></div>
+<script src="js/main.js"></script>
+</body>
+</html>
