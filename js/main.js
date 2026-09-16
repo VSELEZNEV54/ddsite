@@ -16,6 +16,9 @@
     company: { href: 'company.html', title: 'Компания', label: 'О компании', heading: 'Компания',
       desc: 'Российская DefenseTech-компания с моделью экосистемы. Единый стандарт качества, дизайна и совместимости для собственных и партнерских продуктов.',
       items: [['company.html#problem', 'Проблема и ответ'], ['company.html#model', 'Модель экосистемы'], ['company.html#directions', 'Направления'], ['company.html#principles', 'Принципы работы'], ['company.html#team', 'Экспертиза'], ['company.html#legal', 'Юридический контур'], ['investors.html', 'Инвесторам']] },
+    projects: { href: 'projects.html', title: 'Проекты', label: 'Все разработки', heading: 'Проекты',
+      desc: 'Два продукта на публичной стадии и исследовательский контур по пяти направлениям. У каждого проекта честный статус.',
+      items: [['projects.html#products', 'Все проекты'], ['arsenal.html', 'ARSENAL · готовится к запуску'], ['agata.html', 'AGATA · в разработке'], ['projects.html#research', 'Future Systems · исследование'], ['projects.html#directions', 'Направления и стадии'], ['company.html#model', 'Модель экосистемы']] },
     arsenal: { href: 'arsenal.html', title: 'ARSENAL', latin: true, label: 'Продукт · маркетплейс', heading: 'ARSENAL',
       desc: 'Специализированный маркетплейс экипировки и технологий для профессиональных пользователей и организаций. Первый коммерческий продукт экосистемы.', status: ['soon', 'готовится к запуску'],
       items: [['arsenal.html#what', 'Что это'], ['arsenal.html#categories', 'Категории каталога'], ['arsenal.html#who', 'Для кого'], ['arsenal.html#diff', 'Чем отличается'], ['arsenal.html#notify', 'Сообщить о запуске'], ['partners.html#vendor', 'Стать вендором']] },
@@ -25,6 +28,9 @@
     partners: { href: 'partners.html', title: 'Партнерам', label: 'Два маршрута', heading: 'Партнерам',
       desc: 'Технологический партнер входит в экосистему со своим продуктом. Вендор продает на площадке ARSENAL. Разные модели отношений — разные условия.',
       items: [['partners.html#partner', 'Партнер экосистемы'], ['partners.html#vendor', 'Вендор ARSENAL'], ['partners.html#compare', 'Чем отличаются маршруты'], ['partners.html#apply', 'Подать заявку']] },
+    investors: { href: 'investors.html', title: 'Инвесторам', label: 'Модель, стадия, контакт', heading: 'Инвесторам',
+      desc: 'Материнский бренд и экосистема продуктов. Финансовые показатели и оценка не публикуются: материалы передаются после соглашения о конфиденциальности.',
+      items: [['investors.html#model', 'Модель'], ['investors.html#stage', 'Стадия проектов'], ['investors.html#market', 'Рынок'], ['investors.html#contact', 'Написать']] },
     careers: { href: 'careers.html', title: 'Карьера', label: 'Работа в компании', heading: 'Карьера',
       desc: 'Инженерная компания на стадии запуска. Пять направлений, один стандарт качества, честный статус каждого проекта.',
       items: [['careers.html#directions', 'Где нужны люди'], ['careers.html#how', 'Как работаем'], ['careers.html#vacancies', 'Вакансии'], ['careers.html#apply', 'Открытый отклик']] },
@@ -32,7 +38,7 @@
       desc: 'Новости компании, ход проектов, инженерные заметки и материалы для СМИ. Каждый материал с датой.',
       items: [['intel.html', 'Все материалы'], ['intel.html#feed', 'Новости компании'], ['intel.html#feed', 'Проекты'], ['intel.html#feed', 'Инженерные заметки'], ['intel.html#media', 'Для СМИ']] }
   };
-  var ORDER = ['company', 'arsenal', 'agata', 'partners', 'careers', 'intel'];
+  var ORDER = ['company', 'projects', 'arsenal', 'partners', 'investors', 'careers', 'intel'];
 
   function navHTML() {
     return ORDER.map(function (k) {
@@ -78,7 +84,7 @@
         '<div class="ftr__brand"><a class="brand" href="index.html">' + WORD + '</a>' +
           '<p>Российская DefenseTech-компания. Единая экосистема технологий и сервисов для оборонного и околовоенного рынка.</p></div>' +
         '<div><h4>Компания</h4><ul><li><a href="company.html">О компании</a></li><li><a href="investors.html">Инвесторам</a></li><li><a href="careers.html">Карьера</a></li><li><a href="intel.html">Новости</a></li><li><a href="intel.html#media">Для СМИ</a></li></ul></div>' +
-        '<div><h4>Продукты</h4><ul><li class="latin"><a href="arsenal.html">ARSENAL</a></li><li class="latin"><a href="agata.html">AGATA</a></li><li><span class="soon" title="Резерв: следующие проекты экосистемы">Следующие проекты</span></li></ul></div>' +
+        '<div><h4>Проекты</h4><ul><li><a href="projects.html">Все проекты</a></li><li class="latin"><a href="arsenal.html">ARSENAL</a></li><li class="latin"><a href="agata.html">AGATA</a></li><li><a href="projects.html#research">Future Systems</a></li></ul></div>' +
         '<div><h4>Связь</h4><ul><li><a href="contacts.html">Контакты</a></li><li><a href="partners.html">Партнерам и вендорам</a></li><li><a href="mailto:info@darlein.ru">info@darlein.ru</a></li><li><a href="#" rel="noopener">Telegram</a></li></ul></div>' +
         '<div><h4>Юридически</h4><p class="ftr__legal">ООО «ДАРЛЕЙН ДЕФЕНС»<br>ИНН ХХХХХХХХХХ · ОГРН ХХХХХХХХХХХХХ<br>г. Москва, ул. ХХХХХХХ, д. ХХ</p>' +
           '<ul style="margin-top:14px"><li><a href="legal.html#policy">Политика обработки ПДн</a></li><li><a href="legal.html#consent">Согласие на обработку</a></li><li><a href="legal.html#terms">Пользовательское соглашение</a></li></ul></div>' +
@@ -96,10 +102,10 @@
     '<div class="cookie" id="cookie"><span>Сайт использует cookie для веб-аналитики. Подробнее — в <a href="legal.html#policy">политике обработки данных</a>.</span><button class="btn btn--ghost btn--sm" id="cookieOk">Понятно</button></div>';
 
   /* ---------- Навигатор прототипа ---------- */
-  var PAGES = [['Шапка', null], ['index.html', 'Главная', '01 · уникальный'], ['Уровень 1', null], ['company.html', 'Компания', '02'], ['arsenal.html', 'ARSENAL', '03 · продукт'], ['agata.html', 'AGATA', '04 · продукт'], ['partners.html', 'Партнерам', '05 · два маршрута'], ['careers.html', 'Карьера', '06'], ['intel.html', 'Новости', '08 · лента'], ['contacts.html', 'Контакты', '10'], ['Уровень 2', null], ['investors.html', 'Инвесторам', '07 · шаблон'], ['intel-article.html', 'Новости · материал', '09 · шаблон'], ['legal.html', 'Юридический документ', '11 · шаблон ×3'], ['Служебные', null], ['404.html', '404', '12'], ['thanks.html?from=contact', 'Спасибо', '13']];
+  var PAGES = [['Шапка', null], ['index.html', 'Главная', '01 · уникальный'], ['Уровень 1', null], ['company.html', 'Компания', '02'], ['projects.html', 'Проекты', '02а · хаб'], ['arsenal.html', 'ARSENAL', '03 · продукт · в меню'], ['partners.html', 'Партнерам', '05 · два маршрута'], ['investors.html', 'Инвесторам', '07 · в меню'], ['careers.html', 'Карьера', '06'], ['intel.html', 'Новости', '08 · лента'], ['contacts.html', 'Контакты', '10'], ['Уровень 2', null], ['agata.html', 'AGATA', '04 · продукт'], ['intel-article.html', 'Новости · материал', '09 · шаблон'], ['legal.html', 'Юридический документ', '11 · шаблон ×3'], ['Служебные', null], ['404.html', '404', '12'], ['thanks.html?from=contact', 'Спасибо', '13']];
   var here = (location.pathname.split('/').pop() || 'index.html');
   var IC_MAP = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5.5" y="1.5" width="5" height="3.5" rx="1"/><rect x="1" y="11" width="4.5" height="3.5" rx="1"/><rect x="10.5" y="11" width="4.5" height="3.5" rx="1"/><path d="M8 5v3M3.25 11V8h9.5v3"/></svg>';
-  var protoHTML = '<div class="proto" id="proto"><div class="proto__panel"><div class="proto__head"><span>Карта прототипа · 13 страниц</span><span>v0.3</span></div>' +
+  var protoHTML = '<div class="proto" id="proto"><div class="proto__panel"><div class="proto__head"><span>Карта прототипа · 14 страниц</span><span>v0.3</span></div>' +
     '<a class="proto__main' + (here === 'sitemap.html' ? ' is-active' : '') + '" href="sitemap.html"><span>Структура сайта</span><span style="display:flex;align-items:center;gap:10px"><span class="svc">схема</span>' + IC_MAP + '</span></a>' +
     PAGES.map(function (p) { if (p[1] === null) return '<div class="proto__group">' + p[0] + '</div>'; var act = p[0].split('?')[0] === here ? ' is-active' : ''; return '<a href="' + p[0] + '" class="' + act + '"><span style="color:inherit;font-size:13px">' + p[1] + '</span><span>' + p[2] + '</span></a>'; }).join('') +
     '<div class="proto__toggle"><span>Резервные элементы и пометки</span><span class="sw" id="notesSw" role="switch" aria-checked="false" tabindex="0"></span></div></div>' +

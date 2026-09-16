@@ -887,3 +887,15 @@ a.snode--template:hover{outline-color:var(--fg);background:var(--panel)}
 }
 
 @media (min-width:1001px) and (max-width:1320px){.snode{width:150px;padding:12px 12px 10px}.snode__title{font-size:14px}.snode__desc{font-size:11px}.snode--root{width:240px}}
+
+/* Дерево: вертикальная стопка дочерних узлов (ветка «Проекты») */
+@media (min-width:1001px){
+  .tree li.vstack>ul{flex-direction:column;align-items:center}
+  .tree li.vstack>ul>li{padding:0}
+  .tree li.vstack>ul>li::before,.tree li.vstack>ul>li::after{display:none}
+  .tree li.vstack>ul>li+li{padding-top:14px}
+  .tree li.vstack>ul>li+li::before{display:block;content:"";position:absolute;top:0;left:50%;right:auto;width:1px;height:14px;background:var(--line);border:0}
+  .tree li.vstack>ul>li:first-child{padding-top:28px}
+  .tree li.vstack>ul>li:first-child::after{display:block;content:"";position:absolute;top:0;left:50%;width:1px;height:28px;border:0;background:var(--line)}
+  .tree li.vstack>ul::before{display:none}
+}

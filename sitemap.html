@@ -17,8 +17,8 @@
 <section class="phero wrap" style="padding-bottom:var(--gap)">
   <h1 class="phero__title phero__title--md">Структура сайта</h1>
   <div class="phero__meta">
-    <div><div class="cap">Служебная страница прототипа</div><div class="tag">13 страниц · 3 уровня</div></div>
-    <p class="phero__desc">Вся архитектура сайта в одной схеме: главная, семь разделов меню, страницы второго уровня, служебные страницы, внешний контур и резерв расширения. Каждый узел кликабелен и ведет на страницу прототипа.</p>
+    <div><div class="cap">Служебная страница прототипа</div><div class="tag">14 страниц · 3 уровня</div></div>
+    <p class="phero__desc">Вся архитектура сайта в одной схеме: главная, семь разделов меню, продукты внутри хаба «Проекты», страницы второго уровня, служебные страницы, внешний контур и резерв расширения. Каждый узел кликабелен и ведет на страницу прототипа.</p>
     <div class="phero__side"><div class="smap-legend"><span><i class="lg lg--root"></i>вход</span><span><i class="lg lg--unique"></i>уникальный макет</span><span><i class="lg lg--template"></i>шаблон</span><span><i class="lg lg--service"></i>служебная</span><span><i class="lg lg--external"></i>внешний сервис</span><span><i class="lg lg--reserve"></i>резерв</span></div></div>
   </div>
 </section>
@@ -33,17 +33,20 @@
           <ul>
             <li>
               <a class="snode snode--unique" href="company.html"><span class="snode__top"><span class="svc">02</span><span class="snode__type">уникальный</span></span><span class="snode__title">Компания</span><span class="snode__desc">Модель, направления, принципы, экспертиза, юридический контур</span><span class="snode__act">Связаться</span></a>
-              <ul><li><a class="snode snode--template" href="investors.html"><span class="snode__top"><span class="svc">07</span><span class="snode__type">шаблон текстовой</span></span><span class="snode__title">Инвесторам</span><span class="snode__desc">Модель, стадия, рынок, контакт. Вход из подвала и «Компании»</span><span class="snode__act">Написать</span></a></li></ul>
             </li>
-            <li>
-              <a class="snode snode--unique" href="arsenal.html"><span class="snode__top"><span class="svc">03</span><span class="snode__type">макет продукта</span></span><span class="snode__title latin">ARSENAL</span><span class="snode__desc">Что это, категории, для кого, чем отличается, действие</span><span class="snode__act">Сообщить о запуске</span></a>
-              <ul><li><a class="snode snode--external" href="#"><span class="snode__top"><span class="svc">→</span><span class="snode__type">внешний сервис</span></span><span class="snode__title">Площадка ARSENAL</span><span class="snode__desc">Каталог, карточки, сделка. Живет на своем домене</span></a></li></ul>
-            </li>
-            <li>
-              <a class="snode snode--unique" href="agata.html"><span class="snode__top"><span class="svc">04</span><span class="snode__type">тот же макет продукта</span></span><span class="snode__title latin">AGATA</span><span class="snode__desc">Что это, модули, для кого, чем отличается, запрос</span><span class="snode__act">Запросить презентацию</span></a>
+            <li class="vstack">
+              <a class="snode snode--unique" href="projects.html"><span class="snode__top"><span class="svc">02а</span><span class="snode__type">хаб</span></span><span class="snode__title">Проекты</span><span class="snode__desc">Все разработки: продукты, направления и стадии, исследовательский контур</span><span class="snode__act">Открыть проект</span></a>
+              <ul>
+                <li><a class="snode snode--unique" href="arsenal.html"><span class="snode__top"><span class="svc">03</span><span class="snode__type">продукт · в меню</span></span><span class="snode__title latin">ARSENAL</span><span class="snode__desc">Вынесен в главное меню как первый продукт</span><span class="snode__act">Сообщить о запуске</span></a></li>
+                <li><a class="snode snode--unique" href="agata.html"><span class="snode__top"><span class="svc">04</span><span class="snode__type">продукт</span></span><span class="snode__title latin">AGATA</span><span class="snode__desc">Тот же макет продукта. В меню пока не выносится</span><span class="snode__act">Запросить презентацию</span></a></li>
+                <li><a class="snode snode--reserve" href="projects.html#research"><span class="snode__top"><span class="svc">+</span><span class="snode__type">резерв</span></span><span class="snode__title">Продукт · N</span><span class="snode__desc">Future Systems: страница появляется при публичной готовности</span></a></li>
+              </ul>
             </li>
             <li>
               <a class="snode snode--unique" href="partners.html"><span class="snode__top"><span class="svc">05</span><span class="snode__type">два маршрута</span></span><span class="snode__title">Партнерам</span><span class="snode__desc">Партнер экосистемы · вендор ARSENAL · сравнение · заявка</span><span class="snode__act">Подать заявку</span></a>
+            </li>
+            <li>
+              <a class="snode snode--template" href="investors.html"><span class="snode__top"><span class="svc">07</span><span class="snode__type">шаблон · в меню</span></span><span class="snode__title">Инвесторам</span><span class="snode__desc">Модель, стадия, рынок, контакт. Три входа для аудиторий рядом</span><span class="snode__act">Написать</span></a>
             </li>
             <li>
               <a class="snode snode--unique" href="careers.html"><span class="snode__top"><span class="svc">06</span><span class="snode__type">уникальный</span></span><span class="snode__title">Карьера</span><span class="snode__desc">Направления, как работаем, вакансии, открытый отклик</span><span class="snode__act">Откликнуться</span></a>
