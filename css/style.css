@@ -125,7 +125,7 @@ body.show-notes .hdr__reserved{display:flex}
 .burger:hover{background:rgba(244,245,245,.06)}
 .burger svg{width:22px;height:22px}
 @media (max-width:1100px){.nav a,.nav button.nav__link{padding:0 10px;font-size:14px}}
-@media (max-width:1000px){.nav,.hdr__right>a{display:none}.burger{display:inline-flex}.hdr .wrap{grid-template-columns:1fr auto}}
+@media (max-width:1000px){.nav,.hdr__sep,.hdr__systems{display:none}.burger{display:inline-flex}.hdr .wrap{grid-template-columns:1fr auto}}
 
 /* Выпадающая панель (как у Anduril): слева описание, справа список «+ пункт» */
 .mega{position:fixed;left:0;right:0;top:var(--hdr);z-index:55;background:var(--bg);border-bottom:1px solid var(--line-soft);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity var(--t),transform var(--t),visibility var(--t);pointer-events:none}
@@ -899,3 +899,20 @@ a.snode--template:hover{outline-color:var(--fg);background:var(--panel)}
   .tree li.vstack>ul>li:first-child::after{display:block;content:"";position:absolute;top:0;left:50%;width:1px;height:28px;border:0;background:var(--line)}
   .tree li.vstack>ul::before{display:none}
 }
+
+/* Системы экосистемы в шапке: отдельная группа справа */
+.hdr__sep{width:1px;height:22px;background:var(--line);margin:0 8px 0 4px;flex:none}
+.hdr__systems{display:flex;align-items:center;gap:8px}
+.sys{display:inline-flex;align-items:center;gap:9px;height:38px;padding:0 13px 0 14px;border-radius:var(--pill);border:1px solid var(--line);color:var(--fg);font-weight:600;font-size:13px;letter-spacing:.06em;white-space:nowrap;transition:background var(--t),border-color var(--t),color var(--t),transform .25s cubic-bezier(.2,.6,.2,1)}
+.sys:hover{background:var(--fg);color:var(--bg);border-color:var(--fg);transform:translateY(-1px)}
+.sys.is-active{border-color:var(--muted)}
+.sys .ic{width:12px;height:12px;transition:transform var(--t)}
+.sys:hover .ic{transform:translate(1px,-1px)}
+.sys__dot{width:7px;height:7px;border-radius:50%;border:1px solid currentColor;flex:none}
+.sys__dot--live{background:currentColor}
+.sys__dot--dev{background:linear-gradient(90deg,currentColor 50%,transparent 50%)}
+@media (max-width:1180px){.nav a,.nav button.nav__link{padding:0 9px;font-size:14px}.sys{padding:0 11px 0 12px;font-size:12px}}
+.mobile-menu__systems{margin-top:28px;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:14px;animation:fadeUp .5s .3s both}
+.mobile-menu__sysrow{display:flex;flex-wrap:wrap;gap:8px}
+.mobile-menu__sysrow .sys{height:48px;padding:0 20px 0 18px;font-size:15px}
+@media (prefers-reduced-motion:reduce){.mobile-menu__systems{animation:none}}

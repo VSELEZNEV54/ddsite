@@ -19,7 +19,7 @@
     projects: { href: 'projects.html', title: 'Проекты', label: 'Все разработки', heading: 'Проекты',
       desc: 'Два продукта на публичной стадии и исследовательский контур по пяти направлениям. У каждого проекта честный статус.',
       items: [['projects.html#products', 'Все проекты'], ['arsenal.html', 'ARSENAL · готовится к запуску'], ['agata.html', 'AGATA · в разработке'], ['projects.html#research', 'Future Systems · исследование'], ['projects.html#directions', 'Направления и стадии'], ['company.html#model', 'Модель экосистемы']] },
-    arsenal: { href: 'arsenal.html', title: 'ARSENAL', latin: true, label: 'Продукт · маркетплейс', heading: 'ARSENAL',
+    arsenal: { href: 'arsenal.html', title: 'ARSENAL', latin: true, label: 'Система экосистемы · маркетплейс', heading: 'ARSENAL',
       desc: 'Специализированный маркетплейс экипировки и технологий для профессиональных пользователей и организаций. Первый коммерческий продукт экосистемы.', status: ['soon', 'готовится к запуску'],
       items: [['arsenal.html#what', 'Что это'], ['arsenal.html#categories', 'Категории каталога'], ['arsenal.html#who', 'Для кого'], ['arsenal.html#diff', 'Чем отличается'], ['arsenal.html#notify', 'Сообщить о запуске'], ['partners.html#vendor', 'Стать вендором']] },
     agata: { href: 'agata.html', title: 'AGATA', latin: true, label: 'Продукт · платформа', heading: 'AGATA',
@@ -38,17 +38,26 @@
       desc: 'Новости компании, ход проектов, инженерные заметки и материалы для СМИ. Каждый материал с датой.',
       items: [['intel.html', 'Все материалы'], ['intel.html#feed', 'Новости компании'], ['intel.html#feed', 'Проекты'], ['intel.html#feed', 'Инженерные заметки'], ['intel.html#media', 'Для СМИ']] }
   };
-  var ORDER = ['company', 'projects', 'arsenal', 'partners', 'investors', 'careers', 'intel'];
+  MENUS.contacts = { href: 'contacts.html', title: 'Контакты', nomega: true };
+  var ORDER = ['company', 'projects', 'partners', 'investors', 'careers', 'intel', 'contacts'];
+  /* Системы экосистемы: отдельная группа справа в шапке. AGATA добавляется сюда, когда заказчик решит вынести ее */
+  var SYSTEMS = [{ key: 'arsenal', status: 'soon' }];
 
   function navHTML() {
     return ORDER.map(function (k) {
       var m = MENUS[k];
       var cls = (m.latin ? 'nav__latin' : '') + ((page === k || (page === 'article' && k === 'intel')) ? ' is-active' : '');
-      return '<div class="nav__item"><a href="' + m.href + '" class="' + cls.trim() + '" data-menu="' + k + '">' + m.title + '</a></div>';
+      return '<div class="nav__item"><a href="' + m.href + '" class="' + cls.trim() + '"' + (m.nomega ? '' : ' data-menu="' + k + '"') + '>' + m.title + '</a></div>';
+    }).join('');
+  }
+  function systemsHTML(mobile) {
+    return SYSTEMS.map(function (sy) {
+      var m = MENUS[sy.key];
+      return '<a href="' + m.href + '" class="sys' + (page === sy.key ? ' is-active' : '') + '" data-menu="' + sy.key + '" title="' + m.title + ' — отдельная система экосистемы"><span class="sys__dot sys__dot--' + sy.status + '"></span>' + m.title + IC_NE + '</a>';
     }).join('');
   }
   function megaHTML() {
-    return '<div class="mega" id="mega">' + ORDER.map(function (k) {
+    return '<div class="mega" id="mega">' + ORDER.concat(SYSTEMS.map(function (sy) { return sy.key; })).filter(function (k) { return !MENUS[k].nomega; }).map(function (k) {
       var m = MENUS[k];
       return '<div class="mega__panel" data-menu="' + k + '">' +
         '<div class="mega__desc"><div class="svc">' + m.label + '</div><p>' + m.desc + '</p>' +
@@ -65,14 +74,14 @@
       '<nav class="nav" aria-label="Основное меню">' + navHTML() + '</nav>' +
       '<div class="hdr__right">' +
         '<div class="hdr__reserved" title="Резерв: появится вместе с EN-версией и DARLEIN ID"><span class="chip-reserved">RU · EN</span><span class="chip-reserved">Войти</span></div>' +
-        '<a href="contacts.html" class="' + (page === 'contacts' ? 'is-active' : '') + '">Контакты</a>' +
+        '<span class="hdr__sep" aria-hidden="true"></span><div class="hdr__systems" aria-label="Системы экосистемы">' + systemsHTML() + '</div>' +
         '<button class="burger" aria-label="Открыть меню" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>' +
       '</div>' +
     '</div></header>' + megaHTML() +
     '<div class="mobile-menu" id="mobileMenu" aria-hidden="true">' +
       '<button class="mobile-menu__close" aria-label="Закрыть меню"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
-      '<nav class="mobile-menu__list">' + ORDER.map(function (k, i) { var m = MENUS[k]; return '<a href="' + m.href + '" style="--i:' + i + '" class="' + (page === k ? 'is-active' : '') + '">' + m.title + IC_NE + '</a>'; }).join('') +
-        '<a href="contacts.html" style="--i:6" class="' + (page === 'contacts' ? 'is-active' : '') + '">Контакты' + IC_NE + '</a></nav>' +
+      '<nav class="mobile-menu__list">' + ORDER.map(function (k, i) { var m = MENUS[k]; return '<a href="' + m.href + '" style="--i:' + i + '" class="' + (page === k ? 'is-active' : '') + '">' + m.title + IC_NE + '</a>'; }).join('') + '</nav>' +
+      '<div class="mobile-menu__systems"><span class="svc">Системы экосистемы</span><div class="mobile-menu__sysrow">' + systemsHTML(true) + '</div></div>' +
       '<div class="mobile-menu__sub"><a href="investors.html">Инвесторам</a><a href="intel.html#media">Для СМИ</a><a href="legal.html">Политика обработки ПДн</a><a href="legal.html#terms">Пользовательское соглашение</a><a href="mailto:info@darlein.ru">info@darlein.ru</a><a href="#" rel="noopener">Telegram</a></div>' +
     '</div>';
 
@@ -102,7 +111,7 @@
     '<div class="cookie" id="cookie"><span>Сайт использует cookie для веб-аналитики. Подробнее — в <a href="legal.html#policy">политике обработки данных</a>.</span><button class="btn btn--ghost btn--sm" id="cookieOk">Понятно</button></div>';
 
   /* ---------- Навигатор прототипа ---------- */
-  var PAGES = [['Шапка', null], ['index.html', 'Главная', '01 · уникальный'], ['Уровень 1', null], ['company.html', 'Компания', '02'], ['projects.html', 'Проекты', '02а · хаб'], ['arsenal.html', 'ARSENAL', '03 · продукт · в меню'], ['partners.html', 'Партнерам', '05 · два маршрута'], ['investors.html', 'Инвесторам', '07 · в меню'], ['careers.html', 'Карьера', '06'], ['intel.html', 'Новости', '08 · лента'], ['contacts.html', 'Контакты', '10'], ['Уровень 2', null], ['agata.html', 'AGATA', '04 · продукт'], ['intel-article.html', 'Новости · материал', '09 · шаблон'], ['legal.html', 'Юридический документ', '11 · шаблон ×3'], ['Служебные', null], ['404.html', '404', '12'], ['thanks.html?from=contact', 'Спасибо', '13']];
+  var PAGES = [['Шапка', null], ['index.html', 'Главная', '01 · уникальный'], ['Уровень 1', null], ['company.html', 'Компания', '02'], ['projects.html', 'Проекты', '02а · хаб'], ['arsenal.html', 'ARSENAL', '03 · система в шапке'], ['partners.html', 'Партнерам', '05 · два маршрута'], ['investors.html', 'Инвесторам', '07 · в меню'], ['careers.html', 'Карьера', '06'], ['intel.html', 'Новости', '08 · лента'], ['contacts.html', 'Контакты', '10'], ['Уровень 2', null], ['agata.html', 'AGATA', '04 · продукт'], ['intel-article.html', 'Новости · материал', '09 · шаблон'], ['legal.html', 'Юридический документ', '11 · шаблон ×3'], ['Служебные', null], ['404.html', '404', '12'], ['thanks.html?from=contact', 'Спасибо', '13']];
   var here = (location.pathname.split('/').pop() || 'index.html');
   var IC_MAP = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5.5" y="1.5" width="5" height="3.5" rx="1"/><rect x="1" y="11" width="4.5" height="3.5" rx="1"/><rect x="10.5" y="11" width="4.5" height="3.5" rx="1"/><path d="M8 5v3M3.25 11V8h9.5v3"/></svg>';
   var protoHTML = '<div class="proto" id="proto"><div class="proto__panel"><div class="proto__head"><span>Карта прототипа · 14 страниц</span><span>v0.3</span></div>' +
@@ -127,15 +136,16 @@
     mega.classList.add('is-open'); backdrop.classList.add('is-open');
   }
   function closeMega() { closeTimer = setTimeout(function () { mega.classList.remove('is-open'); backdrop.classList.remove('is-open'); }, 120); }
-  header.querySelectorAll('.nav a[data-menu]').forEach(function (a) {
+  header.querySelectorAll('.nav a[data-menu], .hdr__systems a[data-menu]').forEach(function (a) {
     a.addEventListener('mouseenter', function () { openMega(a.getAttribute('data-menu')); });
     a.addEventListener('focus', function () { openMega(a.getAttribute('data-menu')); });
   });
+  header.querySelectorAll('.nav a:not([data-menu])').forEach(function (a) { a.addEventListener('mouseenter', closeMega); });
   header.addEventListener('mouseleave', closeMega);
   mega.addEventListener('mouseenter', function () { clearTimeout(closeTimer); });
   mega.addEventListener('mouseleave', closeMega);
   header.querySelector('.brand').addEventListener('mouseenter', closeMega);
-  header.querySelector('.hdr__right').addEventListener('mouseenter', closeMega);
+  header.querySelector('.hdr__reserved').addEventListener('mouseenter', closeMega);
   backdrop.addEventListener('mouseenter', closeMega);
   window.addEventListener('scroll', function () { if (mega.classList.contains('is-open')) { clearTimeout(closeTimer); mega.classList.remove('is-open'); backdrop.classList.remove('is-open'); } }, { passive: true });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { clearTimeout(closeTimer); mega.classList.remove('is-open'); backdrop.classList.remove('is-open'); } });
