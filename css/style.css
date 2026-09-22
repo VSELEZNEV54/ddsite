@@ -1046,9 +1046,10 @@ a.rcard:hover{background:var(--panel-3);transform:translateY(-3px)}
 .mg-card p{font-size:clamp(19px,1.7vw,24px);line-height:1.25;letter-spacing:-.02em;font-weight:500;color:var(--fg)}
 
 /* Кольцевая схема экосистемы */
-.eco{border-radius:var(--r-xl);background:var(--panel);padding:clamp(16px,2vw,28px)}
+.eco{border-radius:var(--r-xl);background:var(--panel);padding:clamp(16px,2vw,28px);max-width:1280px;margin:0 auto}
 .eco__stage{position:relative;aspect-ratio:1200/700}
-.eco__svg{position:absolute;inset:0;width:100%;height:100%}
+.eco__svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.eco__svg circle,.eco__svg path{fill:none}
 .eco__glow{fill:url(#ecoGlow)}
 .eco__ring-outer{fill:none;stroke:var(--line);stroke-width:1;stroke-dasharray:2 8}
 .eco__ring-base{fill:none;stroke:var(--line-soft);stroke-width:14}

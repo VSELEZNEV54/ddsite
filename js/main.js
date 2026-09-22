@@ -187,9 +187,12 @@
   if ('IntersectionObserver' in window && !reduced) {
     var io = new IntersectionObserver(function (entries) { entries.forEach(function (en) { if (en.isIntersecting || en.boundingClientRect.bottom < 0) { en.target.classList.add('in'); io.unobserve(en.target); } }); }, { rootMargin: '0px 0px -4% 0px', threshold: 0 });
     animEls.forEach(function (el) { io.observe(el); });
-    var sweep = function () { animEls.forEach(function (el) { if (el.classList.contains('in')) return; var r = el.getBoundingClientRect(); if (r.bottom < 0 || (r.top < innerHeight * .96 && r.bottom > 0)) el.classList.add('in'); }); };
-    setTimeout(sweep, 350);
-    var sweepT; window.addEventListener('scroll', function () { clearTimeout(sweepT); sweepT = setTimeout(sweep, 120); }, { passive: true });
+    /* Страховка: не полагаемся только на наблюдатель — проверяем положение элементов при прокрутке, смене видимости и по таймеру */
+    var sweep = function (k) { var lim = innerHeight * (k || .96); animEls.forEach(function (el) { if (el.classList.contains('in')) return; var r = el.getBoundingClientRect(); if (r.bottom < 0 || (r.top < lim && r.bottom > 0)) el.classList.add('in'); }); };
+    setTimeout(sweep, 350); setTimeout(function () { sweep(1.6); }, 1500); setTimeout(function () { sweep(3); }, 4000);
+    window.addEventListener('scroll', function () { sweep(); }, { passive: true });
+    window.addEventListener('resize', function () { sweep(); });
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) setTimeout(sweep, 60); });
     window.addEventListener('hashchange', function () { setTimeout(sweep, 400); });
   } else { animEls.forEach(function (el) { el.classList.add('in'); }); }
 
