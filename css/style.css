@@ -958,3 +958,44 @@ a.rcard:hover{background:var(--panel-3);transform:translateY(-3px)}
 .rcard .status{margin-top:auto;padding-top:10px}
 .rcard--ghost{background:transparent;border:1px dashed var(--line)}
 .rcard--ghost b{color:var(--muted)}
+
+/* Главная · блок «Кто мы»: воздух и разделение */
+.sub{margin-top:clamp(64px,8vw,120px)}
+.mg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px var(--gutter);border-top:1px solid var(--line);padding-top:36px}
+.mg__item .svc{display:block;margin-bottom:20px}
+.mg__item p{font-size:clamp(20px,1.9vw,28px);line-height:1.25;letter-spacing:-.015em;font-weight:500;color:var(--fg);max-width:24ch}
+@media (max-width:800px){.mg{grid-template-columns:1fr;gap:36px}}
+.ps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gutter)}
+.ps__item{border-top:1px solid var(--line);padding-top:24px;display:flex;flex-direction:column;gap:16px}
+.ps__problem{color:var(--muted);font-size:15px;line-height:1.5}
+.ps__arrow{width:16px;height:16px;color:var(--muted-2)}
+.ps__solution{color:var(--fg);font-size:17px;line-height:1.4;font-weight:500;letter-spacing:-.005em}
+@media (max-width:900px){.ps{grid-template-columns:1fr;gap:28px}}
+.scheme-wrap{max-width:980px;margin:0 auto}
+.scheme-wrap .panel{padding:clamp(18px,2.2vw,28px)}
+.scheme-wrap .scheme__dir{min-height:40px;font-size:10px;padding:8px 10px;gap:8px}
+.scheme-wrap .scheme__foot{margin-top:16px}
+
+/* Главная · три пути: акцентная светлая панель */
+.paths-cta{background:var(--bone);color:var(--ink);border-radius:var(--r-xl);padding:clamp(32px,4.5vw,64px)}
+.paths-cta .h2,.paths-cta .h3{color:var(--ink)}
+.paths-cta__head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px var(--gutter);align-items:end;margin-bottom:clamp(32px,4vw,56px)}
+.paths-cta__head .lead{color:var(--ink-2);max-width:40ch}
+.paths-cta__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.paths-cta__item{padding:28px 32px 8px 0;display:flex;flex-direction:column;gap:14px;border-top:1px solid var(--bone-line)}
+.paths-cta__item+.paths-cta__item{padding-left:32px;border-left:1px solid var(--bone-line)}
+.paths-cta__item:last-child{padding-right:0}
+.paths-cta__item .svc{color:var(--ink-2)}
+.paths-cta__item .h3{font-size:clamp(26px,2.4vw,36px);margin-top:4px}
+.paths-cta__item p{color:var(--ink-2);font-size:15px;line-height:1.5;flex:1}
+.paths-cta__item .btn{align-self:flex-start;margin-top:10px}
+@media (max-width:900px){.paths-cta__head{grid-template-columns:1fr}.paths-cta__grid{grid-template-columns:1fr}.paths-cta__item{padding:24px 0 8px}.paths-cta__item+.paths-cta__item{padding-left:0;border-left:0}}
+
+/* Главная · новости компактно */
+.news-compact{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+@media (max-width:900px){.news-compact{grid-template-columns:1fr}}
+.news-item{display:flex;flex-direction:column;gap:14px;padding:22px 24px;border-radius:var(--r-l);background:#fff;color:var(--ink);min-height:190px;transition:transform .3s cubic-bezier(.2,.6,.2,1),background var(--t)}
+.news-item:hover{transform:translateY(-3px);background:#FAFAF8}
+.news-item b{font-size:18px;font-weight:500;line-height:1.2;letter-spacing:-.01em}
+.news-item .svc{color:var(--ink-2)}
+.news-item .lnk{margin-top:auto}
