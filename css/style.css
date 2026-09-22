@@ -1086,3 +1086,10 @@ a.rcard:hover{background:var(--panel-3);transform:translateY(-3px)}
   .eco__mark{width:44px}
   .scheme__legend{display:none}
 }
+
+/* Официальные файлы логотипа (DARLEIN BASE v1.0) */
+.brand__img{height:24px;width:auto;display:block}
+.brand__img--full{height:48px}
+.hero__caps-mark img{height:36px;width:auto;display:block}
+.eco__mark{width:15%;height:auto;display:block;margin-bottom:4px}
+@media (max-width:640px){.brand__img{height:22px}.brand__img--full{height:42px}}
