@@ -1032,7 +1032,8 @@ a.rcard:hover{background:var(--panel-3);transform:translateY(-3px)}
 .tile__tag--research::before{border-color:var(--muted)}
 
 /* Миссия: короткая фраза в уголках */
-.mission{position:relative;max-width:860px;margin:0 auto;padding:clamp(40px,6vw,72px) clamp(24px,4vw,56px);text-align:center}
+.mission{position:relative;padding:clamp(40px,6vw,72px) clamp(24px,4vw,56px);text-align:center}
+.mission__inner{max-width:860px;margin:0 auto}
 .mission i{position:absolute;inset:0;pointer-events:none}
 .mission::before,.mission::after,.mission i::before,.mission i::after{content:"";position:absolute;width:12px;height:12px;border-color:var(--muted);border-style:solid}
 .mission::before{top:0;left:0;border-width:1px 0 0 1px}
@@ -1046,8 +1047,8 @@ a.rcard:hover{background:var(--panel-3);transform:translateY(-3px)}
 .mg-card p{font-size:clamp(19px,1.7vw,24px);line-height:1.25;letter-spacing:-.02em;font-weight:500;color:var(--fg)}
 
 /* Кольцевая схема экосистемы */
-.eco{border-radius:var(--r-xl);background:var(--panel);padding:clamp(16px,2vw,28px);max-width:1280px;margin:0 auto}
-.eco__stage{position:relative;aspect-ratio:1200/700}
+.eco{border-radius:var(--r-xl);background:var(--panel);padding:clamp(16px,2vw,28px)}
+.eco__stage{position:relative;aspect-ratio:1200/780}
 .eco__svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .eco__svg circle,.eco__svg path{fill:none}
 .eco__glow{fill:url(#ecoGlow)}
@@ -1062,7 +1063,7 @@ a.rcard:hover{background:var(--panel-3);transform:translateY(-3px)}
 .eco__link.is-on{stroke:var(--accent)}
 .eco__pt{fill:var(--bg);stroke:var(--muted);stroke-width:1;transition:stroke .3s,fill .3s}
 .eco__pt.is-on{fill:var(--accent);stroke:var(--accent)}
-.eco__center{position:absolute;left:37.5%;top:50%;width:25%;height:42.86%;overflow:hidden;transform:translateY(-50%);border-radius:50%;background:radial-gradient(circle at 50% 40%,#1A1E23 0%,#111417 70%,#0D1013 100%);box-shadow:0 0 0 1px var(--line),0 30px 80px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.06);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px;padding:6%}
+.eco__center{position:absolute;left:37.5%;top:47.44%;width:25%;height:auto;aspect-ratio:1;overflow:hidden;transform:translateY(-50%);border-radius:50%;background:radial-gradient(circle at 50% 40%,#1A1E23 0%,#111417 70%,#0D1013 100%);box-shadow:0 0 0 1px var(--line),0 30px 80px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.06);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px;padding:6%}
 .eco__mark{width:13%;height:auto;color:var(--fg);margin-bottom:4px}
 .eco__center b{font-size:clamp(13px,1.35vw,19px);font-weight:600;letter-spacing:-.02em;color:var(--fg);line-height:1}
 .eco__sub{font-size:clamp(9px,.9vw,12px);color:var(--muted);line-height:1.3}
@@ -1081,7 +1082,7 @@ a.rcard:hover{background:var(--panel-3);transform:translateY(-3px)}
 @media (max-width:900px){
   .eco__stage{aspect-ratio:auto;display:flex;flex-direction:column;gap:var(--gap)}
   .eco__svg{display:none}
-  .eco__center{position:static;transform:none;width:min(280px,80%);height:auto;aspect-ratio:1;margin:8px auto 12px;padding:28px}
+  .eco__center{position:static;transform:none;width:min(280px,80%);margin:8px auto 12px;padding:28px}
   .eco__card{position:static!important;width:100%!important}
   .eco__mark{width:44px}
   .scheme__legend{display:none}
@@ -1093,3 +1094,42 @@ a.rcard:hover{background:var(--panel-3);transform:translateY(-3px)}
 .hero__caps-mark img{height:36px;width:auto;display:block}
 .eco__mark{width:15%;height:auto;display:block;margin-bottom:4px}
 @media (max-width:640px){.brand__img{height:22px}.brand__img--full{height:42px}}
+
+/* Наши проекты: переключатель и роадмап (по референсу Workflow plan) */
+.proj-view[hidden]{display:none}
+.rmap{border-radius:var(--r-xl);background:var(--panel);padding:clamp(20px,3vw,40px);position:relative;overflow:hidden}
+.rmap::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 100% 100%,rgba(0,113,112,.14),transparent 70%),radial-gradient(40% 40% at 0% 0%,rgba(103,255,217,.05),transparent 70%);pointer-events:none}
+.rmap>*{position:relative}
+.rmap__head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:22px}
+.rmap__head .svc{display:block;margin-top:8px}
+.rmap__years{position:relative;display:flex;gap:8px;padding:0 0 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.rmap__years button{height:34px;padding:0 16px;border-radius:var(--pill);background:var(--panel-2);color:var(--muted);font-size:14px;font-weight:500;transition:background var(--t),color var(--t)}
+.rmap__years button:hover{color:var(--fg)}
+.rmap__years button.is-active{background:var(--accent);color:var(--bg)}
+.rmap__board{display:none;position:relative;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:52px;gap:10px 8px;padding:6px 0 8px}
+.rmap__board.is-active{display:grid;animation:fadeUp .45s both}
+.rmap__board::before{content:"";position:absolute;top:44px;bottom:0;left:0;right:0;background:linear-gradient(90deg,var(--line-soft) 1px,transparent 1px) 0 0/25% 100%;pointer-events:none}
+.rmap__q{grid-row:1;font-family:var(--svc);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:12px 0 6px;align-self:end}
+.rbar{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0;height:52px;padding:0 8px 0 18px;border-radius:var(--r-m);background:var(--panel-2);color:var(--fg);font-size:15px;font-weight:500;border:1px solid var(--line-soft);white-space:nowrap;overflow:hidden;transition:transform .3s cubic-bezier(.2,.6,.2,1),border-color var(--t),background var(--t)}
+.rbar>span:first-child,.rbar{text-overflow:ellipsis}
+a.rbar:hover{transform:translateY(-2px);border-color:var(--accent)}
+.rbar--white{background:#fff;color:var(--ink);border-color:#fff}
+.rbar--accent{background:linear-gradient(90deg,#1B6F62 0%,#0F3F3A 55%,#14302E 100%);border-color:rgba(103,255,217,.25)}
+.rbar--ghost{background:transparent;border:1px dashed var(--line);color:var(--muted)}
+.rbar__tag{font-family:var(--svc);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:7px 9px;border-radius:8px;background:rgba(9,10,12,.55);color:var(--fg);white-space:nowrap;flex:none}
+.rbar--white .rbar__tag{background:var(--ink);color:#fff}
+.rmilestone{display:flex;align-items:center;gap:12px;height:52px;color:var(--fg);font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rmilestone i{width:13px;height:13px;background:var(--fg);transform:rotate(45deg);border-radius:2px;flex:none;margin-left:4px}
+.rmilestone--accent i{background:var(--accent)}
+.rmap__now{position:absolute;top:44px;bottom:0;width:1px;background:var(--accent);left:var(--x);pointer-events:none}
+.rmap__now::before{content:"Сейчас";position:absolute;top:0;left:50%;transform:translate(-50%,-110%);font-family:var(--svc);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:3px 8px;border-radius:6px;white-space:nowrap}
+.rmap__legend{display:flex;flex-wrap:wrap;gap:8px 12px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line-soft)}
+.rbar--mini{height:30px;padding:0 12px;font-size:12px;pointer-events:none}
+.rmilestone--mini{height:30px;font-size:12px}
+@media (max-width:760px){
+  .rmap__board{grid-auto-rows:44px;gap:8px 4px}
+  .rbar{height:44px;font-size:12px;padding:0 10px}
+  .rbar__tag{display:none}
+  .rmilestone{height:44px;font-size:12px}
+  .rmap__now::before{display:none}
+}

@@ -20,7 +20,7 @@
       items: [['company.html#problem', 'Проблема и ответ'], ['company.html#model', 'Модель экосистемы'], ['company.html#directions', 'Направления'], ['company.html#principles', 'Принципы работы'], ['company.html#team', 'Экспертиза'], ['company.html#legal', 'Юридический контур'], ['investors.html', 'Инвесторам']] },
     projects: { href: 'projects.html', title: 'Проекты', label: 'Все разработки', heading: 'Проекты',
       desc: 'Два продукта на публичной стадии и исследовательский контур по пяти направлениям. У каждого проекта честный статус.',
-      items: [['projects.html#products', 'Все проекты'], ['arsenal.html', 'ARSENAL · готовится к запуску'], ['agata.html', 'AGATA · в разработке'], ['projects.html#research', 'Future Systems · исследование'], ['projects.html#directions', 'Направления и стадии'], ['projects.html#roadmap', 'Роадмап по годам']] },
+      items: [['projects.html#products', 'Все проекты'], ['arsenal.html', 'ARSENAL · готовится к запуску'], ['agata.html', 'AGATA · в разработке'], ['projects.html#research', 'Future Systems · исследование'], ['projects.html#directions', 'Направления и стадии'], ['index.html#products', 'Роадмап по годам']] },
     arsenal: { href: 'arsenal.html', title: 'ARSENAL', latin: true, label: 'Система экосистемы · маркетплейс', heading: 'ARSENAL',
       desc: 'Специализированный маркетплейс экипировки и технологий для профессиональных пользователей и организаций. Первый коммерческий продукт экосистемы.', status: ['soon', 'готовится к запуску'],
       items: [['arsenal.html#what', 'Что это'], ['arsenal.html#categories', 'Категории каталога'], ['arsenal.html#who', 'Для кого'], ['arsenal.html#diff', 'Чем отличается'], ['arsenal.html#notify', 'Сообщить о запуске'], ['partners.html#vendor', 'Стать вендором']] },
@@ -286,6 +286,25 @@
       qio.observe(q);
     } else { visible = true; start(); }
   });
+
+  /* ---------- Наши проекты: переключатель плитки / роадмап и годы ---------- */
+  var pt = document.getElementById('projToggle');
+  if (pt) {
+    var views = document.querySelectorAll('.proj-view');
+    function setView(v) {
+      pt.querySelectorAll('button').forEach(function (b) { b.classList.toggle('is-active', b.getAttribute('data-view') === v); });
+      views.forEach(function (x) { var on = x.getAttribute('data-view') === v; x.hidden = !on; if (on) x.querySelectorAll('.reveal,.stagger').forEach(function (el) { el.classList.add('in'); }); });
+    }
+    pt.querySelectorAll('button').forEach(function (b) { b.addEventListener('click', function () { setView(b.getAttribute('data-view')); }); });
+    if (location.hash === '#roadmap') setView('roadmap');
+    document.querySelectorAll('.rmap__years button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var y = b.getAttribute('data-year');
+        document.querySelectorAll('.rmap__years button').forEach(function (x) { x.classList.toggle('is-active', x === b); });
+        document.querySelectorAll('.rmap__board').forEach(function (bd) { bd.classList.toggle('is-active', bd.getAttribute('data-year') === y); });
+      });
+    });
+  }
 
   /* ---------- Формы ---------- */
   document.querySelectorAll('form[data-thanks]').forEach(function (f) {
