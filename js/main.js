@@ -7,7 +7,9 @@
   var page = body.getAttribute('data-page') || '';
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var WORD = '<span class="brand__word">Darlein Defense</span>';
+  var MARK = '<svg class="brand__mark" viewBox="0 0 119.269287109375 141.8626708984375" aria-hidden="true" fill="currentColor"><path d="M118.26 74.65 L81.61 138.15 C80.96 139.28 80.02 140.22 78.89 140.87 C77.76 141.52 76.48 141.86 75.17 141.86 L2.49 141.86 C2.03 141.86 1.59 141.73 1.2 141.49 C0.81 141.25 0.5 140.91 0.29 140.5 C0.09 140.1 0.0 139.64 0.04 139.19 C0.07 138.73 0.23 138.3 0.5 137.93 L36.42 89.47 C36.65 89.16 36.96 88.91 37.3 88.73 C37.65 88.56 38.04 88.47 38.42 88.47 C38.81 88.47 39.2 88.57 39.54 88.74 C39.89 88.92 40.19 89.18 40.42 89.49 L76.25 138.8 C76.43 139.05 76.7 139.22 76.99 139.28 C77.29 139.34 77.61 139.3 77.87 139.14 C78.13 138.99 78.33 138.75 78.43 138.46 C78.52 138.17 78.51 137.85 78.39 137.57 L53.68 82.0 C53.52 81.64 53.44 81.25 53.46 80.85 C53.48 80.46 53.59 80.08 53.79 79.74 C53.98 79.39 54.26 79.1 54.59 78.89 C54.92 78.68 55.29 78.54 55.68 78.5 L116.14 72.14 C116.45 72.1 116.73 71.96 116.93 71.73 C117.14 71.51 117.25 71.21 117.25 70.91 C117.25 70.6 117.14 70.3 116.93 70.08 C116.73 69.85 116.45 69.71 116.14 69.67 L55.67 63.34 C55.28 63.3 54.9 63.17 54.57 62.96 C54.24 62.74 53.97 62.45 53.77 62.11 C53.58 61.77 53.46 61.38 53.45 60.99 C53.43 60.6 53.5 60.21 53.67 59.85 L78.38 4.31 C78.51 4.03 78.53 3.71 78.44 3.42 C78.34 3.12 78.15 2.87 77.88 2.72 C77.61 2.57 77.3 2.52 76.99 2.58 C76.69 2.65 76.43 2.83 76.25 3.08 L40.42 52.39 C40.19 52.7 39.89 52.96 39.54 53.13 C39.19 53.31 38.81 53.4 38.42 53.4 C38.03 53.4 37.65 53.31 37.3 53.13 C36.95 52.96 36.65 52.7 36.42 52.39 L0.51 3.93 C0.24 3.56 0.08 3.13 0.04 2.67 C0.0 2.22 0.09 1.76 0.3 1.36 C0.51 0.95 0.82 0.61 1.21 0.37 C1.6 0.13 2.04 0.0 2.5 0.0 L75.18 0.0 C76.48 0.0 77.77 0.34 78.9 1.0 C80.03 1.65 80.96 2.59 81.62 3.72 L118.27 67.21 C118.93 68.34 119.27 69.62 119.27 70.93 C119.27 72.24 118.92 73.52 118.26 74.65 z"/></svg>';
+  var WORD = '<span class="brand__word">Darle<span class="ti"><span class="ti__dot">i</span>\u0131</span>n</span>';
+  var WORD2 = '<span class="brand__word brand__word--2">Darle<span class="ti"><span class="ti__dot">i</span>\u0131</span>n<br>Defense</span>';
   var IC_NE = '<svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg>';
   var IC_DOWN = '<svg class="ic ic--down" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v12M3 9l5 5 5-5"/></svg>';
 
@@ -70,7 +72,7 @@
 
   var headerHTML =
     '<header class="hdr" id="header"><div class="wrap">' +
-      '<a class="brand" href="index.html" aria-label="Darlein Defense — на главную">' + WORD + '</a>' +
+      '<a class="brand" href="index.html" aria-label="Darlein Defense — на главную">' + MARK + WORD + '</a>' +
       '<nav class="nav" aria-label="Основное меню">' + navHTML() + '</nav>' +
       '<div class="hdr__right">' +
         '<div class="hdr__reserved" title="Резерв: появится вместе с EN-версией и DARLEIN ID"><span class="chip-reserved">RU · EN</span><span class="chip-reserved">Войти</span></div>' +
@@ -90,7 +92,7 @@
   var footerHTML =
     '<footer class="ftr" id="footer"><div class="ftr__panel">' +
       '<div class="ftr__top">' +
-        '<div class="ftr__brand"><a class="brand" href="index.html">' + WORD + '</a>' +
+        '<div class="ftr__brand"><a class="brand brand--v" href="index.html">' + MARK + WORD2 + '</a>' +
           '<p>Российская DefenseTech-компания. Единая экосистема технологий и сервисов для оборонного и околовоенного рынка.</p></div>' +
         '<div><h4>Компания</h4><ul><li><a href="company.html">О компании</a></li><li><a href="investors.html">Инвесторам</a></li><li><a href="careers.html">Карьера</a></li><li><a href="intel.html">Новости</a></li><li><a href="intel.html#media">Для СМИ</a></li></ul></div>' +
         '<div><h4>Проекты</h4><ul><li><a href="projects.html">Все проекты</a></li><li class="latin"><a href="arsenal.html">ARSENAL</a></li><li class="latin"><a href="agata.html">AGATA</a></li><li><a href="projects.html#research">Future Systems</a></li></ul></div>' +
@@ -100,7 +102,7 @@
       '</div>' +
       '<div class="ftr__word" aria-hidden="true">DARLEIN DEFENSE</div>' +
       '<div class="ftr__bottom">' +
-        '<div class="ftr__bottom-left"><span>© ' + year + ' Darlein Defense</span><span>Товарные знаки Darlein, Darlein Defense, Darlein Arsenal — в процессе регистрации</span></div>' +
+        '<div class="ftr__bottom-left">' + MARK + '<span>© ' + year + ' Darlein Defense</span><span>Товарные знаки Darlein, Darlein Defense, Darlein Arsenal — в процессе регистрации</span></div>' +
         '<div class="socials" aria-label="Соцсети и каналы">' +
           '<a href="#" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 4L3 11l6 2 2 6 3-4 5 3z"/><path d="M9 13l9-8"/></svg></a>' +
           '<a href="#" aria-label="VK"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7c.5 8 4 11 9 11h1v-4c2 0 4 2 5 4h3c-1-3-3-5-5-6 2-1 4-3 5-5h-3c-1 2-3 4-5 4V7h-3v7C7 13 5 10 5 7z"/></svg></a>' +
@@ -212,7 +214,7 @@
       dpr = Math.min(window.devicePixelRatio || 1, 2); W = canvas.clientWidth; H = canvas.clientHeight;
       canvas.width = W * dpr; canvas.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       N = Math.round(Math.min(150, Math.max(60, (W * H) / 13000))); pts = [];
-      for (var i = 0; i < N; i++) pts.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .16, vy: (Math.random() - .5) * .16, r: Math.random() * 1.3 + .4, p: Math.random() * Math.PI * 2 });
+      for (var i = 0; i < N; i++) pts.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .16, vy: (Math.random() - .5) * .16, r: Math.random() * 1.3 + .4, p: Math.random() * Math.PI * 2, a: Math.random() < .14 });
     }
     function frame() {
       t += 0.004; ctx.clearRect(0, 0, W, H);
@@ -220,7 +222,7 @@
       for (var i = 0; i < N; i++) { var a = pts[i]; a.x += a.vx + Math.sin(t + a.p) * .08; a.y += a.vy + Math.cos(t * .8 + a.p) * .08; if (a.x < -20) a.x = W + 20; if (a.x > W + 20) a.x = -20; if (a.y < -20) a.y = H + 20; if (a.y > H + 20) a.y = -20; }
       ctx.lineWidth = 1;
       for (var i2 = 0; i2 < N; i2++) for (var j = i2 + 1; j < N; j++) { var dx = pts[i2].x - pts[j].x, dy = pts[i2].y - pts[j].y, d = Math.sqrt(dx * dx + dy * dy); if (d < link) { ctx.strokeStyle = 'rgba(244,245,245,' + (0.09 * (1 - d / link)).toFixed(3) + ')'; ctx.beginPath(); ctx.moveTo(pts[i2].x, pts[i2].y); ctx.lineTo(pts[j].x, pts[j].y); ctx.stroke(); } }
-      for (var k = 0; k < N; k++) { ctx.fillStyle = 'rgba(244,245,245,0.3)'; ctx.beginPath(); ctx.arc(pts[k].x, pts[k].y, pts[k].r, 0, Math.PI * 2); ctx.fill(); }
+      for (var k = 0; k < N; k++) { ctx.fillStyle = pts[k].a ? 'rgba(103,255,217,0.55)' : 'rgba(244,245,245,0.3)'; ctx.beginPath(); ctx.arc(pts[k].x, pts[k].y, pts[k].r, 0, Math.PI * 2); ctx.fill(); }
       if (!reduced) requestAnimationFrame(frame);
     }
     resize(); frame();
@@ -240,6 +242,24 @@
       node.addEventListener('mouseleave', function () { if (cap) cap.innerHTML = '<span>' + (cap.getAttribute('data-default') || '') + '</span>'; });
       var href = node.getAttribute('data-href');
       if (href) { node.setAttribute('tabindex', '0'); node.setAttribute('role', 'link'); node.addEventListener('click', function () { location.href = href; }); node.addEventListener('keydown', function (e) { if (e.key === 'Enter') location.href = href; }); }
+    });
+  });
+
+  /* ---------- Кольцевая схема экосистемы ---------- */
+  document.querySelectorAll('.eco').forEach(function (eco) {
+    var cap = eco.querySelector('.eco__caption');
+    eco.querySelectorAll('.eco__card').forEach(function (card) {
+      var k = card.getAttribute('data-dir');
+      card.addEventListener('mouseenter', function () {
+        eco.classList.add('is-hover');
+        eco.querySelectorAll('[data-dir="' + k + '"]').forEach(function (el) { el.classList.add('is-on'); });
+        if (cap) cap.innerHTML = '<b>' + card.getAttribute('data-title') + '</b><span>' + card.getAttribute('data-tip') + '</span>';
+      });
+      card.addEventListener('mouseleave', function () {
+        eco.classList.remove('is-hover');
+        eco.querySelectorAll('[data-dir="' + k + '"]').forEach(function (el) { el.classList.remove('is-on'); });
+        if (cap) cap.innerHTML = '<span>' + (cap.getAttribute('data-default') || '') + '</span>';
+      });
     });
   });
 
