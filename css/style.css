@@ -117,7 +117,7 @@ p+p{margin-top:12px}
 .nav{display:flex;align-items:center;gap:6px;justify-self:center}
 .nav__item{position:relative}
 .nav a,.nav button.nav__link{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:var(--pill);font-size:15px;font-weight:500;color:var(--fg);letter-spacing:-.005em;transition:color var(--t),background var(--t);white-space:nowrap}
-.nav a:hover,.nav button.nav__link:hover{background:rgba(244,245,245,.06)}
+.nav a:hover,.nav button.nav__link:hover{background:transparent}
 .nav a.is-active{color:var(--muted)}
 .nav .nav__latin{letter-spacing:.04em;font-weight:600;font-size:14px}
 .hdr__right{display:flex;align-items:center;gap:8px;justify-self:end}
@@ -1116,8 +1116,6 @@ a.rbar:hover{transform:translateY(-2px);border-color:var(--accent)}
 .rmilestone{display:flex;align-items:center;gap:12px;height:52px;color:var(--fg);font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rmilestone i{width:13px;height:13px;background:var(--fg);transform:rotate(45deg);border-radius:2px;flex:none;margin-left:4px}
 .rmilestone--accent i{background:var(--accent)}
-.rmap__now{position:absolute;top:44px;bottom:0;width:1px;background:var(--accent);left:var(--x);pointer-events:none}
-.rmap__now::before{content:"Сейчас";position:absolute;top:0;left:50%;transform:translate(-50%,-110%);font-family:var(--svc);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:3px 8px;border-radius:6px;white-space:nowrap}
 .rmap__legend{display:flex;flex-wrap:wrap;gap:8px 12px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line-soft)}
 .rbar--mini{height:30px;padding:0 12px;font-size:12px;pointer-events:none}
 .rmilestone--mini{height:30px;font-size:12px}
@@ -1126,5 +1124,16 @@ a.rbar:hover{transform:translateY(-2px);border-color:var(--accent)}
   .rbar{height:44px;font-size:12px;padding:0 10px}
   .rbar__tag{display:none}
   .rmilestone{height:44px;font-size:12px}
-  .rmap__now::before{display:none}
-}
+  }
+
+/* Переключатель языка */
+.lang{display:inline-flex;gap:2px;padding:3px;border-radius:var(--pill);background:var(--panel-2)}
+.lang button{height:30px;min-width:38px;padding:0 10px;border-radius:var(--pill);font-family:var(--svc);font-size:11px;letter-spacing:.08em;color:var(--muted);transition:background var(--t),color var(--t)}
+.lang button:hover{color:var(--fg)}
+.lang button.is-active{background:var(--fg);color:var(--bg)}
+.hdr__right .lang{margin-right:6px}
+@media (max-width:1000px){.hdr__right .lang{display:none}}
+.mobile-menu__lang{margin-top:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;animation:fadeUp .5s .4s both}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,12px);z-index:90;padding:12px 18px;border-radius:var(--pill);background:var(--fg);color:var(--bg);font-size:14px;font-weight:500;box-shadow:0 16px 40px rgba(0,0,0,.45);opacity:0;visibility:hidden;transition:opacity var(--t),transform var(--t),visibility var(--t);max-width:calc(100% - 32px);text-align:center}
+.toast.is-on{opacity:1;visibility:visible;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){.mobile-menu__lang{animation:none}}

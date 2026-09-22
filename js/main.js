@@ -75,7 +75,8 @@
       '<a class="brand" href="index.html" aria-label="Darlein Defense — на главную">' + LOGO_SHORT + '</a>' +
       '<nav class="nav" aria-label="Основное меню">' + navHTML() + '</nav>' +
       '<div class="hdr__right">' +
-        '<div class="hdr__reserved" title="Резерв: появится вместе с EN-версией и DARLEIN ID"><span class="chip-reserved">RU · EN</span><span class="chip-reserved">Войти</span></div>' +
+        '<div class="hdr__reserved" title="Резерв: появится вместе с DARLEIN ID"><span class="chip-reserved">Войти</span></div>' +
+        '<div class="lang" role="group" aria-label="Язык"><button type="button" class="is-active" data-lang="ru">RU</button><button type="button" data-lang="en">EN</button></div>' +
         '<span class="hdr__sep" aria-hidden="true"></span><div class="hdr__systems" aria-label="Системы экосистемы">' + systemsHTML() + '</div>' +
         '<button class="burger" aria-label="Открыть меню" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>' +
       '</div>' +
@@ -84,6 +85,7 @@
       '<button class="mobile-menu__close" aria-label="Закрыть меню"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
       '<nav class="mobile-menu__list">' + ORDER.map(function (k, i) { var m = MENUS[k]; return '<a href="' + m.href + '" style="--i:' + i + '" class="' + (page === k ? 'is-active' : '') + '">' + m.title + IC_NE + '</a>'; }).join('') + '</nav>' +
       '<div class="mobile-menu__systems"><span class="svc">Системы экосистемы</span><div class="mobile-menu__sysrow">' + systemsHTML(true) + '</div></div>' +
+      '<div class="mobile-menu__lang"><span class="svc">Язык</span><div class="lang" role="group" aria-label="Язык"><button type="button" class="is-active" data-lang="ru">RU</button><button type="button" data-lang="en">EN</button></div></div>' +
       '<div class="mobile-menu__sub"><a href="investors.html">Инвесторам</a><a href="intel.html#media">Для СМИ</a><a href="legal.html">Политика обработки ПДн</a><a href="legal.html#terms">Пользовательское соглашение</a><a href="mailto:info@darlein.ru">info@darlein.ru</a><a href="#" rel="noopener">Telegram</a></div>' +
     '</div>';
 
@@ -151,6 +153,22 @@
   backdrop.addEventListener('mouseenter', closeMega);
   window.addEventListener('scroll', function () { if (mega.classList.contains('is-open')) { clearTimeout(closeTimer); mega.classList.remove('is-open'); backdrop.classList.remove('is-open'); } }, { passive: true });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { clearTimeout(closeTimer); mega.classList.remove('is-open'); backdrop.classList.remove('is-open'); } });
+
+  /* Переключатель языка: EN-зеркало появится после утверждения русских текстов */
+  var toastT;
+  function toast(msg) {
+    var t = document.getElementById('toast');
+    if (!t) { t = document.createElement('div'); t.id = 'toast'; t.className = 'toast'; body.appendChild(t); }
+    t.textContent = msg; t.classList.add('is-on'); clearTimeout(toastT); toastT = setTimeout(function () { t.classList.remove('is-on'); }, 2800);
+  }
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var l = b.getAttribute('data-lang');
+      document.querySelectorAll('.lang button').forEach(function (x) { x.classList.toggle('is-active', x.getAttribute('data-lang') === l); });
+      document.documentElement.setAttribute('lang', l);
+      if (l === 'en') toast('English version is being prepared. It mirrors the approved Russian pages.');
+    });
+  });
 
   /* Мобильное меню */
   var mm = document.getElementById('mobileMenu'), burger = header.querySelector('.burger');
