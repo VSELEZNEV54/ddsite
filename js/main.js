@@ -266,23 +266,25 @@
     });
   });
 
-  /* ---------- Блок качеств с табами: автопрокрутка до первого клика ---------- */
+  /* ---------- Блок качеств с табами: автопрокрутка до первого клика, без прокрутки страницы ---------- */
   document.querySelectorAll('.qual').forEach(function (q) {
-    var tabs = q.querySelectorAll('.qual__tabs button'), panels = q.querySelectorAll('.qual__panel'), idx = 0, timer = null, manual = false, hovered = false;
-    function show(i) {
+    var tabs = q.querySelectorAll('.qual__tabs button'), panels = q.querySelectorAll('.qual__panel'), wrap = q.querySelector('.qual__tabs');
+    var idx = 0, timer = null, manual = false, hovered = false, visible = false;
+    function show(i, byUser) {
       idx = i; var k = tabs[i].getAttribute('data-q');
       tabs.forEach(function (x, j) { x.classList.toggle('is-active', j === i); });
       panels.forEach(function (p) { p.classList.toggle('is-active', p.getAttribute('data-q') === k); });
-      if (tabs[i].scrollIntoView) tabs[i].scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+      /* подматываем только ленту вкладок по горизонтали и только по клику: страницу не трогаем */
+      if (byUser && wrap && wrap.scrollWidth > wrap.clientWidth) wrap.scrollTo({ left: Math.max(0, tabs[i].offsetLeft - 16), behavior: reduced ? 'auto' : 'smooth' });
     }
-    function tick() { if (!manual && !hovered) show((idx + 1) % tabs.length); }
-    function start() { if (reduced || manual) return; q.classList.add('is-auto'); timer = setInterval(tick, 6000); }
-    tabs.forEach(function (b, i) { b.addEventListener('click', function () { manual = true; q.classList.remove('is-auto'); clearInterval(timer); show(i); }); });
+    function tick() { if (!manual && !hovered && visible && !document.hidden) show((idx + 1) % tabs.length, false); }
+    function start() { if (reduced || manual || timer) return; q.classList.add('is-auto'); timer = setInterval(tick, 6000); }
+    tabs.forEach(function (b, i) { b.addEventListener('click', function () { manual = true; q.classList.remove('is-auto'); clearInterval(timer); timer = null; show(i, true); }); });
     q.addEventListener('mouseenter', function () { hovered = true; }); q.addEventListener('mouseleave', function () { hovered = false; });
     if ('IntersectionObserver' in window) {
-      var qio = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { start(); qio.disconnect(); } }, { threshold: .3 });
+      var qio = new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible) start(); }, { threshold: .25 });
       qio.observe(q);
-    } else start();
+    } else { visible = true; start(); }
   });
 
   /* ---------- Формы ---------- */
