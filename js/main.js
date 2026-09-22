@@ -76,7 +76,7 @@
       '<nav class="nav" aria-label="Основное меню">' + navHTML() + '</nav>' +
       '<div class="hdr__right">' +
         '<div class="hdr__reserved" title="Резерв: появится вместе с DARLEIN ID"><span class="chip-reserved">Войти</span></div>' +
-        '<div class="lang" role="group" aria-label="Язык"><button type="button" class="is-active" data-lang="ru">RU</button><button type="button" data-lang="en">EN</button></div>' +
+        '<span class="lang-mount"></span>' +
         '<span class="hdr__sep" aria-hidden="true"></span><div class="hdr__systems" aria-label="Системы экосистемы">' + systemsHTML() + '</div>' +
         '<button class="burger" aria-label="Открыть меню" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>' +
       '</div>' +
@@ -85,7 +85,7 @@
       '<button class="mobile-menu__close" aria-label="Закрыть меню"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
       '<nav class="mobile-menu__list">' + ORDER.map(function (k, i) { var m = MENUS[k]; return '<a href="' + m.href + '" style="--i:' + i + '" class="' + (page === k ? 'is-active' : '') + '">' + m.title + IC_NE + '</a>'; }).join('') + '</nav>' +
       '<div class="mobile-menu__systems"><span class="svc">Системы экосистемы</span><div class="mobile-menu__sysrow">' + systemsHTML(true) + '</div></div>' +
-      '<div class="mobile-menu__lang"><span class="svc">Язык</span><div class="lang" role="group" aria-label="Язык"><button type="button" class="is-active" data-lang="ru">RU</button><button type="button" data-lang="en">EN</button></div></div>' +
+      '<div class="mobile-menu__lang"><span class="svc">Язык</span><span class="lang-mount"></span></div>' +
       '<div class="mobile-menu__sub"><a href="investors.html">Инвесторам</a><a href="intel.html#media">Для СМИ</a><a href="legal.html">Политика обработки ПДн</a><a href="legal.html#terms">Пользовательское соглашение</a><a href="mailto:info@darlein.ru">info@darlein.ru</a><a href="#" rel="noopener">Telegram</a></div>' +
     '</div>';
 
@@ -154,6 +154,13 @@
   window.addEventListener('scroll', function () { if (mega.classList.contains('is-open')) { clearTimeout(closeTimer); mega.classList.remove('is-open'); backdrop.classList.remove('is-open'); } }, { passive: true });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { clearTimeout(closeTimer); mega.classList.remove('is-open'); backdrop.classList.remove('is-open'); } });
 
+  /* Языки сайта: добавление языка — одна строка в LANGS */
+  var LANGS = [['ru', 'RU', 'Русский'], ['en', 'EN', 'English']];
+  function langHTML(id) {
+    return '<div class="langdd" id="' + id + '"><button type="button" class="langdd__btn" aria-haspopup="listbox" aria-expanded="false"><span class="langdd__cur">RU</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></button>' +
+      '<div class="langdd__list" role="listbox">' + LANGS.map(function (l) { return '<button type="button" role="option" data-lang="' + l[0] + '" class="' + (l[0] === 'ru' ? 'is-active' : '') + '"><span>' + l[1] + '</span><span class="langdd__name">' + l[2] + '</span></button>'; }).join('') + '</div></div>';
+  }
+  document.querySelectorAll('.lang-mount').forEach(function (m, i) { m.outerHTML = langHTML('langdd' + i); });
   /* Переключатель языка: EN-зеркало появится после утверждения русских текстов */
   var toastT;
   function toast(msg) {
@@ -161,14 +168,26 @@
     if (!t) { t = document.createElement('div'); t.id = 'toast'; t.className = 'toast'; body.appendChild(t); }
     t.textContent = msg; t.classList.add('is-on'); clearTimeout(toastT); toastT = setTimeout(function () { t.classList.remove('is-on'); }, 2800);
   }
-  document.querySelectorAll('.lang button').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var l = b.getAttribute('data-lang');
-      document.querySelectorAll('.lang button').forEach(function (x) { x.classList.toggle('is-active', x.getAttribute('data-lang') === l); });
-      document.documentElement.setAttribute('lang', l);
-      if (l === 'en') toast('English version is being prepared. It mirrors the approved Russian pages.');
+  document.querySelectorAll('.langdd').forEach(function (dd) {
+    var btn = dd.querySelector('.langdd__btn'), list = dd.querySelector('.langdd__list');
+    function open(o) { dd.classList.toggle('is-open', o); btn.setAttribute('aria-expanded', o ? 'true' : 'false'); }
+    btn.addEventListener('click', function (e) { e.stopPropagation(); var o = !dd.classList.contains('is-open'); document.querySelectorAll('.langdd.is-open').forEach(function (x) { x.classList.remove('is-open'); }); open(o); });
+    list.querySelectorAll('button').forEach(function (b) {
+      b.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var l = b.getAttribute('data-lang'), label = b.querySelector('span').textContent;
+        document.querySelectorAll('.langdd').forEach(function (x) {
+          x.querySelector('.langdd__cur').textContent = label;
+          x.querySelectorAll('.langdd__list button').forEach(function (y) { y.classList.toggle('is-active', y.getAttribute('data-lang') === l); });
+          x.classList.remove('is-open');
+        });
+        document.documentElement.setAttribute('lang', l);
+        if (l !== 'ru') toast('English version is being prepared. It mirrors the approved Russian pages.');
+      });
     });
   });
+  document.addEventListener('click', function () { document.querySelectorAll('.langdd.is-open').forEach(function (x) { x.classList.remove('is-open'); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') document.querySelectorAll('.langdd.is-open').forEach(function (x) { x.classList.remove('is-open'); }); });
 
   /* Мобильное меню */
   var mm = document.getElementById('mobileMenu'), burger = header.querySelector('.burger');
