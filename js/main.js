@@ -8,7 +8,7 @@
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var MARK = '<img class="brand__mark" src="assets/logo/sign1b.svg" alt="" width="20" height="24">';
-  var LOGO_SHORT = '<img class="brand__img" src="assets/logo/logoshort1b.svg" alt="Darlein" height="24">';
+  var LOGO_SHORT = '<img class="brand__img" src="assets/logo/logo1b.svg" alt="Darlein Defense" height="34">';
   var LOGO_FULL = '<img class="brand__img brand__img--full" src="assets/logo/logo1b.svg" alt="Darlein Defense" height="48">';
   var IC_NE = '<svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg>';
   var IC_DOWN = '<svg class="ic ic--down" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v12M3 9l5 5 5-5"/></svg>';
@@ -104,7 +104,7 @@
       '</div>' +
       '<div class="ftr__word" aria-hidden="true">DARLEIN DEFENSE</div>' +
       '<div class="ftr__bottom">' +
-        '<div class="ftr__bottom-left">' + MARK + '<span>© ' + year + ' Darlein Defense</span><span>Товарные знаки Darlein, Darlein Defense, Darlein Arsenal — в процессе регистрации</span></div>' +
+        '<div class="ftr__bottom-left"><img class="brand__img brand__img--xs" src="assets/logo/logo1b.svg" alt="" height="22"><span>© ' + year + ' Darlein Defense</span><span>Товарные знаки Darlein, Darlein Defense, Darlein Arsenal — в процессе регистрации</span></div>' +
         '<div class="socials" aria-label="Соцсети и каналы">' +
           '<a href="#" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 4L3 11l6 2 2 6 3-4 5 3z"/><path d="M9 13l9-8"/></svg></a>' +
           '<a href="#" aria-label="VK"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7c.5 8 4 11 9 11h1v-4c2 0 4 2 5 4h3c-1-3-3-5-5-6 2-1 4-3 5-5h-3c-1 2-3 4-5 4V7h-3v7C7 13 5 10 5 7z"/></svg></a>' +
@@ -130,6 +130,33 @@
   var fmount = document.getElementById('site-footer');
   if (fmount) fmount.outerHTML = footerHTML; else body.insertAdjacentHTML('beforeend', footerHTML);
   body.insertAdjacentHTML('beforeend', protoHTML);
+
+  /* ---------- Анимация загрузки: знак, подпись, линия прогресса, затем шторка уходит вверх ---------- */
+  if (document.documentElement.classList.contains('is-loading')) {
+    var ld = document.createElement('div'); ld.id = 'loader'; ld.className = 'loader'; ld.setAttribute('aria-hidden', 'true');
+    ld.innerHTML = '<div class="loader__inner"><img class="loader__mark" src="assets/logo/sign1b.svg" alt=""><img class="loader__text" src="assets/logo/textlogo1b.svg" alt="Darlein Defense"></div>' +
+      '<div class="loader__meta"><span>Единая экосистема оборонных технологий</span><b id="ldPct">00</b></div><div class="loader__bar"><i id="ldBar"></i></div>';
+    body.insertBefore(ld, body.firstChild);
+    var ldDone = false, ldStart = null, ldDur = 1400;
+    function ldFinish() {
+      if (ldDone) return; ldDone = true;
+      document.getElementById('ldBar').style.width = '100%'; document.getElementById('ldPct').textContent = '100';
+      setTimeout(function () {
+        ld.classList.add('is-done'); document.documentElement.classList.remove('is-loading');
+        try { sessionStorage.setItem('dd_seen', '1'); } catch (e) {}
+        setTimeout(function () { if (ld.parentNode) ld.parentNode.removeChild(ld); }, 950);
+      }, 220);
+    }
+    function ldTick(ts) {
+      if (ldStart === null) ldStart = ts;
+      var p = Math.min(1, (ts - ldStart) / ldDur), e = 1 - Math.pow(1 - p, 3);
+      document.getElementById('ldBar').style.width = (e * 100).toFixed(1) + '%';
+      document.getElementById('ldPct').textContent = ('0' + Math.round(e * 100)).slice(-2).replace(/^0(\d\d)$/, '$1');
+      if (p < 1) requestAnimationFrame(ldTick); else ldFinish();
+    }
+    requestAnimationFrame(ldTick);
+    setTimeout(ldFinish, 2600); /* страховка */
+  }
 
   /* Выпадающие панели: открываются при наведении на пункт, закрываются при уходе */
   var header = document.getElementById('header'), mega = document.getElementById('mega'), backdrop = document.getElementById('megaBackdrop');
