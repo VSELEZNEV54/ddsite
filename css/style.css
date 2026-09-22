@@ -916,3 +916,45 @@ a.snode--template:hover{outline-color:var(--fg);background:var(--panel)}
 .mobile-menu__sysrow{display:flex;flex-wrap:wrap;gap:8px}
 .mobile-menu__sysrow .sys{height:48px;padding:0 20px 0 18px;font-size:15px}
 @media (prefers-reduced-motion:reduce){.mobile-menu__systems{animation:none}}
+
+/* Пары «проблема → решение» */
+.pairs{display:grid;gap:var(--gap)}
+.pair{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr);gap:16px 20px;align-items:start;padding:22px 24px;border-radius:var(--r-l);background:var(--panel-2)}
+.pair p{margin-top:8px;font-size:15px;line-height:1.45;color:var(--muted)}
+.pair>div:last-child p{color:var(--fg)}
+.pair__arrow{width:36px;height:36px;border-radius:var(--pill);border:1px solid var(--line);display:inline-flex;align-items:center;justify-content:center;color:var(--muted);justify-self:center;align-self:center}
+.pair__arrow .ic{transform:rotate(45deg)}
+@media (max-width:760px){.pair{grid-template-columns:1fr}.pair__arrow{transform:rotate(90deg);justify-self:start}}
+
+/* Три пути */
+.path{position:relative;overflow:hidden;min-height:340px;gap:12px;justify-content:flex-end}
+.path .visual{opacity:.55}
+.path>*{position:relative;z-index:1}
+.path .svc{margin-bottom:auto}
+.path .h3{margin-top:12px}
+.path p{color:var(--text)}
+.path .btn{align-self:flex-start;margin-top:8px}
+@media (max-width:640px){.path{min-height:280px}}
+
+/* Роадмап по годам */
+.roadmap{position:relative;display:grid;gap:var(--gap)}
+.roadmap__year{display:grid;grid-template-columns:200px minmax(0,1fr);gap:var(--gap);align-items:start}
+@media (max-width:900px){.roadmap__year{grid-template-columns:1fr}}
+.roadmap__label{position:sticky;top:calc(var(--hdr) + 16px);border-radius:var(--r-l);background:var(--panel);padding:22px 24px;min-height:120px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+@media (max-width:900px){.roadmap__label{position:static;min-height:0;flex-direction:row;align-items:baseline}}
+.roadmap__y{font-size:clamp(36px,3.4vw,52px);font-weight:500;letter-spacing:-.03em;line-height:.9;color:var(--fg)}
+.roadmap__label--now .roadmap__y{color:var(--bg)}
+.roadmap__label--now{background:var(--fg)}
+.roadmap__label--now .svc{color:rgba(11,12,13,.6)}
+.roadmap__cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+@media (max-width:1100px){.roadmap__cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.roadmap__cards{grid-template-columns:1fr}}
+.rcard{position:relative;display:flex;flex-direction:column;gap:10px;padding:22px 22px 20px;border-radius:var(--r-l);background:var(--panel-2);color:var(--fg);min-height:200px;transition:background var(--t),transform .3s cubic-bezier(.2,.6,.2,1)}
+a.rcard:hover{background:var(--panel-3);transform:translateY(-3px)}
+.rcard__top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.rcard__q{font-family:var(--svc);font-size:11px;letter-spacing:.1em;padding:4px 9px;border-radius:var(--pill);border:1px solid var(--line);color:var(--fg)}
+.rcard b{font-size:18px;font-weight:500;letter-spacing:-.01em;line-height:1.2}
+.rcard p{font-size:14px;color:var(--muted);line-height:1.45}
+.rcard .status{margin-top:auto;padding-top:10px}
+.rcard--ghost{background:transparent;border:1px dashed var(--line)}
+.rcard--ghost b{color:var(--muted)}

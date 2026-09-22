@@ -18,7 +18,7 @@
       items: [['company.html#problem', 'Проблема и ответ'], ['company.html#model', 'Модель экосистемы'], ['company.html#directions', 'Направления'], ['company.html#principles', 'Принципы работы'], ['company.html#team', 'Экспертиза'], ['company.html#legal', 'Юридический контур'], ['investors.html', 'Инвесторам']] },
     projects: { href: 'projects.html', title: 'Проекты', label: 'Все разработки', heading: 'Проекты',
       desc: 'Два продукта на публичной стадии и исследовательский контур по пяти направлениям. У каждого проекта честный статус.',
-      items: [['projects.html#products', 'Все проекты'], ['arsenal.html', 'ARSENAL · готовится к запуску'], ['agata.html', 'AGATA · в разработке'], ['projects.html#research', 'Future Systems · исследование'], ['projects.html#directions', 'Направления и стадии'], ['company.html#model', 'Модель экосистемы']] },
+      items: [['projects.html#products', 'Все проекты'], ['arsenal.html', 'ARSENAL · готовится к запуску'], ['agata.html', 'AGATA · в разработке'], ['projects.html#research', 'Future Systems · исследование'], ['projects.html#directions', 'Направления и стадии'], ['projects.html#roadmap', 'Роадмап по годам']] },
     arsenal: { href: 'arsenal.html', title: 'ARSENAL', latin: true, label: 'Система экосистемы · маркетплейс', heading: 'ARSENAL',
       desc: 'Специализированный маркетплейс экипировки и технологий для профессиональных пользователей и организаций. Первый коммерческий продукт экосистемы.', status: ['soon', 'готовится к запуску'],
       items: [['arsenal.html#what', 'Что это'], ['arsenal.html#categories', 'Категории каталога'], ['arsenal.html#who', 'Для кого'], ['arsenal.html#diff', 'Чем отличается'], ['arsenal.html#notify', 'Сообщить о запуске'], ['partners.html#vendor', 'Стать вендором']] },
