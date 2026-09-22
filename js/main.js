@@ -356,6 +356,7 @@
     };
     window.addEventListener('scroll', updateStack, { passive: true });
     window.addEventListener('resize', updateStack);
+    setInterval(updateStack, 250); /* страховка для окружений без событий прокрутки */
     updateStack();
   }
 
