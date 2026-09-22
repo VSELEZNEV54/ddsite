@@ -1147,3 +1147,20 @@ a.rbar:hover{transform:translateY(-2px);border-color:var(--accent)}
 .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,12px);z-index:90;padding:12px 18px;border-radius:var(--pill);background:var(--fg);color:var(--bg);font-size:14px;font-weight:500;box-shadow:0 16px 40px rgba(0,0,0,.45);opacity:0;visibility:hidden;transition:opacity var(--t),transform var(--t),visibility var(--t);max-width:calc(100% - 32px);text-align:center}
 .toast.is-on{opacity:1;visibility:visible;transform:translate(-50%,0)}
 @media (prefers-reduced-motion:reduce){.mobile-menu__lang{animation:none}}
+
+/* Проблемы и решения: стопка карточек при прокрутке */
+.pstack{position:relative}
+.scard{position:sticky;top:calc(var(--hdr) + 24px + var(--i,0)*14px);margin-bottom:28px;border-radius:var(--r-xl);background:var(--panel);padding:clamp(22px,3vw,40px);min-height:min(62vh,560px);display:flex;flex-direction:column;gap:22px;box-shadow:0 -18px 50px rgba(0,0,0,.4),0 0 0 1px var(--line-soft);transform-origin:50% 0;will-change:transform,filter}
+.scard:last-child{margin-bottom:0}
+.scard__head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+.scard__head .h3{font-size:clamp(22px,2.2vw,32px)}
+.scard__grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);flex:1}
+.scard__panel{border-radius:var(--r-l);padding:clamp(22px,2.6vw,36px);display:flex;flex-direction:column;gap:18px;min-height:240px}
+.scard__panel p{font-size:clamp(17px,1.5vw,22px);line-height:1.35;letter-spacing:-.01em;font-weight:500;margin-top:auto}
+.scard__panel .lnk{align-self:flex-start;margin-top:4px}
+.scard__panel--problem{background:var(--mute);color:var(--fg)}
+.scard__panel--problem .svc{color:rgba(255,255,255,.6)}
+.scard__panel--solution{background:#fff;color:var(--ink)}
+.scard__panel--solution .svc{color:var(--accent-light)}
+@media (max-width:800px){.scard__grid{grid-template-columns:1fr}.scard{min-height:0;padding:20px}.scard__panel{min-height:0;padding:20px}.scard__panel p{margin-top:8px}}
+@media (prefers-reduced-motion:reduce){.scard{transform:none!important;filter:none!important}}

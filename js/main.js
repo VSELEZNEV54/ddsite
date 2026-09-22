@@ -343,6 +343,23 @@
     });
   }
 
+  /* ---------- Стопка карточек: накрытая карточка уменьшается и темнеет ---------- */
+  var scards = document.querySelectorAll('#pstack .scard');
+  if (scards.length && !reduced) {
+    var ticking = false;
+    var updateStack = function () {
+      ticking = false;
+      for (var i = 0; i < scards.length - 1; i++) {
+        var a = scards[i].getBoundingClientRect(), b = scards[i + 1].getBoundingClientRect();
+        var p = Math.min(1, Math.max(0, (a.bottom - b.top) / a.height));
+        scards[i].style.transform = 'scale(' + (1 - p * 0.05).toFixed(4) + ')';
+        scards[i].style.filter = 'brightness(' + (1 - p * 0.35).toFixed(3) + ')';
+      }
+    };
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(updateStack); } }, { passive: true });
+    updateStack();
+  }
+
   /* ---------- Формы ---------- */
   document.querySelectorAll('form[data-thanks]').forEach(function (f) {
     f.addEventListener('submit', function (e) { e.preventDefault(); var from = f.getAttribute('data-thanks'); var ri = f.querySelector('[name="role"]'); if (ri && ri.value) from = ri.value; location.href = 'thanks.html?from=' + encodeURIComponent(from); });
