@@ -1183,3 +1183,35 @@ html.is-loading .hero__title .line,html.is-loading .hero__caps,html.is-loading .
 .loader__meta{position:absolute;left:var(--gutter);right:var(--gutter);bottom:54px;display:flex;justify-content:space-between;gap:16px;font-family:var(--svc);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .loader__meta b{color:var(--accent);font-weight:400;font-variant-numeric:tabular-nums}
 @media (max-width:640px){.loader__meta span{display:none}}
+
+/* ---- 06.10.2026 · тексты заказчика: 14 продуктов, 7 направлений ---- */
+/* Длинные названия продуктов (Arrowhead, Dropfield, Blackfly, Highfast) на первом экране */
+.phero__title--long{font-size:clamp(56px,11.4vw,200px)}
+@media (max-width:760px){.phero__title--long{font-size:clamp(38px,13.2vw,60px)}}
+/* Кольцевая схема: цвет сегмента по статусу направления, а не по порядковому номеру */
+.eco__seg--soon{stroke:var(--accent)}
+.eco__seg--dev{stroke:var(--accent);opacity:.55}
+/* Плитки проектов в хабе: три в ряд, на телефоне одна под другой */
+.tiles .c4.tile--prod{aspect-ratio:4/5}
+@media (max-width:900px){.tiles .c4.tile--prod{grid-column:span 6;aspect-ratio:1/1}}
+@media (max-width:640px){.tiles .c4.tile--prod,.tiles .c6.tile--prod{grid-column:span 12;aspect-ratio:3/2}}
+/* Список продуктов направления в строке: несколько ссылок со статусом */
+.row__products a .status{font-weight:400}
+.row__products a{flex-wrap:wrap;row-gap:4px;max-width:100%}
+/* Плитки направлений на главной и в «Компании»: 4 в ряд, на телефоне лента со скроллом */
+.cells-dirs{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1000px){.cells-dirs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){
+  .cells-dirs{display:flex;overflow-x:auto;gap:var(--gap);scroll-snap-type:x mandatory;margin:0 calc(-1*var(--gutter));padding:0 var(--gutter) 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .cells-dirs::-webkit-scrollbar{display:none}
+  .cells-dirs>*{flex:0 0 74vw;scroll-snap-align:start;aspect-ratio:3/4}
+}
+@media (min-width:641px) and (max-width:1000px){.tiles .c6.tile--prod:last-child{grid-column:span 12;aspect-ratio:16/7}}
+/* Карта сайта на телефоне: дерево по ширине экрана, длинные описания переносятся */
+@media (max-width:1000px){.tree>ul{width:100%;min-width:0}}
+/* Блок «Создаем вместе» на телефоне: колонка не шире карточки, длинная кнопка переносится */
+@media (max-width:900px){.paths-cta__grid{grid-template-columns:minmax(0,1fr)}}
+.paths-cta__item .btn{max-width:100%;height:auto;min-height:56px;padding-top:10px;padding-bottom:10px;line-height:1.2;white-space:normal;text-align:left}
+@media (max-width:480px){.paths-cta__item .btn{align-self:stretch;justify-content:space-between;padding-left:22px;padding-right:22px;font-size:15px}}
+/* Большая плитка на планшете: минимальная высота не растягивает ее шире сетки */
+@media (min-width:761px) and (max-width:900px){.tile--xl{min-height:0}}

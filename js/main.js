@@ -19,22 +19,22 @@
       desc: 'Российская DefenseTech-компания с моделью экосистемы. Единый стандарт качества, дизайна и совместимости для собственных и партнерских продуктов.',
       items: [['company.html#problem', 'Проблема и ответ'], ['company.html#model', 'Модель экосистемы'], ['company.html#directions', 'Направления'], ['company.html#principles', 'Принципы работы'], ['company.html#team', 'Экспертиза'], ['company.html#legal', 'Юридический контур'], ['investors.html', 'Инвесторам']] },
     projects: { href: 'projects.html', title: 'Проекты', label: 'Все разработки', heading: 'Проекты',
-      desc: 'Два продукта на публичной стадии и исследовательский контур по пяти направлениям. У каждого проекта честный статус.',
-      items: [['projects.html#products', 'Все проекты'], ['arsenal.html', 'ARSENAL · готовится к запуску'], ['agata.html', 'AGATA · в разработке'], ['projects.html#research', 'Future Systems · исследование'], ['projects.html#directions', 'Направления и стадии'], ['index.html#products', 'Роадмап по годам']] },
-    arsenal: { href: 'arsenal.html', title: 'ARSENAL', latin: true, label: 'Система экосистемы · маркетплейс', heading: 'ARSENAL',
-      desc: 'Специализированный маркетплейс экипировки и технологий для профессиональных пользователей и организаций. Первый коммерческий продукт экосистемы.', status: ['soon', 'готовится к запуску'],
-      items: [['arsenal.html#what', 'Что это'], ['arsenal.html#categories', 'Категории каталога'], ['arsenal.html#who', 'Для кого'], ['arsenal.html#diff', 'Чем отличается'], ['arsenal.html#notify', 'Сообщить о запуске'], ['partners.html#vendor', 'Стать вендором']] },
+      desc: '14 продуктов в семи направлениях: от программных платформ и связи до техники и систем защиты. У каждого проекта честный статус.',
+      items: [['projects.html#products', 'Все проекты'], ['projects.html#directions', 'Направления и стадии'], ['dropfield.html', 'DROPFIELD'], ['agata.html', 'AGATA'], ['elza.html', 'ELZA'], ['eva.html', 'EVA'], ['blackfly.html', 'BLACKFLY'], ['warden.html', 'WARDEN'], ['hex.html', 'HEX'], ['echo.html', 'ECHO'], ['nomad.html', 'NOMAD'], ['seal.html', 'SEAL'], ['highfast.html', 'HIGHFAST'], ['backeye.html', 'BACKEYE'], ['shield.html', 'SHIELD'], ['arrowhead.html', 'ARROWHEAD']] },
+    dropfield: { href: 'dropfield.html', title: 'DROPFIELD', latin: true, label: 'Система экосистемы · площадка', heading: 'DROPFIELD',
+      desc: 'Специализированная платформа для выбора, покупки и продажи снаряжения и оборудования: каталог, продавцы, заказы и конфигуратор. Первый коммерческий продукт экосистемы.', status: ['soon', 'готовится к запуску'],
+      items: [['dropfield.html#what', 'Что это'], ['dropfield.html#modules', 'Из чего состоит'], ['dropfield.html#who', 'Для кого'], ['dropfield.html#diff', 'Возможности'], ['dropfield.html#notify', 'Сообщить о запуске'], ['partners.html#vendor', 'Стать вендором']] },
     agata: { href: 'agata.html', title: 'AGATA', latin: true, label: 'Продукт · платформа', heading: 'AGATA',
-      desc: 'Модульная платформа управления подразделениями и операционными процессами: связь, карты, задачи и логистика в одной среде.', status: ['dev', 'в разработке'],
-      items: [['agata.html#what', 'Что это'], ['agata.html#modules', 'Модули'], ['agata.html#who', 'Для кого'], ['agata.html#diff', 'Чем отличается'], ['agata.html#request', 'Запросить презентацию'], ['partners.html#partner', 'Подключить свой модуль']] },
+      desc: 'Программная платформа для координации людей, техники и ресурсов: карта, связь, задачи, видео и данные оборудования в одном интерфейсе.', status: ['dev', 'в разработке'],
+      items: [['agata.html#what', 'Что это'], ['agata.html#modules', 'Что входит'], ['agata.html#who', 'Роли'], ['agata.html#diff', 'Возможности'], ['agata.html#request', 'Запросить презентацию'], ['partners.html#partner', 'Подключить свое устройство']] },
     partners: { href: 'partners.html', title: 'Партнерам', label: 'Два маршрута', heading: 'Партнерам',
-      desc: 'Технологический партнер входит в экосистему со своим продуктом. Вендор продает на площадке ARSENAL. Разные модели отношений — разные условия.',
-      items: [['partners.html#partner', 'Партнер экосистемы'], ['partners.html#vendor', 'Вендор ARSENAL'], ['partners.html#compare', 'Чем отличаются маршруты'], ['partners.html#apply', 'Подать заявку']] },
+      desc: 'Технологический партнер входит в экосистему со своим продуктом. Вендор продает на площадке DROPFIELD. Разные модели отношений — разные условия.',
+      items: [['partners.html#partner', 'Партнер экосистемы'], ['partners.html#vendor', 'Вендор DROPFIELD'], ['partners.html#compare', 'Чем отличаются маршруты'], ['partners.html#apply', 'Подать заявку']] },
     investors: { href: 'investors.html', title: 'Инвесторам', label: 'Модель, стадия, контакт', heading: 'Инвесторам',
       desc: 'Материнский бренд и экосистема продуктов. Финансовые показатели и оценка не публикуются: материалы передаются после соглашения о конфиденциальности.',
       items: [['investors.html#model', 'Модель'], ['investors.html#stage', 'Стадия проектов'], ['investors.html#market', 'Рынок'], ['investors.html#contact', 'Написать']] },
     careers: { href: 'careers.html', title: 'Карьера', label: 'Работа в компании', heading: 'Карьера',
-      desc: 'Инженерная компания на стадии запуска. Пять направлений, один стандарт качества, честный статус каждого проекта.',
+      desc: 'Инженерная компания на стадии запуска. Семь направлений, один стандарт качества, честный статус каждого проекта.',
       items: [['careers.html#directions', 'Где нужны люди'], ['careers.html#how', 'Как работаем'], ['careers.html#vacancies', 'Вакансии'], ['careers.html#apply', 'Открытый отклик']] },
     intel: { href: 'intel.html', title: 'Новости', label: 'Новости и материалы', heading: 'Новости',
       desc: 'Новости компании, ход проектов, инженерные заметки и материалы для СМИ. Каждый материал с датой.',
@@ -42,13 +42,15 @@
   };
   MENUS.contacts = { href: 'contacts.html', title: 'Контакты', nomega: true };
   var ORDER = ['company', 'projects', 'partners', 'investors', 'careers', 'intel', 'contacts'];
-  /* Системы экосистемы: отдельная группа справа в шапке. AGATA добавляется сюда, когда заказчик решит вынести ее */
-  var SYSTEMS = [{ key: 'arsenal', status: 'soon' }];
+  /* Системы экосистемы: отдельная группа справа в шапке. Другой продукт добавляется сюда, когда заказчик решит вынести его */
+  var SYSTEMS = [{ key: 'dropfield', status: 'soon' }];
+  /* Страницы продуктов: на них в меню подсвечивается раздел «Проекты» */
+  var PRODUCTS = ['agata', 'elza', 'eva', 'blackfly', 'warden', 'hex', 'echo', 'nomad', 'seal', 'highfast', 'backeye', 'shield', 'arrowhead'];
 
   function navHTML() {
     return ORDER.map(function (k) {
       var m = MENUS[k];
-      var cls = (m.latin ? 'nav__latin' : '') + ((page === k || (page === 'article' && k === 'intel')) ? ' is-active' : '');
+      var cls = (m.latin ? 'nav__latin' : '') + ((page === k || (page === 'article' && k === 'intel') || (k === 'projects' && PRODUCTS.indexOf(page) > -1)) ? ' is-active' : '');
       return '<div class="nav__item"><a href="' + m.href + '" class="' + cls.trim() + '"' + (m.nomega ? '' : ' data-menu="' + k + '"') + '>' + m.title + '</a></div>';
     }).join('');
   }
@@ -97,7 +99,7 @@
         '<div class="ftr__brand"><a class="brand" href="index.html">' + LOGO_FULL + '</a>' +
           '<p>Российская DefenseTech-компания. Единая экосистема технологий и сервисов для оборонного и околовоенного рынка.</p></div>' +
         '<div><h4>Компания</h4><ul><li><a href="company.html">О компании</a></li><li><a href="investors.html">Инвесторам</a></li><li><a href="careers.html">Карьера</a></li><li><a href="intel.html">Новости</a></li><li><a href="intel.html#media">Для СМИ</a></li></ul></div>' +
-        '<div><h4>Проекты</h4><ul><li><a href="projects.html">Все проекты</a></li><li class="latin"><a href="arsenal.html">ARSENAL</a></li><li class="latin"><a href="agata.html">AGATA</a></li><li><a href="projects.html#research">Future Systems</a></li></ul></div>' +
+        '<div><h4>Проекты</h4><ul><li><a href="projects.html">Все проекты</a></li><li class="latin"><a href="dropfield.html">DROPFIELD</a></li><li class="latin"><a href="agata.html">AGATA</a></li><li class="latin"><a href="elza.html">ELZA</a></li><li class="latin"><a href="blackfly.html">BLACKFLY</a></li><li class="latin"><a href="warden.html">WARDEN</a></li><li><a href="projects.html#directions">Еще 9 проектов</a></li></ul></div>' +
         '<div><h4>Связь</h4><ul><li><a href="contacts.html">Контакты</a></li><li><a href="partners.html">Партнерам и вендорам</a></li><li><a href="mailto:info@darlein.ru">info@darlein.ru</a></li><li><a href="#" rel="noopener">Telegram</a></li></ul></div>' +
         '<div><h4>Юридически</h4><p class="ftr__legal">ООО «ДАРЛЕЙН ДЕФЕНС»<br>ИНН ХХХХХХХХХХ · ОГРН ХХХХХХХХХХХХХ<br>г. Москва, ул. ХХХХХХХ, д. ХХ</p>' +
           '<ul style="margin-top:14px"><li><a href="legal.html#policy">Политика обработки ПДн</a></li><li><a href="legal.html#consent">Согласие на обработку</a></li><li><a href="legal.html#terms">Пользовательское соглашение</a></li></ul></div>' +
@@ -115,10 +117,10 @@
     '<div class="cookie" id="cookie"><span>Сайт использует cookie для веб-аналитики. Подробнее — в <a href="legal.html#policy">политике обработки данных</a>.</span><button class="btn btn--ghost btn--sm" id="cookieOk">Понятно</button></div>';
 
   /* ---------- Навигатор прототипа ---------- */
-  var PAGES = [['Шапка', null], ['index.html', 'Главная', '01 · уникальный'], ['Уровень 1', null], ['company.html', 'Компания', '02'], ['projects.html', 'Проекты', '02а · хаб'], ['arsenal.html', 'ARSENAL', '03 · система в шапке'], ['partners.html', 'Партнерам', '05 · два маршрута'], ['investors.html', 'Инвесторам', '07 · в меню'], ['careers.html', 'Карьера', '06'], ['intel.html', 'Новости', '08 · лента'], ['contacts.html', 'Контакты', '10'], ['Уровень 2', null], ['agata.html', 'AGATA', '04 · продукт'], ['intel-article.html', 'Новости · материал', '09 · шаблон'], ['legal.html', 'Юридический документ', '11 · шаблон ×3'], ['Служебные', null], ['404.html', '404', '12'], ['thanks.html?from=contact', 'Спасибо', '13']];
+  var PAGES = [['Шапка', null], ['index.html', 'Главная', '01 · уникальный'], ['Уровень 1', null], ['company.html', 'Компания', '02'], ['projects.html', 'Проекты', '02а · хаб'], ['dropfield.html', 'DROPFIELD', '03 · система в шапке'], ['partners.html', 'Партнерам', '05 · два маршрута'], ['investors.html', 'Инвесторам', '07 · в меню'], ['careers.html', 'Карьера', '06'], ['intel.html', 'Новости', '08 · лента'], ['contacts.html', 'Контакты', '10'], ['Уровень 2 · продукты', null], ['agata.html', 'AGATA', '04 · ПО и ИИ'], ['elza.html', 'ELZA', 'ПО и ИИ'], ['eva.html', 'EVA', 'ПО и ИИ'], ['blackfly.html', 'BLACKFLY', 'беспилотные'], ['warden.html', 'WARDEN', 'экипировка'], ['hex.html', 'HEX', 'связь'], ['echo.html', 'ECHO', 'сенсоры'], ['nomad.html', 'NOMAD', 'техника'], ['seal.html', 'SEAL', 'техника'], ['highfast.html', 'HIGHFAST', 'техника'], ['backeye.html', 'BACKEYE', 'техника'], ['shield.html', 'SHIELD', 'защита'], ['arrowhead.html', 'ARROWHEAD', 'ПВО'], ['Уровень 2 · шаблоны', null], ['intel-article.html', 'Новости · материал', '09 · шаблон'], ['legal.html', 'Юридический документ', '11 · шаблон ×3'], ['Служебные', null], ['404.html', '404', '12'], ['thanks.html?from=contact', 'Спасибо', '13']];
   var here = (location.pathname.split('/').pop() || 'index.html');
   var IC_MAP = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5.5" y="1.5" width="5" height="3.5" rx="1"/><rect x="1" y="11" width="4.5" height="3.5" rx="1"/><rect x="10.5" y="11" width="4.5" height="3.5" rx="1"/><path d="M8 5v3M3.25 11V8h9.5v3"/></svg>';
-  var protoHTML = '<div class="proto" id="proto"><div class="proto__panel"><div class="proto__head"><span>Карта прототипа · 14 страниц</span><span>v0.3</span></div>' +
+  var protoHTML = '<div class="proto" id="proto"><div class="proto__panel"><div class="proto__head"><span>Карта прототипа · 26 страниц</span><span>v0.4</span></div>' +
     '<a class="proto__main' + (here === 'sitemap.html' ? ' is-active' : '') + '" href="sitemap.html"><span>Структура сайта</span><span style="display:flex;align-items:center;gap:10px"><span class="svc">схема</span>' + IC_MAP + '</span></a>' +
     PAGES.map(function (p) { if (p[1] === null) return '<div class="proto__group">' + p[0] + '</div>'; var act = p[0].split('?')[0] === here ? ' is-active' : ''; return '<a href="' + p[0] + '" class="' + act + '"><span style="color:inherit;font-size:13px">' + p[1] + '</span><span>' + p[2] + '</span></a>'; }).join('') +
     '<div class="proto__toggle"><span>Резервные элементы и пометки</span><span class="sw" id="notesSw" role="switch" aria-checked="false" tabindex="0"></span></div></div>' +
@@ -400,7 +402,7 @@
       document.querySelectorAll('.route-panel').forEach(function (p) { var on = p.getAttribute('data-route') === r; p.classList.toggle('is-active', on); if (on) p.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); }); });
       document.querySelectorAll('.seg button[data-role]').forEach(function (b) { b.classList.toggle('is-active', b.getAttribute('data-role') === r); });
       var ri = document.querySelector('[name="role"]'); if (ri) ri.value = r;
-      var subj = document.getElementById('formSubject'); if (subj) subj.textContent = r === 'vendor' ? 'Заявка вендора ARSENAL' : 'Заявка партнера экосистемы';
+      var subj = document.getElementById('formSubject'); if (subj) subj.textContent = r === 'vendor' ? 'Заявка вендора DROPFIELD' : 'Заявка партнера экосистемы';
       if (scroll) { var target = document.getElementById('route-detail'); if (target) target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }); }
     }
     routes.forEach(function (x) { x.addEventListener('click', function (e) { e.preventDefault(); setRoute(x.getAttribute('data-route'), true); }); });
