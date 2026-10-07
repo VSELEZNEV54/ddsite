@@ -8,25 +8,28 @@
 <meta name="description" content="ECHO — семейство автономных сенсорных систем для земли, воздуха и моря: датчики, обработка на месте и общая картина событий.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Tektur:wght@400..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=202610071510">
+<link rel="stylesheet" href="css/style.css?v=202610091200">
 <link rel="icon" type="image/png" sizes="256x256" href="assets/logo/favicon.png?v=3">
 <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
 <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png?v=3">
 </head>
-<body data-page="echo">
+<body data-page="echo" data-hero="video">
 <div id="site-header"></div>
 <main>
 
-<!-- 01 · Первый экран продукта -->
-<section class="phero wrap">
-  <h1 class="phero__title">Echo</h1>
-  <div class="phero__meta">
-    <div><div class="cap">Автономные сенсорные системы</div><div class="tag">SNS</div></div>
-    <p class="phero__desc">Семейство автономных сенсорных систем для земли, воздуха и моря. Датчики, локальная обработка и хранение данных объединены так, чтобы наблюдения отдельных устройств складывались в общую картину событий.</p>
-    <div class="phero__side"><span class="status status--research status--lg">Исследование</span><div class="actions"><a class="btn btn--primary" href="#request">Запросить презентацию <span class="ic-ne"></span></a><a class="btn btn--ghost" href="#modules">Как устроено</a></div></div>
+<!-- 01 · Первый экран продукта: ролик на весь экран, текст поверх -->
+<section class="phero phero--video">
+  <div class="phero__media"><div class="visual visual--video visual--dusk visual--ring"></div><!-- ролик продукта: <video data-src="video/echo.mp4" data-src-mobile="video/echo-m.mp4" poster="video/echo.jpg" muted loop playsinline preload="none"></video> --></div>
+  <div class="phero__inner wrap">
+    <h1 class="phero__title">Echo</h1>
+    <div class="phero__meta">
+      <div><div class="cap">Автономные сенсорные системы</div><div class="tag">SNS</div><span class="status status--research status--lg">Исследование</span></div>
+      <p class="phero__desc">Семейство автономных сенсорных систем для земли, воздуха и моря. Датчики, локальная обработка и хранение данных объединены так, чтобы наблюдения отдельных устройств складывались в общую картину событий.</p>
+      <div class="phero__side"><div class="actions"><a class="btn btn--primary" href="#request">Запросить презентацию <span class="ic-ne"></span></a><a class="btn btn--ghost" href="#modules">Как устроено</a></div></div>
+    </div>
   </div>
+  <a class="phero__next" href="#what"><span class="svc svc--fg">Листайте</span><span class="ic-down"></span></a>
 </section>
-<section class="wrap"><div class="frame frame--xl frame--16-7 reveal"><div class="visual visual--video visual--dusk visual--ring"></div></div></section>
 
 <!-- 02 · Что это -->
 <section class="section wrap" id="what">
@@ -112,6 +115,6 @@
 
 </main>
 <div id="site-footer"></div>
-<script src="js/main.js?v=202610071510"></script>
+<script src="js/main.js?v=202610091200"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@
 <meta name="description" content="Darlein Defense — российская DefenseTech-компания. Единая экосистема технологий и сервисов для оборонного и околовоенного рынка: 14 продуктов в семи направлениях, от программных платформ до техники и систем защиты.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Tektur:wght@400..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=202610071510">
+<link rel="stylesheet" href="css/style.css?v=202610091200">
 <link rel="icon" type="image/png" sizes="256x256" href="assets/logo/favicon.png?v=3">
 <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
 <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png?v=3">
@@ -124,18 +124,103 @@
   </div>
 </section>
 
-<!-- 03 · Направления проектов -->
-<section class="section wrap" id="directions">
-  <div class="sec-head reveal"><h2 class="h2">Направления проектов</h2><span class="svc">Семь направлений · у каждого честный статус</span></div>
-  <div class="cells cells-dirs reveal">
-    <a class="tile tile--wide" href="projects.html#dir-soft"><div class="visual visual--teal visual--ui"></div><div class="tile__shade"></div><span class="tile__tag tile__tag--dev">В разработке</span><div class="tile__body"><div><div class="svc svc--fg" style="margin-bottom:8px">01</div><div class="tile__title" style="font-size:22px">Программное обеспечение и ИИ</div><div class="tile__sub latin">AGATA · ELZA · EVA</div></div></div></a>
-    <a class="tile tile--wide" href="projects.html#dir-uas"><div class="visual visual--graphite visual--grid"></div><div class="tile__shade"></div><span class="tile__tag tile__tag--research">Исследование</span><div class="tile__body"><div><div class="svc svc--fg" style="margin-bottom:8px">02</div><div class="tile__title" style="font-size:22px">Беспилотные системы</div><div class="tile__sub latin">BLACKFLY</div></div></div></a>
-    <a class="tile tile--wide" href="projects.html#dir-ecom"><div class="visual visual--steel visual--shafts"></div><div class="tile__shade"></div><span class="tile__tag">Готовится к запуску</span><div class="tile__body"><div><div class="svc svc--fg" style="margin-bottom:8px">03</div><div class="tile__title" style="font-size:22px">Цифровая коммерция</div><div class="tile__sub latin">DROPFIELD</div></div></div></a>
-    <a class="tile tile--wide" href="projects.html#dir-gear"><div class="visual visual--warm visual--shafts"></div><div class="tile__shade"></div><span class="tile__tag tile__tag--research">Исследование</span><div class="tile__body"><div><div class="svc svc--fg" style="margin-bottom:8px">04</div><div class="tile__title" style="font-size:22px">Экипировка</div><div class="tile__sub latin">WARDEN</div></div></div></a>
-    <a class="tile tile--wide" href="projects.html#dir-comms"><div class="visual visual--dusk visual--ring"></div><div class="tile__shade"></div><span class="tile__tag tile__tag--research">Исследование</span><div class="tile__body"><div><div class="svc svc--fg" style="margin-bottom:8px">05</div><div class="tile__title" style="font-size:22px">Связь и сенсоры</div><div class="tile__sub latin">HEX · ECHO</div></div></div></a>
-    <a class="tile tile--wide" href="projects.html#dir-tech"><div class="visual visual--warm visual--grid"></div><div class="tile__shade"></div><span class="tile__tag tile__tag--research">Исследование</span><div class="tile__body"><div><div class="svc svc--fg" style="margin-bottom:8px">06</div><div class="tile__title" style="font-size:22px">Техника</div><div class="tile__sub latin">NOMAD · SEAL · HIGHFAST · BACKEYE</div></div></div></a>
-    <a class="tile tile--wide" href="projects.html#dir-def"><div class="visual visual--graphite visual--shafts"></div><div class="tile__shade"></div><span class="tile__tag tile__tag--research">Исследование</span><div class="tile__body"><div><div class="svc svc--fg" style="margin-bottom:8px">07</div><div class="tile__title" style="font-size:22px">Активная защита и ПВО</div><div class="tile__sub latin">SHIELD · ARROWHEAD</div></div></div></a>
-    <a class="tile tile--wide" href="projects.html"><div class="visual visual--steel visual--ring"></div><div class="tile__shade"></div><span class="tile__tag tile__tag--live">14 продуктов</span><div class="tile__body"><div><div class="svc svc--fg" style="margin-bottom:8px">Все</div><div class="tile__title" style="font-size:22px">Все проекты</div><div class="tile__sub">Статусы и страницы продуктов</div></div><span class="tile__arrow"><span class="ic-ne"></span></span></div></a>
+<!-- 03 · Направления проектов: лента больших карточек, из каждой — переход на продукты направления -->
+<section class="section" id="directions">
+  <div class="wrap">
+    <div class="sec-head reveal"><h2 class="h2">Направления проектов</h2>
+      <div class="dnav" aria-label="Листать направления"><span class="svc dnav__count"><b id="dirNow">01</b> / 07</span><button class="dnav__btn" type="button" data-step="-1" aria-label="Предыдущее направление" disabled><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4"/></svg></button><button class="dnav__btn" type="button" data-step="1" aria-label="Следующее направление"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button></div>
+    </div>
+  </div>
+  <div class="drail reveal" id="dirRail" tabindex="0" role="group" aria-label="Семь направлений проектов">
+    <article class="dcard" data-dir="soft">
+      <div class="visual visual--teal visual--ui"></div><div class="dcard__shade"></div>
+      <div class="dcard__top"><span class="dcard__num">01</span><span class="svc svc--fg">3 продукта</span></div>
+      <div class="dcard__body">
+        <h3 class="dcard__title">Программное обеспечение и ИИ</h3>
+        <p class="dcard__desc">Платформы управления, аналитики и помощи в работе. Цифровая основа, к которой подключаются остальные продукты.</p>
+        <div class="dcard__products">
+          <a class="dprod" href="agata.html"><span class="dprod__top"><b class="latin">AGATA</b><span class="status status--dev">в разработке</span></span><span class="dprod__cap">Управление, данные и координация</span><span class="dprod__go"><span class="ic-ne"></span></span></a>
+          <a class="dprod" href="elza.html"><span class="dprod__top"><b class="latin">ELZA</b><span class="status status--research">исследование</span></span><span class="dprod__cap">Аналитика и исследование событий</span><span class="dprod__go"><span class="ic-ne"></span></span></a>
+          <a class="dprod" href="eva.html"><span class="dprod__top"><b class="latin">EVA</b><span class="status status--research">исследование</span></span><span class="dprod__cap">ИИ-помощник для работы с оборудованием</span><span class="dprod__go"><span class="ic-ne"></span></span></a>
+        </div>
+      </div>
+    </article>
+    <article class="dcard" data-dir="uas">
+      <div class="visual visual--graphite visual--grid"></div><div class="dcard__shade"></div>
+      <div class="dcard__top"><span class="dcard__num">02</span><span class="svc svc--fg">1 продукт</span></div>
+      <div class="dcard__body">
+        <h3 class="dcard__title">Беспилотные системы</h3>
+        <p class="dcard__desc">Совместимые компоненты, комплекты и программные инструменты для создания беспилотных платформ.</p>
+        <div class="dcard__products dcard__products--1">
+          <a class="dprod" href="blackfly.html"><span class="dprod__top"><b class="latin">BLACKFLY</b><span class="status status--research">исследование</span></span><span class="dprod__cap">Компоненты беспилотных платформ</span><span class="dprod__go"><span class="ic-ne"></span></span></a>
+        </div>
+      </div>
+    </article>
+    <article class="dcard" data-dir="ecom">
+      <div class="visual visual--steel visual--shafts"></div><div class="dcard__shade"></div>
+      <div class="dcard__top"><span class="dcard__num">03</span><span class="svc svc--fg">1 продукт</span></div>
+      <div class="dcard__body">
+        <h3 class="dcard__title">Цифровая коммерция</h3>
+        <p class="dcard__desc">Специализированная площадка для выбора, покупки и продажи снаряжения и оборудования.</p>
+        <div class="dcard__products dcard__products--1">
+          <a class="dprod" href="dropfield.html"><span class="dprod__top"><b class="latin">DROPFIELD</b><span class="status status--soon">готовится к запуску</span></span><span class="dprod__cap">Выбор и покупка снаряжения</span><span class="dprod__go"><span class="ic-ne"></span></span></a>
+        </div>
+      </div>
+    </article>
+    <article class="dcard" data-dir="gear">
+      <div class="visual visual--warm visual--shafts"></div><div class="dcard__shade"></div>
+      <div class="dcard__top"><span class="dcard__num">04</span><span class="svc svc--fg">1 продукт</span></div>
+      <div class="dcard__body">
+        <h3 class="dcard__title">Экипировка</h3>
+        <p class="dcard__desc">Модульная индивидуальная экипировка: защита, одежда, экзоскелетные модули и носимая электроника.</p>
+        <div class="dcard__products dcard__products--1">
+          <a class="dprod" href="warden.html"><span class="dprod__top"><b class="latin">WARDEN</b><span class="status status--research">исследование</span></span><span class="dprod__cap">Модульная экипировка</span><span class="dprod__go"><span class="ic-ne"></span></span></a>
+        </div>
+      </div>
+    </article>
+    <article class="dcard" data-dir="comms">
+      <div class="visual visual--dusk visual--ring"></div><div class="dcard__shade"></div>
+      <div class="dcard__top"><span class="dcard__num">05</span><span class="svc svc--fg">2 продукта</span></div>
+      <div class="dcard__body">
+        <h3 class="dcard__title">Связь и сенсоры</h3>
+        <p class="dcard__desc">Распределенная сеть для людей и техники и автономные сенсорные системы для земли, воздуха и моря.</p>
+        <div class="dcard__products">
+          <a class="dprod" href="hex.html"><span class="dprod__top"><b class="latin">HEX</b><span class="status status--research">исследование</span></span><span class="dprod__cap">Связь для людей, техники и сенсоров</span><span class="dprod__go"><span class="ic-ne"></span></span></a>
+          <a class="dprod" href="echo.html"><span class="dprod__top"><b class="latin">ECHO</b><span class="status status--research">исследование</span></span><span class="dprod__cap">Автономные сенсорные системы</span><span class="dprod__go"><span class="ic-ne"></span></span></a>
+        </div>
+      </div>
+    </article>
+    <article class="dcard" data-dir="tech">
+      <div class="visual visual--warm visual--grid"></div><div class="dcard__shade"></div>
+      <div class="dcard__top"><span class="dcard__num">06</span><span class="svc svc--fg">4 продукта</span></div>
+      <div class="dcard__body">
+        <h3 class="dcard__title">Техника</h3>
+        <p class="dcard__desc">Наземные, морские и воздушные платформы со сменным оснащением и общими системами управления.</p>
+        <div class="dcard__products">
+          <a class="dprod" href="nomad.html"><span class="dprod__top"><b class="latin">NOMAD</b><span class="status status--research">исследование</span></span><span class="dprod__cap">Наземные роботизированные платформы</span><span class="dprod__go"><span class="ic-ne"></span></span></a>
+          <a class="dprod" href="seal.html"><span class="dprod__top"><b class="latin">SEAL</b><span class="status status--research">исследование</span></span><span class="dprod__cap">Безэкипажные морские платформы</span><span class="dprod__go"><span class="ic-ne"></span></span></a>
+          <a class="dprod" href="highfast.html"><span class="dprod__top"><b class="latin">HIGHFAST</b><span class="status status--research">исследование</span></span><span class="dprod__cap">Аппараты вертикального взлета</span><span class="dprod__go"><span class="ic-ne"></span></span></a>
+          <a class="dprod" href="backeye.html"><span class="dprod__top"><b class="latin">BACKEYE</b><span class="status status--research">исследование</span></span><span class="dprod__cap">Внешний обзор для техники</span><span class="dprod__go"><span class="ic-ne"></span></span></a>
+        </div>
+      </div>
+    </article>
+    <article class="dcard" data-dir="def">
+      <div class="visual visual--graphite visual--shafts"></div><div class="dcard__shade"></div>
+      <div class="dcard__top"><span class="dcard__num">07</span><span class="svc svc--fg">2 продукта</span></div>
+      <div class="dcard__body">
+        <h3 class="dcard__title">Активная защита и ПВО</h3>
+        <p class="dcard__desc">Модульные системы защиты техники и объектов и семейство беспилотных перехватчиков.</p>
+        <div class="dcard__products">
+          <a class="dprod" href="shield.html"><span class="dprod__top"><b class="latin">SHIELD</b><span class="status status--research">исследование</span></span><span class="dprod__cap">Модульные системы защиты</span><span class="dprod__go"><span class="ic-ne"></span></span></a>
+          <a class="dprod" href="arrowhead.html"><span class="dprod__top"><b class="latin">ARROWHEAD</b><span class="status status--research">исследование</span></span><span class="dprod__cap">Семейство беспилотных перехватчиков</span><span class="dprod__go"><span class="ic-ne"></span></span></a>
+        </div>
+      </div>
+    </article>
+    <a class="dcard dcard--all" href="projects.html">
+      <span class="svc">Все направления</span>
+      <span class="dcard__all"><b>14</b><span>продуктов<br>в семи направлениях</span></span>
+      <span class="btn btn--primary">Все проекты <span class="ic-ne"></span></span>
+    </a>
   </div>
 </section>
 
@@ -145,32 +230,43 @@
     <div class="actions"><div class="seg" id="projToggle" role="tablist"><button type="button" data-view="tiles" class="is-active">Проекты</button><button type="button" data-view="roadmap">Роадмап</button></div><a class="lnk lnk--muted" href="projects.html">Все проекты <span class="ic-ne"></span></a></div></div>
 
   <div class="proj-view" data-view="tiles">
-    <div class="cells cells-3">
-      <a class="tile" style="aspect-ratio:4/5" href="dropfield.html">
-        <div class="visual visual--video visual--steel visual--shafts"></div>
-        <div class="tile__shade"></div>
-        <span class="tile__tag">Готовится к запуску</span>
-        <div class="tile__body"><div><div class="tile__title latin">DROPFIELD</div><div class="tile__sub">Площадка для выбора, покупки и продажи снаряжения и оборудования</div></div><span class="tile__arrow"><span class="ic-ne"></span></span></div>
+    <div class="pbrowser reveal" id="projBrowser">
+      <a class="pbrowser__preview" href="dropfield.html" id="projPreview">
+        <div class="visual visual--video visual--steel visual--shafts"></div><div class="tile__shade"></div>
+        <span class="status status--soon" data-role="status">готовится к запуску</span>
+        <div class="pbrowser__body">
+          <span class="svc svc--fg" data-role="dir">03 · Цифровая коммерция</span>
+          <div class="pbrowser__name latin" data-role="name">DROPFIELD</div>
+          <p data-role="desc">Специализированная платформа для выбора, покупки и продажи снаряжения и оборудования.</p>
+          <span class="btn btn--primary">Открыть проект <span class="ic-ne"></span></span>
+        </div>
       </a>
-      <a class="tile" style="aspect-ratio:4/5" href="agata.html">
-        <div class="visual visual--teal visual--ui"></div>
-        <div class="tile__shade"></div>
-        <span class="tile__tag tile__tag--dev">В разработке</span>
-        <div class="tile__body"><div><div class="tile__title latin">AGATA</div><div class="tile__sub">Платформа для координации людей, техники и ресурсов</div></div><span class="tile__arrow"><span class="ic-ne"></span></span></div>
-      </a>
-      <a class="tile" style="aspect-ratio:4/5" href="projects.html#products">
-        <div class="visual visual--warm visual--ring"></div>
-        <div class="tile__shade"></div>
-        <span class="tile__tag tile__tag--research">Еще 12 проектов</span>
-        <div class="tile__body"><div><div class="tile__title">Все проекты</div><div class="tile__sub latin">ELZA · EVA · BLACKFLY · WARDEN · HEX · ECHO · NOMAD · SEAL · HIGHFAST · BACKEYE · SHIELD · ARROWHEAD</div></div><span class="tile__arrow"><span class="ic-ne"></span></span></div>
-      </a>
+      <div class="pbrowser__side">
+        <div class="pbrowser__cols"><span>№</span><span>Проект</span><span>Назначение</span><span>Стадия</span></div>
+        <div class="pbrowser__list" id="projList" tabindex="0" role="group" aria-label="Все 14 проектов">
+        <a class="prow is-active" href="dropfield.html" data-visual="visual--steel visual--shafts" data-status="soon" data-status-label="готовится к запуску" data-dir="03 · Цифровая коммерция" data-desc="Специализированная платформа для выбора, покупки и продажи снаряжения и оборудования."><span class="prow__num">01</span><b class="prow__name latin">DROPFIELD</b><span class="prow__cap">Выбор и покупка снаряжения</span><span class="status status--soon">готовится к запуску</span><span class="prow__go"><span class="ic-ne"></span></span></a>
+        <a class="prow" href="agata.html" data-visual="visual--teal visual--ui" data-status="dev" data-status-label="в разработке" data-dir="01 · Программное обеспечение и ИИ" data-desc="Программная платформа для координации людей, техники и ресурсов."><span class="prow__num">02</span><b class="prow__name latin">AGATA</b><span class="prow__cap">Управление, данные и координация</span><span class="status status--dev">в разработке</span><span class="prow__go"><span class="ic-ne"></span></span></a>
+        <a class="prow" href="elza.html" data-visual="visual--dusk visual--grid" data-status="research" data-status-label="исследование" data-dir="01 · Программное обеспечение и ИИ" data-desc="Аналитическая ИИ-платформа для исследования событий, процессов и рисков."><span class="prow__num">03</span><b class="prow__name latin">ELZA</b><span class="prow__cap">Аналитика и исследование событий</span><span class="status status--research">исследование</span><span class="prow__go"><span class="ic-ne"></span></span></a>
+        <a class="prow" href="eva.html" data-visual="visual--warm visual--ui" data-status="research" data-status-label="исследование" data-dir="01 · Программное обеспечение и ИИ" data-desc="ИИ-помощник для работы с оборудованием и физическими объектами."><span class="prow__num">04</span><b class="prow__name latin">EVA</b><span class="prow__cap">ИИ-помощник для работы с оборудованием</span><span class="status status--research">исследование</span><span class="prow__go"><span class="ic-ne"></span></span></a>
+        <a class="prow" href="blackfly.html" data-visual="visual--graphite visual--grid" data-status="research" data-status-label="исследование" data-dir="02 · Беспилотные системы" data-desc="Модульная экосистема для создания беспилотных платформ."><span class="prow__num">05</span><b class="prow__name latin">BLACKFLY</b><span class="prow__cap">Компоненты беспилотных платформ</span><span class="status status--research">исследование</span><span class="prow__go"><span class="ic-ne"></span></span></a>
+        <a class="prow" href="warden.html" data-visual="visual--warm visual--shafts" data-status="research" data-status-label="исследование" data-dir="04 · Экипировка" data-desc="Модульная система индивидуальной экипировки."><span class="prow__num">06</span><b class="prow__name latin">WARDEN</b><span class="prow__cap">Модульная экипировка</span><span class="status status--research">исследование</span><span class="prow__go"><span class="ic-ne"></span></span></a>
+        <a class="prow" href="hex.html" data-visual="visual--teal visual--grid" data-status="research" data-status-label="исследование" data-dir="05 · Связь и сенсоры" data-desc="Семейство сетевых устройств для носимой электроники, техники, беспилотных платформ и сенсоров."><span class="prow__num">07</span><b class="prow__name latin">HEX</b><span class="prow__cap">Связь для людей, техники и сенсоров</span><span class="status status--research">исследование</span><span class="prow__go"><span class="ic-ne"></span></span></a>
+        <a class="prow" href="echo.html" data-visual="visual--dusk visual--ring" data-status="research" data-status-label="исследование" data-dir="05 · Связь и сенсоры" data-desc="Семейство автономных сенсорных систем для земли, воздуха и моря."><span class="prow__num">08</span><b class="prow__name latin">ECHO</b><span class="prow__cap">Автономные сенсорные системы</span><span class="status status--research">исследование</span><span class="prow__go"><span class="ic-ne"></span></span></a>
+        <a class="prow" href="nomad.html" data-visual="visual--warm visual--grid" data-status="research" data-status-label="исследование" data-dir="06 · Техника" data-desc="Семейство наземных роботизированных платформ со сменным оснащением."><span class="prow__num">09</span><b class="prow__name latin">NOMAD</b><span class="prow__cap">Наземные роботизированные платформы</span><span class="status status--research">исследование</span><span class="prow__go"><span class="ic-ne"></span></span></a>
+        <a class="prow" href="seal.html" data-visual="visual--teal visual--ring" data-status="research" data-status-label="исследование" data-dir="06 · Техника" data-desc="Семейство безэкипажных морских платформ для наблюдения, связи, перевозки и специализированных задач."><span class="prow__num">10</span><b class="prow__name latin">SEAL</b><span class="prow__cap">Безэкипажные морские платформы</span><span class="status status--research">исследование</span><span class="prow__go"><span class="ic-ne"></span></span></a>
+        <a class="prow" href="highfast.html" data-visual="visual--dusk visual--shafts" data-status="research" data-status-label="исследование" data-dir="06 · Техника" data-desc="Семейство компактных аппаратов вертикального взлета и посадки для перевозки людей и важных грузов."><span class="prow__num">11</span><b class="prow__name latin">HIGHFAST</b><span class="prow__cap">Аппараты вертикального взлета</span><span class="status status--research">исследование</span><span class="prow__go"><span class="ic-ne"></span></span></a>
+        <a class="prow" href="backeye.html" data-visual="visual--graphite visual--ring" data-status="research" data-status-label="исследование" data-dir="06 · Техника" data-desc="Система внешнего обзора для дистанционно управляемой техники."><span class="prow__num">12</span><b class="prow__name latin">BACKEYE</b><span class="prow__cap">Внешний обзор для техники</span><span class="status status--research">исследование</span><span class="prow__go"><span class="ic-ne"></span></span></a>
+        <a class="prow" href="shield.html" data-visual="visual--graphite visual--shafts" data-status="research" data-status-label="исследование" data-dir="07 · Активная защита и ПВО" data-desc="Семейство боевых и защитных систем для техники, роботизированных платформ и стационарных объектов."><span class="prow__num">13</span><b class="prow__name latin">SHIELD</b><span class="prow__cap">Модульные системы защиты</span><span class="status status--research">исследование</span><span class="prow__go"><span class="ic-ne"></span></span></a>
+        <a class="prow" href="arrowhead.html" data-visual="visual--steel visual--ring" data-status="research" data-status-label="исследование" data-dir="07 · Активная защита и ПВО" data-desc="Семейство контейнеризированных беспилотных перехватчиков."><span class="prow__num">14</span><b class="prow__name latin">ARROWHEAD</b><span class="prow__cap">Семейство беспилотных перехватчиков</span><span class="status status--research">исследование</span><span class="prow__go"><span class="ic-ne"></span></span></a>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="proj-view rmap" data-view="roadmap" hidden>
     <div class="rmap__head">
       <div><h3 class="h3">Роадмап</h3><span class="svc">План разработок по годам и кварталам · даты примерные</span></div>
-      <span class="svc">4 года · 9 проектов</span>
+      <span class="svc">2026–2029</span>
     </div>
     <div class="rmap__years" role="tablist" aria-label="Годы">
       <button type="button" data-year="2026" class="is-active">2026</button>
@@ -212,18 +308,40 @@
   </div>
 </section>
 
-<!-- 05 · Три пути: призыв к действию -->
+<!-- 05 · Три сценария участия: инвесторам, партнерам, специалистам -->
 <section class="section wrap" id="paths">
-  <div class="paths-cta reveal">
-    <div class="paths-cta__head">
-      <h2 class="h2">Создаем Darlein Defense вместе</h2>
-      <p class="lead">Объединяем команды, технологии, производство и капитал. Приглашаем инвесторов, партнеров и специалистов развивать продукты вместе с нами — от идеи и прототипа до испытаний и выпуска.</p>
-    </div>
-    <div class="paths-cta__grid">
-      <div class="paths-cta__item"><span class="svc">Инвестирование</span><h3 class="h3">Инвестиции в компанию</h3><p>Средства идут на разработку продуктов, прототипы, испытания и подготовку производства. Обсудим участие в Darlein Defense и направления роста компании.</p><a class="btn btn--dark btn--lg" href="investors.html">Обсудить инвестиции <span class="ic-ne"></span></a></div>
-      <div class="paths-cta__item"><span class="svc">Партнерство</span><h3 class="h3">Развивайте технологии с нами</h3><p>Рассматриваем присоединение команд, приобретение технологий и прав, включение разработок в наши продукты. Производственных партнеров приглашаем создавать компоненты, узлы и изделия.</p><a class="btn btn--dark btn--lg" href="partners.html">Обсудить партнерство <span class="ic-ne"></span></a></div>
-      <div class="paths-cta__item"><span class="svc">Карьера</span><h3 class="h3">Присоединяйтесь к команде</h3><p>Приглашаем разработчиков, инженеров и профильных специалистов. Работайте над конкретным продуктом вместе с командами других направлений компании.</p><a class="btn btn--dark btn--lg" href="careers.html">Принять участие в разработке <span class="ic-ne"></span></a></div>
-    </div>
+  <div class="sec-intro reveal">
+    <h2 class="h2">Создаем Darlein Defense вместе</h2>
+    <p class="lead">Объединяем команды, технологии, производство и капитал. Подключиться к экосистеме можно в трех сценариях — выберите свой.</p>
+  </div>
+  <div class="join reveal">
+    <a class="join__card" href="investors.html">
+      <div class="join__top"><span class="svc">Сценарий 01 / 03</span><span class="join__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 19h16"/><path d="M6 15l4-4 3 3 5-6"/><path d="M14 8h4v4"/></svg></span></div>
+      <div class="join__who">Инвесторам</div>
+      <div class="join__whom">Фонды, стратегические и частные инвесторы</div>
+      <h3 class="join__title">Инвестиции в компанию</h3>
+      <p>Обсудим участие в Darlein Defense и направления роста компании.</p>
+      <div class="join__list"><span class="svc">Куда идут средства</span><ul><li>Разработка продуктов</li><li>Прототипы и испытания</li><li>Подготовка производства</li></ul></div>
+      <span class="btn btn--dark btn--lg">Обсудить инвестиции <span class="ic-ne"></span></span>
+    </a>
+    <a class="join__card" href="partners.html">
+      <div class="join__top"><span class="svc">Сценарий 02 / 03</span><span class="join__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M9 4H5v4M15 20h4v-4"/><rect x="9" y="3" width="6" height="6" rx="1"/><rect x="3" y="15" width="6" height="6" rx="1"/><rect x="15" y="9" width="6" height="6" rx="1"/><path d="M12 9v3H6v3M18 15v-0"/></svg></span></div>
+      <div class="join__who">Партнерам</div>
+      <div class="join__whom">Инженерные команды, владельцы технологий, производители</div>
+      <h3 class="join__title">Развивайте технологии с нами</h3>
+      <p>Включаем сильные разработки в наши продукты и приглашаем производственных партнеров.</p>
+      <div class="join__list"><span class="svc">Форматы участия</span><ul><li>Присоединение команды</li><li>Покупка технологий и прав</li><li>Включение разработок в продукты</li><li>Производство компонентов и изделий</li></ul></div>
+      <span class="btn btn--dark btn--lg">Обсудить партнерство <span class="ic-ne"></span></span>
+    </a>
+    <a class="join__card" href="careers.html">
+      <div class="join__top"><span class="svc">Сценарий 03 / 03</span><span class="join__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M17 8v6M14 11h6"/></svg></span></div>
+      <div class="join__who">Специалистам</div>
+      <div class="join__whom">Разработчики, инженеры, профильные специалисты</div>
+      <h3 class="join__title">Присоединяйтесь к команде</h3>
+      <p>Работайте над конкретным продуктом вместе с командами других направлений компании.</p>
+      <div class="join__list"><span class="svc">Кого приглашаем</span><ul><li>Разработчиков</li><li>Инженеров</li><li>Профильных специалистов</li></ul></div>
+      <span class="btn btn--dark btn--lg">Принять участие в разработке <span class="ic-ne"></span></span>
+    </a>
   </div>
 </section>
 
@@ -269,6 +387,6 @@
 
 </main>
 <div id="site-footer"></div>
-<script src="js/main.js?v=202610071510"></script>
+<script src="js/main.js?v=202610091200"></script>
 </body>
 </html>

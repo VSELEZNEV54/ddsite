@@ -20,7 +20,7 @@
       items: [['company.html#problem', 'Проблема и ответ'], ['company.html#model', 'Модель экосистемы'], ['company.html#directions', 'Направления'], ['company.html#principles', 'Принципы работы'], ['company.html#team', 'Экспертиза'], ['company.html#legal', 'Юридический контур'], ['investors.html', 'Инвесторам']] },
     projects: { href: 'projects.html', title: 'Проекты', label: 'Все разработки', heading: 'Проекты',
       desc: '14 продуктов в семи направлениях: от программных платформ и связи до техники и систем защиты. У каждого проекта честный статус.',
-      items: [['projects.html#products', 'Все проекты'], ['projects.html#directions', 'Направления и стадии'], ['dropfield.html', 'DROPFIELD'], ['agata.html', 'AGATA'], ['elza.html', 'ELZA'], ['eva.html', 'EVA'], ['blackfly.html', 'BLACKFLY'], ['warden.html', 'WARDEN'], ['hex.html', 'HEX'], ['echo.html', 'ECHO'], ['nomad.html', 'NOMAD'], ['seal.html', 'SEAL'], ['highfast.html', 'HIGHFAST'], ['backeye.html', 'BACKEYE'], ['shield.html', 'SHIELD'], ['arrowhead.html', 'ARROWHEAD']] },
+      items: [['projects.html#products', 'Все проекты'], ['dropfield.html', 'DROPFIELD'], ['agata.html', 'AGATA'], ['elza.html', 'ELZA'], ['eva.html', 'EVA'], ['blackfly.html', 'BLACKFLY'], ['warden.html', 'WARDEN'], ['hex.html', 'HEX'], ['echo.html', 'ECHO'], ['nomad.html', 'NOMAD'], ['seal.html', 'SEAL'], ['highfast.html', 'HIGHFAST'], ['backeye.html', 'BACKEYE'], ['shield.html', 'SHIELD'], ['arrowhead.html', 'ARROWHEAD']] },
     dropfield: { href: 'dropfield.html', title: 'DROPFIELD', latin: true, label: 'Система экосистемы · площадка', heading: 'DROPFIELD',
       desc: 'Специализированная платформа для выбора, покупки и продажи снаряжения и оборудования: каталог, продавцы, заказы и конфигуратор. Первый коммерческий продукт экосистемы.', status: ['soon', 'готовится к запуску'],
       items: [['dropfield.html#what', 'Что это'], ['dropfield.html#modules', 'Из чего состоит'], ['dropfield.html#who', 'Для кого'], ['dropfield.html#diff', 'Возможности'], ['dropfield.html#notify', 'Сообщить о запуске'], ['partners.html#vendor', 'Стать вендором']] },
@@ -370,6 +370,130 @@
         document.querySelectorAll('.rmap__board').forEach(function (bd) { bd.classList.toggle('is-active', bd.getAttribute('data-year') === y); });
       });
     });
+  }
+
+  /* ---------- Главная: лента направлений (кнопки, счетчик, стрелки с клавиатуры, перетаскивание мышью) ---------- */
+  var rail = document.getElementById('dirRail');
+  if (rail) {
+    var dcards = rail.querySelectorAll('.dcard:not(.dcard--all)'), dnow = document.getElementById('dirNow'), dbtns = document.querySelectorAll('.dnav__btn');
+    var dstep = function () { return dcards.length > 1 ? dcards[1].offsetLeft - dcards[0].offsetLeft : rail.clientWidth; };
+    /* цель считаем по номеру карточки, а не от текущей прокрутки: быстрые нажатия подряд не теряются */
+    var dtarget = 0, dsettle = null;
+    var dmax = function () { return Math.max(0, Math.ceil((rail.scrollWidth - rail.clientWidth - 4) / dstep())); };
+    var dgo = function (k) { dtarget = Math.max(0, Math.min(dmax(), dtarget + k)); rail.scrollTo({ left: dtarget * dstep(), behavior: reduced ? 'auto' : 'smooth' }); };
+    var dsync = function () {
+      var end = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 4;
+      var i = end ? dcards.length - 1 : Math.min(dcards.length - 1, Math.max(0, Math.round(rail.scrollLeft / dstep())));
+      if (dnow) dnow.textContent = ('0' + (i + 1)).slice(-2);
+      dbtns.forEach(function (b) { b.disabled = b.getAttribute('data-step') === '-1' ? rail.scrollLeft < 4 : end; });
+    };
+    dbtns.forEach(function (b) { b.addEventListener('click', function () { dgo(parseInt(b.getAttribute('data-step'), 10)); }); });
+    rail.addEventListener('scroll', function () { requestAnimationFrame(dsync); clearTimeout(dsettle); dsettle = setTimeout(function () { dtarget = Math.round(rail.scrollLeft / dstep()); }, 180); }, { passive: true });
+    window.addEventListener('resize', dsync); dsync();
+    rail.addEventListener('keydown', function (e) { if (e.target === rail && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) { e.preventDefault(); dgo(e.key === 'ArrowRight' ? 1 : -1); } });
+    rail.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    var drag = null;
+    rail.addEventListener('pointerdown', function (e) { if (e.pointerType === 'mouse' && e.button === 0) drag = { x: e.clientX, left: rail.scrollLeft, moved: false }; });
+    window.addEventListener('pointermove', function (e) {
+      if (!drag) return; var dx = e.clientX - drag.x;
+      if (!drag.moved && Math.abs(dx) > 6) { drag.moved = true; rail.classList.add('is-drag'); }
+      if (drag.moved) rail.scrollLeft = drag.left - dx;
+    });
+    window.addEventListener('pointerup', function () {
+      if (!drag) return; var moved = drag.moved; drag = null; if (!moved) return;
+      /* после перетаскивания клик по карточке не должен открывать ссылку */
+      var block = function (ev) { ev.preventDefault(); ev.stopPropagation(); };
+      rail.addEventListener('click', block, true);
+      rail.scrollTo({ left: Math.round(rail.scrollLeft / dstep()) * dstep(), behavior: reduced ? 'auto' : 'smooth' });
+      setTimeout(function () { rail.removeEventListener('click', block, true); }, 0);
+      setTimeout(function () { rail.classList.remove('is-drag'); }, reduced ? 0 : 450);
+    });
+  }
+
+  /* ---------- Главная: список всех проектов, строка под курсором показывается в карточке слева ---------- */
+  var plist = document.getElementById('projList'), pprev = document.getElementById('projPreview');
+  if (plist && pprev) {
+    var prows = plist.querySelectorAll('.prow'), pvis = pprev.querySelector('.visual'), pst = pprev.querySelector('[data-role="status"]');
+    var pset = function (r) {
+      if (r.classList.contains('is-active')) return;
+      prows.forEach(function (x) { x.classList.toggle('is-active', x === r); });
+      pprev.setAttribute('href', r.getAttribute('href'));
+      pvis.className = 'visual visual--video ' + r.getAttribute('data-visual');
+      pst.className = 'status status--' + r.getAttribute('data-status'); pst.textContent = r.getAttribute('data-status-label');
+      pprev.querySelector('[data-role="dir"]').textContent = r.getAttribute('data-dir');
+      pprev.querySelector('[data-role="name"]').textContent = r.querySelector('.prow__name').textContent;
+      pprev.querySelector('[data-role="desc"]').textContent = r.getAttribute('data-desc');
+      pprev.classList.remove('is-swap'); void pprev.offsetWidth; pprev.classList.add('is-swap');
+    };
+    prows.forEach(function (r) { r.addEventListener('mouseenter', function () { pset(r); }); r.addEventListener('focus', function () { pset(r); }); });
+  }
+
+  /* ---------- Шапка: прозрачная над видео, после начала прокрутки — затемненная ---------- */
+  var hdrEl = document.querySelector('.hdr');
+  if (hdrEl) {
+    var hdrSync = function () { hdrEl.classList.toggle('is-scrolled', (window.pageYOffset || document.documentElement.scrollTop) > 8); };
+    window.addEventListener('scroll', hdrSync, { passive: true }); hdrSync();
+  }
+
+  /* ---------- Ролики в первом экране продукта и в стопке проектов: грузим заранее, играет только видимый ---------- */
+  var heroVideos = Array.prototype.slice.call(document.querySelectorAll('.phero__media video, .ppanel__media video'));
+  var vLoad = function (v) {
+    if (v.getAttribute('data-loaded')) return; v.setAttribute('data-loaded', '1');
+    var src = (window.matchMedia('(max-width: 720px)').matches && v.getAttribute('data-src-mobile')) || v.getAttribute('data-src');
+    if (src) { v.preload = 'auto'; v.src = src; v.load(); }
+  };
+  var vPlay = function (v) { if (v.getAttribute('data-covered')) return; vLoad(v); var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); };
+  if (heroVideos.length && !reduced && 'IntersectionObserver' in window) {
+    var vLazy = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) { vLoad(x.target); vLazy.unobserve(x.target); } }); }, { rootMargin: '400px 0px' });
+    var vSeen = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) vPlay(x.target); else x.target.pause(); }); }, { threshold: .01 });
+    heroVideos.forEach(function (v) { v.muted = true; v.playsInline = true; vLazy.observe(v); vSeen.observe(v); });
+  }
+
+  /* ---------- Проекты: стопка полноэкранных панелей и список проектов слева ---------- */
+  var pstack = document.querySelector('.pstack');
+  if (pstack) {
+    var ppanels = Array.prototype.slice.call(pstack.querySelectorAll('.ppanel'));
+    var pmarks = ppanels.map(function (p) { return document.getElementById('p-' + p.getAttribute('data-key')); });
+    var pnav = Array.prototype.slice.call(pstack.querySelectorAll('.pstack__nav a')), pnavBox = pstack.querySelector('.pstack__navin');
+    var pparts = ppanels.map(function (p) { return { media: p.querySelector('.ppanel__media'), shade: p.querySelector('.ppanel__shade'), inner: p.querySelector('.ppanel__inner'), video: p.querySelector('video') }; });
+    var pclamp = function (v, a, b) { return Math.min(b, Math.max(a, v)); };
+    var pact = -1, pticking = false;
+    var psetAct = function (i) {
+      if (i === pact) return; pact = i;
+      pnav.forEach(function (a, j) { a.classList.toggle('is-active', j === i); if (j === i) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+      /* на телефоне список — горизонтальная лента: подматываем ее к текущему проекту */
+      var a = pnav[i];
+      if (a && pnavBox && pnavBox.scrollWidth > pnavBox.clientWidth + 2) pnavBox.scrollTo({ left: Math.max(0, pnavBox.scrollLeft + a.getBoundingClientRect().left - pnavBox.getBoundingClientRect().left - 16), behavior: reduced ? 'auto' : 'smooth' });
+    };
+    pnav.forEach(function (a, i) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo(0, Math.round(pmarks[i].getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop)) + 1);
+        if (history.replaceState) history.replaceState(null, '', '#p-' + ppanels[i].getAttribute('data-key'));
+      });
+    });
+    var pupdate = function () {
+      pticking = false;
+      var vh = window.innerHeight, cur = 0;
+      pmarks.forEach(function (m, i) { if (m.getBoundingClientRect().top <= vh * .5) cur = i; });
+      psetAct(cur);
+      if (reduced) return;
+      /* k: 0 — следующая панель еще под экраном, 1 — полностью накрыла текущую */
+      ppanels.forEach(function (panel, i) {
+        var next = ppanels[i + 1]; if (!next) return;
+        var k = pclamp((vh - next.getBoundingClientRect().top) / vh, 0, 1), t = pclamp((k - .68) / .32, 0, 1), pt = pparts[i];
+        pt.media.style.transform = k ? 'scale(' + (1 - .08 * k).toFixed(4) + ')' : '';
+        pt.shade.style.opacity = (.7 * k).toFixed(3);
+        pt.inner.style.opacity = (1 - t).toFixed(3);
+        pt.inner.style.transform = t ? 'translate3d(0,' + (-40 * t).toFixed(1) + 'px,0)' : '';
+        pt.inner.style.pointerEvents = t >= 1 ? 'none' : '';
+        if (!pt.video) return;
+        if (k >= 1 && !pt.video.getAttribute('data-covered')) { pt.video.setAttribute('data-covered', '1'); pt.video.pause(); }
+        else if (k < 1 && pt.video.getAttribute('data-covered')) { pt.video.removeAttribute('data-covered'); var r = panel.getBoundingClientRect(); if (r.bottom > 0 && r.top < vh) vPlay(pt.video); }
+      });
+    };
+    var pscroll = function () { if (!pticking) { pticking = true; requestAnimationFrame(pupdate); } };
+    window.addEventListener('scroll', pscroll, { passive: true }); window.addEventListener('resize', pscroll); pupdate();
   }
 
   /* ---------- Стопка карточек: накрытая карточка уменьшается и темнеет ---------- */

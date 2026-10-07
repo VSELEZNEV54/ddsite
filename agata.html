@@ -8,25 +8,28 @@
 <meta name="description" content="AGATA — программная платформа для координации людей, техники и ресурсов: карта, связь, задачи, видео и данные оборудования в одном интерфейсе.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Tektur:wght@400..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=202610071510">
+<link rel="stylesheet" href="css/style.css?v=202610091200">
 <link rel="icon" type="image/png" sizes="256x256" href="assets/logo/favicon.png?v=3">
 <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
 <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png?v=3">
 </head>
-<body data-page="agata">
+<body data-page="agata" data-hero="video">
 <div id="site-header"></div>
 <main>
 
-<!-- 01 · Первый экран продукта -->
-<section class="phero wrap">
-  <h1 class="phero__title">Agata</h1>
-  <div class="phero__meta">
-    <div><div class="cap">Управление, данные и координация</div><div class="tag">OPS</div></div>
-    <p class="phero__desc">Программная платформа для координации людей, техники и ресурсов. Карта, связь, задачи, видео и данные оборудования собраны в одном интерфейсе: команда видит происходящее и работает с одной и той же информацией.</p>
-    <div class="phero__side"><span class="status status--dev status--lg">В разработке · доступна по запросу</span><div class="actions"><a class="btn btn--primary" href="#request">Запросить презентацию <span class="ic-ne"></span></a><a class="btn btn--ghost" href="#modules">Как устроено</a></div></div>
+<!-- 01 · Первый экран продукта: ролик на весь экран, текст поверх -->
+<section class="phero phero--video">
+  <div class="phero__media"><div class="visual visual--video visual--teal visual--ui"></div><!-- ролик продукта: <video data-src="video/agata.mp4" data-src-mobile="video/agata-m.mp4" poster="video/agata.jpg" muted loop playsinline preload="none"></video> --></div>
+  <div class="phero__inner wrap">
+    <h1 class="phero__title">Agata</h1>
+    <div class="phero__meta">
+      <div><div class="cap">Управление, данные и координация</div><div class="tag">OPS</div><span class="status status--dev status--lg">В разработке · доступна по запросу</span></div>
+      <p class="phero__desc">Программная платформа для координации людей, техники и ресурсов. Карта, связь, задачи, видео и данные оборудования собраны в одном интерфейсе: команда видит происходящее и работает с одной и той же информацией.</p>
+      <div class="phero__side"><div class="actions"><a class="btn btn--primary" href="#request">Запросить презентацию <span class="ic-ne"></span></a><a class="btn btn--ghost" href="#modules">Как устроено</a></div></div>
+    </div>
   </div>
+  <a class="phero__next" href="#what"><span class="svc svc--fg">Листайте</span><span class="ic-down"></span></a>
 </section>
-<section class="wrap"><div class="frame frame--xl frame--16-7 reveal"><div class="visual visual--video visual--teal visual--ui"></div></div></section>
 
 <!-- 02 · Что это -->
 <section class="section wrap" id="what">
@@ -112,6 +115,6 @@
 
 </main>
 <div id="site-footer"></div>
-<script src="js/main.js?v=202610071510"></script>
+<script src="js/main.js?v=202610091200"></script>
 </body>
 </html>

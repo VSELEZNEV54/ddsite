@@ -8,25 +8,28 @@
 <meta name="description" content="DROPFIELD — специализированная платформа для выбора, покупки и продажи снаряжения и оборудования: каталог, продавцы, заказы и конфигуратор.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Tektur:wght@400..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=202610071510">
+<link rel="stylesheet" href="css/style.css?v=202610091200">
 <link rel="icon" type="image/png" sizes="256x256" href="assets/logo/favicon.png?v=3">
 <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
 <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png?v=3">
 </head>
-<body data-page="dropfield">
+<body data-page="dropfield" data-hero="video">
 <div id="site-header"></div>
 <main>
 
-<!-- 01 · Первый экран продукта -->
-<section class="phero wrap">
-  <h1 class="phero__title phero__title--long">Dropfield</h1>
-  <div class="phero__meta">
-    <div><div class="cap">Выбор и покупка снаряжения</div><div class="tag">MKT</div></div>
-    <p class="phero__desc">Специализированная платформа для выбора, покупки и продажи снаряжения и оборудования. Каталог, предложения продавцов, индивидуальные заказы и конфигуратор: можно подобрать одно изделие или собрать полный комплект.</p>
-    <div class="phero__side"><span class="status status--soon status--lg">Готовится к запуску</span><div class="actions"><a class="btn btn--primary" href="#notify">Сообщить о запуске <span class="ic-ne"></span></a><a class="btn btn--ghost" href="partners.html#vendor">Стать вендором</a></div></div>
+<!-- 01 · Первый экран продукта: ролик на весь экран, текст поверх -->
+<section class="phero phero--video">
+  <div class="phero__media"><div class="visual visual--video visual--steel visual--shafts"></div><!-- ролик продукта: <video data-src="video/dropfield.mp4" data-src-mobile="video/dropfield-m.mp4" poster="video/dropfield.jpg" muted loop playsinline preload="none"></video> --></div>
+  <div class="phero__inner wrap">
+    <h1 class="phero__title phero__title--long">Dropfield</h1>
+    <div class="phero__meta">
+      <div><div class="cap">Выбор и покупка снаряжения</div><div class="tag">MKT</div><span class="status status--soon status--lg">Готовится к запуску</span></div>
+      <p class="phero__desc">Специализированная платформа для выбора, покупки и продажи снаряжения и оборудования. Каталог, предложения продавцов, индивидуальные заказы и конфигуратор: можно подобрать одно изделие или собрать полный комплект.</p>
+      <div class="phero__side"><div class="actions"><a class="btn btn--primary" href="#notify">Сообщить о запуске <span class="ic-ne"></span></a><a class="btn btn--ghost" href="partners.html#vendor">Стать вендором</a></div></div>
+    </div>
   </div>
+  <a class="phero__next" href="#what"><span class="svc svc--fg">Листайте</span><span class="ic-down"></span></a>
 </section>
-<section class="wrap"><div class="frame frame--xl frame--16-7 reveal"><div class="visual visual--video visual--steel visual--shafts"></div></div></section>
 
 <!-- 02 · Что это -->
 <section class="section wrap" id="what">
@@ -38,12 +41,8 @@
     </div>
   </div>
   <div class="tiles reveal">
-    <div class="tile c8 frame--16-9" style="aspect-ratio:16/9"><div class="visual visual--steel visual--ui"></div></div>
-    <div class="tile c4 tile--text cell--bone" style="background:var(--bone);color:var(--ink)">
-      <span class="svc" style="color:var(--ink-2)">Правило площадки</span>
-      <p style="font-size:clamp(20px,1.7vw,26px);line-height:1.2;letter-spacing:0;font-weight:400;color:var(--ink)">Оружия в модели площадки нет. DROPFIELD не торгует оружием и не публикует предложения, требующие разрешений, без их наличия.</p>
-      <span class="svc" style="color:var(--ink-2)">Регулируемые категории — только в рамках закона</span>
-    </div>
+    <div class="tile c6" style="aspect-ratio:16/10"><div class="visual visual--steel visual--shafts"></div></div>
+    <div class="tile c6" style="aspect-ratio:16/10"><div class="visual visual--steel visual--ui"></div></div>
   </div>
 </section>
 
@@ -114,6 +113,6 @@
 
 </main>
 <div id="site-footer"></div>
-<script src="js/main.js?v=202610071510"></script>
+<script src="js/main.js?v=202610091200"></script>
 </body>
 </html>
