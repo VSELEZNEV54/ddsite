@@ -15,7 +15,7 @@
 
   /* ---------- Меню и выпадающие панели ---------- */
   var MENUS = {
-    company: { href: 'company.html', title: 'Компания', label: 'О компании', heading: 'Компания',
+    company: { href: 'company.html', title: 'О компании', label: 'О компании', heading: 'О компании',
       desc: 'Российская DefenseTech-компания с моделью экосистемы. Единый стандарт качества, дизайна и совместимости для собственных и партнерских продуктов.',
       items: [['company.html#problem', 'Проблема и ответ'], ['company.html#model', 'Модель экосистемы'], ['company.html#directions', 'Направления'], ['company.html#principles', 'Принципы работы'], ['company.html#team', 'Экспертиза'], ['company.html#legal', 'Юридический контур'], ['investors.html', 'Инвесторам']] },
     projects: { href: 'projects.html', title: 'Проекты', label: 'Все разработки', heading: 'Проекты',
@@ -117,7 +117,7 @@
     '<div class="cookie" id="cookie"><span>Сайт использует cookie для веб-аналитики. Подробнее — в <a href="legal.html#policy">политике обработки данных</a>.</span><button class="btn btn--ghost btn--sm" id="cookieOk">Понятно</button></div>';
 
   /* ---------- Навигатор прототипа ---------- */
-  var PAGES = [['Шапка', null], ['index.html', 'Главная', '01 · уникальный'], ['Уровень 1', null], ['company.html', 'Компания', '02'], ['projects.html', 'Проекты', '02а · хаб'], ['dropfield.html', 'DROPFIELD', '03 · система в шапке'], ['partners.html', 'Партнерам', '05 · два маршрута'], ['investors.html', 'Инвесторам', '07 · в меню'], ['careers.html', 'Карьера', '06'], ['intel.html', 'Новости', '08 · лента'], ['contacts.html', 'Контакты', '10'], ['Уровень 2 · продукты', null], ['agata.html', 'AGATA', '04 · ПО и ИИ'], ['elza.html', 'ELZA', 'ПО и ИИ'], ['eva.html', 'EVA', 'ПО и ИИ'], ['blackfly.html', 'BLACKFLY', 'беспилотные'], ['warden.html', 'WARDEN', 'экипировка'], ['hex.html', 'HEX', 'связь'], ['echo.html', 'ECHO', 'сенсоры'], ['nomad.html', 'NOMAD', 'техника'], ['seal.html', 'SEAL', 'техника'], ['highfast.html', 'HIGHFAST', 'техника'], ['backeye.html', 'BACKEYE', 'техника'], ['shield.html', 'SHIELD', 'защита'], ['arrowhead.html', 'ARROWHEAD', 'ПВО'], ['Уровень 2 · шаблоны', null], ['intel-article.html', 'Новости · материал', '09 · шаблон'], ['legal.html', 'Юридический документ', '11 · шаблон ×3'], ['Служебные', null], ['404.html', '404', '12'], ['thanks.html?from=contact', 'Спасибо', '13']];
+  var PAGES = [['Шапка', null], ['index.html', 'Главная', '01 · уникальный'], ['Уровень 1', null], ['company.html', 'О компании', '02'], ['projects.html', 'Проекты', '02а · хаб'], ['dropfield.html', 'DROPFIELD', '03 · система в шапке'], ['partners.html', 'Партнерам', '05 · два маршрута'], ['investors.html', 'Инвесторам', '07 · в меню'], ['careers.html', 'Карьера', '06'], ['intel.html', 'Новости', '08 · лента'], ['contacts.html', 'Контакты', '10'], ['Уровень 2 · продукты', null], ['agata.html', 'AGATA', '04 · ПО и ИИ'], ['elza.html', 'ELZA', 'ПО и ИИ'], ['eva.html', 'EVA', 'ПО и ИИ'], ['blackfly.html', 'BLACKFLY', 'беспилотные'], ['warden.html', 'WARDEN', 'экипировка'], ['hex.html', 'HEX', 'связь'], ['echo.html', 'ECHO', 'сенсоры'], ['nomad.html', 'NOMAD', 'техника'], ['seal.html', 'SEAL', 'техника'], ['highfast.html', 'HIGHFAST', 'техника'], ['backeye.html', 'BACKEYE', 'техника'], ['shield.html', 'SHIELD', 'защита'], ['arrowhead.html', 'ARROWHEAD', 'ПВО'], ['Уровень 2 · шаблоны', null], ['intel-article.html', 'Новости · материал', '09 · шаблон'], ['legal.html', 'Юридический документ', '11 · шаблон ×3'], ['Служебные', null], ['404.html', '404', '12'], ['thanks.html?from=contact', 'Спасибо', '13']];
   var here = (location.pathname.split('/').pop() || 'index.html');
   var IC_MAP = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5.5" y="1.5" width="5" height="3.5" rx="1"/><rect x="1" y="11" width="4.5" height="3.5" rx="1"/><rect x="10.5" y="11" width="4.5" height="3.5" rx="1"/><path d="M8 5v3M3.25 11V8h9.5v3"/></svg>';
   var protoHTML = '<div class="proto" id="proto"><div class="proto__panel"><div class="proto__head"><span>Карта прототипа · 26 страниц</span><span>v0.4</span></div>' +
@@ -150,6 +150,7 @@
       }, 220);
     }
     function ldTick(ts) {
+      if (ldDone) return;
       if (ldStart === null) ldStart = ts;
       var p = Math.min(1, (ts - ldStart) / ldDur), e = 1 - Math.pow(1 - p, 3);
       document.getElementById('ldBar').style.width = (e * 100).toFixed(1) + '%';
@@ -450,11 +451,11 @@
   }
 
   /* ---------- Проекты: стопка полноэкранных панелей и список проектов слева ---------- */
-  var pstack = document.querySelector('.pstack');
+  var pstack = document.querySelector('.pjstack');
   if (pstack) {
     var ppanels = Array.prototype.slice.call(pstack.querySelectorAll('.ppanel'));
     var pmarks = ppanels.map(function (p) { return document.getElementById('p-' + p.getAttribute('data-key')); });
-    var pnav = Array.prototype.slice.call(pstack.querySelectorAll('.pstack__nav a')), pnavBox = pstack.querySelector('.pstack__navin');
+    var pnav = Array.prototype.slice.call(pstack.querySelectorAll('.pjstack__nav a')), pnavBox = pstack.querySelector('.pjstack__navin');
     var pparts = ppanels.map(function (p) { return { media: p.querySelector('.ppanel__media'), shade: p.querySelector('.ppanel__shade'), inner: p.querySelector('.ppanel__inner'), video: p.querySelector('video') }; });
     var pclamp = function (v, a, b) { return Math.min(b, Math.max(a, v)); };
     var pact = -1, pticking = false;

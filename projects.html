@@ -8,7 +8,7 @@
 <meta name="description" content="Все разработки экосистемы Darlein Defense: 14 продуктов в семи направлениях, от программных платформ до техники и систем защиты. Честный статус каждого проекта.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Tektur:wght@400..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=202610091200">
+<link rel="stylesheet" href="css/style.css?v=202610091530">
 <link rel="icon" type="image/png" sizes="256x256" href="assets/logo/favicon.png?v=3">
 <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
 <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png?v=3">
@@ -30,9 +30,9 @@
 <!-- 02 · Все проекты: стопка полноэкранных панелей с видео. Панель прилипает к верху, следующая накрывает ее снизу.
      Слева список проектов: клик ведет к панели, при прокрутке подсвечивается текущая. Направление и стадия — в каждой панели.
      Якоря #directions и #dir-… сохранены для ссылок с других страниц. -->
-<section class="pstack" id="products" aria-label="Все проекты">
-  <nav class="pstack__nav" aria-label="Список проектов">
-    <div class="pstack__navin">
+<section class="pjstack" id="products" aria-label="Все проекты">
+  <nav class="pjstack__nav" aria-label="Список проектов">
+    <div class="pjstack__navin">
       <span class="svc">14 проектов</span>
       <ol>
         <li><a href="#p-dropfield" class="is-active"><i>01</i>DROPFIELD</a></li>
@@ -52,8 +52,8 @@
       </ol>
     </div>
   </nav>
-  <div class="pstack__mark" id="directions"></div>
-  <div class="pstack__mark" id="p-dropfield"></div><div class="pstack__mark" id="dir-ecom"></div>
+  <div class="pjstack__mark" id="directions"></div>
+  <div class="pjstack__mark" id="p-dropfield"></div><div class="pjstack__mark" id="dir-ecom"></div>
   <article class="ppanel" data-key="dropfield">
     <div class="ppanel__media"><div class="visual visual--video visual--steel visual--shafts"></div><!-- ролик: <video data-src="video/dropfield.mp4" data-src-mobile="video/dropfield-m.mp4" poster="video/dropfield.jpg" muted loop playsinline preload="none"></video> --></div>
     <div class="ppanel__shade"></div>
@@ -69,7 +69,7 @@
     </div>
     <span class="ppanel__idx" aria-hidden="true">01<small>/ 14</small></span>
   </article>
-  <div class="pstack__mark" id="p-agata"></div><div class="pstack__mark" id="dir-soft"></div>
+  <div class="pjstack__mark" id="p-agata"></div><div class="pjstack__mark" id="dir-soft"></div>
   <article class="ppanel" data-key="agata">
     <div class="ppanel__media"><div class="visual visual--video visual--teal visual--ui"></div><!-- ролик: <video data-src="video/agata.mp4" data-src-mobile="video/agata-m.mp4" poster="video/agata.jpg" muted loop playsinline preload="none"></video> --></div>
     <div class="ppanel__shade"></div>
@@ -85,7 +85,7 @@
     </div>
     <span class="ppanel__idx" aria-hidden="true">02<small>/ 14</small></span>
   </article>
-  <div class="pstack__mark" id="p-elza"></div>
+  <div class="pjstack__mark" id="p-elza"></div>
   <article class="ppanel" data-key="elza">
     <div class="ppanel__media"><div class="visual visual--video visual--dusk visual--grid"></div><!-- ролик: <video data-src="video/elza.mp4" data-src-mobile="video/elza-m.mp4" poster="video/elza.jpg" muted loop playsinline preload="none"></video> --></div>
     <div class="ppanel__shade"></div>
@@ -101,7 +101,7 @@
     </div>
     <span class="ppanel__idx" aria-hidden="true">03<small>/ 14</small></span>
   </article>
-  <div class="pstack__mark" id="p-eva"></div>
+  <div class="pjstack__mark" id="p-eva"></div>
   <article class="ppanel" data-key="eva">
     <div class="ppanel__media"><div class="visual visual--video visual--warm visual--ui"></div><!-- ролик: <video data-src="video/eva.mp4" data-src-mobile="video/eva-m.mp4" poster="video/eva.jpg" muted loop playsinline preload="none"></video> --></div>
     <div class="ppanel__shade"></div>
@@ -117,7 +117,7 @@
     </div>
     <span class="ppanel__idx" aria-hidden="true">04<small>/ 14</small></span>
   </article>
-  <div class="pstack__mark" id="p-blackfly"></div><div class="pstack__mark" id="dir-uas"></div>
+  <div class="pjstack__mark" id="p-blackfly"></div><div class="pjstack__mark" id="dir-uas"></div>
   <article class="ppanel" data-key="blackfly">
     <div class="ppanel__media"><div class="visual visual--video visual--graphite visual--grid"></div><!-- ролик: <video data-src="video/blackfly.mp4" data-src-mobile="video/blackfly-m.mp4" poster="video/blackfly.jpg" muted loop playsinline preload="none"></video> --></div>
     <div class="ppanel__shade"></div>
@@ -133,7 +133,7 @@
     </div>
     <span class="ppanel__idx" aria-hidden="true">05<small>/ 14</small></span>
   </article>
-  <div class="pstack__mark" id="p-warden"></div><div class="pstack__mark" id="dir-gear"></div>
+  <div class="pjstack__mark" id="p-warden"></div><div class="pjstack__mark" id="dir-gear"></div>
   <article class="ppanel" data-key="warden">
     <div class="ppanel__media"><div class="visual visual--video visual--warm visual--shafts"></div><!-- ролик: <video data-src="video/warden.mp4" data-src-mobile="video/warden-m.mp4" poster="video/warden.jpg" muted loop playsinline preload="none"></video> --></div>
     <div class="ppanel__shade"></div>
@@ -149,7 +149,7 @@
     </div>
     <span class="ppanel__idx" aria-hidden="true">06<small>/ 14</small></span>
   </article>
-  <div class="pstack__mark" id="p-hex"></div><div class="pstack__mark" id="dir-comms"></div>
+  <div class="pjstack__mark" id="p-hex"></div><div class="pjstack__mark" id="dir-comms"></div>
   <article class="ppanel" data-key="hex">
     <div class="ppanel__media"><div class="visual visual--video visual--teal visual--grid"></div><!-- ролик: <video data-src="video/hex.mp4" data-src-mobile="video/hex-m.mp4" poster="video/hex.jpg" muted loop playsinline preload="none"></video> --></div>
     <div class="ppanel__shade"></div>
@@ -165,7 +165,7 @@
     </div>
     <span class="ppanel__idx" aria-hidden="true">07<small>/ 14</small></span>
   </article>
-  <div class="pstack__mark" id="p-echo"></div>
+  <div class="pjstack__mark" id="p-echo"></div>
   <article class="ppanel" data-key="echo">
     <div class="ppanel__media"><div class="visual visual--video visual--dusk visual--ring"></div><!-- ролик: <video data-src="video/echo.mp4" data-src-mobile="video/echo-m.mp4" poster="video/echo.jpg" muted loop playsinline preload="none"></video> --></div>
     <div class="ppanel__shade"></div>
@@ -181,7 +181,7 @@
     </div>
     <span class="ppanel__idx" aria-hidden="true">08<small>/ 14</small></span>
   </article>
-  <div class="pstack__mark" id="p-nomad"></div><div class="pstack__mark" id="dir-tech"></div>
+  <div class="pjstack__mark" id="p-nomad"></div><div class="pjstack__mark" id="dir-tech"></div>
   <article class="ppanel" data-key="nomad">
     <div class="ppanel__media"><div class="visual visual--video visual--warm visual--grid"></div><!-- ролик: <video data-src="video/nomad.mp4" data-src-mobile="video/nomad-m.mp4" poster="video/nomad.jpg" muted loop playsinline preload="none"></video> --></div>
     <div class="ppanel__shade"></div>
@@ -197,7 +197,7 @@
     </div>
     <span class="ppanel__idx" aria-hidden="true">09<small>/ 14</small></span>
   </article>
-  <div class="pstack__mark" id="p-seal"></div>
+  <div class="pjstack__mark" id="p-seal"></div>
   <article class="ppanel" data-key="seal">
     <div class="ppanel__media"><div class="visual visual--video visual--teal visual--ring"></div><!-- ролик: <video data-src="video/seal.mp4" data-src-mobile="video/seal-m.mp4" poster="video/seal.jpg" muted loop playsinline preload="none"></video> --></div>
     <div class="ppanel__shade"></div>
@@ -213,7 +213,7 @@
     </div>
     <span class="ppanel__idx" aria-hidden="true">10<small>/ 14</small></span>
   </article>
-  <div class="pstack__mark" id="p-highfast"></div>
+  <div class="pjstack__mark" id="p-highfast"></div>
   <article class="ppanel" data-key="highfast">
     <div class="ppanel__media"><div class="visual visual--video visual--dusk visual--shafts"></div><!-- ролик: <video data-src="video/highfast.mp4" data-src-mobile="video/highfast-m.mp4" poster="video/highfast.jpg" muted loop playsinline preload="none"></video> --></div>
     <div class="ppanel__shade"></div>
@@ -229,7 +229,7 @@
     </div>
     <span class="ppanel__idx" aria-hidden="true">11<small>/ 14</small></span>
   </article>
-  <div class="pstack__mark" id="p-backeye"></div>
+  <div class="pjstack__mark" id="p-backeye"></div>
   <article class="ppanel" data-key="backeye">
     <div class="ppanel__media"><div class="visual visual--video visual--graphite visual--ring"></div><!-- ролик: <video data-src="video/backeye.mp4" data-src-mobile="video/backeye-m.mp4" poster="video/backeye.jpg" muted loop playsinline preload="none"></video> --></div>
     <div class="ppanel__shade"></div>
@@ -245,7 +245,7 @@
     </div>
     <span class="ppanel__idx" aria-hidden="true">12<small>/ 14</small></span>
   </article>
-  <div class="pstack__mark" id="p-shield"></div><div class="pstack__mark" id="dir-def"></div>
+  <div class="pjstack__mark" id="p-shield"></div><div class="pjstack__mark" id="dir-def"></div>
   <article class="ppanel" data-key="shield">
     <div class="ppanel__media"><div class="visual visual--video visual--graphite visual--shafts"></div><!-- ролик: <video data-src="video/shield.mp4" data-src-mobile="video/shield-m.mp4" poster="video/shield.jpg" muted loop playsinline preload="none"></video> --></div>
     <div class="ppanel__shade"></div>
@@ -261,7 +261,7 @@
     </div>
     <span class="ppanel__idx" aria-hidden="true">13<small>/ 14</small></span>
   </article>
-  <div class="pstack__mark" id="p-arrowhead"></div>
+  <div class="pjstack__mark" id="p-arrowhead"></div>
   <article class="ppanel" data-key="arrowhead">
     <div class="ppanel__media"><div class="visual visual--video visual--steel visual--ring"></div><!-- ролик: <video data-src="video/arrowhead.mp4" data-src-mobile="video/arrowhead-m.mp4" poster="video/arrowhead.jpg" muted loop playsinline preload="none"></video> --></div>
     <div class="ppanel__shade"></div>
@@ -301,6 +301,6 @@
 
 </main>
 <div id="site-footer"></div>
-<script src="js/main.js?v=202610091200"></script>
+<script src="js/main.js?v=202610091530"></script>
 </body>
 </html>
