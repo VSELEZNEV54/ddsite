@@ -411,7 +411,11 @@ a.rb:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1px var(--beam)}
   .nl__more .bx{width:100%;justify-content:space-between}.q__bg::after{background:linear-gradient(180deg,rgba(9,10,12,.3) 0%,rgba(9,10,12,.75) 45%,rgba(9,10,12,.96) 100%)}
   .acts{gap:18px}
 }
-@media(max-width:520px){.ft__t{grid-template-columns:1fr}.acts .ul{display:none}}
+@media(max-width:520px){.acts .ul{display:none}}
+@media(max-width:640px){
+  .ft__t{grid-template-columns:1fr;text-align:center;gap:36px}.ft__br img{margin:0 auto}.ft__br p{margin-left:auto;margin-right:auto}
+  .ft li a:hover{transform:none}.ft__e,.ft__e>div{justify-content:center;text-align:center}
+}
 /* уголки внутри карточек с фото остаются поверх кадра, а не в потоке */
 .rc>.mc__br,.pbp>.mc__br{position:absolute;z-index:1}
 [hidden]{display:none!important}
@@ -458,6 +462,7 @@ a.rb:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1px var(--beam)}
 /* мобильное меню */
 .mm{position:fixed;inset:0;z-index:300;background:var(--void);display:flex;flex-direction:column;padding:0 var(--gut) 32px;overflow:auto;visibility:hidden;opacity:0;transition:opacity .3s var(--out),visibility 0s .3s}
 .mm.on{visibility:visible;opacity:1;transition:opacity .3s var(--out)}
+.mm>*{flex-shrink:0}  /* иначе на низком экране пункты и кнопка сжимаются по высоте */
 .mm__t{flex:none;height:var(--hd);display:flex;align-items:center;justify-content:space-between}
 .mm__t img{height:34px}
 .mm__n{margin-top:12px}
@@ -467,8 +472,10 @@ a.rb:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1px var(--beam)}
 .mm__s{margin-top:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .mm__s>span.svc{color:var(--on-dark-3)}
 .mm__lang{display:flex;gap:12px}
-.mm__df{width:100%;justify-content:space-between;margin-top:24px}
-.mm__u{margin-top:auto;padding-top:32px;display:grid;grid-template-columns:1fr;gap:12px;color:var(--on-dark-2)}
+.mm__df{width:100%;height:68px;justify-content:space-between;margin-top:28px;padding:0 22px 0 24px;font-size:16px}
+.mm__u{margin-top:auto;padding-top:40px;display:grid;gap:30px;text-align:center;font-size:18px;color:var(--on-dark-2)}
+.mm__g{display:grid;gap:14px}
+.mm__g a{transition:color .2s var(--out)}.mm__g a:hover{color:var(--base)}
 body.lock{overflow:hidden}
 /* cookie */
 .ck.fr{position:fixed;left:var(--gut);bottom:var(--gut);z-index:200;width:min(420px,calc(100vw - 2*var(--gut)));padding:20px 22px;background:rgba(9,10,12,.94);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 20px 60px rgba(0,0,0,.6);display:grid;gap:16px;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .4s var(--out),transform .6s var(--out)}

@@ -91,7 +91,9 @@
     '<nav class="mm__n" aria-label="Меню">' + DD.nav.map(function (n, i) { return '<a href="' + DD.url(n[1]) + '" style="--i:' + i + '">' + n[0] + DD.ic('ne') + '</a>'; }).join('') + '</nav>' +
     '<a class="bx svc mm__df" href="' + DD.url('dropfield.html') + '"><span class="bx__f"></span><span class="st st--soon"><i></i>DROPFIELD</span>' + DD.ic('ne', 'ic--s') + '</a>' +
     '<div class="mm__s"><span class="svc">Язык</span><div class="mm__lang">' + LANGS.map(function (l) { return '<button class="bx bx--s svc' + (l[0] === 'ru' ? ' bx--on' : '') + '" type="button" data-lang="' + l[0] + '"><span class="bx__f"></span>' + l[1] + '</button>'; }).join('') + '</div></div>' +
-    '<div class="mm__u"><a href="' + DD.url('investors.html') + '">Инвесторам</a><a href="' + DD.url('intel.html#media') + '">Для СМИ</a><a href="' + DD.url('legal.html') + '">Политика обработки ПДн</a><a href="' + DD.url('legal.html#terms') + '">Пользовательское соглашение</a><a href="mailto:info@darlein.ru">info@darlein.ru</a><a href="#">Telegram</a></div>';
+    '<div class="mm__u">' + [[['investors.html', 'Инвесторам'], ['intel.html#media', 'Для СМИ']], [['legal.html', 'Политика обработки ПДн'], ['legal.html#terms', 'Пользовательское соглашение']], [['mailto:info@darlein.ru', 'info@darlein.ru'], ['#', 'Telegram']]].map(function (g) {
+      return '<div class="mm__g">' + g.map(function (x) { return '<a href="' + DD.url(x[0]) + '">' + x[1] + '</a>'; }).join('') + '</div>';
+    }).join('') + '</div>';
   document.body.appendChild(mm);
   var burger = hd.querySelector('.hd__menu');
   var menu = function (v) { mm.classList.toggle('on', v); mm.setAttribute('aria-hidden', v ? 'false' : 'true'); document.body.classList.toggle('lock', v); if (burger) burger.setAttribute('aria-expanded', v ? 'true' : 'false'); };
