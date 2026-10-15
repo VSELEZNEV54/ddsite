@@ -127,6 +127,10 @@ body{background:var(--void);color:var(--on-dark)}
 .mc__t{display:flex;justify-content:space-between;align-items:center;color:var(--on-dark-2)}
 .mc__n{font-family:var(--geist);font-weight:300;font-size:clamp(56px,6vw,112px);letter-spacing:-.05em;line-height:.8;color:var(--base)}
 .mc p{width:clamp(250px,31vw,540px);max-width:100%;font-size:var(--fs-card);letter-spacing:-.03em;line-height:1.08;margin-top:clamp(16px,1.6vw,28px)}
+.mc--k{min-height:clamp(300px,24vw,440px);background:transparent;border-radius:0}
+/* миссия и цель: только рамка из скобок; при наведении снизу проступает легкий акцентный градиент, как у пунктов меню */
+.mc--k::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(0deg,rgba(103,255,217,.1),rgba(103,255,217,0) 70%);opacity:0;transition:opacity .5s var(--out)}
+@media(hover:hover){.mc--k:hover::after{opacity:1}}
 .mc--k .mc__ic{--c:var(--beam);--a:10px;width:56px;height:56px;display:grid;place-items:center;color:var(--beam)}
 .mc__h{font-size:var(--fs-head);letter-spacing:-.06em;line-height:1;text-transform:uppercase;text-wrap:balance}
 .mc--k p{font-size:var(--fs-lead);letter-spacing:0;line-height:1.25;color:rgba(255,255,255,.86);margin-top:clamp(14px,1.4vw,24px)}
@@ -498,3 +502,4 @@ body.lock{overflow:hidden}
 .ck .bx{justify-self:start}
 @media(max-width:1100px){.hd__r .lg{display:none}.mg,.mg__bd{display:none}}
 @media(max-width:700px){.ck{grid-template-columns:1fr auto;align-items:center;gap:14px;padding:14px 16px 14px 18px}.ck p{font-size:14px}.ck .bx{justify-self:end}}
+@media(max-width:900px){.mc--k{min-height:300px}}
