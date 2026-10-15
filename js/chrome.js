@@ -89,7 +89,7 @@
   var mm = document.createElement('div'); mm.className = 'mm'; mm.id = 'mm'; mm.setAttribute('aria-hidden', 'true');
   mm.innerHTML = '<div class="mm__t"><img src="' + R + 'assets/logo/logo3b.svg" alt="Darlein Defense"><button class="bx bx--ic bx--s" type="button" id="mmX" aria-label="Закрыть меню"><span class="bx__f"></span>' + DD.ic('close') + '</button></div>' +
     '<nav class="mm__n" aria-label="Меню">' + DD.nav.map(function (n, i) { return '<a href="' + DD.url(n[1]) + '" style="--i:' + i + '">' + n[0] + DD.ic('ne') + '</a>'; }).join('') + '</nav>' +
-    '<div class="mm__s"><span class="svc">Системы экосистемы</span><a class="bx bx--s svc" href="' + DD.url('dropfield.html') + '"><span class="bx__f"></span><span class="st st--soon"><i></i>DROPFIELD</span>' + DD.ic('ne', 'ic--s') + '</a></div>' +
+    '<a class="bx svc mm__df" href="' + DD.url('dropfield.html') + '"><span class="bx__f"></span><span class="st st--soon"><i></i>DROPFIELD</span>' + DD.ic('ne', 'ic--s') + '</a>' +
     '<div class="mm__s"><span class="svc">Язык</span><div class="mm__lang">' + LANGS.map(function (l) { return '<button class="bx bx--s svc' + (l[0] === 'ru' ? ' bx--on' : '') + '" type="button" data-lang="' + l[0] + '"><span class="bx__f"></span>' + l[1] + '</button>'; }).join('') + '</div></div>' +
     '<div class="mm__u"><a href="' + DD.url('investors.html') + '">Инвесторам</a><a href="' + DD.url('intel.html#media') + '">Для СМИ</a><a href="' + DD.url('legal.html') + '">Политика обработки ПДн</a><a href="' + DD.url('legal.html#terms') + '">Пользовательское соглашение</a><a href="mailto:info@darlein.ru">info@darlein.ru</a><a href="#">Telegram</a></div>';
   document.body.appendChild(mm);

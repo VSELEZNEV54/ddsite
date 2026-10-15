@@ -5,7 +5,6 @@
 
   /* значки, которых не было в первых блоках */
   var X = DD.I;
-  X.left = '<path d="M20 12H4M10 6l-6 6 6 6"/>';
   X.invest = '<path d="M4 19h16"/><path d="M6 15l4-4 3 3 5-6"/><path d="M14 8h4v4"/>';
   X.partner = '<rect x="9" y="3" width="6" height="6" rx="1.2"/><rect x="3" y="15" width="6" height="6" rx="1.2"/><rect x="15" y="15" width="6" height="6" rx="1.2"/><path d="M12 9v3M6 15v-3h12v3"/>';
   X.career = '<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M18 8v6M15 11h6"/>';

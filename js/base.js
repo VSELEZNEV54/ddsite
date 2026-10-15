@@ -58,6 +58,7 @@
     solution: '<rect x="3.6" y="3.6" width="16.8" height="16.8" rx="4.4"/><path d="M8.4 12.3l2.5 2.5 4.8-5.4"/>',
     ne: '<path d="M7 17L17 7M9 7h8v8"/>',
     right: '<path d="M4 12h16M14 6l6 6-6 6"/>',
+    left: '<path d="M20 12H4M10 6l-6 6 6 6"/>',
     down: '<path d="M12 4v16M6 14l6 6 6-6"/>',
     plus: '<path d="M12 5v14M5 12h14"/>',
     menu: '<path d="M4 8.5h16M4 15.5h16"/>',
