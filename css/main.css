@@ -65,7 +65,7 @@ body{background:var(--void);color:var(--on-dark)}
 
 /* ---------- Шапка ---------- */
 .hd{position:fixed;inset:0 0 auto 0;z-index:100;height:var(--hd);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;padding:0 var(--gut);transition:background .3s var(--out),box-shadow .3s var(--out)}
-.hd.sc{background:rgba(9,10,12,.8);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 1px 0 rgba(255,255,255,.07)}
+.hd.sc{background:rgba(9,10,12,.92);box-shadow:0 1px 0 rgba(255,255,255,.07)}
 .hd__logo img{height:34px}
 .hd nav{display:flex;gap:4px}
 .hd nav a{position:relative;height:40px;padding:0 14px;display:inline-flex;align-items:center;font-size:16px}
@@ -79,9 +79,17 @@ body{background:var(--void);color:var(--on-dark)}
 .hero__bg{position:absolute;inset:0}
 .hero__bg::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 0%,#2C3F4A 0%,#111C22 40%,#080B0D 100%)}
 .hero__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,10,12,.2),rgba(9,10,12,0) 35%,rgba(9,10,12,.55) 82%,var(--void) 100%)}
-.hero__bg canvas,.hero__video{position:absolute;inset:0;width:100%;height:100%}
-.hero__video{object-fit:cover;opacity:0;transition:opacity 1.6s var(--out)}
-.hero.vid .hero__video{opacity:1}.hero.vid .hero__bg canvas{opacity:0}
+.hero__bg canvas,.hero__reel{position:absolute;inset:0;width:100%;height:100%}
+/* смена кадров: новый кадр проявляется поверх старого, оба медленно приближаются; направление сдвига чередуется */
+.hero__reel{z-index:0;opacity:0;transition:opacity 1.6s var(--out)}  /* свой слой: кадры не перекрывают затемнение и текст */
+.hero.vid .hero__reel{opacity:1}.hero.vid .hero__bg canvas{opacity:0}
+.hero__reel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s var(--inout)}
+.hero__reel img.on,.hero__reel img.was{opacity:1;animation:reelz 5s linear both}
+.hero__reel img.r.on,.hero__reel img.r.was{animation-name:reelzr}
+.hero__reel img.on{z-index:2}.hero__reel img.was{z-index:1}
+.hero.paused .hero__reel img{animation-play-state:paused}
+@keyframes reelz{from{transform:scale(1) translateX(-1%)}to{transform:scale(1.07) translateX(1%)}}
+@keyframes reelzr{from{transform:scale(1) translateX(1%)}to{transform:scale(1.07) translateX(-1%)}}
 .hero.vid .hero__bg::after{background:linear-gradient(180deg,rgba(9,10,12,.66) 0%,rgba(9,10,12,.46) 36%,rgba(9,10,12,.52) 70%,var(--void) 100%)}
 .hero__bg canvas{transition:transform .6s var(--out),opacity 1.4s var(--out);transform:translate(calc(var(--px,0px)*-.6),calc(var(--py,0px)*-.6)) scale(1.04)}
 .hero__c{position:relative;z-index:1;width:100%;max-width:1400px;transition:transform .6s var(--out);transform:translate(var(--px,0px),var(--py,0px))}
@@ -128,11 +136,12 @@ body{background:var(--void);color:var(--on-dark)}
 }
 
 /* ---------- Схема экосистемы: кольцо из блоков (как линия загрузки), «иллюминатор», карточки в скобках ---------- */
-.eco{--a:28px;padding:clamp(14px,1.6vw,28px)}
+.eco{--a:28px;padding:clamp(14px,1.6vw,28px) clamp(14px,1.6vw,28px) clamp(30px,3vw,48px)}
 .eco__st{position:relative;aspect-ratio:1200/780}
 .eco__st::before{content:"";position:absolute;inset:-4%;pointer-events:none;background:radial-gradient(closest-side at 50% 47.44%,rgba(103,255,217,.09),transparent 70%),radial-gradient(circle,rgba(255,255,255,.13) 1px,transparent 1.6px) 0 0/22px 22px;-webkit-mask-image:radial-gradient(closest-side at 50% 47.44%,#000 35%,transparent 100%);mask-image:radial-gradient(closest-side at 50% 47.44%,#000 35%,transparent 100%)}
 .eco__svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.eco__svg .ro{fill:none;stroke:var(--iron);stroke-dasharray:2 9;transform-origin:600px 370px;animation:ecospin 180s linear infinite}
+.eco__svg .ro{fill:none;stroke:var(--iron);stroke-dasharray:2 9;transform-origin:600px 370px;animation:ecospin 180s linear infinite;animation-play-state:paused}
+.eco.live .eco__svg .ro{animation-play-state:running}
 @keyframes ecospin{to{transform:rotate(360deg)}}
 /* блоки кольца: появляются по кругу, у направления под курсором заливаются по очереди */
 .eco__svg .bk{fill:none;stroke:var(--iron);stroke-width:10;opacity:0;transition:opacity .35s var(--out) calc(var(--k)*13ms + 200ms),stroke .3s var(--out),stroke-opacity .3s var(--out),stroke-width .4s var(--out)}
@@ -148,7 +157,8 @@ body{background:var(--void);color:var(--on-dark)}
 .eco.in .ln{stroke-dashoffset:0}
 .eco__svg .ln.on{stroke:var(--beam)}
 .eco__svg .sg{fill:none;stroke:var(--beam);stroke-width:1.5;stroke-dasharray:.18 1;stroke-dashoffset:.18;opacity:0}
-.eco.in .sg{animation:ecosig 9.8s linear infinite;animation-delay:calc(var(--i)*1.4s + 2.4s)}
+.eco.in .sg{animation:ecosig 9.8s linear infinite;animation-delay:calc(var(--i)*1.4s + 2.4s);animation-play-state:paused}
+.eco.in.live .sg{animation-play-state:running}
 @keyframes ecosig{0%{stroke-dashoffset:.18;opacity:1}12%{stroke-dashoffset:-1;opacity:1}12.1%,100%{stroke-dashoffset:-1;opacity:0}}
 .eco__svg .nd,.eco__svg .ne,.eco__svg .dn{opacity:0;transition:opacity .4s var(--out) calc(var(--i)*70ms + 800ms),fill .3s var(--out),stroke .3s var(--out)}
 .eco.in .nd,.eco.in .ne,.eco.in .dn{opacity:1}
@@ -179,7 +189,8 @@ body{background:var(--void);color:var(--on-dark)}
 .dc:hover .dc__top .ic,.dc.on .dc__top .ic{color:var(--beam)}
 .dc b{font-weight:400;font-size:clamp(14px,1.25vw,26px);letter-spacing:-.01em;line-height:1.1}
 .dc p{font-size:clamp(12px,.95vw,18px);color:var(--on-dark-2)}
-.eco__ft{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-top:18px;color:var(--on-dark-2)}
+.eco__ft .bx{font-family:var(--geist);letter-spacing:0}
+.eco__ft{padding:0 clamp(10px,1.2vw,22px);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-top:18px;color:var(--on-dark-2)}
 .eco__lg{display:flex;gap:20px;flex-wrap:wrap}
 
 /* ---------- Проблемы и решения: первая карточка открыта, остальные по клику ---------- */
@@ -215,6 +226,7 @@ body{background:var(--void);color:var(--on-dark)}
 @media(max-width:1220px){.dc__top{flex-direction:column;align-items:flex-start}.eco__ft{margin-top:30px}}
 /* схема на планшете и телефоне: «иллюминатор» сверху, карточки сеткой */
 @media(max-width:1100px){
+  .eco{padding:22px 20px 34px}.eco__ft{padding:0}
   .eco__st{aspect-ratio:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.eco__st::before,.eco__svg{display:none}
   .port{grid-column:1/-1;justify-self:center;position:relative;left:auto;top:auto;transform:none;width:min(280px,70%);margin:18px 0 22px}
   .dc{position:relative;left:auto!important;top:auto!important;width:auto;transform:none}.dc:last-child{grid-column:1/-1}
@@ -408,7 +420,7 @@ a.rb:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1px var(--beam)}
   .q--ph .q__tabs{display:none}
   .q--ph .q__p{display:grid;flex:0 0 86%;scroll-snap-align:start;grid-template-columns:1fr;min-height:480px;align-content:end;animation:none}
   .q--ph .q__p.on .q__bg img{animation:none}
-  .nl__more .bx,.q--ph .q__tx .bx{width:100%;justify-content:space-between}
+  .nl__more .bx,.q--ph .q__tx .bx,.eco__ft .bx{width:100%;justify-content:space-between}
   .q--ph .q__p>.mc__br{display:none}.q__bg::after{background:linear-gradient(180deg,rgba(9,10,12,.3) 0%,rgba(9,10,12,.75) 45%,rgba(9,10,12,.96) 100%)}
   .acts{gap:18px}
 }
@@ -479,7 +491,7 @@ a.rb:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1px var(--beam)}
 .mm__g a{transition:color .2s var(--out)}.mm__g a:hover{color:var(--base)}
 body.lock{overflow:hidden}
 /* cookie */
-.ck.fr{position:fixed;left:var(--gut);bottom:var(--gut);z-index:200;width:min(420px,calc(100vw - 2*var(--gut)));padding:20px 22px;background:rgba(9,10,12,.94);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 20px 60px rgba(0,0,0,.6);display:grid;gap:16px;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .4s var(--out),transform .6s var(--out)}
+.ck.fr{position:fixed;left:var(--gut);bottom:var(--gut);z-index:200;width:min(420px,calc(100vw - 2*var(--gut)));padding:20px 22px;background:rgba(9,10,12,.97);box-shadow:0 20px 60px rgba(0,0,0,.6);display:grid;gap:16px;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .4s var(--out),transform .6s var(--out)}
 .ck.on{opacity:1;transform:none;pointer-events:auto}
 .ck p{color:var(--on-dark-2)}
 .ck p a{color:var(--base);border-bottom:1px solid rgba(255,255,255,.3)}

@@ -10,8 +10,8 @@
 <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400&family=Tektur:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css?v=1015d">
-<link rel="stylesheet" href="css/main.css?v=1015d">
+<link rel="stylesheet" href="css/base.css?v=1015f">
+<link rel="stylesheet" href="css/main.css?v=1015f">
 </head>
 <body class="is-loading">
 
@@ -46,8 +46,8 @@
 
 <main>
 <section class="hero" id="top">
-  <!-- Фон: временный ролик из кадров проектов (video/hero-reel.mp4), до настоящего видео. Пока ролик не запустился, видно поле точек. -->
-  <div class="hero__bg" aria-hidden="true"><video class="hero__video" src="video/hero-reel.mp4" poster="img/dir-ecom.jpg" muted loop playsinline preload="auto"></video><canvas id="heroCanvas"></canvas></div>
+  <!-- Фон: временная смена кадров проектов (по 4 с, плавная смена, медленное приближение) вместо видео. Пока первый кадр не загрузился, видно поле точек. -->
+  <div class="hero__bg" aria-hidden="true"><div class="hero__reel" id="heroReel"></div><canvas id="heroCanvas"></canvas></div>
   <div class="hero__c">
     <h1 class="hero__title t-screen lines" id="heroT">
       <span class="l"><span><sup>©</sup>Darlein Defense</span></span>
@@ -84,13 +84,13 @@
 
 <section class="sec wrap" id="eco">
   <div class="sh"><h2 class="t-head lines" data-auto><span class="l"><span>Как устроена</span></span><span class="l" style="--i:1"><span>экосистема</span></span></h2><span class="svc" data-rv>Семь направлений<br>вокруг материнского бренда</span></div>
-  <div class="eco fr grain" id="ecoBox" data-rv>
+  <div class="eco fr" id="ecoBox" data-rv>
     <div class="eco__st">
       <svg class="eco__svg" id="ecoSvg" viewBox="0 0 1200 780" aria-hidden="true"></svg>
       <div class="port" id="port"><img class="on" src="img/hull.jpg" alt=""><div class="port__logo"><img src="assets/logo/logo3b.svg" alt="Darlein Defense"></div><div class="port__cap"><b id="portN">01</b><span class="svc" id="portT"></span></div></div>
     </div>
     <div class="eco__ft svc"><div class="eco__lg"><span class="st st--live"><i></i>запущен</span><span class="st st--soon"><i></i>готовится к запуску</span><span class="st st--dev"><i></i>в разработке</span><span class="st st--research"><i></i>исследование</span></div>
-      <a class="ul" href="prototype/projects.html" style="font-family:var(--geist);letter-spacing:0">Все направления и проекты <i data-ic="ne" data-cls="ic--s"></i></a></div>
+      <a class="bx" href="prototype/projects.html"><span class="bx__f"></span>Все направления и проекты<i data-ic="right" data-cls="ic--s ic--mv"></i></a></div>
   </div>
 </section>
 
@@ -144,9 +144,9 @@
 
 <footer class="ft" id="footer"><div class="ft__p fr" id="ftp"></div></footer>
 
-<script src="js/base.js?v=1015d"></script>
-<script src="js/chrome.js?v=1015d"></script>
-<script src="js/home.js?v=1015d"></script>
-<script src="js/home-blocks.js?v=1015d"></script>
+<script src="js/base.js?v=1015f"></script>
+<script src="js/chrome.js?v=1015f"></script>
+<script src="js/home.js?v=1015f"></script>
+<script src="js/home-blocks.js?v=1015f"></script>
 </body>
 </html>
