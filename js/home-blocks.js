@@ -155,7 +155,7 @@
     Q.map(function (x, i) {
       return '<div class="q__p grain' + (i ? '' : ' on') + '"><div class="q__bg"><img src="img/' + x[5] + '.jpg" alt="" loading="lazy"></div><div class="mc__br"></div>' +
         '<div class="q__num"><span class="svc">0' + (i + 1) + ' / 03</span><b>' + (i + 1) + '</b></div>' +
-        '<div class="q__tx"><span class="svc">' + x[1] + '</span><p>' + x[2] + '</p><a class="ul" href="' + DD.url(x[4]) + '">' + x[3] + ' ' + DD.ic('ne', 'ic--s') + '</a></div></div>';
+        '<div class="q__tx"><span class="svc">' + x[1] + '</span><p>' + x[2] + '</p><a class="bx" href="' + DD.url(x[4]) + '"><span class="bx__f"></span>' + x[3] + DD.ic('right', 'ic--s ic--mv') + '</a></div></div>';
     }).join('');
   DD.tabs(q);
 

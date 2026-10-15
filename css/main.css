@@ -357,7 +357,7 @@ a.rb:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1px var(--beam)}
 .q__num b{font-family:var(--geist);font-weight:300;font-size:clamp(72px,9vw,160px);letter-spacing:-.05em;line-height:.8;color:var(--base)}
 .q__tx>.svc{color:var(--beam)}
 .q__tx p{margin-top:22px;font-size:var(--fs-sub);font-weight:300;letter-spacing:-.02em;line-height:1.05;max-width:22ch}
-.q__tx .ul{margin-top:32px}
+.q__tx .ul,.q__tx .bx{margin-top:32px}
 .q__ph{position:relative;border-radius:16px;overflow:hidden;background:#050607;min-height:240px}
 .q__ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .q--ph .q__p{position:relative;overflow:hidden;background:#050607;grid-template-columns:minmax(0,2fr) minmax(0,6fr) minmax(0,5fr);min-height:clamp(420px,36vw,600px)}
@@ -408,7 +408,8 @@ a.rb:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1px var(--beam)}
   .q--ph .q__tabs{display:none}
   .q--ph .q__p{display:grid;flex:0 0 86%;scroll-snap-align:start;grid-template-columns:1fr;min-height:480px;align-content:end;animation:none}
   .q--ph .q__p.on .q__bg img{animation:none}
-  .nl__more .bx{width:100%;justify-content:space-between}.q__bg::after{background:linear-gradient(180deg,rgba(9,10,12,.3) 0%,rgba(9,10,12,.75) 45%,rgba(9,10,12,.96) 100%)}
+  .nl__more .bx,.q--ph .q__tx .bx{width:100%;justify-content:space-between}
+  .q--ph .q__p>.mc__br{display:none}.q__bg::after{background:linear-gradient(180deg,rgba(9,10,12,.3) 0%,rgba(9,10,12,.75) 45%,rgba(9,10,12,.96) 100%)}
   .acts{gap:18px}
 }
 @media(max-width:520px){.acts .ul{display:none}}
