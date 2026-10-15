@@ -26,7 +26,7 @@
 
   /* ---------- шапка ---------- */
   var hd = $('#hd');
-  $('#nav').innerHTML = DD.nav.map(function (n) { return '<a href="' + DD.url(n[1]) + '"' + (document.body.getAttribute('data-nav') === n[1].replace('.html', '') ? ' class="here"' : '') + '>' + n[0] + '</a>'; }).join('');
+  $('#nav').innerHTML = DD.nav.map(function (n) { return '<a href="' + DD.url(n[1]) + '"' + (document.body.getAttribute('data-nav') === n[1].replace('.html', '') ? ' class="here" aria-current="page"' : '') + '>' + n[0] + '</a>'; }).join('');
   DD.onScroll(function (y) { hd.classList.toggle('sc', y > 12); });
 
   /* ---------- выпадающая панель ---------- */
@@ -39,12 +39,13 @@
         return '<a href="' + DD.url(it[0]) + '" style="--i:' + i + '"><span class="svc">' + ('0' + (i + 1)).slice(-2) + '</span><span' + (/^[A-Z]+$/.test(it[1]) ? ' class="latin"' : '') + '>' + it[1] + '</span>' + DD.ic('ne', 'ic--s') + '</a>';
       }).join('') + '</div></div></div>';
   }).join('') + '</div>';
-  document.body.appendChild(bd); document.body.appendChild(mg);
+  document.body.appendChild(bd); hd.parentNode.insertBefore(mg, hd.nextSibling);  /* панель сразу после шапки: ссылки идут за пунктами меню при обходе Tab */
   var triggers = [].slice.call(document.querySelectorAll('#nav a')).filter(function (a) { var k = a.getAttribute('href').replace(/^.*\/|\.html.*$/g, ''); if (M[k]) { a.setAttribute('data-menu', k); return true; } return false; });
   var chip = hd.querySelector('.hd__r a.bx'); if (chip) { chip.setAttribute('data-menu', 'dropfield'); triggers.push(chip); }
-  var timer = null, cur = null, inn = mg.querySelector('.mg__in');
+  var skipOpen = false, timer = null, cur = null, inn = mg.querySelector('.mg__in');
   var open = function (k) {
-    clearTimeout(timer); if (window.innerWidth <= 1100 || cur === k) return;
+    clearTimeout(timer); if (skipOpen || window.innerWidth <= 1100 || cur === k) return;
+    if (DD.closeLang) DD.closeLang();
     /* высота панели плавно переходит от раздела к разделу */
     var was = cur ? inn.offsetHeight : 0; cur = k; inn.style.height = 'auto';
     mg.querySelectorAll('.mg__p').forEach(function (p) { p.classList.toggle('on', p.getAttribute('data-menu') === k); });
@@ -59,6 +60,19 @@
     t.addEventListener('mouseenter', function () { open(t.getAttribute('data-menu')); });
     t.addEventListener('focus', function () { open(t.getAttribute('data-menu')); });
   });
+  /* панель, открытая с клавиатуры, закрывается, когда фокус уходит из шапки и панели */
+  [hd, mg].forEach(function (el) { el.addEventListener('focusout', function (e) {
+    var to = e.relatedTarget;
+    if (!to && (hd.matches(':hover') || mg.matches(':hover'))) return;  /* клик по тексту внутри панели */
+    if (!to || (!hd.contains(to) && !mg.contains(to))) close(true);
+  }); });
+  /* с клавиатуры: стрелка вниз или Enter на пункте ведут в открытую панель, Escape возвращает на пункт */
+  triggers.forEach(function (t) { t.setAttribute('aria-haspopup', 'true'); t.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowDown') { e.preventDefault(); open(t.getAttribute('data-menu')); var f = mg.querySelector('.mg__p.on a'); if (f) f.focus(); }
+  }); });
+  mg.addEventListener('keydown', function (e) { if (e.key === 'Escape') { var t = triggers.filter(function (x) { return x.getAttribute('data-menu') === cur; })[0]; close(true); if (t) { skipOpen = true; t.focus(); skipOpen = false; } } });
+  /* фокус на пунктах без панели (Контакты, язык) закрывает панель, как и наведение */
+  hd.addEventListener('focusin', function (e) { var a = e.target.closest('a,button'); if (cur && a && !a.hasAttribute('data-menu')) close(true); });
   hd.addEventListener('mouseleave', function () { close(); }); hd.addEventListener('mouseenter', function () { clearTimeout(timer); });
   mg.addEventListener('mouseenter', function () { clearTimeout(timer); }); mg.addEventListener('mouseleave', function () { close(); });
   /* пункт без панели (Контакты) и остальная шапка закрывают панель */
@@ -75,9 +89,11 @@
       LANGS.map(function (l) { return '<button type="button" role="option" data-lang="' + l[0] + '"' + (l[0] === 'ru' ? ' class="on"' : '') + '><span>' + l[1] + '</span><span>' + l[2] + '</span></button>'; }).join('') + '</div>';
     ru.parentNode.replaceChild(lg, ru);
     var lb = lg.querySelector('.lg__b');
-    lb.addEventListener('click', function (e) { e.stopPropagation(); var v = !lg.classList.contains('on'); lg.classList.toggle('on', v); lb.setAttribute('aria-expanded', v ? 'true' : 'false'); close(true); });
-    lg.querySelectorAll('.lg__l button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); lg.classList.remove('on'); }); });
-    document.addEventListener('click', function () { lg.classList.remove('on'); });
+    var setOpenLang = function (v) { lg.classList.toggle('on', v); lb.setAttribute('aria-expanded', v ? 'true' : 'false'); };
+    DD.closeLang = function () { setOpenLang(false); };
+    lb.addEventListener('click', function (e) { e.stopPropagation(); setOpenLang(!lg.classList.contains('on')); close(true); });
+    lg.querySelectorAll('.lg__l button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); setOpenLang(false); lb.focus(); }); });
+    document.addEventListener('click', function () { setOpenLang(false); });
   }
   /* в макете язык только переключает подпись: переводов страниц пока нет */
   function setLang(l) {
@@ -89,31 +105,43 @@
   var mm = document.createElement('div'); mm.className = 'mm'; mm.id = 'mm'; mm.setAttribute('aria-hidden', 'true');
   mm.innerHTML = '<div class="mm__t"><img src="' + R + 'assets/logo/logo3b.svg" alt="Darlein Defense"><button class="bx bx--ic bx--s" type="button" id="mmX" aria-label="Закрыть меню"><span class="bx__f"></span>' + DD.ic('close') + '</button></div>' +
     '<nav class="mm__n" aria-label="Меню">' + DD.nav.map(function (n, i) { return '<a href="' + DD.url(n[1]) + '" style="--i:' + i + '">' + n[0] + DD.ic('ne') + '</a>'; }).join('') + '</nav>' +
-    '<a class="bx svc mm__df" href="' + DD.url('dropfield.html') + '"><span class="bx__f"></span><span class="st st--soon"><i></i>DROPFIELD</span>' + DD.ic('ne', 'ic--s') + '</a>' +
+    '<a class="bx bx--l svc mm__df" href="' + DD.url('dropfield.html') + '"><span class="bx__f"></span><span class="st st--soon"><i></i>DROPFIELD</span>' + DD.ic('ne', 'ic--s') + '</a>' +
     '<div class="mm__s"><span class="svc">Язык</span><div class="mm__lang">' + LANGS.map(function (l) { return '<button class="bx bx--s svc' + (l[0] === 'ru' ? ' bx--on' : '') + '" type="button" data-lang="' + l[0] + '"><span class="bx__f"></span>' + l[1] + '</button>'; }).join('') + '</div></div>' +
     '<div class="mm__u">' + [[['investors.html', 'Инвесторам'], ['intel.html#media', 'Для СМИ']], [['legal.html', 'Политика обработки ПДн'], ['legal.html#terms', 'Пользовательское соглашение']], [['mailto:info@darlein.ru', 'info@darlein.ru'], ['#', 'Telegram']]].map(function (g) {
       return '<div class="mm__g">' + g.map(function (x) { return '<a href="' + DD.url(x[0]) + '">' + x[1] + '</a>'; }).join('') + '</div>';
     }).join('') + '</div>';
   document.body.appendChild(mm);
   var burger = hd.querySelector('.hd__menu');
-  var menu = function (v) { mm.classList.toggle('on', v); mm.setAttribute('aria-hidden', v ? 'false' : 'true'); document.body.classList.toggle('lock', v); if (burger) burger.setAttribute('aria-expanded', v ? 'true' : 'false'); };
+  if (burger) { burger.type = 'button'; burger.setAttribute('aria-expanded', 'false'); burger.setAttribute('aria-controls', 'mm'); }
+  mm.setAttribute('role', 'dialog'); mm.setAttribute('aria-modal', 'true'); mm.setAttribute('aria-label', 'Меню');
+  /* пока меню открыто, остальная страница недоступна; фокус переходит в меню и возвращается на кнопку */
+  var menu = function (v) {
+    var was = mm.classList.contains('on'); if (v === was) return;
+    mm.classList.toggle('on', v); mm.setAttribute('aria-hidden', v ? 'false' : 'true'); document.body.classList.toggle('lock', v);
+    [].forEach.call(document.body.children, function (el) { if (el !== mm && el.tagName !== 'SCRIPT') el.inert = v; });
+    if (burger) burger.setAttribute('aria-expanded', v ? 'true' : 'false');
+    if (v) $('#mmX').focus(); else if (burger) burger.focus();
+  };
   if (burger) burger.addEventListener('click', function () { menu(true); });
   $('#mmX').addEventListener('click', function () { menu(false); });
   mm.querySelectorAll('.mm__lang button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); }); });
   window.addEventListener('resize', function () { close(true); if (window.innerWidth > 1100) menu(false); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { close(true); menu(false); var l = $('.lg'); if (l) l.classList.remove('on'); } });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { close(true); menu(false); if (DD.closeLang) DD.closeLang(); } });
 
   /* ---------- cookie: показывается после загрузочного экрана, один раз ---------- */
   var ck = document.createElement('div'); ck.className = 'ck fr'; ck.id = 'cookie';
   ck.innerHTML = '<p>Сайт использует cookie для веб-аналитики. Подробнее — в <a href="' + DD.url('legal.html#policy') + '">политике обработки данных</a>.</p><button class="bx bx--s" type="button"><span class="bx__f"></span>Понятно</button>';
-  document.body.appendChild(ck);
   var seen = false; try { seen = !!localStorage.getItem('dd_cookie'); } catch (e) {}
-  if (!seen) { var wait = setInterval(function () { if (!document.body.classList.contains('is-loading')) { clearInterval(wait); setTimeout(function () { ck.classList.add('on'); }, 1800); } }, 200); }
-  ck.querySelector('button').addEventListener('click', function () { ck.classList.remove('on'); try { localStorage.setItem('dd_cookie', '1'); } catch (e) {} });
+  if (!seen) {
+    document.body.appendChild(ck);
+    var wait = setInterval(function () { if (!document.body.classList.contains('is-loading')) { clearInterval(wait); setTimeout(function () { ck.classList.add('on'); }, 1800); } }, 200);
+    ck.querySelector('button').addEventListener('click', function () { ck.classList.remove('on'); try { localStorage.setItem('dd_cookie', '1'); } catch (e) {} setTimeout(function () { ck.remove(); }, 700); });
+  }
   /* ---------- вкладки: смена раз в 6 секунд до первого клика ---------- */
   DD.tabs = function (q) {
     var tabs = q.querySelectorAll('.q__tabs button'), panels = q.querySelectorAll('.q__p'), idx = 0, timer = null, manual = false, hov = false, vis = false;
-    var show = function (i) { idx = i; tabs.forEach(function (t, j) { t.classList.toggle('on', j === i); }); panels.forEach(function (p, j) { p.classList.toggle('on', j === i); }); };
+    var show = function (i) { idx = i; tabs.forEach(function (t, j) { t.classList.toggle('on', j === i); t.setAttribute('aria-pressed', j === i ? 'true' : 'false'); }); panels.forEach(function (p, j) { p.classList.toggle('on', j === i); }); };
+    show(0);
     var start = function () { if (DD.reduced || manual || timer) return; q.classList.add('auto'); timer = setInterval(function () { if (!manual && !hov && vis && !document.hidden) show((idx + 1) % tabs.length); }, 6000); };
     tabs.forEach(function (t, i) { t.addEventListener('click', function () { manual = true; q.classList.remove('auto'); clearInterval(timer); timer = null; show(i); }); });
     q.addEventListener('mouseenter', function () { hov = true; }); q.addEventListener('mouseleave', function () { hov = false; });

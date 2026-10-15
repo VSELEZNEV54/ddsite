@@ -1,0 +1,142 @@
+/* ===== Внутренние страницы: «О компании» и «Проекты». Компоненты главной (кнопки, рамки, схема, лента) берутся из main.css,
+   здесь только то, чего на главной нет. Правила стиля — docs/style-guide.md ===== */
+
+
+/* загрузочный экран на внутренних страницах: только при первом заходе за сессию */
+.ld--once{display:none}
+html.ld-on .ld--once{display:block}
+html.ld-on body:not(.ready){overflow:hidden}
+
+/* ---------- Заголовок страницы ---------- */
+.pgh{padding-top:calc(var(--hd) + clamp(48px,7vw,120px));padding-bottom:clamp(32px,3.6vw,64px)}
+.pgh__top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:clamp(16px,1.6vw,28px);color:var(--on-dark-2)}
+.pgh__title{font-size:clamp(50px,12.2vw,250px);letter-spacing:-.06em;line-height:.86;text-transform:uppercase}
+.pgh__meta{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:24px var(--gut);align-items:end;margin-top:clamp(24px,3vw,56px)}
+.pgh__meta>p{max-width:36em;color:var(--on-dark)}
+.pgh__side{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:12px 20px;color:var(--on-dark-2)}
+/* метка в маленьких скобках: «DD · 2026», «Portfolio» */
+.tg{--c:var(--on-dark-3);--a:8px;display:inline-flex;align-items:center;height:28px;padding:0 10px;color:var(--base)}
+
+/* ---------- Широкий кадр под заголовком ---------- */
+.pgv{position:relative;aspect-ratio:16/7;border-radius:24px;overflow:hidden;background:var(--ph)}
+.pgv img{width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 2.4s var(--out)}
+.pgv.in img{transform:none}
+.pgv::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(9,10,12,0) 55%,rgba(9,10,12,.6) 100%)}
+
+/* схема экосистемы внутри секции, под шагами модели */
+.eco--pg{margin-top:clamp(40px,5vw,88px)}
+
+/* ---------- Текстовые колонки и ссылки-кнопки ---------- */
+.stack{display:grid;gap:18px;align-content:start}
+.stack .muted{max-width:38em}
+.acts2{display:flex;flex-wrap:wrap;gap:12px 16px;margin-top:14px}
+.acts2:has(.bx--s){gap:12px}
+.acts2:not(:has(.bx--s)){gap:16px}
+
+/* ---------- Карточки в рамке (как «Миссия» на главной), мелкий вариант ---------- */
+.cells{display:grid;gap:8px}
+.cells--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cells--4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.mc--s{min-height:clamp(240px,20vw,340px);justify-content:space-between;gap:28px}
+.mc--s .mc__t{color:var(--on-dark-2)}
+.mc--s .mc__t .ic{color:var(--alloy);transition:color .3s var(--out)}
+.mc--s h3{font-size:var(--fs-card);letter-spacing:-.04em;line-height:1.05}
+.mc--s p{width:auto;max-width:34em;margin-top:12px;font-size:var(--fs-ui);letter-spacing:0;line-height:1.25;color:var(--on-dark-2)}
+.mc--s .lbl-a{color:var(--beam)}
+@media(hover:hover){.mc--s:hover .mc__t .ic{color:var(--beam)}}
+
+/* ---------- Модель: четыре шага, над ними сегментная линия, как на загрузочном экране ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:clamp(32px,4vw,64px)}
+.step__bar{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;margin-bottom:22px}
+.step__bar i{height:8px;background:var(--iron);opacity:.5;transition:background .2s,opacity .2s;transition-delay:calc(var(--k)*45ms + 300ms)}
+.steps.in .step__bar i{background:var(--on-dark-2);opacity:1}
+.steps.in .step:last-child .step__bar i{background:var(--beam)}
+.step>.svc{color:var(--on-dark-3)}
+.step b{display:block;margin-top:10px;font-weight:400;font-size:var(--fs-card);letter-spacing:-.04em;line-height:1.05}
+.step p{margin-top:12px;max-width:26em;color:var(--on-dark-2)}
+
+/* ---------- Принципы: строки с линиями ---------- */
+.dl__r{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:16px var(--gut);padding:clamp(22px,2.4vw,40px) 0;}
+.dl__r+.dl__r{border-top:1px solid var(--line)}
+.dl__r h3{font-size:var(--fs-card);letter-spacing:-.04em;line-height:1.05}
+.dl__r ul{display:grid;gap:14px}
+.dl__r li{position:relative;padding-left:24px;font-size:var(--fs-ui);color:var(--on-dark-2)}
+.dl__r li::before{content:"";position:absolute;left:0;top:.5em;width:8px;height:8px;border:1px solid var(--on-dark-3)}
+.dl__r li b{font-weight:400;color:var(--base)}
+
+/* ---------- Реквизиты: четыре ячейки в одной рамке ---------- */
+.req{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.req>div{display:flex;flex-direction:column;gap:10px;padding:clamp(20px,2vw,32px)}
+.req>div+div{box-shadow:inset 1px 0 0 var(--line)}
+.req .svc{color:var(--on-dark-3)}
+.req b{font-weight:400;font-size:var(--fs-ui);line-height:1.25}
+.req span:last-child{color:var(--on-dark-2)}
+
+/* ---------- Действие внизу страницы: рамка, заголовок, разделы, главная кнопка ---------- */
+.cta2{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:28px var(--gut);align-items:end;padding:clamp(24px,3.4vw,64px)}
+.cta2 h2{font-size:var(--fs-head);letter-spacing:-.06em;line-height:1;text-transform:uppercase;max-width:14em}
+.cta2 p{margin-top:18px;max-width:42ch;font-size:var(--fs-ui);color:var(--on-dark-2)}
+.cta2 .acts2{margin-top:clamp(20px,2.4vw,36px)}
+.cta2__go{display:grid;justify-content:end;gap:16px}
+.cta2__go .bx{justify-content:space-between}
+
+/* ---------- «Проекты»: список слева прилипает к верху, справа панели проектов одна за другой ---------- */
+.pj{--top:calc(var(--hd) + 8px);--h:max(560px,calc(100svh - var(--hd) - 16px));display:grid;grid-template-columns:clamp(200px,15vw,280px) minmax(0,1fr);gap:8px;align-items:start;padding:0 var(--gut)}
+.pj__nav{position:sticky;top:var(--top);height:var(--h);display:flex;flex-direction:column;padding:clamp(16px,1.4vw,24px) 10px 12px}
+.pj__nav>.svc{padding:0 12px 14px;color:var(--on-dark-3)}
+.pj__nav ol{list-style:none;margin:0;padding:0;flex:1;min-height:0;overflow-y:auto;scrollbar-width:none;display:flex;flex-direction:column}
+.pj__nav ol::-webkit-scrollbar{display:none}
+.pj__nav li+li a{box-shadow:inset 0 1px 0 var(--line-2)}
+.pj__nav a{position:relative;display:grid;grid-template-columns:30px 1fr;align-items:center;height:clamp(32px,4.6vh,44px);padding:0 12px;color:var(--on-dark-2);letter-spacing:.02em;transition:background .25s var(--out),color .2s var(--out)}
+.pj__nav a::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:2px;background:var(--beam);transform:scaleY(0);transition:transform .35s var(--out)}
+.pj__nav a i{font-style:normal;font-family:var(--tektur);font-size:12px;letter-spacing:.05em;color:var(--on-dark-3);transition:color .2s var(--out)}
+.pj__nav a:focus-visible{outline-offset:-2px}
+@media(min-width:901px){.pj__nav a:hover,.pj__nav a.on{color:var(--base);background:linear-gradient(90deg,var(--glow),rgba(103,255,217,0) 70%)}}
+.pj__nav a.on::before{transform:none}
+.pj__nav a.on i{color:var(--beam)}
+.pj__mark{height:0;scroll-margin-top:var(--top)}
+.pp{position:relative;height:var(--h);margin-bottom:8px;border-radius:24px;overflow:hidden;background:var(--ph);padding:clamp(22px,2.4vw,44px);display:flex;flex-direction:column;justify-content:space-between;gap:24px;}
+.pp:last-child{margin-bottom:0}
+.pp>*{position:relative;z-index:2}
+.pp>.pp__img{position:absolute;inset:0;z-index:0}
+.pp__img img,.pp__img video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pp__img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,10,12,.78) 0%,rgba(9,10,12,.25) 55%,rgba(9,10,12,0) 100%),linear-gradient(180deg,rgba(9,10,12,.45) 0%,rgba(9,10,12,0) 26%,rgba(9,10,12,.2) 55%,rgba(9,10,12,.92) 100%)}
+.pp>.mc__br{position:absolute;z-index:1}
+.pp__t{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;color:var(--on-dark-2)}
+.pp__t>span:first-child{color:var(--base)}
+.pp__b{display:flex;flex-direction:column;align-items:flex-start;max-width:min(100%,760px)}
+.pp__n{font-size:clamp(44px,7.4vw,150px);letter-spacing:-.06em;line-height:.9;text-transform:uppercase}
+.pp__cap{margin-top:14px;font-size:var(--fs-card);letter-spacing:-.03em;line-height:1.05}
+.pp__d{margin-top:12px;font-size:var(--fs-ui);color:var(--on-photo);max-width:44ch}
+.pp__sp{display:flex;flex-wrap:wrap;gap:8px;margin:clamp(16px,1.8vw,28px) 0 clamp(20px,2vw,32px)}
+.pp__sp li{--c:var(--on-dark-3);--a:8px;display:inline-flex;align-items:center;height:30px;padding:0 10px;color:var(--on-dark-2)}
+.pp>.pp__i{position:absolute;right:clamp(22px,2.4vw,44px);bottom:clamp(18px,2vw,36px);font-weight:300;font-size:clamp(64px,8vw,160px);letter-spacing:-.05em;line-height:.8}
+.pp__i small{font-family:var(--tektur);font-size:14px;letter-spacing:.05em;margin-left:12px;color:var(--on-dark-2)}
+@media(hover:hover){.pp:hover>.mc__br{inset:8px;--c:var(--beam)}}
+
+/* ---------- Адаптив ---------- */
+@media(max-width:1100px){
+  .cells--4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:32px}
+  .req{grid-template-columns:repeat(2,minmax(0,1fr))}.req>div:nth-child(3){box-shadow:inset 0 1px 0 var(--line)}.req>div:nth-child(4){box-shadow:inset 1px 0 0 var(--line),inset 0 1px 0 var(--line)}
+}
+@media(max-width:900px){
+  .pgh__meta,.cta2{grid-template-columns:1fr}.pgh__side{justify-content:flex-start}
+  .pgv{aspect-ratio:4/3}
+  .cells--3{grid-template-columns:1fr}.mc--s{min-height:0}
+  .dl__r{grid-template-columns:1fr}
+  .cta2__go{justify-content:start}
+  .pj{grid-template-columns:minmax(0,1fr);row-gap:16px}  /* minmax: лента кнопок не раздвигает страницу */
+  .pj__nav{position:static;height:auto;padding:0;margin:0 calc(-1*var(--gut))}.pj__nav.fr::before,.pj__nav>.svc{display:none}
+  .pj__nav ol{flex-direction:row;gap:12px;overflow-x:auto;padding:6px var(--gut)}
+  .pj__nav li+li a{box-shadow:none}
+  .pj__nav a{--c:var(--on-dark-3);flex:none;display:inline-flex;gap:10px;height:40px;padding:0 14px;white-space:nowrap;background:linear-gradient(var(--c),var(--c)) 0 0/8px 1px no-repeat,linear-gradient(var(--c),var(--c)) 0 0/1px 8px no-repeat,linear-gradient(var(--c),var(--c)) 100% 0/8px 1px no-repeat,linear-gradient(var(--c),var(--c)) 100% 0/1px 8px no-repeat,linear-gradient(var(--c),var(--c)) 0 100%/8px 1px no-repeat,linear-gradient(var(--c),var(--c)) 0 100%/1px 8px no-repeat,linear-gradient(var(--c),var(--c)) 100% 100%/8px 1px no-repeat,linear-gradient(var(--c),var(--c)) 100% 100%/1px 8px no-repeat}
+  .pj__nav a::before{display:none}
+  .pj__nav a:hover,.pj__nav a.on{--c:var(--beam);color:var(--base)}
+  .pp{height:auto;min-height:520px}.pp>.pp__i{font-size:56px;top:56px;bottom:auto}.pp__i small{display:none}
+}
+@media(max-width:640px){
+  .cta2__go{justify-content:stretch}.acts2{flex-direction:column}.cta2__go .bx,.acts2 .bx,.pp__b .bx{width:100%;justify-content:space-between}
+  .pp>.mc__br,.pp>.pp__i{display:none}
+  .cells--4,.steps,.req{grid-template-columns:1fr}.req>div{box-shadow:inset 0 1px 0 var(--line)!important}.req>div:first-child{box-shadow:none!important}
+}

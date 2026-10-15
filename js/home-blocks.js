@@ -9,78 +9,12 @@
   X.partner = '<rect x="9" y="3" width="6" height="6" rx="1.2"/><rect x="3" y="15" width="6" height="6" rx="1.2"/><rect x="15" y="15" width="6" height="6" rx="1.2"/><path d="M12 9v3M6 15v-3h12v3"/>';
   X.career = '<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M18 8v6M15 11h6"/>';
 
-  /* ---------- данные ---------- */
-  var P = [
-    ['DROPFIELD', 'soon', 'готовится к запуску', 2, 'Специализированная платформа для выбора, покупки и продажи снаряжения и оборудования.', 'Выбор и покупка снаряжения', 'dir-ecom'],
-    ['AGATA', 'dev', 'в разработке', 0, 'Программная платформа для координации людей, техники и ресурсов.', 'Управление, данные и координация', 'dir-soft'],
-    ['ELZA', 'research', 'исследование', 0, 'Аналитическая ИИ-платформа для исследования событий, процессов и рисков.', 'Аналитика и исследование событий', 'qual-3'],
-    ['EVA', 'research', 'исследование', 0, 'ИИ-помощник для работы с оборудованием и физическими объектами.', 'ИИ-помощник для работы с оборудованием', 'join-career'],
-    ['BLACKFLY', 'research', 'исследование', 1, 'Модульная экосистема для создания беспилотных платформ.', 'Компоненты беспилотных платформ', 'dir-uas'],
-    ['WARDEN', 'research', 'исследование', 3, 'Модульная система индивидуальной экипировки.', 'Модульная экипировка', 'dir-gear'],
-    ['HEX', 'research', 'исследование', 4, 'Семейство сетевых устройств для носимой электроники, техники, беспилотных платформ и сенсоров.', 'Связь для людей, техники и сенсоров', 'dir-comms'],
-    ['ECHO', 'research', 'исследование', 4, 'Семейство автономных сенсорных систем для земли, воздуха и моря.', 'Автономные сенсорные системы', 'dir-def'],
-    ['NOMAD', 'research', 'исследование', 5, 'Семейство наземных роботизированных платформ со сменным оснащением.', 'Наземные роботизированные платформы', 'hero-platform'],
-    ['SEAL', 'research', 'исследование', 5, 'Семейство безэкипажных морских платформ для наблюдения, связи, перевозки и специализированных задач.', 'Безэкипажные морские платформы', 'hero-boat'],
-    ['HIGHFAST', 'research', 'исследование', 5, 'Семейство компактных аппаратов вертикального взлета и посадки для перевозки людей и важных грузов.', 'Аппараты вертикального взлета', 'hero-evtol'],
-    ['BACKEYE', 'research', 'исследование', 5, 'Система внешнего обзора для дистанционно управляемой техники.', 'Внешний обзор для техники', 'dir-tech'],
-    ['SHIELD', 'research', 'исследование', 6, 'Семейство боевых и защитных систем для техники, роботизированных платформ и стационарных объектов.', 'Модульные системы защиты', 'hull'],
-    ['ARROWHEAD', 'research', 'исследование', 6, 'Семейство контейнеризированных беспилотных перехватчиков.', 'Семейство беспилотных перехватчиков', 'prob-2']
-  ];
-  var DESC = [
-    'Платформы управления, аналитики и помощи в работе. Цифровая основа, к которой подключаются остальные продукты.',
-    'Совместимые компоненты, комплекты и программные инструменты для создания беспилотных платформ.',
-    'Специализированная площадка для выбора, покупки и продажи снаряжения и оборудования.',
-    'Модульная индивидуальная экипировка: защита, одежда, экзоскелетные модули и носимая электроника.',
-    'Распределенная сеть для людей и техники и автономные сенсорные системы для земли, воздуха и моря.',
-    'Наземные, морские и воздушные платформы со сменным оснащением и общими системами управления.',
-    'Модульные системы защиты техники и объектов и семейство беспилотных перехватчиков.'
-  ];
+  var P = DD.projects;
   var href = function (name) { return DD.url(name.toLowerCase() + '.html'); };
   var count = function (n) { return n + (n === 1 ? ' продукт' : ' продукта'); };
 
   /* ---------- направления проектов ---------- */
-  var rail = $('#rail');
-  rail.innerHTML = DD.dirs.map(function (d, i) {
-    var mine = P.filter(function (p) { return p[3] === i; });
-    return '<article class="rc grain"><div class="rc__img"><img src="img/dir-' + d.key + '.jpg" alt="" loading="lazy"></div><div class="mc__br"></div>' +
-      '<div class="rc__t"><span class="rc__n">' + d.n + '</span><span class="svc">' + DD.ic(d.ic) + '</span><span class="svc">' + count(mine.length) + '</span></div>' +
-      '<div><h3>' + d.title + '</h3><p>' + DESC[i] + '</p><div class="rc__ch">' + mine.map(function (p) {
-        return '<a class="bx bx--s svc" href="' + href(p[0]) + '" title="' + p[0] + ' — ' + p[2] + '"><span class="bx__f"></span><span class="st st--' + p[1] + '"><i></i>' + p[0] + '</span>' + DD.ic('ne', 'ic--s') + '</a>';
-      }).join('') + '</div></div></article>';
-  }).join('') +
-    '<a class="rc rc--all" href="' + DD.url('projects.html') + '"><div class="mc__br"></div><span class="svc" style="color:var(--on-dark-2)">Все направления</span><span><b>14</b><span class="t-lead" style="display:block">продуктов<br>в семи направлениях</span></span>' +
-    '<span class="bx bx--on"><span class="bx__f"></span>Все проекты' + DD.ic('right', 'ic--s ic--mv') + '</span></a>';
-  (function () {
-    var cards = rail.querySelectorAll('.rc:not(.rc--all)'), now = $('#dirNow'), btns = document.querySelectorAll('.rnav .bx'), target = 0, settle = null, drag = null;
-    var step = function () { return cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : rail.clientWidth; };
-    var max = function () { return Math.max(0, Math.ceil((rail.scrollWidth - rail.clientWidth - 4) / step())); };
-    var go = function (k) { target = Math.max(0, Math.min(max(), target + k)); rail.scrollTo({ left: target * step(), behavior: DD.reduced ? 'auto' : 'smooth' }); };
-    var sync = function () {
-      var end = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 4;
-      var i = end ? cards.length - 1 : Math.min(cards.length - 1, Math.max(0, Math.round(rail.scrollLeft / step())));
-      now.textContent = ('0' + (i + 1)).slice(-2);
-      btns.forEach(function (b) { b.disabled = b.getAttribute('data-step') === '-1' ? rail.scrollLeft < 4 : end; });
-    };
-    btns.forEach(function (b) { b.addEventListener('click', function () { go(parseInt(b.getAttribute('data-step'), 10)); }); });
-    rail.addEventListener('scroll', function () { sync(); clearTimeout(settle); settle = setTimeout(function () { target = Math.round(rail.scrollLeft / step()); }, 180); }, { passive: true });
-    window.addEventListener('resize', sync); sync();
-    rail.addEventListener('keydown', function (e) { if (e.target === rail && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) { e.preventDefault(); go(e.key === 'ArrowRight' ? 1 : -1); } });
-    rail.addEventListener('dragstart', function (e) { e.preventDefault(); });
-    rail.addEventListener('pointerdown', function (e) { if (e.pointerType === 'mouse' && e.button === 0) drag = { x: e.clientX, left: rail.scrollLeft, moved: false }; });
-    window.addEventListener('pointermove', function (e) {
-      if (!drag) return; var dx = e.clientX - drag.x;
-      if (!drag.moved && Math.abs(dx) > 6) { drag.moved = true; rail.classList.add('drag'); }
-      if (drag.moved) rail.scrollLeft = drag.left - dx;
-    });
-    window.addEventListener('pointerup', function () {
-      if (!drag) return; var moved = drag.moved; drag = null; if (!moved) return;
-      var block = function (ev) { ev.preventDefault(); ev.stopPropagation(); };
-      rail.addEventListener('click', block, true);
-      rail.scrollTo({ left: Math.round(rail.scrollLeft / step()) * step(), behavior: DD.reduced ? 'auto' : 'smooth' });
-      setTimeout(function () { rail.removeEventListener('click', block, true); }, 0);
-      setTimeout(function () { rail.classList.remove('drag'); }, DD.reduced ? 0 : 450);
-    });
-  })();
+  DD.rail($('#rail'), $('.rnav'));
 
   /* ---------- наши проекты ---------- */
   var list = $('#pbl'), pbp = $('#pbp'), box = $('#pbpImg'), layers = {}, cur = -1;
@@ -108,7 +42,7 @@
   };
   var years = Object.keys(RM);
   $('#rm').innerHTML = '<div class="rm__h"><div><h3 class="t-card">Роадмап</h3><span class="svc">План разработок по годам и кварталам · даты примерные</span></div><span class="svc">2026–2029</span></div>' +
-    '<div class="rm__y" role="tablist">' + years.map(function (y, i) { return '<button class="bx bx--s' + (i ? '' : ' bx--on') + '" type="button" data-year="' + y + '"><span class="bx__f"></span>' + y + '</button>'; }).join('') + '</div>' +
+    '<div class="rm__y">' + years.map(function (y, i) { return '<button class="bx bx--s' + (i ? '' : ' bx--on') + '" type="button" aria-pressed="' + (i ? 'false' : 'true') + '" data-year="' + y + '"><span class="bx__f"></span>' + y + '</button>'; }).join('') + '</div>' +
     years.map(function (y, i) {
       return '<div class="rm__b' + (i ? '' : ' on') + '" data-year="' + y + '"><div class="rm__q svc">Q1</div><div class="rm__q svc">Q2</div><div class="rm__q svc">Q3</div><div class="rm__q svc">Q4</div>' + RM[y].map(function (r, k) {
         var pos = ' style="grid-column:' + r[2] + '/span ' + r[3] + ';grid-row:' + (k + 2) + '"';
@@ -120,14 +54,14 @@
     '<div class="rm__lg"><span class="rb rb--a">текущий фокус</span><span class="rb rb--w">запуск</span><span class="rb">в работе</span><span class="rb rb--g">резерв</span><span class="rms"><i></i>веха</span></div>';
   var tog = $('#projToggle'), views = { tiles: $('#pb'), roadmap: $('#rm') };
   var setView = function (v) {
-    tog.querySelectorAll('button').forEach(function (b) { b.classList.toggle('bx--on', b.getAttribute('data-view') === v); });
+    tog.querySelectorAll('button').forEach(function (b) { var on = b.getAttribute('data-view') === v; b.classList.toggle('bx--on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
     Object.keys(views).forEach(function (k) { views[k].hidden = k !== v; });
   };
   tog.querySelectorAll('button').forEach(function (b) { b.addEventListener('click', function () { setView(b.getAttribute('data-view')); }); });
-  if (location.hash === '#roadmap') setView('roadmap');
+  setView(location.hash === '#roadmap' ? 'roadmap' : 'tiles');
   $('#rm').querySelectorAll('.rm__y button').forEach(function (b) { b.addEventListener('click', function () {
     var y = b.getAttribute('data-year');
-    $('#rm').querySelectorAll('.rm__y button').forEach(function (x) { x.classList.toggle('bx--on', x === b); });
+    $('#rm').querySelectorAll('.rm__y button').forEach(function (x) { x.classList.toggle('bx--on', x === b); x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
     $('#rm').querySelectorAll('.rm__b').forEach(function (bd) { bd.classList.toggle('on', bd.getAttribute('data-year') === y); });
   }); });
 
@@ -151,7 +85,7 @@
     ['Спокойно и фактами', 'Инженерная компания', 'Без милитари-пафоса. У каждого проекта честный статус: запущен, готовится или исследуется. Закрытые характеристики — по запросу.', 'Принципы работы', 'company.html#principles', 'qual-3']
   ];
   var q = $('#q');
-  q.innerHTML = '<div class="q__tabs" role="tablist">' + Q.map(function (x, i) { return '<button type="button" class="' + (i ? '' : 'on') + '">' + x[0] + '</button>'; }).join('') + '</div>' +
+  q.innerHTML = '<div class="q__tabs">' + Q.map(function (x, i) { return '<button type="button" class="' + (i ? '' : 'on') + '">' + x[0] + '</button>'; }).join('') + '</div>' +
     Q.map(function (x, i) {
       return '<div class="q__p grain' + (i ? '' : ' on') + '"><div class="q__bg"><img src="img/' + x[5] + '.jpg" alt="" loading="lazy"></div><div class="mc__br"></div>' +
         '<div class="q__num"><span class="svc">0' + (i + 1) + ' / 03</span><b>' + (i + 1) + '</b></div>' +
