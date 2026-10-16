@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototype 2 · Darlein Defense</title>
+<!-- Альтернативная главная для сравнения: скругленные плитки (bento) и круглые формы. В навигацию сайта не входит, поисковикам закрыта. Тексты и данные те же, что на основной главной (js/base.js). -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="256x256" href="../assets/logo/favicon.png">
+<link rel="icon" type="image/svg+xml" href="../assets/logo/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400&family=Tektur:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="p2.css?v=1016a">
+</head>
+<body class="is-loading">
+
+<div class="ld" id="ld" aria-hidden="true">
+  <div class="ld__ring">
+    <svg viewBox="0 0 200 200"><circle class="ld__tr" cx="100" cy="100" r="92"/><circle class="ld__pr" id="ldPr" cx="100" cy="100" r="92" pathLength="1"/></svg>
+    <img src="../assets/logo/sign3b.svg" alt="">
+  </div>
+  <div class="ld__n"><span id="ldN">0</span>%</div>
+</div>
+
+<header class="hd" id="hd">
+  <a class="hd__logo isl" href="./" aria-label="Darlein Defense"><img src="../assets/logo/logo3b.svg" alt="Darlein Defense"></a>
+  <nav class="hd__nav isl" id="nav" aria-label="Основное меню"></nav>
+  <div class="hd__r isl">
+    <span class="hd__lang">RU</span>
+    <a class="pl pl--dk" id="hdDf" href="#"><span class="st st--soon"><i></i>DROPFIELD</span></a>
+    <button class="rb hd__menu" type="button" id="mmOpen" aria-label="Меню" aria-expanded="false" aria-controls="mm"><i data-ic="menu"></i></button>
+  </div>
+</header>
+
+<div class="mm" id="mm" role="dialog" aria-modal="true" aria-label="Меню" hidden></div>
+
+<main>
+
+<!-- ============ первый экран: плитки ============ -->
+<section class="hero wr" id="top">
+  <div class="hero__g">
+    <div class="tl tl--ph hero__main">
+      <div class="reel" id="reel" aria-hidden="true"></div>
+      <div class="hero__c">
+        <span class="pl pl--glass" data-rv><span class="st st--live"><i></i>Осн. 2026 → Будущее</span></span>
+        <h1 class="hero__t" data-rv style="--d:120ms">Единая экосистема оборонных технологий нового поколения</h1>
+        <div class="acts" data-rv style="--d:240ms">
+          <a class="btn" href="#about">Об экосистеме<span class="btn__c"><i data-ic="down" data-cls="ic--s"></i></span></a>
+          <a class="btn btn--gh" id="heroAll" href="#">Все проекты<span class="btn__k">14</span><span class="btn__c"><i data-ic="right" data-cls="ic--s"></i></span></a>
+        </div>
+      </div>
+      <div class="reel__dots" id="reelDots" aria-hidden="true"></div>
+    </div>
+
+    <a class="tl hero__ring" href="#eco" data-rv style="--d:160ms">
+      <div class="tl__top"><span class="pl">Экосистема</span><span class="rb rb--s"><i data-ic="down" data-cls="ic--s"></i></span></div>
+      <div class="donut" id="donut"><svg viewBox="0 0 200 200" aria-hidden="true"></svg><div class="donut__c"><b>14</b><span>продуктов</span></div></div>
+      <p class="tl__cap">Семь направлений вокруг материнского бренда</p>
+    </a>
+
+    <a class="tl tl--lt hero__df" id="heroDf" href="#" data-rv style="--d:240ms">
+      <div class="tl__top"><span class="pl pl--lt"><span class="st st--soon"><i></i>готовится</span></span><span class="rb rb--s rb--dk"><i data-ic="ne" data-cls="ic--s"></i></span></div>
+      <div class="hero__dfb"><span class="orb"><img src="../img/dir-ecom.jpg" alt=""></span>
+        <div><b class="latin">DROPFIELD</b><p>Первый коммерческий продукт экосистемы</p></div></div>
+    </a>
+
+    <div class="tl hero__caps" data-rv style="--d:320ms">
+      <div class="trio"><span class="orb orb--ic"><i data-ic="code"></i></span><span class="orb orb--ic"><i data-ic="layers"></i></span><span class="orb orb--ic"><i data-ic="factory"></i></span></div>
+      <p class="tl__cap">Технологии · команды · производство</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ кто мы ============ -->
+<section class="sec wr" id="about">
+  <div class="bento bento--about">
+    <div class="tl ab__who" data-rv>
+      <span class="pl">Кто мы и чем занимаемся</span>
+      <p class="words" id="whoT"></p>
+    </div>
+    <a class="tl tl--bm ab__num" id="abNum" href="#" data-rv style="--d:80ms">
+      <div class="tl__top"><span class="pl pl--bm">Портфель</span><span class="rb rb--s rb--dk"><i data-ic="right" data-cls="ic--s"></i></span></div>
+      <div><b class="big">14</b><p>продуктов<br>в семи направлениях</p></div>
+    </a>
+    <article class="tl ab__card" data-rv>
+      <span class="orb orb--ic orb--l"><i data-ic="mission"></i></span>
+      <div><h3 class="h3">Миссия</h3><p id="mis"></p></div>
+    </article>
+    <article class="tl tl--lt ab__card" data-rv style="--d:80ms">
+      <span class="orb orb--ic orb--l orb--lt"><i data-ic="goal"></i></span>
+      <div><h3 class="h3">Стратегическая цель</h3><p id="goal"></p></div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ экосистема: орбита ============ -->
+<section class="sec wr" id="eco">
+  <div class="sh"><h2 class="h2" data-rv>Как устроена<br>экосистема</h2><p class="sh__r" data-rv>Семь направлений вокруг материнского бренда. Выберите направление на схеме.</p></div>
+  <div class="bento bento--eco">
+    <div class="tl orbit" id="orbit" data-rv>
+      <div class="orbit__st" id="orbitSt">
+        <svg class="orbit__svg" viewBox="0 0 600 600" aria-hidden="true">
+          <circle class="o1" cx="300" cy="300" r="282"/><circle class="o2" cx="300" cy="300" r="214"/><circle class="o3" cx="300" cy="300" r="120"/>
+          <g class="orbit__spin"><circle class="o4" cx="300" cy="300" r="248" pathLength="100"/></g>
+          <g id="orbitLinks"></g>
+        </svg>
+        <div class="orbit__core"><img src="../assets/logo/sign3b.svg" alt=""><span>Darlein<br>Defense</span></div>
+      </div>
+      <div class="orbit__lg"><span class="st st--live"><i></i>запущен</span><span class="st st--soon"><i></i>готовится к запуску</span><span class="st st--dev"><i></i>в разработке</span><span class="st st--research"><i></i>исследование</span></div>
+    </div>
+    <div class="tl dd" id="dd" aria-live="polite">
+      <div class="dd__ph"><div class="dd__img" id="ddImg"></div><span class="pl pl--glass dd__n" id="ddN">01 / 07</span></div>
+      <div class="dd__b">
+        <div class="dd__m"><span class="orb orb--ic" id="ddIc"></span><span class="pl" id="ddSt"></span></div>
+        <h3 class="h3" id="ddT"></h3>
+        <p id="ddD"></p>
+        <div class="chips" id="ddP"></div>
+        <a class="btn btn--gh" id="ddGo" href="#">Направление на странице проектов<span class="btn__c"><i data-ic="right" data-cls="ic--s"></i></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ проблемы и решения ============ -->
+<section class="sec wr" id="problems">
+  <div class="sh"><h2 class="h2" data-rv>Проблемы рынка<br>и как мы их решаем</h2><div class="sh__r pls" data-rv><span class="pl">Три проблемы</span><span class="pl">Три решения</span></div></div>
+  <div class="probs" id="probs"></div>
+</section>
+
+<!-- ============ направления ============ -->
+<section class="sec" id="directions">
+  <div class="sh wr"><h2 class="h2" data-rv>Направления<br>проектов</h2>
+    <div class="rnav" data-rv><span class="pl"><b id="dirNow">01</b>&nbsp;/ 07</span>
+      <button class="rb" type="button" data-step="-1" aria-label="Предыдущее направление"><i data-ic="left"></i></button>
+      <button class="rb" type="button" data-step="1" aria-label="Следующее направление"><i data-ic="right"></i></button></div></div>
+  <div class="rail" id="rail" tabindex="0" role="group" aria-label="Семь направлений проектов" data-rv></div>
+</section>
+
+<!-- ============ наши проекты ============ -->
+<section class="sec wr" id="products">
+  <div class="sh"><h2 class="h2" data-rv>Наши проекты</h2>
+    <div class="sh__r acts" data-rv><div class="seg" id="seg"><button type="button" class="on" aria-pressed="true" data-view="grid">Проекты</button><button type="button" aria-pressed="false" data-view="rm">Роадмап</button></div>
+      <a class="btn btn--gh btn--s" id="prAll" href="#">Все проекты<span class="btn__k">14</span><span class="btn__c"><i data-ic="right" data-cls="ic--s"></i></span></a></div></div>
+  <div class="pg" id="pg"></div>
+  <div class="tl rm" id="rm" hidden></div>
+</section>
+
+<!-- ============ создаем вместе ============ -->
+<section class="sec wr" id="paths">
+  <div class="sh sh--intro"><h2 class="h2" data-rv>Создаем<br>Darlein Defense<br>вместе</h2>
+    <p class="sh__r lead" data-rv>Объединяем команды, технологии, производство и капитал. Подключиться к экосистеме можно в трех сценариях — выберите свой.</p></div>
+  <div class="bento bento--join" id="join"></div>
+</section>
+
+<!-- ============ DefenseTech компания ============ -->
+<section class="sec wr" id="company">
+  <div class="sh"><h2 class="h2" data-rv>DefenseTech<br>компания</h2><div class="sh__r pls" data-rv><span class="pl">Технологичный</span><span class="pl">Точный</span><span class="pl">Системный</span></div></div>
+  <div class="bento bento--q" id="q"></div>
+</section>
+
+<!-- ============ новости ============ -->
+<section class="sec wr" id="intel">
+  <div class="sh"><h2 class="h2" data-rv>Новости</h2><a class="btn btn--gh btn--s sh__r" id="newsAll" href="#" data-rv>Все материалы<span class="btn__c"><i data-ic="right" data-cls="ic--s"></i></span></a></div>
+  <div class="news" id="news"></div>
+</section>
+
+</main>
+
+<footer class="ft wr" id="ft"></footer>
+
+<script src="../js/base.js?v=1016e"></script>
+<script src="p2.js?v=1016a"></script>
+</body>
+</html>
