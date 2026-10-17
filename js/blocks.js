@@ -3,12 +3,12 @@
   'use strict';
   DD.I.left = DD.I.left || '<path d="M20 12H4M10 6l-6 6 6 6"/>';
 
-  /* ---------- загрузочный экран: знак рисуется линией, четыре проверки, счетчик и сегментная линия; экран уезжает вверх шторой ----------
+  /* ---------- загрузочный экран: знак рисуется линией, счетчик и сегментная линия (на внутренних страницах еще четыре проверки); экран уезжает вверх шторой ----------
      Разметка #ld в странице. o.min — минимальная длительность, o.assets — что загрузить заранее, o.onOut — когда экран начинает уезжать */
   DD.loader = function (o) {
     var ld = document.getElementById('ld');
     if (!ld) { if (o.onOut) o.onOut(); return; }
-    var sign = ld.querySelector('.ld__sign'), tr = ld.querySelector('.ld__tr'), cks = ld.querySelector('.ld__ck').children, num = ld.querySelector('.ld__n span');
+    var sign = ld.querySelector('.ld__sign'), tr = ld.querySelector('.ld__tr'), ck = ld.querySelector('.ld__ck'), cks = ck ? ck.children : [], num = ld.querySelector('.ld__n span');  /* список проверок есть не на всех страницах */
     sign.innerHTML = DD.sign; var path = sign.querySelector('path');
     var NB = window.innerWidth > 900 ? 48 : 32, s = '', i; for (i = 0; i < 48; i++) s += '<i></i>'; tr.innerHTML = s; var blocks = tr.children;
     try { sessionStorage.setItem('dd_seen', '1'); } catch (e) {}
@@ -52,7 +52,7 @@
     box.querySelector('.eco__svg').innerHTML = svg;
     var st = box.querySelector('.eco__st'), port = box.querySelector('.port'), capN = port.querySelector('.port__cap b'), capT = port.querySelector('.port__cap .svc'), cap = box.querySelector('.eco__cap'), imgs = [];
     DD.dirs.forEach(function (d, i) {
-      var im = document.createElement('img'); im.src = 'img/dir-' + d.key + '.jpg'; im.alt = ''; im.loading = 'lazy'; port.insertBefore(im, port.querySelector('.port__logo')); imgs.push(im);
+      var im = document.createElement('img'); im.src = 'img/' + (d.img || 'dir-' + d.key) + '.jpg';  /* d.img — свой кадр направления (на главной из брендбука) */ im.alt = ''; im.loading = 'lazy'; port.insertBefore(im, port.querySelector('.port__logo')); imgs.push(im);
       var a = document.createElement('a'); a.className = 'dc' + (lay[i][2] ? '' : ' dc--b'); a.href = DD.url('projects.html#dir-' + d.key); a.setAttribute('data-i', i);
       a.style.cssText = 'left:' + (lay[i][0] / 12).toFixed(2) + '%;top:' + (lay[i][1] / 7.8).toFixed(2) + '%;--i:' + i;
       a.innerHTML = '<span class="dc__top svc"><span>' + DD.ic(d.ic) + d.n + ' · ' + d.short + '</span>' + DD.st(d.st, d.stl) + '</span><b class="latin">' + d.products.join(' · ') + '</b><p>' + d.desc + '</p>';
@@ -84,7 +84,7 @@
     var count = function (n) { return n + (n === 1 ? ' продукт' : ' продукта'); };
     rail.innerHTML = DD.dirs.map(function (d, i) {
       var mine = DD.projects.filter(function (p) { return p[3] === i; });
-      return '<article class="rc grain"><div class="rc__img"><img src="img/dir-' + d.key + '.jpg" alt="" loading="lazy"></div><div class="mc__br"></div>' +
+      return '<article class="rc grain"><div class="rc__img"><img src="img/' + (d.img || 'dir-' + d.key) + '.jpg" alt="" loading="lazy"></div><div class="mc__br"></div>' +
         '<div class="rc__t"><span class="rc__n">' + d.n + '</span><span class="svc">' + DD.ic(d.ic) + '</span><span class="svc">' + count(mine.length) + '</span></div>' +
         '<div><h3>' + d.title + '</h3><p>' + DD.dirDesc[i] + '</p><div class="rc__ch">' + mine.map(function (p) {
           return '<a class="bx bx--s svc" href="' + href(p[0]) + '" title="' + p[0] + ' — ' + p[2] + '"><span class="bx__f"></span><span class="st st--' + p[1] + '"><i></i>' + p[0] + '</span>' + DD.ic('ne', 'ic--s') + '</a>';

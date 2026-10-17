@@ -1,0 +1,95 @@
+/* ===== Главная по брендбуку: скругленная графика (замечания заказчика 17.10.2026) и правила брендбука =====
+   Подключается пока только на главной, после main.css; остальные страницы остаются со скобками.
+   Брендбук — Figma «darlein», страница export: «Система. Радиусы», «Типографика», «Графика».
+   - Радиусы из шкалы 8 / 16 / 24 / 32: малый элемент (метка, бейдж, строка списка) — 8, карточка и панель — 16,
+     крупная панель и карточка с фото — 24, кнопки — пилюли. Внутренний радиус = внешний минус отступ.
+     Элементы меньше 16 px не скругляются.
+   - Скобки остались в четырех местах — «Кто мы», миссия и цель, схема экосистемы, открытая карточка «Проблем»,
+     их углы — дуги. У карточек с фото уголков нет, панели обведены мягким контуром.
+   - Tektur — только служебные строки, статусы и номера; в кнопках Geist.
+   - Пиктограммы брендбука (js/brand.js): основная часть цвета текста, акцент Beam (на светлом Flare).
+   - Паттерн «Топографические линии» — тихий фон под тезисом «Кто мы». */
+
+/* ---------- Кнопки: пилюля, контур отходит наружу, заливка заходит слева ---------- */
+.bx{border-radius:999px}
+.bx::before{background:none;border:1px solid var(--c);border-radius:inherit}
+.bx__f{border-radius:inherit;transform:none;clip-path:inset(0 100% 0 0 round 999px);transition:clip-path .5s var(--out)}
+.bx:hover .bx__f{clip-path:inset(0 round 999px)}
+.bx:hover::before{inset:-4px}
+@media(hover:hover){
+  :is(.nr,.pbp,.rc--all,.jc):hover .bx__f{clip-path:inset(0 round 999px)}
+  :is(.nr,.pbp,.rc--all,.jc):hover .bx::before{inset:-4px}
+}
+/* в кнопках Geist: Tektur по брендбуку не ставят в кнопку */
+.bx.svc{font-family:var(--geist);letter-spacing:.01em}
+
+/* ---------- Оставшиеся скобки: углы-дуги ----------
+   Скругленный контур, видны только четыре угла размером --a (маска из четырех угловых квадратов) */
+.fr::before,.mc__br{background:none;border:1px solid var(--c);border-radius:var(--fr-r,16px);
+  -webkit-mask:linear-gradient(#000 0 0) 0 0/var(--a) var(--a) no-repeat,linear-gradient(#000 0 0) 100% 0/var(--a) var(--a) no-repeat,linear-gradient(#000 0 0) 0 100%/var(--a) var(--a) no-repeat,linear-gradient(#000 0 0) 100% 100%/var(--a) var(--a) no-repeat;
+  mask:linear-gradient(#000 0 0) 0 0/var(--a) var(--a) no-repeat,linear-gradient(#000 0 0) 100% 0/var(--a) var(--a) no-repeat,linear-gradient(#000 0 0) 0 100%/var(--a) var(--a) no-repeat,linear-gradient(#000 0 0) 100% 100%/var(--a) var(--a) no-repeat}
+.mc__br{--a:22px}
+.eco{--fr-r:24px}
+.eco__st::before{background:radial-gradient(circle,rgba(255,255,255,.13) 1px,transparent 1.6px) 0 0/22px 22px}  /* только узловая сетка: акцент фон не заливает */
+/* «Кто мы»: четыре уголка-дуги */
+.mis::before,.mis::after,.mis i::before,.mis i::after{width:24px;height:24px}
+.mis::before{border-top-left-radius:16px}.mis::after{border-top-right-radius:16px}
+.mis i::before{border-bottom-left-radius:16px}.mis i::after{border-bottom-right-radius:16px}
+/* миссия и цель: карточка 24, уголки 16 — при наведении они встают в 8 px от края, подсветка повторяет скругление */
+.mc--k{border-radius:24px}
+.mc--k::after{border-radius:inherit}
+.mc--k .mc__ic{--c:rgba(103,255,217,.5);border-radius:50%;flex:none}
+.mc--k .mc__ic::before{-webkit-mask:none;mask:none;border-radius:50%}
+@media(max-width:900px){.duo>.mc{flex:0 0 auto}}  /* карточки в столбик растут по тексту, текст не заходит на уголки */
+
+/* ---------- Панели: мягкий скругленный контур вместо скобок ---------- */
+:is(.pbs,.rm,.ft__p,.ck,.mg__d).fr{--c:var(--line);border-radius:24px}
+:is(.pbs,.rm,.ft__p,.ck,.mg__d).fr::before{-webkit-mask:none;mask:none;border-radius:inherit}
+.ck.fr,.mg__d.fr{border-radius:16px}
+/* карточки направлений в схеме */
+.dc{--c:var(--line);border-radius:16px}
+.dc::before{background:none;border:1px solid var(--c);border-radius:inherit;transition:inset .35s var(--out),border-radius .35s var(--out)}
+.dc:hover::before,.dc.on::before{inset:-4px;border-radius:20px}
+/* карточки с фото: уголков нет, скругление 24 у них уже есть */
+.rc>.mc__br,.pbp>.mc__br,.q__p>.mc__br{display:none}
+.rc--all{border-radius:24px;box-shadow:inset 0 0 0 1px var(--line);transition:box-shadow .4s var(--out)}
+@media(hover:hover){.rc--all:hover{box-shadow:inset 0 0 0 1px rgba(255,255,255,.24)}}
+/* строки списка проектов и пункты выпадающего меню: подсветка со скругленными краями (малый элемент — 8) */
+.prow:is(:hover,.on){border-radius:8px;box-shadow:none}
+.prow:is(:hover,.on)+.prow{box-shadow:none}
+.mg__l a::before{display:none}
+.mg__l a:hover{border-radius:8px}
+/* остальное по шкале: метки и бейджи 8, выпадающий список языков 16, кадр в «Проблемах» 16 */
+.rb,.rb__t,.pbp__st{border-radius:8px}
+.lg__l{border-radius:16px}.lg__l button{border-radius:8px}
+.ai__ph{border-radius:16px}
+.rms i{border-radius:50%;transform:none}  /* веха роадмапа — круг, как точки статусов */
+.pbs__l::-webkit-scrollbar-thumb{border-radius:0}  /* меньше 16 px — без скругления */
+/* кадр вышки — по верху, чтобы в ленте были видны антенны */
+.rc__img img[src$="b-tower.jpg"]{object-position:50% 12%}
+
+/* ---------- Пиктограммы брендбука ---------- */
+.ic--b{fill:currentColor;stroke:currentColor;stroke-width:.35}  /* контуры рассчитаны на 32 px; в 24 px чуть утолщаем */
+.ic--b .ia{fill:var(--beam);stroke:var(--beam)}
+.on-light .ic--b .ia{fill:var(--flare);stroke:var(--flare)}
+.dc__top .ic--b{width:24px;height:24px;color:var(--base)}
+.rc__t .ic--b{width:32px;height:32px;stroke-width:0;color:var(--base)}
+.jc__top .ic--b{width:32px;height:32px;stroke-width:0;color:var(--void)}
+.dc:hover .dc__top .ic--b,.dc.on .dc__top .ic--b{color:var(--base)}  /* при наведении значок остается двухцветным */
+
+/* ---------- Служебные строки Tektur не мельче 14 px (брендбук: 14–20); вторичные подписи — Mute ---------- */
+:root{--on-dark-3:#6E767C}
+.pbs__h,.mg__l a>.svc,.rb__t{font-size:var(--fs-svc)}
+.eco__svg .dn{font-size:14px}
+.dc__top{font-size:clamp(14px,.85vw,16px)}
+
+/* ---------- Паттерн «Топографические линии» под тезисом «Кто мы» ---------- */
+.mis__topo{position:absolute;inset:0;z-index:0;pointer-events:none;background:url(../img/topo.svg) 50% 50%/max(100%,1300px) auto no-repeat;opacity:.16;
+  -webkit-mask-image:radial-gradient(closest-side,#000 45%,transparent 100%);mask-image:radial-gradient(closest-side,#000 45%,transparent 100%)}
+.mis .lbl,.mis p{position:relative;z-index:1}
+
+/* ---------- Загрузочный экран: только линия загрузки, счетчик и подпись «Загрузка» ---------- */
+.ld__lb{display:inline-flex;align-items:center;gap:12px;font-size:16px;color:var(--on-dark-2)}
+.ld__lb i{width:8px;height:8px;border-radius:50%;background:var(--beam);animation:ldblink 1.2s ease-in-out infinite}
+@media(max-width:900px){.ld__mid{flex-direction:row;align-items:flex-end}}
+@media(prefers-reduced-motion:reduce){.ld__lb i{animation:none}}

@@ -27,7 +27,8 @@
   /* ---------- первый экран: тихое поле точек и линий, пока нет видео ---------- */
   var cv = $('#heroCanvas'), hero = $('.hero'), dots = true, seen = true, ready = false, loop = null;
   /* временная смена кадров проектов вместо видео: кадр 4 с, следующий подгружается заранее; поле точек гаснет, когда показан первый кадр */
-  var REEL = ['dir-ecom', 'dir-soft', 'qual-3', 'join-career', 'dir-uas', 'dir-gear', 'dir-comms', 'dir-def', 'hero-platform', 'hero-boat', 'hero-evtol', 'dir-tech', 'hull', 'prob-2'];
+  /* кадры b-* — из брендбука (фотостиль), остальные — прежние кадры направлений */
+  var REEL = ['b-highfast', 'dir-ecom', 'b-agata', 'b-nomad', 'dir-uas', 'b-seal-top', 'dir-gear', 'b-hand', 'dir-def', 'b-seal', 'b-nomad-wheel', 'b-nomad-top', 'hull', 'b-seal-bow'];
   var reel = $('#heroReel'), shots, cur = -1, timer = null;
   reel.innerHTML = REEL.map(function (k, i) { return '<img alt="" ' + (i < 2 ? 'src' : 'data-src') + '="img/' + k + '.jpg"' + (i % 2 ? ' class="r"' : '') + '>'; }).join('');
   shots = [].slice.call(reel.children);
