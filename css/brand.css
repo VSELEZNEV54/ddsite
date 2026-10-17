@@ -4,21 +4,29 @@
    - Радиусы из шкалы 8 / 16 / 24 / 32: малый элемент (метка, бейдж, строка списка) — 8, карточка и панель — 16,
      крупная панель и карточка с фото — 24, кнопки — пилюли. Внутренний радиус = внешний минус отступ.
      Элементы меньше 16 px не скругляются.
-   - Скобки остались в четырех местах — «Кто мы», миссия и цель, схема экосистемы, открытая карточка «Проблем»,
+   - Скобки остались в четырех местах — «Кто мы», миссия и цель, схема экосистемы, описание в выпадающем меню,
      их углы — дуги. У карточек с фото уголков нет, панели обведены мягким контуром.
    - Tektur — только служебные строки, статусы и номера; в кнопках Geist.
    - Пиктограммы брендбука (js/brand.js): основная часть цвета текста, акцент Beam (на светлом Flare).
    - Паттерн «Топографические линии» — тихий фон под тезисом «Кто мы». */
 
-/* ---------- Кнопки: пилюля, контур отходит наружу, заливка заходит слева ---------- */
-.bx{border-radius:999px}
+/* ---------- Кнопки: пилюля с тонким контуром, заливка заходит слева ----------
+   Контур при наведении остается на месте (вторая обводка вокруг залитой кнопки выглядела криво, особенно после касания на телефоне).
+   Заливка в покое скрыта полностью: сжатая до нуля через clip-path, в Safari она оставляла светлую дугу у левого края. */
+.bx{border-radius:999px;max-width:100%}
 .bx::before{background:none;border:1px solid var(--c);border-radius:inherit}
-.bx__f{border-radius:inherit;transform:none;clip-path:inset(0 100% 0 0 round 999px);transition:clip-path .5s var(--out)}
-.bx:hover .bx__f{clip-path:inset(0 round 999px)}
-.bx:hover::before{inset:-4px}
+.bx__f{border-radius:inherit;transform:none;opacity:0;clip-path:inset(0 100% 0 0 round 999px);transition:clip-path .5s var(--out),opacity 0s .5s}
+.bx:hover .bx__f{opacity:1;clip-path:inset(0 round 999px);transition:clip-path .5s var(--out),opacity 0s}
+.bx:hover::before{inset:0}
 @media(hover:hover){
-  :is(.nr,.pbp,.rc--all,.jc):hover .bx__f{clip-path:inset(0 round 999px)}
-  :is(.nr,.pbp,.rc--all,.jc):hover .bx::before{inset:-4px}
+  :is(.nr,.pbp,.rc--all,.jc):hover .bx__f{opacity:1;clip-path:inset(0 round 999px);transition:clip-path .5s var(--out),opacity 0s}
+  :is(.nr,.pbp,.rc--all,.jc):hover .bx::before{inset:0}
+}
+/* на телефоне длинная подпись переносится, а не выталкивает стрелку на контур */
+@media(max-width:640px){
+  .bx:not(.bx--ic){white-space:normal;text-align:left;line-height:1.2;height:auto;min-height:54px;padding-top:10px;padding-bottom:10px}
+  .bx--s:not(.bx--ic){min-height:40px;padding-top:8px;padding-bottom:8px}
+  .bx--l{min-height:68px}
 }
 /* в кнопках Geist: Tektur по брендбуку не ставят в кнопку */
 .bx.svc{font-family:var(--geist);letter-spacing:.01em}
@@ -67,6 +75,9 @@
 .rb,.rb__t,.pbp__st{border-radius:8px}
 .lg__l{border-radius:16px}.lg__l button{border-radius:8px}
 .ai__ph{border-radius:16px}
+/* «Проблемы»: без скобок — у карточек и так линии сверху и снизу; на планшете и телефоне больше воздуха до линий */
+.ai.fr::before{display:none}
+@media(max-width:900px){.ai__h{padding-top:20px;padding-bottom:20px}.ai__g{padding-top:16px;padding-bottom:28px}}
 .rms i{border-radius:50%;transform:none}  /* веха роадмапа — круг, как точки статусов */
 .pbs__l::-webkit-scrollbar-thumb{border-radius:0}  /* меньше 16 px — без скругления */
 /* кадр вышки — по верху, чтобы в ленте были видны антенны */
