@@ -35,17 +35,21 @@
 .mis::before,.mis::after,.mis i::before,.mis i::after{width:24px;height:24px}
 .mis::before{border-top-left-radius:16px}.mis::after{border-top-right-radius:16px}
 .mis i::before{border-bottom-left-radius:16px}.mis i::after{border-bottom-right-radius:16px}
-/* миссия и цель: карточка 24, уголки 16 — при наведении они встают в 8 px от края, подсветка повторяет скругление */
-.mc--k{border-radius:24px}
+/* миссия и цель: уголки по краю карточки, как у «Кто мы», — рамка совпадает с сеткой; при наведении меняется только цвет */
+.mc--k{border-radius:16px}
+.mc--k>.mc__br{inset:0}
+@media(hover:hover){.mc--k:hover>.mc__br{inset:0}}
 .mc--k::after{border-radius:inherit}
 .mc--k .mc__ic{--c:rgba(103,255,217,.5);border-radius:50%;flex:none}
 .mc--k .mc__ic::before{-webkit-mask:none;mask:none;border-radius:50%}
 @media(max-width:900px){.duo>.mc{flex:0 0 auto}}  /* карточки в столбик растут по тексту, текст не заходит на уголки */
 
 /* ---------- Панели: мягкий скругленный контур вместо скобок ---------- */
-:is(.pbs,.rm,.ft__p,.ck,.mg__d).fr{--c:var(--line);border-radius:24px}
-:is(.pbs,.rm,.ft__p,.ck,.mg__d).fr::before{-webkit-mask:none;mask:none;border-radius:inherit}
-.ck.fr,.mg__d.fr{border-radius:16px}
+:is(.pbs,.rm,.ft__p,.ck).fr{--c:var(--line);border-radius:24px}
+:is(.pbs,.rm,.ft__p,.ck).fr::before{-webkit-mask:none;mask:none;border-radius:inherit}
+.ck.fr{border-radius:16px}
+/* описание в выпадающем меню — скобки с углами-дугами, как у «Кто мы» */
+.mg__d.fr{border-radius:16px}
 /* карточки направлений в схеме */
 .dc{--c:var(--line);border-radius:16px}
 .dc::before{background:none;border:1px solid var(--c);border-radius:inherit;transition:inset .35s var(--out),border-radius .35s var(--out)}
