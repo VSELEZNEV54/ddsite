@@ -22,11 +22,20 @@
   :is(.nr,.pbp,.rc--all,.jc):hover .bx__f{opacity:1;clip-path:inset(0 round 999px);transition:clip-path .5s var(--out),opacity 0s}
   :is(.nr,.pbp,.rc--all,.jc):hover .bx::before{inset:0}
 }
-/* на телефоне длинная подпись переносится, а не выталкивает стрелку на контур */
+/* текст по центру пилюли: у кнопок без стрелки поля слева и справа равны (раньше были 14/12 и 22/18 — под стрелку);
+   по вертикали шрифт садится примерно на 1 px ниже середины, поднимаем на 1 px */
+.bx:not(.bx--ic){padding-bottom:2px}  /* в круглых кнопках-значках значок строго по центру */
+.bx:not(.bx--ic):not(:has(.ic)){padding-left:20px;padding-right:20px}
+.bx--s:not(.bx--ic):not(:has(.ic)){padding-left:16px;padding-right:16px}
+/* подпись кнопки всегда в одну строку: на телефоне кегль плавно уменьшается с шириной экрана (16 → 13 px),
+   промежуток до стрелки 12 px, на самых узких экранах поля чуть меньше — длинная подпись не выталкивает стрелку на контур */
 @media(max-width:640px){
-  .bx:not(.bx--ic){white-space:normal;text-align:left;line-height:1.2;height:auto;min-height:54px;padding-top:10px;padding-bottom:10px}
-  .bx--s:not(.bx--ic){min-height:40px;padding-top:8px;padding-bottom:8px}
-  .bx--l{min-height:68px}
+  .bx{gap:12px}
+  .bx:not(.bx--s):not(.bx--l){font-size:clamp(13px,4vw,16px)}
+}
+@media(max-width:360px){
+  .bx:not(.bx--ic):has(.ic){padding-left:18px;padding-right:14px}
+  .jc{padding-left:14px;padding-right:14px}
 }
 /* в кнопках Geist: Tektur по брендбуку не ставят в кнопку */
 .bx.svc{font-family:var(--geist);letter-spacing:.01em}
