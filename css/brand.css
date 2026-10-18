@@ -1,5 +1,5 @@
-/* ===== Главная по брендбуку: скругленная графика (замечания заказчика 17.10.2026) и правила брендбука =====
-   Подключается пока только на главной, после main.css; остальные страницы остаются со скобками.
+/* ===== Весь сайт по брендбуку: скругленная графика (замечания заказчика 17.10.2026) и правила брендбука =====
+   С 18.10.2026 подключается на всех страницах последним (после main.css и pages.css).
    Брендбук — Figma «darlein», страница export: «Система. Радиусы», «Типографика», «Графика».
    - Радиусы из шкалы 8 / 16 / 24 / 32: малый элемент (метка, бейдж, строка списка) — 8, карточка и панель — 16,
      крупная панель и карточка с фото — 24, кнопки — пилюли. Внутренний радиус = внешний минус отступ.
@@ -32,13 +32,14 @@
 @media(max-width:640px){
   .bx{gap:12px}
   .bx:not(.bx--s):not(.bx--l){font-size:clamp(13px,4vw,16px)}
+  .bx--s:not(.bx--ic){font-size:clamp(12px,3.75vw,14px)}
 }
 @media(max-width:360px){
-  .bx:not(.bx--ic):has(.ic){padding-left:18px;padding-right:14px}
+  .bx:not(.bx--ic):not(.bx--s):has(.ic){padding-left:18px;padding-right:14px}
   .jc{padding-left:14px;padding-right:14px}
 }
 /* в кнопках Geist: Tektur по брендбуку не ставят в кнопку */
-.bx.svc{font-family:var(--geist);letter-spacing:.01em}
+.bx.svc,.svc .bx{font-family:var(--geist);letter-spacing:.01em}
 
 /* ---------- Оставшиеся скобки: углы-дуги ----------
    Скругленный контур, видны только четыре угла размером --a (маска из четырех угловых квадратов) */
@@ -62,8 +63,8 @@
 @media(max-width:900px){.duo>.mc{flex:0 0 auto}}  /* карточки в столбик растут по тексту, текст не заходит на уголки */
 
 /* ---------- Панели: мягкий скругленный контур вместо скобок ---------- */
-:is(.pbs,.rm,.ft__p,.ck).fr{--c:var(--line);border-radius:24px}
-:is(.pbs,.rm,.ft__p,.ck).fr::before{-webkit-mask:none;mask:none;border-radius:inherit}
+:is(.pbs,.rm,.ft__p,.ck,.req,.cta2,.pj__nav).fr{--c:var(--line);border-radius:24px}
+:is(.pbs,.rm,.ft__p,.ck,.req,.cta2,.pj__nav).fr::before{-webkit-mask:none;mask:none;border-radius:inherit}
 .ck.fr{border-radius:16px}
 /* описание в выпадающем меню — скобки с углами-дугами, как у «Кто мы» */
 .mg__d.fr{border-radius:16px}
@@ -117,3 +118,15 @@
 .ld__lb i{width:8px;height:8px;border-radius:50%;background:var(--beam);animation:ldblink 1.2s ease-in-out infinite}
 @media(max-width:900px){.ld__mid{flex-direction:row;align-items:flex-end}}
 @media(prefers-reduced-motion:reduce){.ld__lb i{animation:none}}
+
+/* ---------- Внутренние страницы: то, что было со скобками ---------- */
+/* метки «DD · 2026», характеристики на панелях «Проектов» — малые элементы, 8 px, контур */
+:is(.tg,.pp__sp li).fr{--c:var(--line);border-radius:8px}
+:is(.tg,.pp__sp li).fr::before{-webkit-mask:none;mask:none;border-radius:inherit}
+/* у кадров уголков нет */
+.pp>.mc__br,.pgv>.mc__br{display:none}
+/* маркеры списков — круглые, как точки статусов */
+.dl__r li::before{border-radius:50%}
+/* список проектов слева: подсветка строки скругленная; на планшете и телефоне — лента пилюль */
+@media(min-width:901px){.pj__nav a:is(:hover,.on){border-radius:8px;box-shadow:none}.pj__nav li:has(a:is(:hover,.on))+li a{box-shadow:none}}
+@media(max-width:900px){.pj__nav a{background:none!important;border-radius:999px;box-shadow:inset 0 0 0 1px var(--c)!important}}

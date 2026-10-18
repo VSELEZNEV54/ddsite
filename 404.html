@@ -3,24 +3,62 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>/* страница открывается по любому адресу: ссылки и стили — от корня сайта */document.write('<base href="'+(/github\.io$/.test(location.hostname)?'/'+location.pathname.split('/')[1]+'/':'/')+'">')</script>
+<script>try{if(!sessionStorage.getItem('dd_seen'))document.documentElement.classList.add('ld-on')}catch(e){}</script>
 <title>Страница не найдена · Darlein Defense</title>
+<meta name="description" content="Страница не найдена">
 <meta name="robots" content="noindex">
-<script>
-/* Прежние страницы переехали в папку prototype/: старые ссылки открывают их там. */
-(function () {
-  var base = /github\.io$/.test(location.hostname) ? '/' + location.pathname.split('/')[1] + '/' : '/';
-  var rest = location.pathname.slice(base.length), m = /^([a-z0-9-]+)\.html$/.exec(rest);
-  var moved = ['agata', 'arrowhead', 'arsenal', 'backeye', 'blackfly', 'careers', 'company', 'contacts', 'dropfield', 'echo', 'elza', 'eva', 'hex', 'highfast', 'intel', 'intel-article', 'investors', 'legal', 'nomad', 'partners', 'projects', 'seal', 'shield', 'sitemap', 'thanks', 'warden'];
-  if (m && moved.indexOf(m[1]) > -1) location.replace(base + 'prototype/' + rest + location.search + location.hash);
-  else document.addEventListener('DOMContentLoaded', function () { document.getElementById('home').href = base; });
-})();
-</script>
-<style>
-body{margin:0;min-height:100vh;display:grid;place-items:center;background:#090A0C;color:#fff;font-family:-apple-system,"Helvetica Neue",Arial,sans-serif;text-align:center;padding:24px}
-p{color:rgba(255,255,255,.62);margin:16px 0 32px}a{color:#fff;border-bottom:1px solid #67FFD9;text-decoration:none;padding-bottom:4px}
-</style>
+<link rel="icon" type="image/png" sizes="256x256" href="assets/logo/favicon.png">
+<link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400&family=Tektur:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css?v=1018a">
+<link rel="stylesheet" href="css/main.css?v=1018a">
+<link rel="stylesheet" href="css/pages.css?v=1018a">
+<link rel="stylesheet" href="css/brand.css?v=1018a">
 </head>
-<body>
-<div><h1 style="font-weight:400;margin:0">Страница не найдена</h1><p>Такой страницы нет или адрес изменился.</p><a id="home" href="/">На главную</a></div>
+<body data-nav="">
+
+<div class="ld ld--once" id="ld" aria-hidden="true">
+  <div class="ld__sign" id="ldSign"></div>
+  <div class="ld__in">
+    <div class="ld__top"><img src="assets/logo/logo3b.svg" alt=""></div>
+    <div>
+      <div class="ld__mid">
+        <div class="ld__lb svc"><i></i>Загрузка</div>
+        <div class="ld__n"><span id="ldN">0</span><sup>%</sup></div>
+      </div>
+      <div class="ld__tr" id="ldTr"></div>
+    </div>
+  </div>
+</div>
+
+<header class="hd" id="hd">
+  <a class="hd__logo" href="index.html" aria-label="Darlein Defense"><img src="assets/logo/logo3b.svg" alt="Darlein Defense"></a>
+  <nav id="nav" aria-label="Основное меню"></nav>
+  <div class="hd__r">
+    <span class="svc muted">RU</span>
+    <a class="bx bx--s svc" href="dropfield.html"><span class="bx__f"></span><span class="st st--soon"><i></i>DROPFIELD</span><i data-ic="ne" data-cls="ic--s"></i></a>
+    <button class="bx bx--ic bx--s hd__menu" aria-label="Меню"><span class="bx__f"></span><i data-ic="menu"></i></button>
+  </div>
+</header>
+
+<main>
+<section class="util wrap">
+  <div class="util__g">
+    <div data-rv><span class="svc">Ошибка 404</span><h1>Такой страницы нет или адрес изменился</h1><p class="t-lead">Вернем на маршрут. Четыре ссылки вместо поиска.</p></div>
+    <nav class="util__l" data-rv style="--d:120ms" aria-label="Маршруты"><a href="index.html"><span>Главная</span><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></a><a href="dropfield.html"><span><span class="latin">DROPFIELD</span></span><small>площадка снаряжения и оборудования</small><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></a><a href="agata.html"><span><span class="latin">AGATA</span></span><small>платформа управления и координации</small><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></a><a href="contacts.html"><span>Контакты</span><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></a></nav>
+  </div>
+</section>
+</main>
+
+<footer class="ft" id="footer"><div class="ft__p fr" id="ftp"></div></footer>
+
+<script src="js/base.js?v=1018a"></script>
+<script src="js/brand.js?v=1018a"></script>
+<script src="js/chrome.js?v=1018a"></script>
+<script src="js/blocks.js?v=1018a"></script>
+<script src="js/page.js?v=1018a"></script>
 </body>
 </html>

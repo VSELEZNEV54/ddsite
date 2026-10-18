@@ -89,7 +89,7 @@ html.ld-on body:not(.ready){overflow:hidden}
 .pj__nav li+li a{box-shadow:inset 0 1px 0 var(--line-2)}
 .pj__nav a{position:relative;display:grid;grid-template-columns:30px 1fr;align-items:center;height:clamp(32px,4.6vh,44px);padding:0 12px;color:var(--on-dark-2);letter-spacing:.02em;transition:background .25s var(--out),color .2s var(--out)}
 .pj__nav a::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:2px;background:var(--beam);transform:scaleY(0);transition:transform .35s var(--out)}
-.pj__nav a i{font-style:normal;font-family:var(--tektur);font-size:12px;letter-spacing:.05em;color:var(--on-dark-3);transition:color .2s var(--out)}
+.pj__nav a i{font-style:normal;font-family:var(--tektur);font-size:var(--fs-svc);letter-spacing:.05em;color:var(--on-dark-3);transition:color .2s var(--out)}
 .pj__nav a:focus-visible{outline-offset:-2px}
 @media(min-width:901px){.pj__nav a:hover,.pj__nav a.on{color:var(--base);background:linear-gradient(90deg,var(--glow),rgba(103,255,217,0) 70%)}}
 .pj__nav a.on::before{transform:none}
@@ -140,3 +140,239 @@ html.ld-on body:not(.ready){overflow:hidden}
   .pp>.mc__br,.pp>.pp__i{display:none}
   .cells--4,.steps,.req{grid-template-columns:1fr}.req>div{box-shadow:inset 0 1px 0 var(--line)!important}.req>div:first-child{box-shadow:none!important}
 }
+
+/* ======================================================================================
+   Остальные разделы сайта (18.10.2026): партнерам, инвесторам, карьера, новости, статья, контакты,
+   документы, «Спасибо», 404, карта сайта, страницы продуктов. Сразу в скругленном стиле брендбука:
+   радиусы 8 / 16 / 24, кнопки и поля ввода — пилюли, панели — тонкий контур, без серых заливок.
+   ====================================================================================== */
+.cells--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.note{margin-top:22px;max-width:60em;color:var(--on-dark-2)}
+.badge{display:inline-flex;align-items:center;height:28px;padding:0 10px;border-radius:8px;box-shadow:inset 0 0 0 1px var(--line);color:var(--base)}
+
+/* ---------- Маршруты «Партнерам»: две карточки-кнопки ---------- */
+.rt{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:14px;min-height:clamp(300px,24vw,400px);padding:clamp(22px,2.2vw,40px);border-radius:24px;box-shadow:inset 0 0 0 1px var(--line);text-align:left;transition:box-shadow .3s var(--out)}
+.rt>.svc{color:var(--on-dark-2)}
+.rt .ic--b{position:absolute;top:clamp(22px,2.2vw,40px);right:clamp(22px,2.2vw,40px);width:32px;height:32px;stroke-width:0;color:var(--base)}
+.rt h2{max-width:16em;margin-top:auto;font-size:var(--fs-card);letter-spacing:-.04em;line-height:1.05}
+.rt p{max-width:36em;font-size:var(--fs-ui);color:var(--on-dark-2)}
+.rt__f{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;width:100%;margin-top:8px;color:var(--on-dark-2)}
+.rt.on{box-shadow:inset 0 0 0 1px var(--beam)}
+@media(hover:hover){.rt:hover{box-shadow:inset 0 0 0 1px rgba(255,255,255,.24)}.rt.on:hover{box-shadow:inset 0 0 0 1px var(--beam)}:is(.rt):hover .bx{color:var(--void);--c:var(--beam)}:is(.rt):hover .bx__f{opacity:1;clip-path:inset(0 round 999px);transition:clip-path .5s var(--out),opacity 0s}}
+.rp{display:none}
+.rp.on{display:block;animation:pswap .45s var(--out) both}
+.rp .steps{grid-template-columns:repeat(var(--n,4),minmax(0,1fr))}
+.sub-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-top:clamp(40px,4.4vw,72px)}
+.sub-h h3{font-size:var(--fs-card);letter-spacing:-.04em;line-height:1.05}
+.sub-h .svc{color:var(--on-dark-2)}
+
+/* ---------- Таблица сравнения ---------- */
+.tbl{border-radius:24px;box-shadow:inset 0 0 0 1px var(--line);overflow:hidden}
+.tbl table{width:100%;border-collapse:collapse;font-size:var(--fs-ui)}
+.tbl th,.tbl td{padding:clamp(16px,1.6vw,26px) clamp(16px,1.8vw,30px);text-align:left;vertical-align:top}
+.tbl thead th{font-weight:400;font-size:var(--fs-card);letter-spacing:-.03em;line-height:1.1}
+.tbl tbody tr{box-shadow:inset 0 1px 0 var(--line)}
+.tbl tbody th{font-family:var(--tektur);font-size:var(--fs-svc);letter-spacing:.05em;color:var(--on-dark-2);width:22%}
+.tbl td{color:var(--on-dark-2)}
+.tbl td .acts2{margin-top:0}
+
+/* ---------- Кадры с подписью: стадия у инвесторов, «Для кого» у продуктов ---------- */
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pc{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:clamp(380px,30vw,520px);padding:clamp(20px,2vw,34px);border-radius:24px;overflow:hidden;background:var(--ph)}
+.pc>*{position:relative;z-index:2}
+.pc>.pc__img{position:absolute;inset:0;z-index:0}
+.pc__img img{width:100%;height:100%;object-fit:cover;transform:scale(1.03);transition:transform 1.8s var(--out)}
+.pc__img::after{content:"";position:absolute;inset:0;background:var(--shade)}
+.pc__t{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;color:var(--on-dark-2)}
+.pc__t .st{height:30px;padding:0 10px;border-radius:8px;background:rgba(9,10,12,.55);color:var(--base)}
+.pc__b{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.pc h3{font-size:var(--fs-card);letter-spacing:-.04em;line-height:1.05}
+.pc p{margin-top:10px;max-width:30em;font-size:var(--fs-ui);color:var(--on-photo)}
+.pc__n{display:block;margin-bottom:12px;font-weight:300;font-size:clamp(44px,4.4vw,80px);letter-spacing:-.05em;line-height:.8}
+@media(hover:hover){a.pc:hover .pc__img img{transform:scale(1.07)}a.pc:hover .bx{color:var(--void);--c:var(--beam)}a.pc:hover .bx__f{opacity:1;clip-path:inset(0 round 999px);transition:clip-path .5s var(--out),opacity 0s}}
+
+/* ---------- Строки с номером: «Где нужны люди» ---------- */
+.rows{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:56px minmax(0,4fr) minmax(0,5fr) minmax(0,4fr);gap:12px var(--gut);align-items:start;padding:clamp(20px,2vw,32px) 0;border-bottom:1px solid var(--line)}
+.row>.svc{color:var(--on-dark-3);padding-top:6px}
+.row h3{display:flex;align-items:center;gap:14px;font-size:var(--fs-card);letter-spacing:-.04em;line-height:1.05}
+.row h3 .ic--b{width:32px;height:32px;flex:none;stroke-width:0;color:var(--base)}
+.row p{font-size:var(--fs-ui);color:var(--on-dark-2)}
+.row .row__s{font-family:var(--tektur);font-size:var(--fs-svc);letter-spacing:.05em;line-height:1.5;color:var(--on-dark-2)}
+
+/* ---------- Вакансии ---------- */
+.vacs{border-top:1px solid var(--line)}
+.vac{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,3fr) minmax(0,2fr) auto;gap:12px var(--gut);align-items:center;padding:clamp(18px,1.8vw,28px) 0;border-bottom:1px solid var(--line)}
+.vac b{font-weight:400;font-size:var(--fs-card);letter-spacing:-.03em;line-height:1.1}
+.vac>span{color:var(--on-dark-2)}
+
+/* ---------- Новости: фильтр, главный материал ---------- */
+.flt{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:clamp(24px,2.6vw,40px)}
+.feat{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:24px var(--gut);align-items:center;margin-bottom:clamp(32px,3.6vw,56px)}
+.feat>div>.svc{color:var(--on-dark-2)}
+.feat h2{margin-top:16px;font-size:var(--fs-sub);font-weight:300;letter-spacing:-.02em;line-height:1.05}
+.feat p{margin-top:16px;max-width:34em;font-size:var(--fs-ui);color:var(--on-dark-2)}
+.feat .bx{margin-top:clamp(20px,2vw,32px)}
+.feat figure{position:relative;aspect-ratio:3/2;border-radius:24px;overflow:hidden;background:var(--ph)}
+.feat figure img{width:100%;height:100%;object-fit:cover}
+.nr[hidden]{display:none}
+
+/* ---------- Две карточки: пресс-контакт и медиакит ---------- */
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.pair .mc--s .acts2,.lc .acts2{margin-top:clamp(20px,2vw,32px)}
+.lc{display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding:clamp(22px,2.1vw,40px);border-radius:24px;background:var(--base);color:var(--on-light);min-height:clamp(240px,20vw,340px)}
+.lc .svc{color:var(--on-light-2)}
+.lc h3{font-size:var(--fs-card);letter-spacing:-.04em;line-height:1.05}
+.lc p{margin-top:12px;max-width:34em;font-size:var(--fs-ui);color:var(--on-light-2)}
+
+/* ---------- Статья ---------- */
+.art{max-width:860px}
+.art__m{display:flex;flex-wrap:wrap;gap:8px 20px;color:var(--on-dark-2)}
+.art__m a{color:var(--beam)}
+.art h1{margin-top:clamp(18px,1.8vw,28px);font-size:var(--fs-head);letter-spacing:-.06em;line-height:1;text-transform:uppercase}
+.art__sub{margin-top:clamp(18px,1.8vw,28px);font-size:var(--fs-lead);color:var(--on-dark-2)}
+.art__b{max-width:760px;margin-top:clamp(40px,4.4vw,72px)}
+.art__b>*+*{margin-top:22px}
+.art__b p{font-size:var(--fs-lead);line-height:1.4;color:rgba(255,255,255,.84)}
+.art__b h2{margin-top:clamp(40px,4vw,64px);font-size:var(--fs-card);letter-spacing:-.04em;line-height:1.05}
+.art__b figure{margin-top:clamp(32px,3.4vw,52px)}
+.art__b figure>div{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:var(--ph)}
+.art__b figure img{width:100%;height:100%;object-fit:cover}
+.art__b figcaption{margin-top:12px;font-family:var(--tektur);font-size:var(--fs-svc);letter-spacing:.05em;color:var(--on-dark-2)}
+.art__b blockquote{margin:clamp(32px,3.4vw,52px) 0;padding-left:clamp(18px,2vw,32px);border-left:1px solid var(--beam);font-size:var(--fs-sub);font-weight:300;letter-spacing:-.02em;line-height:1.1}
+.art__b cite{display:block;margin-top:16px;font-style:normal;font-family:var(--tektur);font-size:var(--fs-svc);letter-spacing:.05em;color:var(--on-dark-2)}
+.art__f{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;max-width:760px;margin-top:clamp(40px,4vw,64px);padding-top:28px;border-top:1px solid var(--line)}
+
+/* ---------- Документы: оглавление слева, текст справа ---------- */
+.docs{display:grid;grid-template-columns:clamp(220px,20vw,320px) minmax(0,1fr);gap:24px var(--gut);align-items:start}
+.toc{position:sticky;top:calc(var(--hd) + 16px);display:flex;flex-direction:column;padding:10px;border-radius:24px;box-shadow:inset 0 0 0 1px var(--line)}
+.toc a{padding:10px 12px;border-radius:8px;color:var(--on-dark-2);transition:background .25s var(--out),color .2s var(--out)}
+.toc a+a{box-shadow:inset 0 1px 0 var(--line-2)}
+.toc a:hover{color:var(--base);background:linear-gradient(90deg,var(--glow),rgba(103,255,217,0) 70%);box-shadow:none}
+.doc{max-width:820px}
+.doc h2{font-size:var(--fs-card);letter-spacing:-.04em;line-height:1.05;scroll-margin-top:calc(var(--hd) + 24px)}
+.doc h2:not(:first-child){margin-top:clamp(36px,3.6vw,56px)}
+.doc ol{margin:18px 0 0;padding-left:1.4em;display:grid;gap:12px}
+.doc li,.doc p{font-size:var(--fs-ui);line-height:1.45;color:rgba(255,255,255,.84)}
+.doc p{margin-top:18px}
+.doc a{color:var(--base);border-bottom:1px solid rgba(255,255,255,.3)}
+.doc li::marker{color:var(--on-dark-3)}
+
+/* ---------- Служебные страницы: «Спасибо», 404 ---------- */
+.util{min-height:max(560px,100svh);display:flex;align-items:center;padding-top:calc(var(--hd) + 48px);padding-bottom:clamp(48px,6vw,96px)}
+.util__g{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px var(--gut);align-items:end;width:100%}
+.util__g>div>.svc{color:var(--beam)}
+.util h1{margin-top:clamp(16px,1.6vw,24px);font-size:var(--fs-head);letter-spacing:-.06em;line-height:1;text-transform:uppercase;max-width:14em}
+.util .t-lead{margin-top:clamp(18px,1.8vw,28px);max-width:32em;color:var(--on-dark-2)}
+.util__l{border-top:1px solid var(--line)}
+.util__l a{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 16px;padding:18px 0;border-bottom:1px solid var(--line);font-size:var(--fs-ui)}
+.util__l a small{grid-column:1;font-size:14px;color:var(--on-dark-2)}
+.util__l a .bx{grid-row:1/3;grid-column:2}
+@media(hover:hover){.util__l a:hover .bx{color:var(--void);--c:var(--beam)}.util__l a:hover .bx__f{opacity:1;clip-path:inset(0 round 999px);transition:clip-path .5s var(--out),opacity 0s}}
+
+/* ---------- Карта сайта ---------- */
+.smap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.smap__g{padding:clamp(20px,2vw,32px);border-radius:24px;box-shadow:inset 0 0 0 1px var(--line)}
+.smap__g>.svc{display:block;margin-bottom:14px;color:var(--on-dark-2)}
+.smap__g a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;font-size:var(--fs-ui);box-shadow:inset 0 1px 0 var(--line-2);transition:color .2s var(--out)}
+.smap__g a .ic{color:var(--on-dark-3);transition:color .2s var(--out),transform .35s var(--out)}
+.smap__g a:hover{color:var(--beam)}.smap__g a:hover .ic{color:var(--beam);transform:translate(2px,-2px)}
+
+/* ---------- Страница продукта: первый экран на весь экран ---------- */
+.ph{position:relative;min-height:max(620px,100svh);display:flex;flex-direction:column;justify-content:space-between;gap:48px;overflow:hidden;background:var(--ph);padding:calc(var(--hd) + 20px) var(--gut) clamp(24px,3vw,48px)}
+.ph>*{position:relative;z-index:2}
+.ph__bg{position:absolute;inset:0;z-index:0}
+.ph__bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:phzoom 2.4s var(--out) both}
+@keyframes phzoom{from{transform:scale(1.08);opacity:0}to{transform:none;opacity:1}}
+.ph__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,10,12,.7) 0%,rgba(9,10,12,.1) 24%,rgba(9,10,12,.3) 50%,rgba(9,10,12,.97) 100%)}
+.ph__top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;color:var(--on-dark-2)}
+.ph__top a{color:var(--base);transition:color .2s var(--out)}.ph__top a:hover{color:var(--beam)}
+.ph__idx{margin-left:auto}
+.ph__title{font-size:clamp(50px,12.2vw,250px);letter-spacing:-.06em;line-height:.86;text-transform:uppercase}
+.ph__meta{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,5fr) minmax(0,3fr);gap:24px var(--gut);align-items:end;margin-top:clamp(22px,2.6vw,44px)}
+.ph__tags{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:16px;color:var(--on-dark-2)}
+.ph__meta>p{color:var(--on-photo);max-width:34em}
+.ph__cta{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+
+/* два кадра «Что это» */
+.duo2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:clamp(32px,3.6vw,56px)}
+.shot{position:relative;aspect-ratio:16/10;border-radius:24px;overflow:hidden;background:var(--ph)}
+.shot img{width:100%;height:100%;object-fit:cover;transform:scale(1.03);transition:transform 1.8s var(--out)}
+@media(hover:hover){.shot:hover img{transform:scale(1.07)}}
+
+/* состав: шесть ячеек в контуре */
+.mods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.mod{display:flex;flex-direction:column;gap:10px;min-height:clamp(200px,17vw,300px);padding:clamp(18px,1.8vw,32px);border-radius:24px;box-shadow:inset 0 0 0 1px var(--line);transition:box-shadow .3s var(--out)}
+.mod__t{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:auto;color:var(--on-dark-3)}
+.mod__t .ic{width:32px;height:32px;color:var(--alloy);transition:color .3s var(--out)}
+.mod b{font-weight:400;margin-top:28px;font-size:var(--fs-card);letter-spacing:-.04em;line-height:1.05}
+.mod>span{font-size:var(--fs-ui);color:var(--on-dark-2)}
+@media(hover:hover){.mod:hover{box-shadow:inset 0 0 0 1px rgba(255,255,255,.24)}.mod:hover .mod__t .ic{color:var(--beam)}}
+
+/* ---------- Форма: светлая панель ---------- */
+.cta{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px var(--gut);border-radius:24px;background:var(--ether);color:var(--on-light);padding:clamp(22px,3vw,56px)}
+.cta__l>.svc{color:var(--on-light-2)}
+.cta__l h2{margin-top:16px;font-size:var(--fs-head);letter-spacing:-.06em;line-height:1;text-transform:uppercase}
+.cta__l>p{margin-top:18px;max-width:42ch;font-size:var(--fs-ui);color:var(--on-light-2)}
+.cta__l>p a{color:var(--on-light);border-bottom:1px solid rgba(9,10,12,.3)}
+.cta__l>.cta__s{margin-top:26px;font-size:14px}
+.cta__l>.cta__s b{font-weight:400;color:var(--on-light)}
+.form{display:grid;gap:14px;align-content:start}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:grid;gap:8px}
+.field>label,.field>.lbl2{font-family:var(--tektur);font-size:var(--fs-svc);letter-spacing:.05em;color:var(--on-light-2)}
+.input,.textarea,.select{width:100%;font:inherit;font-size:var(--fs-ui);color:var(--on-light);background:var(--base);border:0;outline:1px solid transparent;outline-offset:0;transition:outline-color .2s var(--out)}
+.input,.select{height:52px;padding:0 22px;border-radius:999px}  /* поля ввода — пилюли, как кнопки */
+.select{-webkit-appearance:none;appearance:none;padding-right:48px;cursor:pointer;background:var(--base) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23090A0C' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>") right 18px center/16px no-repeat}
+.textarea{min-height:132px;padding:16px 22px;border-radius:16px;resize:vertical}
+.input::placeholder,.textarea::placeholder{color:var(--on-light-3)}
+.input:focus,.textarea:focus,.select:focus,.input:focus-visible,.textarea:focus-visible,.select:focus-visible{outline:1px solid var(--flare)}
+.file{display:flex;align-items:center;gap:12px;height:52px;padding:0 22px;border-radius:999px;background:var(--base);color:var(--on-light-2);cursor:pointer}
+.file .ic{color:var(--flare)}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--on-light-2);cursor:pointer}
+.check input{-webkit-appearance:none;appearance:none;flex:none;width:18px;height:18px;margin:0;border:1px solid var(--on-light-3);border-radius:4px;background:var(--base) center/12px no-repeat;cursor:pointer;transition:background-color .2s var(--out),border-color .2s var(--out)}
+.check input:checked{border-color:var(--void);background-color:var(--void);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M2.5 6.3l2.3 2.3 4.7-5.2'/></svg>")}
+.check a{color:var(--on-light);border-bottom:1px solid rgba(9,10,12,.3)}
+.form__foot{display:flex;align-items:center;gap:16px 22px;flex-wrap:wrap;margin-top:10px}
+.form__hint{font-size:14px;color:var(--on-light-2)}
+/* переключатель роли в форме: пилюли на светлом */
+.seg--lt .bx{--c:rgba(9,10,12,.3);color:var(--on-light)}
+.seg--lt .bx.bx--on{background:var(--void);color:var(--base);--c:var(--void)}
+.seg--lt .bx.bx--on .bx__f{background:var(--flare)}
+
+/* ---------- Адаптив новых разделов ---------- */
+@media(max-width:1100px){
+  .ph__meta{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.ph__cta{grid-column:1/-1;flex-direction:row;justify-content:flex-start;flex-wrap:wrap}
+  .row{grid-template-columns:44px minmax(0,1fr) minmax(0,1fr)}.row .row__s{grid-column:2/-1}
+  .smap{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rp .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:900px){
+  .cells--2,.tiles,.pair,.feat,.util__g,.docs,.cta,.duo2,.ph__meta{grid-template-columns:1fr}
+  .mods{grid-template-columns:repeat(2,minmax(0,1fr))}.mod{min-height:180px}
+  .pc{min-height:400px}
+  .toc{position:static}
+  .vac{grid-template-columns:minmax(0,1fr) auto}.vac>span{grid-column:1}.vac .bx{grid-row:1/4;grid-column:2}
+  .tbl thead{display:none}.tbl tr{display:grid;padding:16px 18px 18px;gap:10px}.tbl tbody tr{box-shadow:inset 0 1px 0 var(--line)}.tbl tbody tr:first-child{box-shadow:none}
+  .tbl th,.tbl td,.tbl tbody th{padding:0;width:auto}.tbl td::before{content:attr(data-th);display:block;margin-bottom:4px;font-family:var(--tektur);font-size:var(--fs-svc);letter-spacing:.05em;color:var(--on-dark-3)}
+  .util{min-height:0}
+}
+@media(max-width:640px){
+  .form-row,.mods,.smap{grid-template-columns:1fr}.mod{min-height:0}.mod b{margin-top:18px}
+  .row{grid-template-columns:36px minmax(0,1fr)}.row p,.row .row__s{grid-column:2}
+  .rp .steps{grid-template-columns:1fr}
+  .form__foot .bx,.feat .bx,.ph__cta .bx,.lc .bx,.pair .bx{width:100%;justify-content:space-between}
+  .vac{grid-template-columns:1fr}.vac .bx{grid-row:auto;grid-column:1;justify-self:start}
+  .sub-h{flex-direction:column;align-items:flex-start}
+}
+/* мелочи новых разделов */
+.pgh__title--s{font-size:clamp(36px,5.6vw,108px);line-height:.95}
+.dl__r p{font-size:var(--fs-ui);color:var(--on-dark-2)}
+.mc--s .mc__src{display:block;margin-top:16px;color:var(--on-dark-3)}
+.nr__s{margin-top:8px;font-size:var(--fs-ui);color:var(--on-dark-2)}
+.art-top{padding-top:calc(var(--hd) + clamp(48px,6vw,104px))}
+@media(max-width:900px){.nr>div{grid-column:1/3}}
+/* переключатели (документы, роль в форме) переносятся рядами, а не выходят за край */
+.seg{flex-wrap:wrap}
+/* хлебные крошки продукта на телефоне: «Проекты» и номер в первой строке, направление второй строкой, без висящей косой черты */
+@media(max-width:640px){.ph__top{row-gap:6px}.ph__top>span:nth-of-type(1){display:none}.ph__top>span:nth-of-type(2){order:3;flex-basis:100%}}

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{if(!sessionStorage.getItem('dd_seen'))document.documentElement.classList.add('ld-on')}catch(e){}</script>
+<title>Почему AGATA модульная · Новости Darlein Defense</title>
+<meta name="description" content="Инженерная заметка: независимость от одного поставщика как требование архитектуры платформы AGATA.">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/logo/favicon.png">
+<link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400&family=Tektur:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css?v=1018a">
+<link rel="stylesheet" href="css/main.css?v=1018a">
+<link rel="stylesheet" href="css/pages.css?v=1018a">
+<link rel="stylesheet" href="css/brand.css?v=1018a">
+</head>
+<body data-nav="intel">
+
+<div class="ld ld--once" id="ld" aria-hidden="true">
+  <div class="ld__sign" id="ldSign"></div>
+  <div class="ld__in">
+    <div class="ld__top"><img src="assets/logo/logo3b.svg" alt=""></div>
+    <div>
+      <div class="ld__mid">
+        <div class="ld__lb svc"><i></i>Загрузка</div>
+        <div class="ld__n"><span id="ldN">0</span><sup>%</sup></div>
+      </div>
+      <div class="ld__tr" id="ldTr"></div>
+    </div>
+  </div>
+</div>
+
+<header class="hd" id="hd">
+  <a class="hd__logo" href="index.html" aria-label="Darlein Defense"><img src="assets/logo/logo3b.svg" alt="Darlein Defense"></a>
+  <nav id="nav" aria-label="Основное меню"></nav>
+  <div class="hd__r">
+    <span class="svc muted">RU</span>
+    <a class="bx bx--s svc" href="dropfield.html"><span class="bx__f"></span><span class="st st--soon"><i></i>DROPFIELD</span><i data-ic="ne" data-cls="ic--s"></i></a>
+    <button class="bx bx--ic bx--s hd__menu" aria-label="Меню"><span class="bx__f"></span><i data-ic="menu"></i></button>
+  </div>
+</header>
+
+<main>
+<article class="wrap art-top">
+  <header class="art" data-rv>
+    <div class="art__m svc"><a href="intel.html">Инженерные заметки</a><span>19.08.2026</span><span>5 минут</span></div>
+    <h1>Почему AGATA модульная: независимость от одного поставщика как требование архитектуры</h1>
+    <p class="art__sub">Связь, карты, задачи и логистика как заменяемые модули над единой шиной данных. Что это дает заказчику и чего стоит команде.</p>
+  </header>
+</article>
+<!-- Широкий кадр статьи -->
+<section class="wrap" style="margin-top:clamp(32px,3.6vw,56px)"><figure class="pgv grain" data-rv><img src="img/b-agata.jpg" alt=""></figure></section>
+<section class="wrap">
+  <div class="art__b">
+<p>Самый частый страх заказчика перед внедрением любой платформы управления — зависимость. Систему покупают на годы, а через год выясняется, что модуль карт устарел, поставщик связи сменил условия, а заменить одно без другого нельзя. Мы проектируем AGATA так, чтобы этот сценарий был невозможен архитектурно, а не по обещанию.</p>
+      <h2>Шина вместо монолита</h2>
+      <p>В основе платформы — единая шина данных и общая модель прав доступа. Модули связи, карт, задач, логистики и управления не знают друг о друге напрямую: они публикуют и читают события в шине по открытой спецификации. Любой модуль можно заменить аналогом, в том числе стороннего производителя, без остановки остальных.</p>
+      <figure><div><img src="img/dir-soft.jpg" alt="" loading="lazy"></div><figcaption>Каждый модуль обменивается данными только через шину.</figcaption></figure>
+      <h2>Что это дает заказчику</h2>
+      <p>Три вещи. Данные принадлежат заказчику и экспортируются в открытых форматах. Модули подключаются по мере готовности, и заказчик не платит за то, что не использует. Технологический партнер подключает свое устройство или модуль без нашего участия в каждом шаге: спецификация открыта, среда одна.</p>
+      <blockquote>Централизация не скрывается. Она обеспечивает качество и ответственность, а не привязку к поставщику.<cite>Представитель Darlein Defense</cite></blockquote>
+      <h2>Чего это стоит команде</h2>
+      <p>Модульность дороже монолита на старте: спецификация шины, версионирование событий, тесты совместимости для каждого модуля. Мы считаем это правильной ценой. Платформа, которую нельзя развивать по частям, устаревает целиком.</p>
+      <p>Готовность каждого модуля сообщается отдельно и честно. Ничего не показывается как готовое, пока не прошло испытания.</p>
+  </div>
+  <div class="art__f">
+    <div class="acts2" style="margin-top:0"><!-- ссылка на канал подставляется перед запуском --><a class="bx bx--s" href="#"><span class="bx__f"></span>Telegram</a><button class="bx bx--s" type="button" data-copy><span class="bx__f"></span><span class="bx__t">Копировать ссылку</span></button></div>
+    <a class="bx" href="agata.html"><span class="bx__f"></span>О продукте AGATA<i data-ic="right" data-cls="ic--s ic--mv"></i></a>
+  </div>
+</section>
+
+<section class="sec wrap">
+  <div class="sh"><h2 class="t-head lines" data-auto><span class="l"><span>Читать дальше</span></span></h2><div data-rv><a class="bx bx--s" href="intel.html"><span class="bx__f"></span>Все материалы<i data-ic="right" data-cls="ic--s ic--mv"></i></a></div></div>
+  <div class="nl" data-rv>
+    <a class="nr" href="intel-article.html"><span class="svc">22.07.2026</span><span class="svc">Инженерные заметки</span><b>Интерфейс для плохой связи: принципы носимого клиента AGATA</b><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></a>
+    <a class="nr" href="intel-article.html"><span class="svc">28.08.2026</span><span class="svc">Проекты</span><b>DROPFIELD: как устроен каталог и что входит в единую карточку товара</b><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></a>
+    <a class="nr" href="intel-article.html"><span class="svc">02.09.2026</span><span class="svc">Новости компании</span><b>Поданы заявки на регистрацию товарных знаков Darlein, Darlein Defense и Darlein Arsenal</b><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></a>
+  </div>
+</section>
+</main>
+
+<footer class="ft" id="footer"><div class="ft__p fr" id="ftp"></div></footer>
+
+<script src="js/base.js?v=1018a"></script>
+<script src="js/brand.js?v=1018a"></script>
+<script src="js/chrome.js?v=1018a"></script>
+<script src="js/blocks.js?v=1018a"></script>
+<script src="js/page.js?v=1018a"></script>
+</body>
+</html>
