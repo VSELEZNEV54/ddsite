@@ -21,10 +21,5 @@
     return B[name] ? '<svg class="ic ic--b' + (cls ? ' ' + cls : '') + '" viewBox="0 0 32 32" aria-hidden="true">' + B[name] + '</svg>' : base(name, cls);
   };
 
-  /* кадры проектов из брендбука: [проект, кадр] */
-  var P = { AGATA: 'b-agata', HEX: 'b-hand', ECHO: 'b-sensor', NOMAD: 'b-nomad-wheel', SEAL: 'b-seal-top', HIGHFAST: 'b-highfast' };
-  DD.projects.forEach(function (p) { if (P[p[0]]) p[6] = P[p[0]]; });
-  /* кадры направлений (лента и «иллюминатор» схемы) */
-  var D = { soft: 'b-agata', comms: 'b-tower', tech: 'b-nomad' };
-  DD.dirs.forEach(function (d) { if (D[d.key]) d.img = D[d.key]; });
+  /* кадры проектов и направлений заданы в base.js (DD.projects, DD.dirs) */
 })();

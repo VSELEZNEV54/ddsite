@@ -7,26 +7,15 @@
   DD.I.vk = '<path d="M3 7c.5 8 4 11 9 11h1v-4c2 0 4 2 5 4h3c-1-3-3-5-5-6 2-1 4-3 5-5h-3c-1 2-3 4-5 4V7h-3v7C7 13 5 10 5 7z"/>';
   DD.I.yt = '<rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/>';
   DD.I.close = '<path d="M6 6l12 12M18 6L6 18"/>';
+  /* выпадающая панель только у «Проектов» (замечание 19.10.2026): остальные пункты шапки — простые ссылки на свои страницы */
   var M = {
-    company: ['О компании', 'Российская DefenseTech-компания с моделью экосистемы. Единый стандарт качества, дизайна и совместимости для собственных и партнерских продуктов.', 'О компании',
-      [['company.html#problem', 'Проблема и ответ'], ['company.html#model', 'Модель экосистемы'], ['company.html#directions', 'Направления'], ['company.html#principles', 'Принципы работы'], ['company.html#team', 'Экспертиза'], ['company.html#legal', 'Юридический контур'], ['investors.html', 'Инвесторам']]],
     projects: ['Все разработки', '14 продуктов в семи направлениях: от программных платформ и связи до техники и систем защиты. У каждого проекта честный статус.', 'Проекты',
-      [['projects.html#products', 'Все проекты'], ['dropfield.html', 'DROPFIELD'], ['agata.html', 'AGATA'], ['elza.html', 'ELZA'], ['eva.html', 'EVA'], ['blackfly.html', 'BLACKFLY'], ['warden.html', 'WARDEN'], ['hex.html', 'HEX'], ['echo.html', 'ECHO'], ['nomad.html', 'NOMAD'], ['seal.html', 'SEAL'], ['highfast.html', 'HIGHFAST'], ['backeye.html', 'BACKEYE'], ['shield.html', 'SHIELD'], ['arrowhead.html', 'ARROWHEAD']]],
-    dropfield: ['Система экосистемы · площадка', 'Специализированная платформа для выбора, покупки и продажи снаряжения и оборудования: каталог, продавцы, заказы и конфигуратор. Первый коммерческий продукт экосистемы.', 'DROPFIELD',
-      [['dropfield.html#what', 'Что это'], ['dropfield.html#modules', 'Из чего состоит'], ['dropfield.html#who', 'Для кого'], ['dropfield.html#diff', 'Возможности'], ['dropfield.html#notify', 'Сообщить о запуске'], ['partners.html#vendor', 'Стать вендором']], ['soon', 'готовится к запуску']],
-    partners: ['Два маршрута', 'Технологический партнер входит в экосистему со своим продуктом. Вендор продает на площадке DROPFIELD. Разные модели отношений — разные условия.', 'Партнерам',
-      [['partners.html#partner', 'Партнер экосистемы'], ['partners.html#vendor', 'Вендор DROPFIELD'], ['partners.html#compare', 'Чем отличаются маршруты'], ['partners.html#apply', 'Подать заявку']]],
-    investors: ['Модель, стадия, контакт', 'Материнский бренд и экосистема продуктов. Финансовые показатели и оценка не публикуются: материалы передаются после соглашения о конфиденциальности.', 'Инвесторам',
-      [['investors.html#model', 'Модель'], ['investors.html#stage', 'Стадия проектов'], ['investors.html#market', 'Рынок'], ['investors.html#contact', 'Написать']]],
-    careers: ['Работа в компании', 'Инженерная компания на стадии запуска. Семь направлений, один стандарт качества, честный статус каждого проекта.', 'Карьера',
-      [['careers.html#directions', 'Где нужны люди'], ['careers.html#how', 'Как работаем'], ['careers.html#vacancies', 'Вакансии'], ['careers.html#apply', 'Открытый отклик']]],
-    intel: ['Новости и материалы', 'Новости компании, ход проектов, инженерные заметки и материалы для СМИ. Каждый материал с датой.', 'Новости',
-      [['intel.html', 'Все материалы'], ['intel.html#feed', 'Новости компании'], ['intel.html#feed', 'Проекты'], ['intel.html#feed', 'Инженерные заметки'], ['intel.html#media', 'Для СМИ']]]
+      [['projects.html#products', 'Все проекты'], ['dropfield.html', 'DROPFIELD'], ['agata.html', 'AGATA'], ['elza.html', 'ELZA'], ['eva.html', 'EVA'], ['blackfly.html', 'BLACKFLY'], ['warden.html', 'WARDEN'], ['hex.html', 'HEX'], ['echo.html', 'ECHO'], ['nomad.html', 'NOMAD'], ['seal.html', 'SEAL'], ['highfast.html', 'HIGHFAST'], ['backeye.html', 'BACKEYE'], ['shield.html', 'SHIELD'], ['arrowhead.html', 'ARROWHEAD']]]
   };
 
   /* ---------- шапка ---------- */
   var hd = $('#hd');
-  $('#nav').innerHTML = DD.nav.map(function (n) { return '<a href="' + DD.url(n[1]) + '"' + (document.body.getAttribute('data-nav') === n[1].replace('.html', '') ? ' class="here" aria-current="page"' : '') + '>' + n[0] + '</a>'; }).join('');
+  $('#nav').innerHTML = DD.nav.map(function (n) { var k = n[1].replace('.html', ''); return '<a href="' + DD.url(n[1]) + '"' + (document.body.getAttribute('data-nav') === k ? ' class="here" aria-current="page"' : '') + '>' + n[0] + (M[k] ? DD.ic('chev', 'ic--s') : '') + '</a>'; }).join('');
   DD.onScroll(function (y) { hd.classList.toggle('sc', y > 12); });
 
   /* ---------- выпадающая панель ---------- */
@@ -35,13 +24,12 @@
   mg.innerHTML = '<div class="mg__in">' + Object.keys(M).map(function (k) {
     var m = M[k];
     return '<div class="mg__p" data-menu="' + k + '"><div class="mg__d fr"><span class="svc">' + m[0] + '</span><p>' + m[1] + '</p>' + (m[4] ? '<div class="svc">' + DD.st(m[4][0], m[4][1]) + '</div>' : '') + '</div>' +
-      '<div class="mg__r"><span class="svc">' + m[2] + '</span><div class="mg__l' + (m[3].length > 8 ? ' mg__l--3' : '') + '">' + m[3].map(function (it, i) {
+      '<div class="mg__r"><span class="svc">' + m[2] + '</span><div class="mg__l' + (m[3].length > 8 ? ' mg__l--3' : '') + '" style="--rows:' + Math.ceil(m[3].length / (m[3].length > 8 ? 3 : 2)) + '">' + m[3].map(function (it, i) {
         return '<a href="' + DD.url(it[0]) + '" style="--i:' + i + '"><span class="svc">' + ('0' + (i + 1)).slice(-2) + '</span><span' + (/^[A-Z]+$/.test(it[1]) ? ' class="latin"' : '') + '>' + it[1] + '</span>' + DD.ic('ne', 'ic--s') + '</a>';
       }).join('') + '</div></div></div>';
   }).join('') + '</div>';
   document.body.appendChild(bd); hd.parentNode.insertBefore(mg, hd.nextSibling);  /* панель сразу после шапки: ссылки идут за пунктами меню при обходе Tab */
   var triggers = [].slice.call(document.querySelectorAll('#nav a')).filter(function (a) { var k = a.getAttribute('href').replace(/^.*\/|\.html.*$/g, ''); if (M[k]) { a.setAttribute('data-menu', k); return true; } return false; });
-  var chip = hd.querySelector('.hd__r a.bx'); if (chip) { chip.setAttribute('data-menu', 'dropfield'); triggers.push(chip); }
   var skipOpen = false, timer = null, cur = null, inn = mg.querySelector('.mg__in');
   var open = function (k) {
     clearTimeout(timer); if (skipOpen || window.innerWidth <= 1100 || cur === k) return;
@@ -50,11 +38,11 @@
     var was = cur ? inn.offsetHeight : 0; cur = k; inn.style.height = 'auto';
     mg.querySelectorAll('.mg__p').forEach(function (p) { p.classList.toggle('on', p.getAttribute('data-menu') === k); });
     var h = inn.offsetHeight; if (was && was !== h) { inn.style.height = was + 'px'; inn.offsetHeight; } inn.style.height = h + 'px';
-    triggers.forEach(function (t) { t.classList.toggle('cur', t.getAttribute('data-menu') === k); });
+    triggers.forEach(function (t) { var on = t.getAttribute('data-menu') === k; t.classList.toggle('cur', on); t.setAttribute('aria-expanded', on ? 'true' : 'false'); });
     mg.classList.add('on'); bd.classList.add('on'); hd.classList.add('mgo');
   };
   var close = function (now) {
-    clearTimeout(timer); timer = setTimeout(function () { cur = null; mg.classList.remove('on'); bd.classList.remove('on'); hd.classList.remove('mgo'); triggers.forEach(function (t) { t.classList.remove('cur'); }); }, now ? 0 : 160);
+    clearTimeout(timer); timer = setTimeout(function () { cur = null; mg.classList.remove('on'); bd.classList.remove('on'); hd.classList.remove('mgo'); triggers.forEach(function (t) { t.classList.remove('cur'); t.setAttribute('aria-expanded', 'false'); }); }, now ? 0 : 160);
   };
   triggers.forEach(function (t) {
     t.addEventListener('mouseenter', function () { open(t.getAttribute('data-menu')); });
@@ -67,15 +55,15 @@
     if (!to || (!hd.contains(to) && !mg.contains(to))) close(true);
   }); });
   /* с клавиатуры: стрелка вниз или Enter на пункте ведут в открытую панель, Escape возвращает на пункт */
-  triggers.forEach(function (t) { t.setAttribute('aria-haspopup', 'true'); t.addEventListener('keydown', function (e) {
+  triggers.forEach(function (t) { t.setAttribute('aria-haspopup', 'true'); t.setAttribute('aria-expanded', 'false'); t.addEventListener('keydown', function (e) {
     if (e.key === 'ArrowDown') { e.preventDefault(); open(t.getAttribute('data-menu')); var f = mg.querySelector('.mg__p.on a'); if (f) f.focus(); }
   }); });
   mg.addEventListener('keydown', function (e) { if (e.key === 'Escape') { var t = triggers.filter(function (x) { return x.getAttribute('data-menu') === cur; })[0]; close(true); if (t) { skipOpen = true; t.focus(); skipOpen = false; } } });
-  /* фокус на пунктах без панели (Контакты, язык) закрывает панель, как и наведение */
+  /* фокус на пунктах без панели (все, кроме «Проектов», язык) закрывает панель, как и наведение */
   hd.addEventListener('focusin', function (e) { var a = e.target.closest('a,button'); if (cur && a && !a.hasAttribute('data-menu')) close(true); });
   hd.addEventListener('mouseleave', function () { close(); }); hd.addEventListener('mouseenter', function () { clearTimeout(timer); });
   mg.addEventListener('mouseenter', function () { clearTimeout(timer); }); mg.addEventListener('mouseleave', function () { close(); });
-  /* пункт без панели (Контакты) и остальная шапка закрывают панель */
+  /* пункты без панели и остальная шапка закрывают панель */
   hd.addEventListener('mouseover', function (e) { var a = e.target.closest('a,button'); if (cur && a && !a.hasAttribute('data-menu')) close(); });
   bd.addEventListener('click', function () { close(true); });
   window.addEventListener('scroll', function () { if (cur) close(true); }, { passive: true });
@@ -156,8 +144,14 @@
       col('Компания', [['О компании', 'company.html'], ['Инвесторам', 'investors.html'], ['Карьера', 'careers.html'], ['Новости', 'intel.html'], ['Для СМИ', 'intel.html#media']]) +
       col('Проекты', [['Все проекты', 'projects.html'], ['DROPFIELD', 'dropfield.html'], ['AGATA', 'agata.html'], ['ELZA', 'elza.html'], ['BLACKFLY', 'blackfly.html'], ['WARDEN', 'warden.html'], ['Еще 9 проектов', 'projects.html#directions']]) +
       col('Связь', [['Контакты', 'contacts.html'], ['Партнерам и вендорам', 'partners.html'], ['info@darlein.ru', 'mailto:info@darlein.ru'], ['Telegram', '#']]) +
-      '<div><h3>Реквизиты</h3><p class="ft__lg">ООО «ДАРЛЕЙН ДЕФЕНС»<br>ИНН ХХХХХХХХХХ · ОГРН ХХХХХХХХХХХХХ<br>г. Москва, ул. ХХХХХХХ, д. ХХ</p><ul>' +
+      '<div><h3>Реквизиты</h3><p class="ft__lg">ООО «ДАРЛЕЙН ДЕФЕНС»<br>ИНН 9701331416<br>КПП 770101001<br>ОГРН 1267700273477<br>г. Москва, ул. ХХХХХХХ, д. ХХ</p><ul>' +
       [['Политика обработки ПДн', 'legal.html#policy'], ['Согласие на обработку', 'legal.html#consent'], ['Пользовательское соглашение', 'legal.html#terms']].map(function (x) { return '<li><a href="' + DD.url(x[1]) + '">' + x[0] + '</a></li>'; }).join('') + '</ul></div></div>' +
-      '<div class="ft__e"><div><img src="' + R + 'assets/logo/logo3b.svg" alt=""><span>© ' + new Date().getFullYear() + ' Darlein Defense</span></div></div>';
+      /* требования к сайтам в РФ (19.10.2026): хранение персональных данных в России (152-ФЗ), без передачи третьим лицам, авторские права */
+      '<div class="ft__law">' + [
+        ['Хранение данных', 'Персональные данные пользователей хранятся и обрабатываются на серверах в Российской Федерации в соответствии с Федеральным законом от 27.07.2006&nbsp;№&nbsp;152-ФЗ «О&nbsp;персональных данных».'],
+        ['Передача данных', 'Мы не распространяем персональные данные и не передаем их третьим лицам, за исключением случаев, предусмотренных законодательством Российской Федерации.'],
+        ['Авторские права', 'Тексты, изображения и дизайн сайта — объекты авторского права ООО «ДАРЛЕЙН ДЕФЕНС». Копирование и использование материалов без письменного разрешения запрещено и преследуется по закону.']
+      ].map(function (x) { return '<p><span class="svc">' + x[0] + '</span>' + x[1] + '</p>'; }).join('') + '</div>' +
+      '<div class="ft__e"><div><img src="' + R + 'assets/logo/logo3b.svg" alt=""><span>© ' + new Date().getFullYear() + ' ООО «ДАРЛЕЙН ДЕФЕНС». Все права защищены.</span></div></div>';
   }
 })();

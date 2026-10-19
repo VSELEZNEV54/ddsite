@@ -55,7 +55,7 @@
   }); });
 
   /* ---------- первый экран: смена кадров проектов ---------- */
-  var REEL = ['dir-ecom', 'dir-soft', 'qual-3', 'join-career', 'dir-uas', 'dir-gear', 'dir-comms', 'dir-def', 'hero-platform', 'hero-boat', 'hero-evtol', 'dir-tech', 'hull', 'prob-2'];
+  var REEL = ['pr-dropfield', 'dr-soft', 'st-q-3', 'st-hangar', 'dr-uas', 'dr-gear', 'b-tower', 'dr-def', 'b-nomad-top', 'b-seal', 'pr-highfast-2', 'b-nomad', 'pr-arrowhead', 'st-prob-2'];
   var reel = $('#reel'), dots = $('#reelDots'), hero = $('.hero__main'), shots, cur = -1, timer = null, seen = true, ready = false;
   reel.innerHTML = REEL.map(function (k, i) { return '<img alt="" ' + (i < 2 ? 'src' : 'data-src') + '="' + IMG(k) + '">'; }).join('');
   dots.innerHTML = REEL.map(function () { return '<i></i>'; }).join('');
@@ -93,7 +93,7 @@
   (function () {
     var st = $('#orbitSt'), orbit = $('#orbit'), R = 214, n = D.length, lines = '', nodes = [], now = -1, touched = false, auto = null, inView = false;
     var ddImg = $('#ddImg'), body = $('#dd .dd__b');
-    var imgs = D.map(function (d) { var im = document.createElement('img'); im.alt = ''; im.loading = 'lazy'; im.src = IMG('dir-' + d.key); ddImg.appendChild(im); return im; });
+    var imgs = D.map(function (d) { var im = document.createElement('img'); im.alt = ''; im.loading = 'lazy'; im.src = IMG(d.img || 'dir-' + d.key); ddImg.appendChild(im); return im; });
     D.forEach(function (d, i) {
       var a = i / n * 2 * Math.PI - Math.PI / 2, c = Math.cos(a), s = Math.sin(a), x = 300 + R * c, y = 300 + R * s;
       lines += '<line class="sp" x1="' + (300 + 116 * c).toFixed(1) + '" y1="' + (300 + 116 * s).toFixed(1) + '" x2="' + x.toFixed(1) + '" y2="' + y.toFixed(1) + '"/>';
@@ -149,7 +149,7 @@
     var rail = $('#rail'), nav = $('.rnav');
     rail.innerHTML = D.map(function (d, i) {
       var mine = P.filter(function (p) { return p[3] === i; });
-      return '<article class="tl tl--ph rc"><img src="' + IMG('dir-' + d.key) + '" alt="" loading="lazy">' +
+      return '<article class="tl tl--ph rc"><img src="' + IMG(d.img || 'dir-' + d.key) + '" alt="" loading="lazy">' +
         '<div class="rc__t"><span class="orb orb--n">' + d.n + '</span><span class="pl pl--glass">' + count(mine.length) + '</span></div>' +
         '<div class="rc__b"><span class="orb orb--glass">' + DD.ic(d.ic) + '</span><h3 class="h3">' + d.title + '</h3><p>' + DD.dirDesc[i] + '</p><div class="chips">' + mine.map(function (p) {
           return '<a class="pl pl--glass" href="' + href(p[0]) + '" title="' + p[0] + ' — ' + p[2] + '"><span class="st st--' + p[1] + '"><i></i><span class="latin">' + p[0] + '</span></span>' + DD.ic('ne', 'ic--s') + '</a>';
@@ -244,9 +244,9 @@
 
   /* ---------- DefenseTech компания ---------- */
   var Q = [
-    ['Один вход к отобранным продуктам', 'Рынок фрагментирован', 'Сильные производители, команды и технологии существуют отдельно. Darlein Defense дает заказчику один понятный вход к отобранным продуктам и сервисам.', 'Подробнее', 'company.html#problem', 'qual-1'],
-    ['Единый стандарт для всех', 'Единый стандарт', 'Качество, промышленный и цифровой дизайн, совместимость — одни требования для собственных разработок и для проектов партнеров.', 'Модель экосистемы', 'company.html#model', 'qual-2'],
-    ['Спокойно и фактами', 'Инженерная компания', 'Без милитари-пафоса. У каждого проекта честный статус: запущен, готовится или исследуется. Закрытые характеристики — по запросу.', 'Принципы работы', 'company.html#principles', 'qual-3']
+    ['Один вход к отобранным продуктам', 'Рынок фрагментирован', 'Сильные производители, команды и технологии существуют отдельно. Darlein Defense дает заказчику один понятный вход к отобранным продуктам и сервисам.', 'Подробнее', 'company.html#problem', 'st-q-1'],
+    ['Единый стандарт для всех', 'Единый стандарт', 'Качество, промышленный и цифровой дизайн, совместимость — одни требования для собственных разработок и для проектов партнеров.', 'Модель экосистемы', 'company.html#model', 'st-q-2'],
+    ['Спокойно и фактами', 'Инженерная компания', 'Без милитари-пафоса. У каждого проекта честный статус: запущен, готовится или исследуется. Закрытые характеристики — по запросу.', 'Принципы работы', 'company.html#principles', 'st-q-3']
   ];
   $('#q').innerHTML = Q.map(function (x, i) {
     var kind = i === 0 ? 'tl--ph qt--big' : (i === 1 ? 'tl--lt qt--s' : 'tl--ph qt--s');

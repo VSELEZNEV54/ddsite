@@ -9,12 +9,12 @@
 <link rel="icon" type="image/png" sizes="256x256" href="assets/logo/favicon.png">
 <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
 <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400&family=Tektur:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css?v=1018a">
-<link rel="stylesheet" href="css/main.css?v=1018a">
-<link rel="stylesheet" href="css/pages.css?v=1018a">
-<link rel="stylesheet" href="css/brand.css?v=1018a">
+<link rel="preload" href="fonts/geist-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/base.css?v=1019a">
+<link rel="stylesheet" href="css/main.css?v=1019a">
+<link rel="stylesheet" href="css/pages.css?v=1019a">
+<link rel="stylesheet" href="css/brand.css?v=1019a">
 </head>
 <body data-nav="projects">
 
@@ -52,7 +52,7 @@
     <div class="ph__meta">
       <div data-rv style="--d:250ms"><div class="t-card">Автономные сенсорные системы</div><div class="ph__tags svc"><span class="badge">SNS</span><span class="st st--research"><i></i>Исследование</span></div></div>
       <p class="t-lead" data-rv style="--d:330ms">Семейство автономных сенсорных систем для земли, воздуха и моря. Датчики, локальная обработка и хранение данных объединены так, чтобы наблюдения отдельных устройств складывались в общую картину событий.</p>
-      <div class="ph__cta" data-rv style="--d:410ms"><a class="bx bx--on" href="#request"><span class="bx__f"></span>Запросить презентацию<i data-ic="down" data-cls="ic--s ic--dn"></i></a><a class="bx" href="#modules"><span class="bx__f"></span>Как устроено<i data-ic="down" data-cls="ic--s ic--dn"></i></a></div>
+      <div class="ph__cta" data-rv style="--d:410ms"><a class="bx" href="#request"><span class="bx__f"></span>Запросить презентацию</a></div>
     </div>
   </div>
 </section>
@@ -61,8 +61,8 @@
   <div class="intro"><h2 class="t-head lines" data-auto><span class="l"><span>Знать, что происходит вокруг</span></span></h2>
     <div class="stack" data-rv><p class="t-lead">Один сигнал дает ограниченное представление о ситуации.</p><p class="muted">Больше информации появляется при сравнении наблюдений разных сенсоров, соседних узлов и предыдущих периодов. ECHO хранит эту историю и оценивает достоверность событий.</p></div></div>
   <div class="duo2">
-    <figure class="shot grain" data-rv><img src="img/b-tower.jpg" alt="" loading="lazy"></figure>
-    <figure class="shot grain" data-rv style="--d:90ms"><img src="img/p-echo.jpg" alt="" loading="lazy"></figure>
+    <figure class="shot grain" data-rv><img src="img/pr-echo-2.jpg" alt="" loading="lazy"></figure>
+    <figure class="shot grain" data-rv style="--d:90ms"><img src="img/pr-echo-3.jpg" alt="" loading="lazy"></figure>
   </div>
 </section>
 
@@ -82,20 +82,20 @@
 <section class="sec wrap" id="who">
   <div class="sh"><h2 class="t-head lines" data-auto><span class="l"><span>Наблюдение, связь и анализ</span></span></h2><span class="svc" data-rv>Что происходит с данными</span></div>
   <div class="tiles">
-    <a class="pc grain" href="hex.html" data-rv style="--d:0ms"><div class="pc__img"><img src="img/join-career.jpg" alt="" loading="lazy"></div><div class="pc__t svc"><span>01 / 03</span></div><div class="pc__b"><div><span class="pc__n">01</span><h3>Сеть</h3><p>Узлы передают выделенные события по доступной совместимой сети.</p></div><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></div></a>
-    <a class="pc grain" href="agata.html" data-rv style="--d:90ms"><div class="pc__img"><img src="img/hull.jpg" alt="" loading="lazy"></div><div class="pc__t svc"><span>02 / 03</span></div><div class="pc__b"><div><span class="pc__n">02</span><h3>AGATA</h3><p>События связываются с объектами и задачами.</p></div><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></div></a>
-    <a class="pc grain" href="elza.html" data-rv style="--d:180ms"><div class="pc__img"><img src="img/prob-1.jpg" alt="" loading="lazy"></div><div class="pc__t svc"><span>03 / 03</span></div><div class="pc__b"><div><span class="pc__n">03</span><h3>ELZA</h3><p>Анализ накопленной истории и поиск закономерностей.</p></div><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></div></a>
+    <a class="pc pc--t" href="hex.html" data-rv style="--d:0ms"><div class="pc__t svc"><span>01 / 03</span></div><div class="pc__b"><div><span class="pc__n">01</span><h3>Сеть</h3><p>Узлы передают выделенные события по доступной совместимой сети.</p></div><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></div></a>
+    <a class="pc pc--t" href="agata.html" data-rv style="--d:90ms"><div class="pc__t svc"><span>02 / 03</span></div><div class="pc__b"><div><span class="pc__n">02</span><h3>AGATA</h3><p>События связываются с объектами и задачами.</p></div><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></div></a>
+    <a class="pc pc--t" href="elza.html" data-rv style="--d:180ms"><div class="pc__t svc"><span>03 / 03</span></div><div class="pc__b"><div><span class="pc__n">03</span><h3>ELZA</h3><p>Анализ накопленной истории и поиск закономерностей.</p></div><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></div></a>
   </div>
 </section>
 
 <section class="sec wrap" id="diff">
   <div class="sh"><h2 class="t-head lines" data-auto><span class="l"><span>Возможности</span></span></h2><span class="svc" data-rv>Отдельные датчики, общая картина</span></div>
-  <div class="q q--ph" data-rv>
+  <div class="q" data-rv>
     <div class="q__tabs" role="tablist"><button type="button" class="on">Оценка уверенности</button><button type="button">Сравнение сигналов</button><button type="button">История событий</button><button type="button">Все узлы под контролем</button></div>
-    <div class="q__p grain on"><div class="q__bg"><img src="img/qual-1.jpg" alt="" loading="lazy"></div><div class="mc__br"></div><div class="q__num"><span class="svc">01 / 04</span><b>1</b></div><div class="q__tx"><span class="svc">Оценка уверенности</span><p>Результат распознавания идет с уровнем уверенности. Качество наблюдения учитывается в анализе.</p></div></div>
-    <div class="q__p grain"><div class="q__bg"><img src="img/join-partner.jpg" alt="" loading="lazy"></div><div class="mc__br"></div><div class="q__num"><span class="svc">02 / 04</span><b>2</b></div><div class="q__tx"><span class="svc">Сравнение сигналов</span><p>Показания разных датчиков и соседних узлов дополняют друг друга и уточняют картину.</p></div></div>
-    <div class="q__p grain"><div class="q__bg"><img src="img/prob-3.jpg" alt="" loading="lazy"></div><div class="mc__br"></div><div class="q__num"><span class="svc">03 / 04</span><b>3</b></div><div class="q__tx"><span class="svc">История событий</span><p>Наблюдения накапливаются во времени. Новые сигналы сравниваются с предыдущими.</p></div></div>
-    <div class="q__p grain"><div class="q__bg"><img src="img/qual-2.jpg" alt="" loading="lazy"></div><div class="mc__br"></div><div class="q__num"><span class="svc">04 / 04</span><b>4</b></div><div class="q__tx"><span class="svc">Все узлы под контролем</span><p>Общий реестр показывает состав сети, доступность устройств и технические предупреждения.</p></div></div>
+    <div class="q__p on"><div class="q__num"><span class="svc">01 / 04</span><b>1</b></div><div class="q__tx"><span class="svc">Оценка уверенности</span><p>Результат распознавания идет с уровнем уверенности. Качество наблюдения учитывается в анализе.</p></div></div>
+    <div class="q__p"><div class="q__num"><span class="svc">02 / 04</span><b>2</b></div><div class="q__tx"><span class="svc">Сравнение сигналов</span><p>Показания разных датчиков и соседних узлов дополняют друг друга и уточняют картину.</p></div></div>
+    <div class="q__p"><div class="q__num"><span class="svc">03 / 04</span><b>3</b></div><div class="q__tx"><span class="svc">История событий</span><p>Наблюдения накапливаются во времени. Новые сигналы сравниваются с предыдущими.</p></div></div>
+    <div class="q__p"><div class="q__num"><span class="svc">04 / 04</span><b>4</b></div><div class="q__tx"><span class="svc">Все узлы под контролем</span><p>Общий реестр показывает состав сети, доступность устройств и технические предупреждения.</p></div></div>
   </div>
 </section>
 
@@ -121,10 +121,10 @@
 
 <footer class="ft" id="footer"><div class="ft__p fr" id="ftp"></div></footer>
 
-<script src="js/base.js?v=1018a"></script>
-<script src="js/brand.js?v=1018a"></script>
-<script src="js/chrome.js?v=1018a"></script>
-<script src="js/blocks.js?v=1018a"></script>
-<script src="js/page.js?v=1018a"></script>
+<script src="js/base.js?v=1019a"></script>
+<script src="js/brand.js?v=1019a"></script>
+<script src="js/chrome.js?v=1019a"></script>
+<script src="js/blocks.js?v=1019a"></script>
+<script src="js/page.js?v=1019a"></script>
 </body>
 </html>

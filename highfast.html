@@ -9,12 +9,12 @@
 <link rel="icon" type="image/png" sizes="256x256" href="assets/logo/favicon.png">
 <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
 <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400&family=Tektur:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css?v=1018a">
-<link rel="stylesheet" href="css/main.css?v=1018a">
-<link rel="stylesheet" href="css/pages.css?v=1018a">
-<link rel="stylesheet" href="css/brand.css?v=1018a">
+<link rel="preload" href="fonts/geist-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/base.css?v=1019a">
+<link rel="stylesheet" href="css/main.css?v=1019a">
+<link rel="stylesheet" href="css/pages.css?v=1019a">
+<link rel="stylesheet" href="css/brand.css?v=1019a">
 </head>
 <body data-nav="projects">
 
@@ -52,7 +52,7 @@
     <div class="ph__meta">
       <div data-rv style="--d:250ms"><div class="t-card">Аппараты вертикального взлета</div><div class="ph__tags svc"><span class="badge">VTOL</span><span class="st st--research"><i></i>Исследование</span></div></div>
       <p class="t-lead" data-rv style="--d:330ms">Семейство компактных аппаратов вертикального взлета и посадки для перевозки людей и важных грузов. Транспорт, который меньше зависит от наземных маршрутов и дает дополнительные возможности перемещения в сложных условиях.</p>
-      <div class="ph__cta" data-rv style="--d:410ms"><a class="bx bx--on" href="#request"><span class="bx__f"></span>Запросить презентацию<i data-ic="down" data-cls="ic--s ic--dn"></i></a><a class="bx" href="#modules"><span class="bx__f"></span>Как устроено<i data-ic="down" data-cls="ic--s ic--dn"></i></a></div>
+      <div class="ph__cta" data-rv style="--d:410ms"><a class="bx" href="#request"><span class="bx__f"></span>Запросить презентацию</a></div>
     </div>
   </div>
 </section>
@@ -61,8 +61,8 @@
   <div class="intro"><h2 class="t-head lines" data-auto><span class="l"><span>Туда, где нет дорог</span></span></h2>
     <div class="stack" data-rv><p class="t-lead">Рельеф, состояние дорог и доступность инфраструктуры определяют, куда и как можно добраться.</p><p class="muted">Аппаратам вертикального взлета не нужна взлетно-посадочная полоса. Класс, полезная нагрузка и силовая установка определяют возможности конкретной версии.</p></div></div>
   <div class="duo2">
-    <figure class="shot grain" data-rv><img src="img/b-nomad.jpg" alt="" loading="lazy"></figure>
-    <figure class="shot grain" data-rv style="--d:90ms"><img src="img/hero-evtol.jpg" alt="" loading="lazy"></figure>
+    <figure class="shot grain" data-rv><img src="img/pr-highfast-2.jpg" alt="" loading="lazy"></figure>
+    <figure class="shot grain" data-rv style="--d:90ms"><img src="img/pr-highfast-3.jpg" alt="" loading="lazy"></figure>
   </div>
 </section>
 
@@ -82,20 +82,20 @@
 <section class="sec wrap" id="who">
   <div class="sh"><h2 class="t-head lines" data-auto><span class="l"><span>Люди, грузы и эвакуация</span></span></h2><span class="svc" data-rv>Основные сценарии</span></div>
   <div class="tiles">
-    <a class="pc grain" href="#request" data-rv style="--d:0ms"><div class="pc__img"><img src="img/qual-1.jpg" alt="" loading="lazy"></div><div class="pc__t svc"><span>01 / 03</span></div><div class="pc__b"><div><span class="pc__n">01</span><h3>Перевозка людей</h3><p>Перемещение небольших групп там, где наземный маршрут затруднен.</p></div><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></div></a>
-    <a class="pc grain" href="#request" data-rv style="--d:90ms"><div class="pc__img"><img src="img/join-partner.jpg" alt="" loading="lazy"></div><div class="pc__t svc"><span>02 / 03</span></div><div class="pc__b"><div><span class="pc__n">02</span><h3>Доставка грузов</h3><p>Оборудование и важные грузы в труднодоступные места.</p></div><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></div></a>
-    <a class="pc grain" href="#request" data-rv style="--d:180ms"><div class="pc__img"><img src="img/prob-3.jpg" alt="" loading="lazy"></div><div class="pc__t svc"><span>03 / 03</span></div><div class="pc__b"><div><span class="pc__n">03</span><h3>Эвакуация</h3><p>Эвакуационные версии на общей основе семейства.</p></div><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></div></a>
+    <a class="pc pc--t" href="#request" data-rv style="--d:0ms"><div class="pc__t svc"><span>01 / 03</span></div><div class="pc__b"><div><span class="pc__n">01</span><h3>Перевозка людей</h3><p>Перемещение небольших групп там, где наземный маршрут затруднен.</p></div><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></div></a>
+    <a class="pc pc--t" href="#request" data-rv style="--d:90ms"><div class="pc__t svc"><span>02 / 03</span></div><div class="pc__b"><div><span class="pc__n">02</span><h3>Доставка грузов</h3><p>Оборудование и важные грузы в труднодоступные места.</p></div><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></div></a>
+    <a class="pc pc--t" href="#request" data-rv style="--d:180ms"><div class="pc__t svc"><span>03 / 03</span></div><div class="pc__b"><div><span class="pc__n">03</span><h3>Эвакуация</h3><p>Эвакуационные версии на общей основе семейства.</p></div><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></div></a>
   </div>
 </section>
 
 <section class="sec wrap" id="diff">
   <div class="sh"><h2 class="t-head lines" data-auto><span class="l"><span>Возможности</span></span></h2><span class="svc" data-rv>Больше свободы передвижения</span></div>
-  <div class="q q--ph" data-rv>
+  <div class="q" data-rv>
     <div class="q__tabs" role="tablist"><button type="button" class="on">Вертикальный взлет</button><button type="button">Обзор вокруг</button><button type="button">Помощь в полете</button><button type="button">Весь парк в AGATA</button></div>
-    <div class="q__p grain on"><div class="q__bg"><img src="img/qual-2.jpg" alt="" loading="lazy"></div><div class="mc__br"></div><div class="q__num"><span class="svc">01 / 04</span><b>1</b></div><div class="q__tx"><span class="svc">Вертикальный взлет</span><p>Все классы взлетают и садятся вертикально. Конструкция выбирается под требования версии.</p></div></div>
-    <div class="q__p grain"><div class="q__bg"><img src="img/join-invest.jpg" alt="" loading="lazy"></div><div class="mc__br"></div><div class="q__num"><span class="svc">02 / 04</span><b>2</b></div><div class="q__tx"><span class="svc">Обзор вокруг</span><p>Камеры, навигация и внешние датчики дополняют информацию о движении.</p></div></div>
-    <div class="q__p grain"><div class="q__bg"><img src="img/qual-3.jpg" alt="" loading="lazy"></div><div class="mc__br"></div><div class="q__num"><span class="svc">03 / 04</span><b>3</b></div><div class="q__tx"><span class="svc">Помощь в полете</span><p>Навигационные подсказки и автоматизация отдельных процедур развиваются поэтапно.</p></div></div>
-    <div class="q__p grain"><div class="q__bg"><img src="img/prob-2.jpg" alt="" loading="lazy"></div><div class="mc__br"></div><div class="q__num"><span class="svc">04 / 04</span><b>4</b></div><div class="q__tx"><span class="svc">Весь парк в AGATA</span><p>Положение, оснащение, грузы и задачи аппаратов собраны в общей системе.</p></div></div>
+    <div class="q__p on"><div class="q__num"><span class="svc">01 / 04</span><b>1</b></div><div class="q__tx"><span class="svc">Вертикальный взлет</span><p>Все классы взлетают и садятся вертикально. Конструкция выбирается под требования версии.</p></div></div>
+    <div class="q__p"><div class="q__num"><span class="svc">02 / 04</span><b>2</b></div><div class="q__tx"><span class="svc">Обзор вокруг</span><p>Камеры, навигация и внешние датчики дополняют информацию о движении.</p></div></div>
+    <div class="q__p"><div class="q__num"><span class="svc">03 / 04</span><b>3</b></div><div class="q__tx"><span class="svc">Помощь в полете</span><p>Навигационные подсказки и автоматизация отдельных процедур развиваются поэтапно.</p></div></div>
+    <div class="q__p"><div class="q__num"><span class="svc">04 / 04</span><b>4</b></div><div class="q__tx"><span class="svc">Весь парк в AGATA</span><p>Положение, оснащение, грузы и задачи аппаратов собраны в общей системе.</p></div></div>
   </div>
 </section>
 
@@ -121,10 +121,10 @@
 
 <footer class="ft" id="footer"><div class="ft__p fr" id="ftp"></div></footer>
 
-<script src="js/base.js?v=1018a"></script>
-<script src="js/brand.js?v=1018a"></script>
-<script src="js/chrome.js?v=1018a"></script>
-<script src="js/blocks.js?v=1018a"></script>
-<script src="js/page.js?v=1018a"></script>
+<script src="js/base.js?v=1019a"></script>
+<script src="js/brand.js?v=1019a"></script>
+<script src="js/chrome.js?v=1019a"></script>
+<script src="js/blocks.js?v=1019a"></script>
+<script src="js/page.js?v=1019a"></script>
 </body>
 </html>

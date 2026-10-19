@@ -14,6 +14,12 @@
    Контур при наведении остается на месте (вторая обводка вокруг залитой кнопки выглядела криво, особенно после касания на телефоне).
    Заливка в покое скрыта полностью: сжатая до нуля через clip-path, в Safari она оставляла светлую дугу у левого края. */
 .bx{border-radius:999px;max-width:100%}
+/* подпись основных кнопок 16 px вместо 20 (замечание 19.10.2026: текст на кнопках слишком крупный); малые 14, крупная в мобильном меню своя */
+.bx:not(.bx--s):not(.bx--l){font-size:16px}
+/* круглая кнопка-значок никогда не сжимается в овал рядом с длинным текстом (карточки, строки списков) */
+.bx--ic{flex:none}
+/* кнопка без стрелки и во всю ширину (телефон) — подпись по центру, а не у левого края */
+.bx:not(.bx--ic):not(:has(.ic)){justify-content:center}
 .bx::before{background:none;border:1px solid var(--c);border-radius:inherit}
 .bx__f{border-radius:inherit;transform:none;opacity:0;clip-path:inset(0 100% 0 0 round 999px);transition:clip-path .5s var(--out),opacity 0s .5s}
 .bx:hover .bx__f{opacity:1;clip-path:inset(0 round 999px);transition:clip-path .5s var(--out),opacity 0s}

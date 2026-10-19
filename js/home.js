@@ -28,7 +28,7 @@
   var cv = $('#heroCanvas'), hero = $('.hero'), dots = true, seen = true, ready = false, loop = null;
   /* временная смена кадров проектов вместо видео: кадр 4 с, следующий подгружается заранее; поле точек гаснет, когда показан первый кадр */
   /* кадры b-* — из брендбука (фотостиль), остальные — прежние кадры направлений */
-  var REEL = ['b-highfast', 'dir-ecom', 'b-agata', 'b-nomad', 'dir-uas', 'b-seal-top', 'dir-gear', 'b-hand', 'dir-def', 'b-seal', 'b-nomad-wheel', 'b-nomad-top', 'hull', 'b-seal-bow'];
+  var REEL = ['b-highfast', 'pr-dropfield', 'pr-agata', 'b-nomad', 'dr-uas', 'b-seal-top', 'pr-warden', 'b-hand', 'dr-def', 'b-seal', 'pr-blackfly', 'b-nomad-top', 'pr-arrowhead', 'b-seal-bow'];
   var reel = $('#heroReel'), shots, cur = -1, timer = null;
   reel.innerHTML = REEL.map(function (k, i) { return '<img alt="" ' + (i < 2 ? 'src' : 'data-src') + '="img/' + k + '.jpg"' + (i % 2 ? ' class="r"' : '') + '>'; }).join('');
   shots = [].slice.call(reel.children);
@@ -73,7 +73,7 @@
   })();
 
   /* ---------- загрузочный экран ---------- */
-  DD.loader({ min: 2400, assets: ['assets/logo/logo3b.svg', 'img/prob-1.jpg'], onOut: function () {
+  DD.loader({ min: 2400, assets: ['assets/logo/logo3b.svg', 'img/st-prob-1.jpg'], onOut: function () {
     ready = true; play();
     setTimeout(function () { $('#heroT').classList.add('in'); }, 350);
     DD.reveal(); DD.words($('#whoT'));

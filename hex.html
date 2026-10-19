@@ -9,12 +9,12 @@
 <link rel="icon" type="image/png" sizes="256x256" href="assets/logo/favicon.png">
 <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
 <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400&family=Tektur:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css?v=1018a">
-<link rel="stylesheet" href="css/main.css?v=1018a">
-<link rel="stylesheet" href="css/pages.css?v=1018a">
-<link rel="stylesheet" href="css/brand.css?v=1018a">
+<link rel="preload" href="fonts/geist-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/base.css?v=1019a">
+<link rel="stylesheet" href="css/main.css?v=1019a">
+<link rel="stylesheet" href="css/pages.css?v=1019a">
+<link rel="stylesheet" href="css/brand.css?v=1019a">
 </head>
 <body data-nav="projects">
 
@@ -52,7 +52,7 @@
     <div class="ph__meta">
       <div data-rv style="--d:250ms"><div class="t-card">Связь для людей, техники и сенсоров</div><div class="ph__tags svc"><span class="badge">MESH</span><span class="st st--research"><i></i>Исследование</span></div></div>
       <p class="t-lead" data-rv style="--d:330ms">Семейство сетевых устройств для носимой электроники, техники, беспилотных платформ и сенсоров. Распределенная mesh-сеть, в которой узлы передают свои данные и помогают передавать данные других участников.</p>
-      <div class="ph__cta" data-rv style="--d:410ms"><a class="bx bx--on" href="#request"><span class="bx__f"></span>Запросить презентацию<i data-ic="down" data-cls="ic--s ic--dn"></i></a><a class="bx" href="#modules"><span class="bx__f"></span>Как устроено<i data-ic="down" data-cls="ic--s ic--dn"></i></a></div>
+      <div class="ph__cta" data-rv style="--d:410ms"><a class="bx" href="#request"><span class="bx__f"></span>Запросить презентацию</a></div>
     </div>
   </div>
 </section>
@@ -61,8 +61,8 @@
   <div class="intro"><h2 class="t-head lines" data-auto><span class="l"><span>Одна сеть для всей команды</span></span></h2>
     <div class="stack" data-rv><p class="t-lead">Люди и машины перемещаются, соединения меняются, возможности каналов различаются.</p><p class="muted">HEX использует доступные пути передачи и перестраивает маршруты при изменении сети. Сеть проектируется для работы без обязательного постоянного центрального узла.</p></div></div>
   <div class="duo2">
-    <figure class="shot grain" data-rv><img src="img/b-tower.jpg" alt="" loading="lazy"></figure>
-    <figure class="shot grain" data-rv style="--d:90ms"><img src="img/dir-comms.jpg" alt="" loading="lazy"></figure>
+    <figure class="shot grain" data-rv><img src="img/pr-hex-2.jpg" alt="" loading="lazy"></figure>
+    <figure class="shot grain" data-rv style="--d:90ms"><img src="img/pr-hex-3.jpg" alt="" loading="lazy"></figure>
   </div>
 </section>
 
@@ -82,20 +82,20 @@
 <section class="sec wrap" id="who">
   <div class="sh"><h2 class="t-head lines" data-auto><span class="l"><span>Люди и техника на связи</span></span></h2><span class="svc" data-rv>Кто участвует в сети</span></div>
   <div class="tiles">
-    <a class="pc grain" href="#request" data-rv style="--d:0ms"><div class="pc__img"><img src="img/prob-2.jpg" alt="" loading="lazy"></div><div class="pc__t svc"><span>01 / 03</span></div><div class="pc__b"><div><span class="pc__n">01</span><h3>Пользователь</h3><p>Носимый узел соединяется с ближайшими доступными устройствами.</p></div><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></div></a>
-    <a class="pc grain" href="#request" data-rv style="--d:90ms"><div class="pc__img"><img src="img/join-career.jpg" alt="" loading="lazy"></div><div class="pc__t svc"><span>02 / 03</span></div><div class="pc__b"><div><span class="pc__n">02</span><h3>Техника</h3><p>Машина, воздушная или морская платформа становится узлом и передает данные других.</p></div><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></div></a>
-    <a class="pc grain" href="#request" data-rv style="--d:180ms"><div class="pc__img"><img src="img/hull.jpg" alt="" loading="lazy"></div><div class="pc__t svc"><span>03 / 03</span></div><div class="pc__b"><div><span class="pc__n">03</span><h3>Удаленный сенсор</h3><p>Передает наблюдения через общую сеть и шлюзы.</p></div><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></div></a>
+    <a class="pc pc--t" href="#request" data-rv style="--d:0ms"><div class="pc__t svc"><span>01 / 03</span></div><div class="pc__b"><div><span class="pc__n">01</span><h3>Пользователь</h3><p>Носимый узел соединяется с ближайшими доступными устройствами.</p></div><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></div></a>
+    <a class="pc pc--t" href="#request" data-rv style="--d:90ms"><div class="pc__t svc"><span>02 / 03</span></div><div class="pc__b"><div><span class="pc__n">02</span><h3>Техника</h3><p>Машина, воздушная или морская платформа становится узлом и передает данные других.</p></div><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></div></a>
+    <a class="pc pc--t" href="#request" data-rv style="--d:180ms"><div class="pc__t svc"><span>03 / 03</span></div><div class="pc__b"><div><span class="pc__n">03</span><h3>Удаленный сенсор</h3><p>Передает наблюдения через общую сеть и шлюзы.</p></div><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></div></a>
   </div>
 </section>
 
 <section class="sec wrap" id="diff">
   <div class="sh"><h2 class="t-head lines" data-auto><span class="l"><span>Возможности</span></span></h2><span class="svc" data-rv>Связь, которая объединяет команду</span></div>
-  <div class="q q--ph" data-rv>
+  <div class="q" data-rv>
     <div class="q__tabs" role="tablist"><button type="button" class="on">Выбор пути</button><button type="button">Важное в приоритете</button><button type="button">Передача с задержкой</button><button type="button">Состояние сети</button></div>
-    <div class="q__p grain on"><div class="q__bg"><img src="img/prob-1.jpg" alt="" loading="lazy"></div><div class="mc__br"></div><div class="q__num"><span class="svc">01 / 04</span><b>1</b></div><div class="q__tx"><span class="svc">Выбор пути</span><p>Сеть обнаруживает узлы и соединения. При изменениях использует другой маршрут, если он есть.</p></div></div>
-    <div class="q__p grain"><div class="q__bg"><img src="img/qual-1.jpg" alt="" loading="lazy"></div><div class="mc__br"></div><div class="q__num"><span class="svc">02 / 04</span><b>2</b></div><div class="q__tx"><span class="svc">Важное в приоритете</span><p>При ограниченном канале сообщения, координаты и технические показатели идут первыми.</p></div></div>
-    <div class="q__p grain"><div class="q__bg"><img src="img/join-partner.jpg" alt="" loading="lazy"></div><div class="mc__br"></div><div class="q__num"><span class="svc">03 / 04</span><b>3</b></div><div class="q__tx"><span class="svc">Передача с задержкой</span><p>При разрыве связи данные сохраняются на узле и уходят, когда появляется соединение.</p></div></div>
-    <div class="q__p grain"><div class="q__bg"><img src="img/prob-3.jpg" alt="" loading="lazy"></div><div class="mc__br"></div><div class="q__num"><span class="svc">04 / 04</span><b>4</b></div><div class="q__tx"><span class="svc">Состояние сети</span><p>Подключенные узлы и их техническое состояние видны в общей системе.</p></div></div>
+    <div class="q__p on"><div class="q__num"><span class="svc">01 / 04</span><b>1</b></div><div class="q__tx"><span class="svc">Выбор пути</span><p>Сеть обнаруживает узлы и соединения. При изменениях использует другой маршрут, если он есть.</p></div></div>
+    <div class="q__p"><div class="q__num"><span class="svc">02 / 04</span><b>2</b></div><div class="q__tx"><span class="svc">Важное в приоритете</span><p>При ограниченном канале сообщения, координаты и технические показатели идут первыми.</p></div></div>
+    <div class="q__p"><div class="q__num"><span class="svc">03 / 04</span><b>3</b></div><div class="q__tx"><span class="svc">Передача с задержкой</span><p>При разрыве связи данные сохраняются на узле и уходят, когда появляется соединение.</p></div></div>
+    <div class="q__p"><div class="q__num"><span class="svc">04 / 04</span><b>4</b></div><div class="q__tx"><span class="svc">Состояние сети</span><p>Подключенные узлы и их техническое состояние видны в общей системе.</p></div></div>
   </div>
 </section>
 
@@ -121,10 +121,10 @@
 
 <footer class="ft" id="footer"><div class="ft__p fr" id="ftp"></div></footer>
 
-<script src="js/base.js?v=1018a"></script>
-<script src="js/brand.js?v=1018a"></script>
-<script src="js/chrome.js?v=1018a"></script>
-<script src="js/blocks.js?v=1018a"></script>
-<script src="js/page.js?v=1018a"></script>
+<script src="js/base.js?v=1019a"></script>
+<script src="js/brand.js?v=1019a"></script>
+<script src="js/chrome.js?v=1019a"></script>
+<script src="js/blocks.js?v=1019a"></script>
+<script src="js/page.js?v=1019a"></script>
 </body>
 </html>
