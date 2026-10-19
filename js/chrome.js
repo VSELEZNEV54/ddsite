@@ -144,7 +144,7 @@
       col('Компания', [['О компании', 'company.html'], ['Инвесторам', 'investors.html'], ['Карьера', 'careers.html'], ['Новости', 'intel.html'], ['Для СМИ', 'intel.html#media']]) +
       col('Проекты', [['Все проекты', 'projects.html'], ['DROPFIELD', 'dropfield.html'], ['AGATA', 'agata.html'], ['ELZA', 'elza.html'], ['BLACKFLY', 'blackfly.html'], ['WARDEN', 'warden.html'], ['Еще 9 проектов', 'projects.html#directions']]) +
       col('Связь', [['Контакты', 'contacts.html'], ['Партнерам и вендорам', 'partners.html'], ['info@darlein.ru', 'mailto:info@darlein.ru'], ['Telegram', '#']]) +
-      '<div><h3>Реквизиты</h3><p class="ft__lg">ООО «ДАРЛЕЙН ДЕФЕНС»<br>ИНН 9701331416<br>КПП 770101001<br>ОГРН 1267700273477<br>г. Москва, ул. ХХХХХХХ, д. ХХ</p><ul>' +
+      '<div><h3>Реквизиты</h3><p class="ft__lg">ООО «ДАРЛЕЙН ДЕФЕНС»<br>ИНН 9701331416<br>КПП 770101001<br>ОГРН 1267700273477</p><ul>' +
       [['Политика обработки ПДн', 'legal.html#policy'], ['Согласие на обработку', 'legal.html#consent'], ['Пользовательское соглашение', 'legal.html#terms']].map(function (x) { return '<li><a href="' + DD.url(x[1]) + '">' + x[0] + '</a></li>'; }).join('') + '</ul></div></div>' +
       /* требования к сайтам в РФ (19.10.2026): хранение персональных данных в России (152-ФЗ), без передачи третьим лицам, авторские права */
       '<div class="ft__law">' + [
