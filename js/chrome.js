@@ -2,6 +2,8 @@
 (function () {
   'use strict';
   var $ = function (q) { return document.querySelector(q); }, R = '';
+  /* язык страницы: английская версия лежит в папке en/ и собирается из русской (DD/design-tools/build_en.py) */
+  var LANG = document.documentElement.lang === 'en' ? 'en' : 'ru';
   DD.I.chev = '<path d="M5 9l7 7 7-7"/>';
   DD.I.tg = '<path d="M21 4L3 11l6 2 2 6 3-4 5 3z"/><path d="M9 13l9-8"/>';
   DD.I.vk = '<path d="M3 7c.5 8 4 11 9 11h1v-4c2 0 4 2 5 4h3c-1-3-3-5-5-6 2-1 4-3 5-5h-3c-1 2-3 4-5 4V7h-3v7C7 13 5 10 5 7z"/>';
@@ -73,8 +75,8 @@
   var ru = hd.querySelector('.hd__r > .svc');
   if (ru) {
     var lg = document.createElement('div'); lg.className = 'lg svc';
-    lg.innerHTML = '<button type="button" class="lg__b" aria-haspopup="listbox" aria-expanded="false"><span>RU</span>' + DD.ic('chev') + '</button><div class="lg__l" role="listbox">' +
-      LANGS.map(function (l) { return '<button type="button" role="option" data-lang="' + l[0] + '"' + (l[0] === 'ru' ? ' class="on"' : '') + '><span>' + l[1] + '</span><span>' + l[2] + '</span></button>'; }).join('') + '</div>';
+    lg.innerHTML = '<button type="button" class="lg__b" aria-haspopup="listbox" aria-expanded="false"><span>' + LANG.toUpperCase() + '</span>' + DD.ic('chev') + '</button><div class="lg__l" role="listbox">' +
+      LANGS.map(function (l) { return '<button type="button" role="option" data-lang="' + l[0] + '"' + (l[0] === LANG ? ' class="on"' : '') + '><span>' + l[1] + '</span><span>' + l[2] + '</span></button>'; }).join('') + '</div>';
     ru.parentNode.replaceChild(lg, ru);
     var lb = lg.querySelector('.lg__b');
     var setOpenLang = function (v) { lg.classList.toggle('on', v); lb.setAttribute('aria-expanded', v ? 'true' : 'false'); };
@@ -83,10 +85,11 @@
     lg.querySelectorAll('.lg__l button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); setOpenLang(false); lb.focus(); }); });
     document.addEventListener('click', function () { setOpenLang(false); });
   }
-  /* в макете язык только переключает подпись: переводов страниц пока нет */
+  /* смена языка — переход на ту же страницу в другой версии: русская в корне, английская в en/ */
   function setLang(l) {
-    document.querySelectorAll('[data-lang]').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-lang') === l); b.classList.toggle('bx--on', b.classList.contains('bx') && b.getAttribute('data-lang') === l); });
-    var cur = document.querySelector('.lg__b span'); if (cur) cur.textContent = l.toUpperCase();
+    if (l === LANG) return;
+    var file = location.pathname.split('/').pop() || 'index.html';
+    location.href = (LANG === 'en' ? '../' : 'en/') + file + location.search + location.hash;
   }
 
   /* ---------- мобильное меню ---------- */
@@ -94,7 +97,7 @@
   mm.innerHTML = '<div class="mm__t"><img src="' + R + 'assets/logo/logo3b.svg" alt="Darlein Defense"><button class="bx bx--ic bx--s" type="button" id="mmX" aria-label="Закрыть меню"><span class="bx__f"></span>' + DD.ic('close') + '</button></div>' +
     '<nav class="mm__n" aria-label="Меню">' + DD.nav.map(function (n, i) { return '<a href="' + DD.url(n[1]) + '" style="--i:' + i + '">' + n[0] + DD.ic('ne') + '</a>'; }).join('') + '</nav>' +
     '<a class="bx bx--l svc mm__df" href="' + DD.url('dropfield.html') + '"><span class="bx__f"></span><span class="st st--soon"><i></i>DROPFIELD</span>' + DD.ic('ne', 'ic--s') + '</a>' +
-    '<div class="mm__s"><span class="svc">Язык</span><div class="mm__lang">' + LANGS.map(function (l) { return '<button class="bx bx--s svc' + (l[0] === 'ru' ? ' bx--on' : '') + '" type="button" data-lang="' + l[0] + '"><span class="bx__f"></span>' + l[1] + '</button>'; }).join('') + '</div></div>' +
+    '<div class="mm__s"><span class="svc">Язык</span><div class="mm__lang">' + LANGS.map(function (l) { return '<button class="bx bx--s svc' + (l[0] === LANG ? ' bx--on' : '') + '" type="button" data-lang="' + l[0] + '"><span class="bx__f"></span>' + l[1] + '</button>'; }).join('') + '</div></div>' +
     '<div class="mm__u">' + [[['investors.html', 'Инвесторам'], ['intel.html#media', 'Для СМИ']], [['legal.html', 'Политика обработки ПДн'], ['legal.html#terms', 'Пользовательское соглашение']], [['mailto:info@darlein.ru', 'info@darlein.ru'], ['#', 'Telegram']]].map(function (g) {
       return '<div class="mm__g">' + g.map(function (x) { return '<a href="' + DD.url(x[0]) + '">' + x[1] + '</a>'; }).join('') + '</div>';
     }).join('') + '</div>';

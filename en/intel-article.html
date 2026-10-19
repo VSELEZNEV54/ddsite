@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{if(!sessionStorage.getItem('dd_seen'))document.documentElement.classList.add('ld-on')}catch(e){}</script>
+<title>Why AGATA is modular · Darlein Defense News</title>
+<link rel="alternate" hreflang="ru" href="../intel-article.html">
+<link rel="alternate" hreflang="en" href="intel-article.html">
+<meta name="description" content="An engineering note: independence from a single supplier as an architectural requirement of the AGATA platform.">
+<link rel="icon" type="image/png" sizes="256x256" href="../assets/logo/favicon.png">
+<link rel="icon" type="image/svg+xml" href="../assets/logo/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/logo/apple-touch-icon.png">
+<link rel="preload" href="../fonts/geist-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/base.css?v=1019d">
+<link rel="stylesheet" href="../css/main.css?v=1019d">
+<link rel="stylesheet" href="../css/pages.css?v=1019d">
+<link rel="stylesheet" href="../css/brand.css?v=1019d">
+</head>
+<body data-nav="intel">
+
+<div class="ld ld--once" id="ld" aria-hidden="true">
+  <div class="ld__sign" id="ldSign"></div>
+  <div class="ld__in">
+    <div class="ld__top"><img src="../assets/logo/logo3b.svg" alt=""></div>
+    <div>
+      <div class="ld__mid">
+        <div class="ld__lb svc"><i></i>Loading</div>
+        <div class="ld__n"><span id="ldN">0</span><sup>%</sup></div>
+      </div>
+      <div class="ld__tr" id="ldTr"></div>
+    </div>
+  </div>
+</div>
+
+<header class="hd" id="hd">
+  <a class="hd__logo" href="index.html" aria-label="Darlein Defense"><img src="../assets/logo/logo3b.svg" alt="Darlein Defense"></a>
+  <nav id="nav" aria-label="Main menu"></nav>
+  <div class="hd__r">
+    <span class="svc muted">RU</span>
+    <a class="bx bx--s svc" href="dropfield.html"><span class="bx__f"></span><span class="st st--soon"><i></i>DROPFIELD</span><i data-ic="ne" data-cls="ic--s"></i></a>
+    <button class="bx bx--ic bx--s hd__menu" aria-label="Menu"><span class="bx__f"></span><i data-ic="menu"></i></button>
+  </div>
+</header>
+
+<main>
+<section class="wrap art-top">
+  <div class="art-grid">
+    <article class="art-main">
+      <header class="art" data-rv>
+        <div class="art__m svc"><a href="intel.html">Engineering notes</a><span>19.08.2026</span><span>5 min read</span></div>
+        <h1>Why AGATA is modular: independence from a single supplier as an architectural requirement</h1>
+        <p class="art__sub">Communications, maps, tasks, and logistics as replaceable modules on top of a single data bus. What this gives the customer and what it costs the team.</p>
+      </header>
+      <!-- Широкий кадр статьи -->
+      <figure class="pgv grain art__img" data-rv><img src="../img/st-art-1.jpg" alt=""></figure>
+      <div class="art__b">
+<p>The customer’s most common fear before adopting any command platform is lock-in. A system is bought for years, and a year later it turns out that the map module is outdated, the communications provider has changed its terms, and one cannot be replaced without the other. We design AGATA so that this scenario is impossible by architecture, not by promise.</p>
+      <h2>A bus instead of a monolith</h2>
+      <p>The platform is built on a single data bus and a common access rights model. The communications, maps, tasks, logistics, and control modules do not know about each other directly: they publish and read events on the bus according to an open specification. Any module can be replaced with an equivalent, including one from a third-party manufacturer, without stopping the others.</p>
+      <figure><div><img src="../img/st-art-2.jpg" alt="" loading="lazy"></div><figcaption>Each module exchanges data only through the bus.</figcaption></figure>
+      <h2>What this gives the customer</h2>
+      <p>Three things. The data belongs to the customer and is exported in open formats. Modules are connected as they become ready, and the customer does not pay for what they do not use. A technology partner connects their device or module without our involvement at every step: the specification is open, and the environment is shared.</p>
+      <blockquote>Centralization is not hidden. It ensures quality and accountability, not lock-in to a supplier.<cite>Darlein Defense representative</cite></blockquote>
+      <h2>What it costs the team</h2>
+      <p>Modularity is more expensive than a monolith at the start: a bus specification, event versioning, compatibility tests for every module. We consider this the right price. A platform that cannot be developed in parts becomes outdated as a whole.</p>
+      <p>The readiness of each module is reported separately and honestly. Nothing is shown as ready until it has passed testing.</p>
+      </div>
+      <div class="art__f">
+        <div class="acts2" style="margin-top:0"><!-- ссылка на канал подставляется перед запуском --><a class="bx bx--s" href="#"><span class="bx__f"></span>Telegram</a><button class="bx bx--s" type="button" data-copy><span class="bx__f"></span><span class="bx__t">Copy link</span></button></div>
+        <a class="bx" href="agata.html"><span class="bx__f"></span>About AGATA<i data-ic="right" data-cls="ic--s ic--mv"></i></a>
+      </div>
+    </article>
+    <aside class="art-side" aria-label="Presentation and site sections">
+      <div class="art-cta" data-rv>
+        <span class="svc">Darlein Defense</span>
+        <h2>General presentation</h2>
+        <p>The company, the ecosystem model, and all projects in one document.</p>
+        <form class="form" data-thanks="presentation">
+          <div class="field"><label for="ap-name">Name</label><input class="input" id="ap-name" type="text" placeholder="Full name" autocomplete="name" required></div>
+          <div class="field"><label for="ap-email">Email</label><input class="input" id="ap-email" type="email" placeholder="name@company.ru" autocomplete="email" required></div>
+          <label class="check"><input type="checkbox" required> <span>I agree to the processing of personal data in accordance with the <a href="legal.html#policy">policy</a></span></label>
+          <button class="bx bx--dk" type="submit"><span class="bx__f"></span>Request a presentation<i data-ic="right" data-cls="ic--s ic--mv"></i></button>
+        </form>
+      </div>
+      <nav class="art-nav" data-rv style="--d:120ms" aria-label="Site sections">
+        <span class="svc">Sections</span>
+        <a href="projects.html"><span>All projects</span><i data-ic="ne" data-cls="ic--s"></i></a>
+        <a href="company.html"><span>About</span><i data-ic="ne" data-cls="ic--s"></i></a>
+        <a href="partners.html"><span>Partners</span><i data-ic="ne" data-cls="ic--s"></i></a>
+        <a href="contacts.html"><span>Contact</span><i data-ic="ne" data-cls="ic--s"></i></a>
+      </nav>
+    </aside>
+  </div>
+</section>
+
+<section class="sec wrap">
+  <div class="sh"><h2 class="t-head lines" data-auto><span class="l"><span>Read next</span></span></h2><div data-rv><a class="bx bx--s" href="intel.html"><span class="bx__f"></span>All materials<i data-ic="right" data-cls="ic--s ic--mv"></i></a></div></div>
+  <div class="nl" data-rv>
+    <a class="nr" href="intel-article.html"><span class="svc">22.07.2026</span><span class="svc">Engineering notes</span><b>An interface for poor connectivity: principles of the AGATA wearable client</b><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></a>
+    <a class="nr" href="intel-article.html"><span class="svc">28.08.2026</span><span class="svc">Projects</span><b>DROPFIELD: how the catalog works and what goes into a unified product card</b><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></a>
+    <a class="nr" href="intel-article.html"><span class="svc">02.09.2026</span><span class="svc">Company news</span><b>Trademark applications filed for Darlein, Darlein Defense, and Darlein Arsenal</b><span class="bx bx--ic bx--s"><span class="bx__f"></span><i data-ic="ne" data-cls="ic--s"></i></span></a>
+  </div>
+</section>
+</main>
+
+<footer class="ft" id="footer"><div class="ft__p fr" id="ftp"></div></footer>
+
+<script src="../js/en/base.js?v=1019d"></script>
+<script src="../js/en/brand.js?v=1019d"></script>
+<script src="../js/en/chrome.js?v=1019d"></script>
+<script src="../js/en/blocks.js?v=1019d"></script>
+<script src="../js/en/page.js?v=1019d"></script>
+</body>
+</html>
