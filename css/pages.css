@@ -417,3 +417,101 @@ html.ld-on body:not(.ready){overflow:hidden}
   .art-side{position:static;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
 }
 @media(max-width:640px){.art-side{grid-template-columns:1fr}}
+
+/* ===== Правки заказчика 25.10.2026: длинные тексты — интерактивными блоками ===== */
+/* «Читать полностью»: остальные абзацы раскрываются плавно, кнопка меняет подпись */
+.more{display:grid;gap:12px}
+.more__b{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--inout)}
+.more.open .more__b{grid-template-rows:1fr}
+.more__i{display:grid;gap:18px;min-height:0;overflow:hidden}
+.more__t{justify-self:start;font-size:16px;color:var(--on-dark-2);transition:color .3s var(--out)}
+.more__t:hover{color:var(--base)}
+.more__t .ic{transition:transform .4s var(--out)}
+.more.open .more__t .ic{transform:rotate(180deg)}
+.intro__l{padding-top:.5em;color:var(--on-dark-2)}
+.intro--s{margin-top:calc(clamp(24px,3vw,48px)*-.5)}
+.aft{display:grid;gap:12px;max-width:62em;margin-top:clamp(24px,2.6vw,40px)}
+.aft p{font-size:var(--fs-ui);color:var(--on-dark-2)}
+
+/* состав продукта: пункт открывается по клику, слева текст, справа список возможностей */
+.acc--m .ai__h{grid-template-columns:clamp(64px,8vw,150px) minmax(0,1fr) 54px}
+.ai__t{display:grid;gap:8px}
+.ai__s{font-size:var(--fs-ui);letter-spacing:0;color:var(--on-dark-3);transition:color .5s var(--out)}
+.ai.open .ai__s{color:var(--on-dark-2)}
+.ai__g--m{grid-template-columns:clamp(64px,8vw,150px) minmax(0,6fr) minmax(0,5fr) 54px;gap:16px clamp(24px,3vw,56px)}
+.ai__tx,.ai__ls{grid-row:1;padding-top:14px;border-top:1px solid var(--iron);opacity:0;transform:translateY(16px);transition:opacity .6s var(--out) .15s,transform .8s var(--out) .15s}
+.ai__tx{grid-column:2;display:grid;gap:14px;align-content:start}
+.ai__g--1 .ai__tx{grid-column:2/4}
+.ai__tx p{max-width:40em;font-size:var(--fs-ui);color:var(--on-dark-2)}
+.ai__tx p.t-lead{font-size:var(--fs-lead);color:var(--base)}
+.ai__tx p.ai__af{color:var(--on-dark-3)}
+.ai__ls{grid-column:3;border-top-color:var(--beam);transition-delay:.3s}
+.ai.open .ai__tx,.ai.open .ai__ls{opacity:1;transform:none}
+.ai__ls .svc{display:block;margin-bottom:16px;color:var(--beam)}
+.ai__ls ul,.cd ul{display:grid;gap:10px}
+.ai__ls li,.cd li{position:relative;padding-left:22px;font-size:var(--fs-ui);color:var(--on-dark-2)}
+.ai__ls li::before,.cd li::before{content:"";position:absolute;left:0;top:.5em;width:8px;height:8px;border:1px solid var(--on-dark-3);border-radius:50%}
+
+/* карточки ролей, версий и уровней; карточка-ссылка ведет на страницу проекта */
+.cds{display:grid;grid-template-columns:repeat(var(--n,3),minmax(0,1fr));gap:8px}
+.cd{display:flex;flex-direction:column;gap:clamp(28px,3vw,56px);padding:clamp(20px,2vw,34px);border-radius:24px;box-shadow:inset 0 0 0 1px var(--line);transition:box-shadow .3s var(--out)}
+.cd__t{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;color:var(--on-dark-3)}
+.cd__b{display:grid;gap:12px;align-content:start}
+.cd h3{font-size:var(--fs-card);font-weight:400;letter-spacing:-.04em;line-height:1.05}
+.cd p{max-width:40em;font-size:var(--fs-ui);color:var(--on-dark-2)}
+.cd p.cd__l{color:var(--base)}
+.cd--a{color:inherit}
+@media(hover:hover){a.cd--a:hover{box-shadow:inset 0 0 0 1px var(--beam)}a.cd--a:hover .bx{color:var(--void);--c:var(--beam)}a.cd--a:hover .bx__f{transform:scaleX(1)}}
+
+/* «Возможности» с длинным текстом: короткий подзаголовок крупно, абзацы обычным размером */
+.q--t .q__p{grid-template-columns:minmax(0,2fr) minmax(0,9fr)}
+.q--t .q__tx p.q__lg{max-width:22ch}
+.q--t .q__d{display:grid;gap:14px;margin-top:22px;max-width:44em}
+.q--t .q__d p{margin:0;max-width:none;font-size:var(--fs-lead);font-weight:400;letter-spacing:0;line-height:1.3;color:var(--on-dark-2)}
+.q--t .q__tx>.svc+.q__d p:first-child{color:var(--base)}
+
+/* список возможностей чипами */
+.chips{display:grid;gap:16px}
+.chips>.svc{color:var(--on-dark-2)}
+.chips ul{display:flex;flex-wrap:wrap;gap:8px}
+.chips li{display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:12px 20px;border-radius:24px;box-shadow:inset 0 0 0 1px var(--line);font-size:var(--fs-ui);line-height:1.2}
+.chips li i{flex:none;width:8px;height:8px;border-radius:50%;background:var(--beam)}
+
+/* цифры: число набирается при появлении на экране */
+.fact__v{display:block;margin-bottom:18px;font-weight:300;font-size:clamp(44px,4.6vw,88px);letter-spacing:-.05em;line-height:.9;font-variant-numeric:tabular-nums}
+
+@media(min-width:1101px){.steps{grid-template-columns:repeat(var(--n,4),minmax(0,1fr))}}  /* число колонок шагов — только на широком экране, ниже работают общие правила */
+.step p+p{margin-top:8px}
+.shot--w{aspect-ratio:16/7;margin-top:clamp(32px,3.6vw,56px)}
+.cta__l h2.cta__h--m{font-size:clamp(26px,2.4vw,44px)}
+.cta__l>p.cta__sub{color:var(--on-light)}
+.cta .acts2{margin-top:22px}
+.cta .bx--lt{--c:rgba(9,10,12,.4);color:var(--on-light)}
+.cta .bx--lt .bx__f{background:var(--void)}
+.cta .bx--lt:hover{color:#fff;--c:var(--void)}
+.ph__tags .badge{height:auto;min-height:28px;padding:4px 10px}
+
+@media(max-width:1100px){.cds{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:900px){
+  .acc--m .ai__h{grid-template-columns:56px minmax(0,1fr) 40px}
+  .ai__g--m{grid-template-columns:1fr;gap:18px}.ai__tx,.ai__ls,.ai__g--1 .ai__tx{grid-column:1;grid-row:auto}
+  .q--t .q__p{grid-template-columns:1fr}
+  .shot--w{aspect-ratio:16/10}
+}
+@media(max-width:640px){.cds{grid-template-columns:1fr}.chips li{width:100%}}
+/* миссия и цель на «О компании»: метка, крупный тезис, абзацы обычным размером */
+.mc__lb{display:block;margin-bottom:14px;color:var(--beam)}
+.mc__d{display:grid;gap:12px;margin-top:clamp(14px,1.4vw,24px)}
+.mc--k .mc__d p{width:auto;max-width:40em;margin:0;font-size:var(--fs-ui);color:var(--on-dark-2)}
+.mc--k .mc__h{text-transform:none;font-size:var(--fs-card);letter-spacing:-.04em;line-height:1.05}
+.motto{color:var(--beam)}
+.fact__v--t{font-size:clamp(28px,2.4vw,46px);letter-spacing:-.04em;line-height:1}
+/* «Партнерам»: разделы внутри вкладки пути */
+.rp__s{margin-top:clamp(48px,5vw,88px)}
+.rp__s--top{margin-top:clamp(32px,3.6vw,56px)}
+.rp__go{margin-top:clamp(32px,3.6vw,56px)}
+.rt p b{font-weight:400;color:var(--base)}
+.ai__ch{display:flex!important;flex-wrap:wrap;gap:8px!important}
+.ai__ch li{padding:8px 14px!important;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);font-size:15px;color:var(--base)}
+.ai__ch li::before{display:none}
+.cta2 .motto{margin-top:16px}

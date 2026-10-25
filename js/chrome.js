@@ -12,7 +12,7 @@
   /* выпадающая панель только у «Проектов» (замечание 19.10.2026): остальные пункты шапки — простые ссылки на свои страницы */
   var M = {
     projects: ['Все разработки', '14 продуктов в семи направлениях: от программных платформ и связи до техники и систем защиты. У каждого проекта честный статус.', 'Проекты',
-      [['projects.html#products', 'Все проекты'], ['dropfield.html', 'DROPFIELD'], ['agata.html', 'AGATA'], ['elza.html', 'ELZA'], ['eva.html', 'EVA'], ['blackfly.html', 'BLACKFLY'], ['warden.html', 'WARDEN'], ['hex.html', 'HEX'], ['echo.html', 'ECHO'], ['nomad.html', 'NOMAD'], ['seal.html', 'SEAL'], ['highfast.html', 'HIGHFAST'], ['backeye.html', 'BACKEYE'], ['shield.html', 'SHIELD'], ['arrowhead.html', 'ARROWHEAD']]]
+      [['projects.html#products', 'Все проекты'], ['dropfield.html', 'DROPFIELD'], ['agata.html', 'AGATA'], ['elza.html', 'ELZA'], ['eva.html', 'EVA'], ['blackfly.html', 'BLACKFLY'], ['warden.html', 'WARDEN'], ['hex.html', 'HEX'], ['echo.html', 'ECHO'], ['nomad.html', 'NOMAD'], ['seal.html', 'SEAL'], ['highfast.html', 'HIGHFAST'], ['backeye.html', 'BACKEYE'], ['shield.html', 'SHIELD'], ['arrowhead.html', 'ARROWHEAD / SPEAR']]]
   };
 
   /* ---------- шапка ---------- */

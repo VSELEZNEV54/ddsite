@@ -60,7 +60,7 @@
       var on = function (v) {
         box.classList.toggle('hov', v);
         box.querySelectorAll('[data-i="' + i + '"]').forEach(function (e) { e.classList.toggle('on', v); });
-        imgs.forEach(function (x, j) { x.classList.toggle('on', v && j === i); }); port.querySelector('img').classList.toggle('on', !v);
+        imgs.forEach(function (x, j) { x.classList.toggle('on', v && j === i); }); var def = port.querySelector('.port__def, img'); if (def) def.classList.toggle('on', !v);
         if (v) { capN.textContent = d.n; capT.textContent = d.short; }
         if (cap) cap.textContent = v ? d.title + '. ' + d.tip : cap.getAttribute('data-default');
       };
@@ -80,7 +80,7 @@
      rail — .rail, nav — блок со счетчиком (b или [data-now]) и кнопками [data-step] */
   DD.rail = function (rail, nav) {
     if (!rail) return;
-    var href = function (name) { return DD.url(name.toLowerCase() + '.html'); };
+    var href = function (name) { return DD.url(name.split(' ')[0].toLowerCase() + '.html'); };
     var count = function (n) { return n + (n === 1 ? ' продукт' : ' продукта'); };
     rail.innerHTML = DD.dirs.map(function (d, i) {
       var mine = DD.projects.filter(function (p) { return p[3] === i; });

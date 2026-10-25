@@ -10,7 +10,7 @@
   X.career = '<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M18 8v6M15 11h6"/>';
 
   var P = DD.projects;
-  var href = function (name) { return DD.url(name.toLowerCase() + '.html'); };
+  var href = function (name) { return DD.url(name.split(' ')[0].toLowerCase() + '.html'); };
   var count = function (n) { return n + (n === 1 ? ' продукт' : ' продукта'); };
 
   /* ---------- направления проектов ---------- */

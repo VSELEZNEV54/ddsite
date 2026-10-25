@@ -136,3 +136,5 @@
 /* список проектов слева: подсветка строки скругленная; на планшете и телефоне — лента пилюль */
 @media(min-width:901px){.pj__nav a:is(:hover,.on){border-radius:8px;box-shadow:none}.pj__nav li:has(a:is(:hover,.on))+li a{box-shadow:none}}
 @media(max-width:900px){.pj__nav a{background:none!important;border-radius:999px;box-shadow:inset 0 0 0 1px var(--c)!important}}
+/* кнопки белых карточек сценариев на ширине 900–1240 px: текст в одну строку (25.10.2026) */
+@media(min-width:901px) and (max-width:1240px){.jc .bx{gap:10px;padding:0 12px 0 14px;font-size:14px}}

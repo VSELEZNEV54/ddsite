@@ -24,6 +24,42 @@
     });
   }
 
+  /* «Читать полностью»: скрытые абзацы раскрываются, подпись кнопки меняется на «Свернуть» */
+  document.querySelectorAll('.more__t').forEach(function (b) {
+    var m = b.closest('.more'), t = b.querySelector('span'), label = t.textContent;
+    b.addEventListener('click', function () {
+      var v = !m.classList.contains('open'); m.classList.toggle('open', v);
+      b.setAttribute('aria-expanded', v ? 'true' : 'false'); t.textContent = v ? b.getAttribute('data-less') : label;
+    });
+  });
+
+  /* состав продукта: пункты открываются по клику, одновременно открыт один, первый открыт сразу */
+  document.querySelectorAll('.acc--m, .acc--js').forEach(function (acc) {
+    var items = [].slice.call(acc.querySelectorAll('.ai'));
+    var setOpen = function (it, v) { it.classList.toggle('open', v); it.querySelector('.ai__h').setAttribute('aria-expanded', v ? 'true' : 'false'); };
+    items.forEach(function (it) { it.querySelector('.ai__h').addEventListener('click', function () {
+      var v = !it.classList.contains('open'); items.forEach(function (x) { setOpen(x, false); }); if (v) setOpen(it, true);
+    }); });
+    if (items[0]) setOpen(items[0], true);
+  });
+
+  /* цифры: число набирается от нуля, когда карточка появляется на экране; без движения — сразу итог */
+  var counters = [].slice.call(document.querySelectorAll('[data-count]'));
+  if (counters.length && !DD.reduced && 'IntersectionObserver' in window) {
+    counters.forEach(function (el) {
+      var src = el.getAttribute('data-count'), full = el.textContent, dec = (src.split(',')[1] || '').length, to = parseFloat(src.replace(',', '.'));
+      var fmt = function (v) { return full.replace(src, v.toFixed(dec).replace('.', ',')); };
+      el.textContent = fmt(0);
+      var io = new IntersectionObserver(function (es) {
+        if (!es[0].isIntersecting) return; io.disconnect();
+        var t0 = performance.now(), dur = 1400;
+        var tick = function (t) { var k = Math.min(1, (t - t0) / dur); el.textContent = k < 1 ? fmt(to * (1 - Math.pow(1 - k, 3))) : full; if (k < 1) requestAnimationFrame(tick); };
+        requestAnimationFrame(tick);
+      }, { threshold: .6 });
+      io.observe(el);
+    });
+  }
+
   var press = function (btns, on) { btns.forEach(function (b) { var v = on(b); b.classList.toggle('bx--on', v); b.setAttribute('aria-pressed', v ? 'true' : 'false'); }); };
 
   /* формы: отправка ведет на «Спасибо» с темой обращения (бэкенд подключается при переносе на площадку) */
@@ -32,22 +68,24 @@
   });
   document.querySelectorAll('.file input').forEach(function (inp) { inp.addEventListener('change', function () { var t = inp.parentNode.querySelector('span'); if (t && inp.files[0]) t.textContent = inp.files[0].name; }); });
 
-  /* «Партнерам»: два маршрута — карточки, переключатель над описанием и роль в форме работают вместе */
+  /* «Партнерам»: три пути — карточки, вкладки над описанием и формат в форме работают вместе (правки 25.10.2026) */
   var routes = [].slice.call(document.querySelectorAll('.rt[data-route]'));
   if (routes.length) {
-    var roleBtns = [].slice.call(document.querySelectorAll('[data-role]'));
+    var keys = routes.map(function (x) { return x.getAttribute('data-route'); });
+    var roleBtns = [].slice.call(document.querySelectorAll('button[data-role]')), roleSel = document.querySelector('select[name="role"]');
     var setRoute = function (r, scroll) {
-      routes.forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-route') === r); x.setAttribute('aria-pressed', x.getAttribute('data-route') === r ? 'true' : 'false'); });
-      document.querySelectorAll('.rp').forEach(function (p) { var on = p.getAttribute('data-route') === r; p.classList.toggle('on', on); if (on) p.querySelectorAll('[data-rv],.steps').forEach(function (el) { el.classList.add('in'); }); });
+      routes.forEach(function (x) { var on = x.getAttribute('data-route') === r; x.classList.toggle('on', on); x.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+      document.querySelectorAll('.rp').forEach(function (p) { var on = p.getAttribute('data-route') === r; p.classList.toggle('on', on); if (on) p.querySelectorAll('[data-rv],.steps,[data-auto]').forEach(function (el) { el.classList.add('in'); }); });
       press(roleBtns, function (b) { return b.getAttribute('data-role') === r; });
-      var ri = document.querySelector('[name="role"]'); if (ri) ri.value = r;
-      var subj = $('#formSubject'); if (subj) subj.textContent = r === 'vendor' ? 'Заявка вендора DROPFIELD' : 'Заявка партнера экосистемы';
+      if (roleSel) roleSel.value = r;
       if (scroll) { var t = $('#route-detail'); if (t) t.scrollIntoView({ behavior: DD.reduced ? 'auto' : 'smooth', block: 'start' }); }
     };
     routes.forEach(function (x) { x.addEventListener('click', function () { setRoute(x.getAttribute('data-route'), true); }); });
     roleBtns.forEach(function (b) { b.addEventListener('click', function () { setRoute(b.getAttribute('data-role'), false); }); });
-    var h = location.hash.replace('#', ''); setRoute(h === 'vendor' ? 'vendor' : 'partner', false);
-    window.addEventListener('hashchange', function () { var hh = location.hash.replace('#', ''); if (hh === 'vendor' || hh === 'partner') setRoute(hh, true); });
+    if (roleSel) roleSel.addEventListener('change', function () { setRoute(roleSel.value, false); });
+    var fromHash = function () { var hh = location.hash.replace('#', ''); return keys.indexOf(hh) > -1 ? hh : null; };
+    setRoute(fromHash() || keys[0], false);
+    window.addEventListener('hashchange', function () { var hh = fromHash(); if (hh) setRoute(hh, true); });
   }
 
   /* «Новости»: фильтр по рубрике */
