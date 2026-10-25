@@ -91,7 +91,7 @@
         }).join('') + '</div></div></article>';
     }).join('') +
       '<a class="rc rc--all" href="' + DD.url('projects.html') + '"><div class="mc__br"></div><span class="svc" style="color:var(--on-dark-2)">Все направления</span><span><b>14</b><span class="t-lead" style="display:block">продуктов<br>в семи направлениях</span></span>' +
-      '<span class="bx bx--on"><span class="bx__f"></span>Все проекты' + DD.ic('right', 'ic--s ic--mv') + '</span></a>';
+      '<span class="bx bx--on"><span class="bx__f"></span>Все проекты</span></a>';
     (function () {
       var cards = rail.querySelectorAll('.rc:not(.rc--all)'), now = nav.querySelector('[data-now]') || nav.querySelector('b'), btns = nav.querySelectorAll('[data-step]'), target = 0, settle = null, drag = null;
       var step = function () { return cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : rail.clientWidth; };

@@ -75,7 +75,7 @@
     return '<a class="jc" data-rv style="--d:' + i * 90 + 'ms" href="' + DD.url(j[0]) + '"><div class="jc__top svc"><span>Сценарий 0' + (i + 1) + ' / 03</span>' + DD.ic(j[1]) + '</div>' +
       '<div class="jc__b"><div class="jc__who">' + j[3] + '</div><div class="jc__whom">' + j[4] + '</div><h3>' + j[5] + '</h3><p>' + j[6] + '</p>' +
       '<div class="jc__l"><span class="svc">' + j[7] + '</span><ul>' + j[8].map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul></div>' +
-      '<span class="bx bx--dk"><span class="bx__f"></span>' + j[9] + DD.ic('right', 'ic--s') + '</span></div></a>';
+      '<span class="bx bx--dk"><span class="bx__f"></span>' + j[9] + '</span></div></a>';
   }).join('');
 
   /* ---------- DefenseTech компания ---------- */
@@ -89,7 +89,7 @@
     Q.map(function (x, i) {
       return '<div class="q__p grain' + (i ? '' : ' on') + '"><div class="q__bg"><img src="img/' + x[5] + '.jpg" alt="" loading="lazy"></div><div class="mc__br"></div>' +
         '<div class="q__num"><span class="svc">0' + (i + 1) + ' / 03</span><b>' + (i + 1) + '</b></div>' +
-        '<div class="q__tx"><span class="svc">' + x[1] + '</span><p>' + x[2] + '</p><a class="bx" href="' + DD.url(x[4]) + '"><span class="bx__f"></span>' + x[3] + DD.ic('right', 'ic--s ic--mv') + '</a></div></div>';
+        '<div class="q__tx"><span class="svc">' + x[1] + '</span><p>' + x[2] + '</p><a class="bx" href="' + DD.url(x[4]) + '"><span class="bx__f"></span>' + x[3] + '</a></div></div>';
     }).join('');
   DD.tabs(q);
 

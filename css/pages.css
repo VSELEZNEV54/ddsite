@@ -515,3 +515,56 @@ html.ld-on body:not(.ready){overflow:hidden}
 .ai__ch li{padding:8px 14px!important;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);font-size:15px;color:var(--base)}
 .ai__ch li::before{display:none}
 .cta2 .motto{margin-top:16px}
+
+/* ===== Замечания 25.10.2026 (второй круг) ===== */
+/* вступление раздела — под заголовком по левому краю */
+.lead2{display:grid;gap:12px;max-width:46em;margin:calc(clamp(24px,3vw,48px)*-.4) 0 clamp(28px,3.2vw,56px)}
+.lead2 p{font-size:var(--fs-ui);color:var(--on-dark-2)}
+/* заголовок и текст рядом не слипаются */
+.intro>h2{padding-right:clamp(16px,4vw,80px)}
+/* тезис в скобках на внутренних страницах: «Кто мы», «О проекте» */
+.mis--pg .words--l{font-size:clamp(20px,1.9vw,34px);max-width:30em}
+.mis .mis__d{display:grid;gap:14px;max-width:44em;margin:clamp(24px,2.6vw,40px) auto 0}
+.mis .mis__d p{max-width:none;margin:0;font-size:var(--fs-ui);font-weight:400;letter-spacing:0;line-height:1.35;color:var(--on-dark-2)}
+.mis .mis__m{max-width:30em;margin:clamp(20px,2vw,32px) auto 0;font-size:var(--fs-lead);font-weight:400;letter-spacing:-.01em;line-height:1.25;color:var(--beam)}
+/* панель для второстепенного текста: контур, узор, заголовок слева */
+.pnl{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px var(--gut);padding:clamp(24px,3.4vw,64px);border-radius:24px;box-shadow:inset 0 0 0 1px var(--line);overflow:hidden}
+.pnl>*{position:relative;z-index:1}
+.pnl .mis__topo{opacity:.1}
+.pnl__l h2{font-size:clamp(26px,2.6vw,48px)}
+.pnl__l{display:flex;flex-direction:column;gap:clamp(24px,3vw,48px);padding-right:clamp(8px,2vw,40px)}
+.mesh{width:100%;max-width:520px;height:auto;margin-top:auto}
+.mesh line{stroke:var(--iron);stroke-width:1}
+.mesh .sig{stroke:var(--beam);stroke-width:1.5;stroke-dasharray:.12 1;stroke-dashoffset:1.12;animation:sig 3.2s linear infinite;animation-delay:var(--d)}
+.mesh rect{fill:var(--void);stroke:var(--on-dark-2);stroke-width:1}
+.mesh rect.on{stroke:var(--beam);fill:rgba(103,255,217,.16)}
+@keyframes sig{to{stroke-dashoffset:-.12}}
+@media(prefers-reduced-motion:reduce){.mesh .sig{animation:none;stroke-dasharray:none;opacity:.5}}
+/* лента всех проектов экосистемы на странице продукта */
+.eco-strip{display:grid;gap:14px;margin-top:clamp(28px,3vw,48px);padding-top:clamp(20px,2vw,28px);border-top:1px solid var(--line)}
+.eco-strip>.svc{color:var(--on-dark-2)}
+.eco-strip__l{display:flex;flex-wrap:wrap;gap:8px}
+.ech{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);font-size:14px;letter-spacing:.02em;color:var(--on-dark-2);transition:color .3s var(--out),box-shadow .3s var(--out)}
+.ech--l{color:var(--base);box-shadow:inset 0 0 0 1px rgba(255,255,255,.32)}
+.ech.on{color:var(--void);background:var(--beam);box-shadow:none}
+.ech small{font-family:var(--tektur);font-size:11px;letter-spacing:.05em;opacity:.7}
+@media(hover:hover){a.ech:hover{color:var(--base);box-shadow:inset 0 0 0 1px var(--beam)}}
+/* карточка-ссылка: стрелка на кнопке видна при наведении */
+@media(hover:hover){a.cd--a:hover .bx__f{opacity:1;clip-path:inset(0 round 999px);transition:clip-path .5s var(--out),opacity 0s}}
+/* вакансии: колонки по той же линии, что текст в правой колонке заголовка */
+.vac-h{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:12px var(--gut);align-items:end;margin:clamp(40px,4.4vw,72px) 0 clamp(16px,2vw,28px)}
+.vac-h h3{font-size:var(--fs-card);letter-spacing:-.04em;line-height:1.05}
+.vac-h p{max-width:40em;font-size:var(--fs-ui);color:var(--on-dark-2)}
+.vac--g{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+.vac__r{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:12px var(--gut);align-items:center}
+.vac__r>span{color:var(--on-dark-2)}
+/* цифры на «Инвесторам» и «О компании» — чуть мельче */
+.fact__v{font-size:clamp(36px,3.6vw,64px)}
+.fact__v--t{font-size:clamp(26px,2.2vw,40px)}
+.mc--s.fact h3{font-size:var(--fs-lead);letter-spacing:-.02em;line-height:1.15}
+/* первый экран продукта: описание мельче и по линии правой колонки разделов */
+@media(min-width:1101px){.ph__meta{grid-template-columns:minmax(0,5fr) minmax(0,4fr) minmax(0,3fr)}}
+.ph__meta>p.t-lead{font-size:var(--fs-ui);line-height:1.35}
+@media(max-width:1100px){.pnl{grid-template-columns:1fr}.pnl__l{padding-right:0}.mesh{max-width:420px}}
+@media(max-width:900px){.vac-h,.vac--g{grid-template-columns:1fr}.vac__r{grid-template-columns:1fr 1fr auto}}
+@media(max-width:640px){.vac__r{grid-template-columns:1fr}.vac__r .bx{justify-self:start}.ech{height:36px;padding:0 12px}}

@@ -119,14 +119,22 @@
   window.addEventListener('resize', function () { close(true); if (window.innerWidth > 1100) menu(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { close(true); menu(false); if (DD.closeLang) DD.closeLang(); } });
 
-  /* ---------- cookie: показывается после загрузочного экрана, один раз ---------- */
-  var ck = document.createElement('div'); ck.className = 'ck fr'; ck.id = 'cookie';
-  ck.innerHTML = '<p>Сайт использует cookie для веб-аналитики. Подробнее — в <a href="' + DD.url('legal.html#policy') + '">политике обработки данных</a>.</p><button class="bx bx--s" type="button"><span class="bx__f"></span>Понятно</button>';
-  var seen = false; try { seen = !!localStorage.getItem('dd_cookie'); } catch (e) {}
-  if (!seen) {
+  /* ---------- cookie: согласие (замечание 25.10.2026). Необходимые cookie работают всегда, аналитические — только после «Принять».
+     Выбор хранится в localStorage (dd_cookie: all | necessary) и доступен как DD.cookies; прежнее «Понятно» согласием не считается ---------- */
+  var ckv = null; try { ckv = localStorage.getItem('dd_cookie'); } catch (e) {}
+  DD.cookies = ckv === 'all' || ckv === 'necessary' ? ckv : null;
+  if (!DD.cookies) {
+    var ck = document.createElement('div'); ck.className = 'ck ck--c fr'; ck.id = 'cookie'; ck.setAttribute('role', 'dialog'); ck.setAttribute('aria-label', 'Согласие на cookie');
+    ck.innerHTML = '<p>Мы используем файлы cookie. Необходимые обеспечивают работу сайта, аналитические помогают его улучшать — их включим только с вашего согласия. Подробнее — в <a href="' + DD.url('legal.html#policy') + '">политике обработки данных</a>.</p>' +
+      '<div class="ck__b"><button class="bx bx--s bx--on" type="button" data-ck="all"><span class="bx__f"></span>Принять</button><button class="bx bx--s" type="button" data-ck="necessary"><span class="bx__f"></span>Только необходимые</button></div>';
     document.body.appendChild(ck);
-    var wait = setInterval(function () { if (!document.body.classList.contains('is-loading')) { clearInterval(wait); setTimeout(function () { ck.classList.add('on'); }, 1800); } }, 200);
-    ck.querySelector('button').addEventListener('click', function () { ck.classList.remove('on'); try { localStorage.setItem('dd_cookie', '1'); } catch (e) {} setTimeout(function () { ck.remove(); }, 700); });
+    var wait = setInterval(function () { if (!document.body.classList.contains('is-loading')) { clearInterval(wait); setTimeout(function () { ck.classList.add('on'); }, 1200); } }, 200);
+    ck.querySelectorAll('[data-ck]').forEach(function (b) { b.addEventListener('click', function () {
+      DD.cookies = b.getAttribute('data-ck'); ck.classList.remove('on');
+      try { localStorage.setItem('dd_cookie', DD.cookies); } catch (e) {}
+      document.dispatchEvent(new CustomEvent('dd:cookies', { detail: DD.cookies }));   /* сюда подключается аналитика, если выбран вариант all */
+      setTimeout(function () { ck.remove(); }, 700);
+    }); });
   }
   /* ---------- вкладки: смена раз в 6 секунд до первого клика ---------- */
   DD.tabs = function (q) {

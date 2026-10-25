@@ -1,7 +1,7 @@
 /* Главная: схема экосистемы, проблемы, первый экран с роликом, загрузочный экран. */
 (function () {
   var $ = function (q) { return document.querySelector(q); }, i, s;
-  $('#whoT').textContent = DD.copy.who; $('#mis').textContent = DD.copy.mission; $('#goal').textContent = DD.copy.goal;
+  $('#whoT').textContent = DD.typo(DD.copy.who); $('#mis').textContent = DD.typo(DD.copy.mission); $('#goal').textContent = DD.typo(DD.copy.goal);
 
   /* ---------- схема экосистемы ---------- */
   DD.eco($('#ecoBox'));
@@ -78,5 +78,7 @@
     setTimeout(function () { $('#heroT').classList.add('in'); }, 350);
     DD.reveal(); DD.words($('#whoT'));
   } });
+  /* типограф для остальных текстов главной (проблемы, направления, проекты, сценарии) */
+  setTimeout(function () { DD.typoDom(document.querySelector('main')); }, 0);
 
 })();

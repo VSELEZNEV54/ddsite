@@ -11,6 +11,7 @@
   if (document.documentElement.classList.contains('ld-on')) { document.body.classList.add('is-loading'); DD.loader({ min: 1800, assets: ['assets/logo/logo3b.svg'], onOut: start }); }
   else { var ld = $('#ld'); if (ld) ld.remove(); start(); }
   document.querySelectorAll('.q').forEach(function (q) { DD.tabs(q); });
+  document.querySelectorAll('.mis .words').forEach(function (el) { DD.words(el); });
 
   /* «Проекты»: в списке слева подсвечивается панель, которая сейчас на экране */
   var pps = [].slice.call(document.querySelectorAll('.pp')), nav = $('.pj__nav');

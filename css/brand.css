@@ -138,3 +138,27 @@
 @media(max-width:900px){.pj__nav a{background:none!important;border-radius:999px;box-shadow:inset 0 0 0 1px var(--c)!important}}
 /* кнопки белых карточек сценариев на ширине 900–1240 px: текст в одну строку (25.10.2026) */
 @media(min-width:901px) and (max-width:1240px){.jc .bx{gap:10px;padding:0 12px 0 14px;font-size:14px}}
+/* замечание 25.10.2026: на кнопках только стрелка ↗; стрелки → и ↓ не показываются (кнопки-иконки листания остаются) */
+.bx:not(.bx--ic) .ic--mv,.bx:not(.bx--ic) .ic--dn{display:none}
+.bx:not(.bx--ic):not(:has(.ic:not(.ic--mv):not(.ic--dn))){justify-content:center;padding-left:22px;padding-right:22px}
+.bx--s:not(.bx--ic):not(:has(.ic:not(.ic--mv):not(.ic--dn))){padding-left:16px;padding-right:16px}
+/* тезис в скобках чуть мельче — длинный текст «Кто мы» на главной */
+.mis p{font-size:clamp(22px,2.2vw,40px)}
+/* баннер cookie с согласием (25.10.2026): две кнопки, на телефоне — во всю ширину */
+.ck--c .ck__b{display:flex;flex-wrap:wrap;gap:8px}
+.ck--c p{font-size:15px}
+@media(max-width:640px){.ck.ck--c{grid-template-columns:1fr;gap:12px}.ck--c .ck__b .bx{flex:1 1 140px;justify-self:auto}}
+/* узкий экран 320–640 px (замечание 25.10.2026: адаптация под 320) */
+.dc__top{flex-wrap:wrap;row-gap:6px}
+@media(max-width:640px){
+  .mis{padding:36px 16px}.mis p,.mis--pg .words--l{font-size:clamp(19px,5.6vw,24px)}
+  .ai__h,.acc--m .ai__h{grid-template-columns:40px minmax(0,1fr) 40px;gap:10px;padding-left:12px;padding-right:12px}
+  .ai__n{font-size:30px}.ai__t,.ai__t.t-card,.ai__t .t-card{font-size:clamp(17px,5vw,22px)}
+  .ai__g{padding-left:12px;padding-right:12px}
+}
+@media(max-width:900px){.util__g{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:640px){.util h1{font-size:clamp(28px,8.6vw,40px)}}
+.dc .st{white-space:normal}   /* «исследование и разработка» в карточке схемы переносится */
+p,li{overflow-wrap:break-word}   /* длинный адрес или связка слов не выталкивает строку за край экрана */
+.prow .st{white-space:normal}   /* длинный статус в списке проектов главной переносится, а не заходит на соседнюю колонку */
+@media(max-width:640px){.mis .mis__d{text-align:left}}

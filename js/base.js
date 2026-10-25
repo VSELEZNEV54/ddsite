@@ -130,8 +130,24 @@
     els.forEach(function (e) { io.observe(e); });
   };
   /* текст по словам для подсветки при прокрутке */
+  /* типограф (замечание 25.10.2026): короткие предлоги и союзы не висят в конце строки, тире не начинает строку,
+     в последней строке не остается одно короткое слово. Те же правила, что в генераторе страниц */
+  var SHORT = /(^|[\s\u00a0«(„"])([А-Яа-яЁёA-Za-z]{1,2}|для|без|при|над|под|про|что|как|или|его|она|они|это|все|так|уже|еще|чем|где|кто|нам|вам|нас|вас|наш|ваш) (?=\S)/gi;
+  DD.typo = function (t, head) {
+    if (!t || !/[А-Яа-я]/.test(t)) return t;
+    t = t.replace(SHORT, '$1$2\u00a0').replace(SHORT, '$1$2\u00a0').replace(/ (—|–)(?= )/g, '\u00a0$1').replace(/(\d) (?=[а-яА-Яa-zA-Z%$])/g, '$1\u00a0');
+    var m = head ? null : /(\S+) (\S+)(\s*)$/.exec(t);
+    if (m && (m[1].length + m[2].length <= 17 || (m[2].length <= 4 && m[1].length <= 12))) t = t.slice(0, m.index) + m[1] + '\u00a0' + m[2] + m[3];
+    return t;
+  };
+  DD.typoDom = function (root) {
+    if (!root) return;
+    var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: function (n) { return n.parentNode.closest('script,style,svg,textarea') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT; } }), n, list = [];
+    while ((n = w.nextNode())) list.push(n);
+    list.forEach(function (x) { var v = DD.typo(x.nodeValue, !x.parentNode.closest('p,li')); if (v !== x.nodeValue) x.nodeValue = v; });
+  };
   DD.words = function (el) {
-    el.innerHTML = el.textContent.trim().split(/\s+/).map(function (w) { return '<span class="w">' + w + '</span>'; }).join(' ');
+    el.innerHTML = el.textContent.trim().split(/[ \t\n\r]+/).map(function (w) { return '<span class="w">' + w + '</span>'; }).join(' ');
     var ws = el.querySelectorAll('.w');
     var up = function () {
       var r = el.getBoundingClientRect(), vh = window.innerHeight;
