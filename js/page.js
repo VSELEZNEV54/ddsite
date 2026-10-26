@@ -110,7 +110,10 @@
       if (history.replaceState) history.replaceState(null, '', '#' + d);
     };
     docBtns.forEach(function (b) { b.addEventListener('click', function () { setDoc(b.getAttribute('data-doc')); window.scrollTo({ top: 0, behavior: DD.reduced ? 'auto' : 'smooth' }); }); });
-    var dh = location.hash.replace('#', ''); setDoc(dh === 'consent' || dh === 'terms' ? dh : 'policy');
+    var keys = docs.map(function (x) { return x.getAttribute('data-doc'); });
+    var dh = location.hash.replace('#', ''); setDoc(keys.indexOf(dh) > -1 ? dh : 'policy');
+    /* ссылки между документами (политика → cookie, согласие на рассылку) переключают документ на месте */
+    window.addEventListener('hashchange', function () { var hh = location.hash.replace('#', ''); if (keys.indexOf(hh) > -1) { setDoc(hh); window.scrollTo({ top: 0, behavior: DD.reduced ? 'auto' : 'smooth' }); } });
   }
 
   /* «Спасибо»: текст по теме обращения */

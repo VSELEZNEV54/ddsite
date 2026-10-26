@@ -125,7 +125,7 @@
   DD.cookies = ckv === 'all' || ckv === 'necessary' ? ckv : null;
   if (!DD.cookies) {
     var ck = document.createElement('div'); ck.className = 'ck ck--c fr'; ck.id = 'cookie'; ck.setAttribute('role', 'dialog'); ck.setAttribute('aria-label', 'Согласие на cookie');
-    ck.innerHTML = '<p>Мы используем файлы cookie. Необходимые обеспечивают работу сайта, аналитические помогают его улучшать — их включим только с вашего согласия. Подробнее — в <a href="' + DD.url('legal.html#policy') + '">политике обработки данных</a>.</p>' +
+    ck.innerHTML = '<p>Мы используем файлы cookie. Необходимые обеспечивают работу сайта, аналитические помогают его улучшать — их включим только с вашего согласия. Подробнее — в <a href="' + DD.url('legal.html#cookies') + '">политике использования cookie</a>.</p>' +
       '<div class="ck__b"><button class="bx bx--s bx--on" type="button" data-ck="all"><span class="bx__f"></span>Принять</button><button class="bx bx--s" type="button" data-ck="necessary"><span class="bx__f"></span>Только необходимые</button></div>';
     document.body.appendChild(ck);
     var wait = setInterval(function () { if (!document.body.classList.contains('is-loading')) { clearInterval(wait); setTimeout(function () { ck.classList.add('on'); }, 1200); } }, 200);
@@ -156,7 +156,7 @@
       col('Проекты', [['Все проекты', 'projects.html'], ['DROPFIELD', 'dropfield.html'], ['AGATA', 'agata.html'], ['ELZA', 'elza.html'], ['BLACKFLY', 'blackfly.html'], ['WARDEN', 'warden.html'], ['Еще 9 проектов', 'projects.html#directions']]) +
       col('Связь', [['Контакты', 'contacts.html'], ['Партнерам и вендорам', 'partners.html'], ['info@darlein.ru', 'mailto:info@darlein.ru'], ['Telegram', '#']]) +
       '<div><h3>Реквизиты</h3><p class="ft__lg">ООО «ДАРЛЕЙН ДЕФЕНС»<br>ИНН 9701331416<br>КПП 770101001<br>ОГРН 1267700273477</p><ul>' +
-      [['Политика обработки ПДн', 'legal.html#policy'], ['Согласие на обработку', 'legal.html#consent'], ['Пользовательское соглашение', 'legal.html#terms']].map(function (x) { return '<li><a href="' + DD.url(x[1]) + '">' + x[0] + '</a></li>'; }).join('') + '</ul></div></div>' +
+      [['Политика обработки ПДн', 'legal.html#policy'], ['Согласие на обработку', 'legal.html#consent'], ['Политика cookie', 'legal.html#cookies'], ['Согласие на рассылку', 'legal.html#ads'], ['Пользовательское соглашение', 'legal.html#terms']].map(function (x) { return '<li><a href="' + DD.url(x[1]) + '">' + x[0] + '</a></li>'; }).join('') + '</ul></div></div>' +
       /* требования к сайтам в РФ (19.10.2026): хранение персональных данных в России (152-ФЗ), без передачи третьим лицам, авторские права */
       '<div class="ft__law">' + [
         ['Хранение данных', 'Персональные данные пользователей хранятся и обрабатываются на серверах в Российской Федерации в соответствии с Федеральным законом от 27.07.2006&nbsp;№&nbsp;152-ФЗ «О&nbsp;персональных данных».'],
