@@ -11,26 +11,26 @@
     { n: '01', key: 'soft', img: 'dr-soft', ic: 'soft', short: 'Software and AI', title: 'Software and AI', products: ['AGATA', 'ELZA', 'EVA'], tip: 'The digital core of the ecosystem. AGATA is in development; ELZA and EVA are at the research stage.', desc: 'Platforms for management, analytics, and work assistance.', st: 'dev', stl: 'in development' },
     { n: '02', key: 'uas', img: 'dr-uas', ic: 'uas', short: 'Unmanned', title: 'Unmanned systems', products: ['BLACKFLY'], tip: 'A modular ecosystem: components, ready-made kits, and a software platform.', desc: 'Compatible components and kits for unmanned platforms.', st: 'research', stl: 'research' },
     { n: '03', key: 'ecom', img: 'dr-ecom', ic: 'ecom', short: 'Commerce', title: 'Digital commerce', products: ['DROPFIELD'], tip: 'The ecosystem’s first commercial product. Preparing for launch.', desc: 'A marketplace for choosing, buying, and selling gear.', st: 'soon', stl: 'preparing for launch' },
-    { n: '04', key: 'gear', img: 'dr-gear', ic: 'gear', short: 'Equipment', title: 'Equipment', products: ['WARDEN'], tip: 'A kit in which protection, clothing, and wearable electronics are developed together.', desc: 'Modular equipment: protection, exoskeleton modules, and electronics.', st: 'research', stl: 'research' },
-    { n: '05', key: 'comms', img: 'b-tower', ic: 'comms', short: 'Communications and sensors', title: 'Communications and sensors', products: ['HEX', 'ECHO'], tip: 'HEX connects people and machines into one network; ECHO provides observations from land, air, and sea.', desc: 'A network for people and vehicles, plus autonomous sensors.', st: 'research', stl: 'research' },
-    { n: '06', key: 'tech', img: 'b-nomad', ic: 'tech', short: 'Vehicles', title: 'Vehicles', products: ['NOMAD', 'SEAL', 'HIGHFAST', 'BACKEYE'], tip: 'Platform families with interchangeable payloads and shared control systems.', desc: 'Ground, maritime, and aerial platforms.', st: 'research', stl: 'research' },
-    { n: '07', key: 'def', img: 'dr-def', ic: 'def', short: 'Protection and air defense', title: 'Active protection and air defense', products: ['SHIELD', 'ARROWHEAD'], tip: 'Modular protection systems and a family of interceptors with shared digital integration.', desc: 'Protection for vehicles and sites; unmanned interceptors.', st: 'research', stl: 'research' }
+    { n: '04', key: 'gear', img: 'dr-gear', ic: 'gear', short: 'Equipment', title: 'Equipment and wearable systems', products: ['WARDEN'], tip: 'A kit in which protection, clothing, and wearable electronics are developed together.', desc: 'Modular equipment: protection, exoskeleton modules, and electronics.', st: 'research', stl: 'research' },
+    { n: '05', key: 'comms', img: 'b-tower', ic: 'comms', short: 'Communications and sensors', title: 'Communications and sensor systems', products: ['HEX', 'ECHO'], tip: 'HEX connects people and machines into one network; ECHO provides observations from land, air, and sea.', desc: 'A network for people and vehicles, plus autonomous sensors.', st: 'research', stl: 'research' },
+    { n: '06', key: 'tech', img: 'b-nomad', ic: 'tech', short: 'Robotics', title: 'Robotics and autonomous platforms', products: ['NOMAD', 'SEAL', 'HIGHFAST', 'BACKEYE'], tip: 'Platform families with interchangeable payloads and shared control systems.', desc: 'Ground, maritime, and aerial platforms.', st: 'research', stl: 'research' },
+    { n: '07', key: 'def', img: 'dr-def', ic: 'def', short: 'Protection', title: 'Protection systems', products: ['SHIELD', 'ARROWHEAD / SPEAR'], tip: 'Modular protection systems and a family of interceptors with shared digital integration.', desc: 'Protection for vehicles and sites; unmanned interceptors.', st: 'research', stl: 'research' }
   ];
   DD.problems = [
-    { n: '01', title: 'The market is fragmented', img: 'st-prob-1',
-      p: 'Strong manufacturers, teams, and technologies exist separately, are packaged differently, and are hard to combine into one system. The customer assembles a solution from parts and carries the risk alone.',
-      s: 'One entry point to selected products, digital services, and integrated solutions. A clear choice, a transparent channel of communication, and support.' },
-    { n: '02', title: 'Products are incompatible', img: 'st-prob-2',
-      p: 'Products from different suppliers do not fit together: different interfaces, protocols, and quality requirements. Integration falls on the customer.',
-      s: 'One standard of quality, design, and compatibility for our own and partner products. A shared environment where products work together.' },
-    { n: '03', title: 'Developments get lost on the way to market', img: 'st-prob-3',
-      p: 'Strong engineering developments get stuck between idea and scale: there is not enough funding, team, product expertise, production capacity, or market access.',
-      s: 'One managed path from author to ecosystem product: team and rights, funding, product, design, production, and market launch under an umbrella brand.' }
+    { n: '01', title: 'A fragmented defense market', img: 'st-prob-1',
+      p: 'Developers, manufacturers, and suppliers of defense technologies work in isolation. Products are hard to find, compare, and integrate with one another. This increases costs, slows the adoption of innovation, and makes it harder to choose the best solutions.',
+      s: 'Creating a unified DefenseTech ecosystem that provides access to verified manufacturers, advanced developments, and compatible technology solutions. Common standards, digital services, and product integration simplify the path from choosing a technology to putting it into practice.' },
+    { n: '02', title: 'No common standards', img: 'st-prob-2',
+      p: 'Defense technologies are often developed independently of one another, using different interfaces, protocols, and architectures. This hinders hardware and software compatibility, increases integration costs, and limits scalability.',
+      s: 'Developing a unified technology architecture with common standards of quality, compatibility, and interoperability. Creating in-house and partner products capable of integrating into a shared digital environment and working as a single system.' },
+    { n: '03', title: 'From development to production', img: 'st-prob-3',
+      p: 'Promising defense developments often remain at the prototype stage. A lack of investment, production capacity, technical expertise, and access to customers makes it difficult to turn engineering ideas into full-fledged products.',
+      s: 'Creating infrastructure for developing advanced technologies — from the initial idea and prototyping to funding, testing, serial production, and market entry. Darlein Defense helps developers turn innovations into in-demand products ready to scale under one brand.' }
   ];
   DD.copy = {
-    who: 'Darlein Defense is a private Russian DefenseTech company. We are building a unified ecosystem of technologies and services for the defense and defense-adjacent market.',
-    mission: 'To bring together engineering talent and promising technologies to create modern, high-quality, and practical products.',
-    goal: 'To build Russia’s largest private DefenseTech ecosystem: from digital platforms to autonomous systems and robotics.'
+    who: 'Darlein Defense is a young Russian DefenseTech startup that brings together the best of Russian and Western engineering traditions, advanced technologies, and modern approaches to defense. We rethink existing solutions to create a new generation of defense technologies — effective, innovative, and uncompromising in quality.',
+    mission: 'To bring together the best developers, advanced technologies, engineering ideas, and investment capital under one roof to create next-generation defense solutions — innovative, effective, and uncompromising.',
+    goal: 'To create Russia’s leading private full-cycle DefenseTech ecosystem, capable of developing, producing, and scaling modern defense solutions — from intelligent digital platforms to autonomous systems, robotics, and high-tech integrated systems.'
   };
 
   /* все страницы сайта лежат в корне (с 18.10.2026); прежний прототип остается в папке prototype/ как архив.
@@ -52,20 +52,20 @@
     ['ECHO', 'research', 'research', 4, 'A family of autonomous sensor systems for land, air, and sea.', 'Autonomous sensor systems', 'b-sensor'],
     ['NOMAD', 'research', 'research', 5, 'A family of robotic ground platforms with interchangeable payloads.', 'Robotic ground platforms', 'b-nomad-wheel'],
     ['SEAL', 'research', 'research', 5, 'A family of unmanned maritime platforms for surveillance, communications, transport, and specialized tasks.', 'Unmanned maritime platforms', 'b-seal-top'],
-    ['HIGHFAST', 'research', 'research', 5, 'A family of compact vertical takeoff and landing aircraft for transporting people and critical cargo.', 'Vertical takeoff aircraft', 'b-highfast'],
+    ['HIGHFAST', 'research', 'concept development', 5, 'A family of compact vertical takeoff and landing aircraft for transporting people and critical cargo.', 'Vertical takeoff aircraft', 'b-highfast'],
     ['BACKEYE', 'research', 'research', 5, 'An external view system for remotely operated vehicles.', 'External views for vehicles', 'pr-backeye'],
     ['SHIELD', 'research', 'research', 6, 'A family of combat and protection systems for vehicles, robotic platforms, and fixed sites.', 'Modular protection systems', 'pr-shield'],
-    ['ARROWHEAD', 'research', 'research', 6, 'A family of containerized unmanned interceptors.', 'A family of unmanned interceptors', 'pr-arrowhead']
+    ['ARROWHEAD / SPEAR', 'research', 'research', 6, 'A family of containerized unmanned interceptors.', 'A family of unmanned interceptors', 'pr-arrowhead-2']
   ];
   /* описания направлений для ленты */
   DD.dirDesc = [
-    'Platforms for management, analytics, and work assistance. The digital foundation that the other products connect to.',
-    'Compatible components, kits, and software tools for building unmanned platforms.',
-    'A specialized marketplace for choosing, buying, and selling gear and equipment.',
-    'Modular personal equipment: protection, clothing, exoskeleton modules, and wearable electronics.',
-    'A distributed network for people and vehicles, and autonomous sensor systems for land, air, and sea.',
-    'Ground, maritime, and aerial platforms with interchangeable payloads and shared control systems.',
-    'Modular protection systems for vehicles and sites, and a family of unmanned interceptors.'
+    'AGATA, ELZA, EVA — software environments, intelligent systems, and data analysis tools.',
+    'BLACKFLY and related projects — advanced aerial platforms, onboard electronics, and software technologies.',
+    'DROPFIELD is a specialized military marketplace for professional equipment, tactical gear, electronics, hardware, and modern technologies.',
+    'WARDEN — modern systems for personal equipment, protection, and wearable electronics.',
+    'HEX, ECHO — advanced network technologies, electronic components, and sensor platforms.',
+    'NOMAD, SEAL, HIGHFAST — ground, maritime, and aerial robotic solutions.',
+    'SHIELD, ARROWHEAD / SPEAR — conceptual development areas for intelligent protection systems.'
   ];
 
   /* ---------- Иконки: единый набор, сетка 24, контур 1.6 ---------- */
@@ -130,8 +130,24 @@
     els.forEach(function (e) { io.observe(e); });
   };
   /* текст по словам для подсветки при прокрутке */
+  /* типограф (замечание 25.10.2026): короткие предлоги и союзы не висят в конце строки, тире не начинает строку,
+     в последней строке не остается одно короткое слово. Те же правила, что в генераторе страниц */
+  var SHORT = /(^|[\s\u00a0«(„"])([А-Яа-яЁёA-Za-z]{1,2}|для|без|при|над|под|про|что|как|или|его|она|они|это|все|так|уже|еще|чем|где|кто|нам|вам|нас|вас|наш|ваш) (?=\S)/gi;
+  DD.typo = function (t, head) {
+    if (!t || !/[А-Яа-я]/.test(t)) return t;
+    t = t.replace(SHORT, '$1$2\u00a0').replace(SHORT, '$1$2\u00a0').replace(/ (—|–)(?= )/g, '\u00a0$1').replace(/(\d) (?=[а-яА-Яa-zA-Z%$])/g, '$1\u00a0');
+    var m = head ? null : /(\S+) (\S+)(\s*)$/.exec(t);
+    if (m && (m[1].length + m[2].length <= 17 || (m[2].length <= 4 && m[1].length <= 12))) t = t.slice(0, m.index) + m[1] + '\u00a0' + m[2] + m[3];
+    return t;
+  };
+  DD.typoDom = function (root) {
+    if (!root) return;
+    var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: function (n) { return n.parentNode.closest('script,style,svg,textarea') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT; } }), n, list = [];
+    while ((n = w.nextNode())) list.push(n);
+    list.forEach(function (x) { var v = DD.typo(x.nodeValue, !x.parentNode.closest('p,li')); if (v !== x.nodeValue) x.nodeValue = v; });
+  };
   DD.words = function (el) {
-    el.innerHTML = el.textContent.trim().split(/\s+/).map(function (w) { return '<span class="w">' + w + '</span>'; }).join(' ');
+    el.innerHTML = el.textContent.trim().split(/[ \t\n\r]+/).map(function (w) { return '<span class="w">' + w + '</span>'; }).join(' ');
     var ws = el.querySelectorAll('.w');
     var up = function () {
       var r = el.getBoundingClientRect(), vh = window.innerHeight;

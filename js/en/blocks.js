@@ -60,7 +60,7 @@
       var on = function (v) {
         box.classList.toggle('hov', v);
         box.querySelectorAll('[data-i="' + i + '"]').forEach(function (e) { e.classList.toggle('on', v); });
-        imgs.forEach(function (x, j) { x.classList.toggle('on', v && j === i); }); port.querySelector('img').classList.toggle('on', !v);
+        imgs.forEach(function (x, j) { x.classList.toggle('on', v && j === i); }); var def = port.querySelector('.port__def, img'); if (def) def.classList.toggle('on', !v);
         if (v) { capN.textContent = d.n; capT.textContent = d.short; }
         if (cap) cap.textContent = v ? d.title + '. ' + d.tip : cap.getAttribute('data-default');
       };
@@ -80,7 +80,7 @@
      rail — .rail, nav — блок со счетчиком (b или [data-now]) и кнопками [data-step] */
   DD.rail = function (rail, nav) {
     if (!rail) return;
-    var href = function (name) { return DD.url(name.toLowerCase() + '.html'); };
+    var href = function (name) { return DD.url(name.split(' ')[0].toLowerCase() + '.html'); };
     var count = function (n) { return n + (n === 1 ? ' product' : ' products'); };
     rail.innerHTML = DD.dirs.map(function (d, i) {
       var mine = DD.projects.filter(function (p) { return p[3] === i; });
@@ -91,7 +91,7 @@
         }).join('') + '</div></div></article>';
     }).join('') +
       '<a class="rc rc--all" href="' + DD.url('projects.html') + '"><div class="mc__br"></div><span class="svc" style="color:var(--on-dark-2)">All areas</span><span><b>14</b><span class="t-lead" style="display:block">products<br>in seven areas</span></span>' +
-      '<span class="bx bx--on"><span class="bx__f"></span>All projects' + DD.ic('right', 'ic--s ic--mv') + '</span></a>';
+      '<span class="bx bx--on"><span class="bx__f"></span>All projects</span></a>';
     (function () {
       var cards = rail.querySelectorAll('.rc:not(.rc--all)'), now = nav.querySelector('[data-now]') || nav.querySelector('b'), btns = nav.querySelectorAll('[data-step]'), target = 0, settle = null, drag = null;
       var step = function () { return cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : rail.clientWidth; };

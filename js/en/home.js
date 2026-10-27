@@ -1,7 +1,7 @@
 /* Главная: схема экосистемы, проблемы, первый экран с роликом, загрузочный экран. */
 (function () {
   var $ = function (q) { return document.querySelector(q); }, i, s;
-  $('#whoT').textContent = DD.copy.who; $('#mis').textContent = DD.copy.mission; $('#goal').textContent = DD.copy.goal;
+  $('#whoT').textContent = DD.typo(DD.copy.who); $('#mis').textContent = DD.typo(DD.copy.mission); $('#goal').textContent = DD.typo(DD.copy.goal);
 
   /* ---------- схема экосистемы ---------- */
   DD.eco($('#ecoBox'));
@@ -28,7 +28,7 @@
   var cv = $('#heroCanvas'), hero = $('.hero'), dots = true, seen = true, ready = false, loop = null;
   /* временная смена кадров проектов вместо видео: кадр 4 с, следующий подгружается заранее; поле точек гаснет, когда показан первый кадр */
   /* кадры b-* — из брендбука (фотостиль), остальные — прежние кадры направлений */
-  var REEL = ['b-highfast', 'pr-dropfield', 'pr-agata', 'b-nomad', 'dr-uas', 'b-seal-top', 'pr-warden', 'b-hand', 'dr-def', 'b-seal', 'pr-blackfly', 'b-nomad-top', 'pr-arrowhead', 'b-seal-bow'];
+  var REEL = ['b-highfast', 'pr-dropfield', 'pr-agata', 'b-nomad', 'dr-uas', 'b-seal-top', 'pr-warden', 'b-hand', 'dr-def', 'b-seal', 'pr-blackfly', 'b-nomad-top', 'pr-arrowhead-2', 'b-seal-bow'];
   var reel = $('#heroReel'), shots, cur = -1, timer = null;
   reel.innerHTML = REEL.map(function (k, i) { return '<img alt="" ' + (i < 2 ? 'src' : 'data-src') + '="../img/' + k + '.jpg"' + (i % 2 ? ' class="r"' : '') + '>'; }).join('');
   shots = [].slice.call(reel.children);
@@ -78,5 +78,7 @@
     setTimeout(function () { $('#heroT').classList.add('in'); }, 350);
     DD.reveal(); DD.words($('#whoT'));
   } });
+  /* типограф для остальных текстов главной (проблемы, направления, проекты, сценарии) */
+  setTimeout(function () { DD.typoDom(document.querySelector('main')); }, 0);
 
 })();

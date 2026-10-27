@@ -10,7 +10,7 @@
   X.career = '<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M18 8v6M15 11h6"/>';
 
   var P = DD.projects;
-  var href = function (name) { return DD.url(name.toLowerCase() + '.html'); };
+  var href = function (name) { return DD.url(name.split(' ')[0].toLowerCase() + '.html'); };
   var count = function (n) { return n + (n === 1 ? ' product' : ' products'); };
 
   /* ---------- направления проектов ---------- */
@@ -75,7 +75,7 @@
     return '<a class="jc" data-rv style="--d:' + i * 90 + 'ms" href="' + DD.url(j[0]) + '"><div class="jc__top svc"><span>Scenario 0' + (i + 1) + ' / 03</span>' + DD.ic(j[1]) + '</div>' +
       '<div class="jc__b"><div class="jc__who">' + j[3] + '</div><div class="jc__whom">' + j[4] + '</div><h3>' + j[5] + '</h3><p>' + j[6] + '</p>' +
       '<div class="jc__l"><span class="svc">' + j[7] + '</span><ul>' + j[8].map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul></div>' +
-      '<span class="bx bx--dk"><span class="bx__f"></span>' + j[9] + DD.ic('right', 'ic--s') + '</span></div></a>';
+      '<span class="bx bx--dk"><span class="bx__f"></span>' + j[9] + '</span></div></a>';
   }).join('');
 
   /* ---------- DefenseTech компания ---------- */
@@ -89,12 +89,12 @@
     Q.map(function (x, i) {
       return '<div class="q__p grain' + (i ? '' : ' on') + '"><div class="q__bg"><img src="../img/' + x[5] + '.jpg" alt="" loading="lazy"></div><div class="mc__br"></div>' +
         '<div class="q__num"><span class="svc">0' + (i + 1) + ' / 03</span><b>' + (i + 1) + '</b></div>' +
-        '<div class="q__tx"><span class="svc">' + x[1] + '</span><p>' + x[2] + '</p><a class="bx" href="' + DD.url(x[4]) + '"><span class="bx__f"></span>' + x[3] + DD.ic('right', 'ic--s ic--mv') + '</a></div></div>';
+        '<div class="q__tx"><span class="svc">' + x[1] + '</span><p>' + x[2] + '</p><a class="bx" href="' + DD.url(x[4]) + '"><span class="bx__f"></span>' + x[3] + '</a></div></div>';
     }).join('');
   DD.tabs(q);
 
   /* ---------- новости ---------- */
-  $('#news').innerHTML = [['02.09.2026 · Company news', 'Trademark applications filed for Darlein, Darlein Defense, and Darlein Arsenal'], ['28.08.2026 · Projects', 'DROPFIELD: how the catalog works and what goes into a unified product card'], ['19.08.2026 · Engineering notes', 'How AGATA works without connectivity: local data and synchronization']].map(function (n) {
+  $('#news').innerHTML = [['28.08.2026 · Projects', 'DROPFIELD: how the catalog works and what goes into a unified product card'], ['19.08.2026 · Engineering notes', 'How AGATA works without connectivity: local data and synchronization'], ['17.08.2026 · Company news', 'Darlein Defense begins work on its corporate brand and website']].map(function (n) {
     var m = n[0].split(' · ');
     return '<a class="nr" href="' + DD.url('intel-article.html') + '"><span class="svc">' + m[0] + '</span><span class="svc">' + m[1] + '</span><b>' + n[1] + '</b><span class="bx bx--ic bx--s"><span class="bx__f"></span>' + DD.ic('ne', 'ic--s') + '</span></a>';
   }).join('');

@@ -48,8 +48,9 @@
   var counters = [].slice.call(document.querySelectorAll('[data-count]'));
   if (counters.length && !DD.reduced && 'IntersectionObserver' in window) {
     counters.forEach(function (el) {
-      var src = el.getAttribute('data-count'), full = el.textContent, dec = (src.split(',')[1] || '').length, to = parseFloat(src.replace(',', '.'));
-      var fmt = function (v) { return full.replace(src, v.toFixed(dec).replace('.', ',')); };
+      /* дробная часть через запятую (русская версия) или точку (английская) */
+      var src = el.getAttribute('data-count'), full = el.textContent, sep = src.indexOf(',') > -1 ? ',' : '.', dec = (src.split(sep)[1] || '').length, to = parseFloat(src.replace(',', '.'));
+      var fmt = function (v) { return full.replace(src, v.toFixed(dec).replace('.', sep)); };
       el.textContent = fmt(0);
       var io = new IntersectionObserver(function (es) {
         if (!es[0].isIntersecting) return; io.disconnect();

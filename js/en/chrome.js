@@ -12,7 +12,7 @@
   /* выпадающая панель только у «Проектов» (замечание 19.10.2026): остальные пункты шапки — простые ссылки на свои страницы */
   var M = {
     projects: ['All developments', '14 products in seven areas: from software platforms and communications to vehicles and protection systems. Every project has an honest status.', 'Projects',
-      [['projects.html#products', 'All projects'], ['dropfield.html', 'DROPFIELD'], ['agata.html', 'AGATA'], ['elza.html', 'ELZA'], ['eva.html', 'EVA'], ['blackfly.html', 'BLACKFLY'], ['warden.html', 'WARDEN'], ['hex.html', 'HEX'], ['echo.html', 'ECHO'], ['nomad.html', 'NOMAD'], ['seal.html', 'SEAL'], ['highfast.html', 'HIGHFAST'], ['backeye.html', 'BACKEYE'], ['shield.html', 'SHIELD'], ['arrowhead.html', 'ARROWHEAD']]]
+      [['projects.html#products', 'All projects'], ['dropfield.html', 'DROPFIELD'], ['agata.html', 'AGATA'], ['elza.html', 'ELZA'], ['eva.html', 'EVA'], ['blackfly.html', 'BLACKFLY'], ['warden.html', 'WARDEN'], ['hex.html', 'HEX'], ['echo.html', 'ECHO'], ['nomad.html', 'NOMAD'], ['seal.html', 'SEAL'], ['highfast.html', 'HIGHFAST'], ['backeye.html', 'BACKEYE'], ['shield.html', 'SHIELD'], ['arrowhead.html', 'ARROWHEAD / SPEAR']]]
   };
 
   /* ---------- шапка ---------- */
@@ -119,15 +119,31 @@
   window.addEventListener('resize', function () { close(true); if (window.innerWidth > 1100) menu(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { close(true); menu(false); if (DD.closeLang) DD.closeLang(); } });
 
-  /* ---------- cookie: показывается после загрузочного экрана, один раз ---------- */
-  var ck = document.createElement('div'); ck.className = 'ck fr'; ck.id = 'cookie';
-  ck.innerHTML = '<p>This site uses cookies for web analytics. Details are in the <a href="' + DD.url('legal.html#policy') + '">data processing policy</a>.</p><button class="bx bx--s" type="button"><span class="bx__f"></span>Got it</button>';
-  var seen = false; try { seen = !!localStorage.getItem('dd_cookie'); } catch (e) {}
-  if (!seen) {
+  /* ---------- cookie: согласие (замечание 25.10.2026). Необходимые cookie работают всегда, аналитические — только после «Принять».
+     Выбор хранится в localStorage (dd_cookie: all | necessary) и доступен как DD.cookies; прежнее «Понятно» согласием не считается ---------- */
+  var ckv = null; try { ckv = localStorage.getItem('dd_cookie'); } catch (e) {}
+  DD.cookies = ckv === 'all' || ckv === 'necessary' ? ckv : null;
+  if (!DD.cookies) {
+    var ck = document.createElement('div'); ck.className = 'ck ck--c fr'; ck.id = 'cookie'; ck.setAttribute('role', 'dialog'); ck.setAttribute('aria-label', 'Cookie consent');
+    ck.innerHTML = '<p>We use cookies. Necessary cookies keep the site running, and analytics cookies help us improve it — we will enable those only with your consent. Details are in the <a href="' + DD.url('legal.html#cookies') + '">cookie policy</a>.</p>' +
+      '<div class="ck__b"><button class="bx bx--s bx--on" type="button" data-ck="all"><span class="bx__f"></span>Accept</button><button class="bx bx--s" type="button" data-ck="necessary"><span class="bx__f"></span>Necessary only</button></div>';
     document.body.appendChild(ck);
-    var wait = setInterval(function () { if (!document.body.classList.contains('is-loading')) { clearInterval(wait); setTimeout(function () { ck.classList.add('on'); }, 1800); } }, 200);
-    ck.querySelector('button').addEventListener('click', function () { ck.classList.remove('on'); try { localStorage.setItem('dd_cookie', '1'); } catch (e) {} setTimeout(function () { ck.remove(); }, 700); });
+    var wait = setInterval(function () { if (!document.body.classList.contains('is-loading')) { clearInterval(wait); setTimeout(function () { ck.classList.add('on'); }, 1200); } }, 200);
+    ck.querySelectorAll('[data-ck]').forEach(function (b) { b.addEventListener('click', function () {
+      DD.cookies = b.getAttribute('data-ck'); ck.classList.remove('on');
+      try { localStorage.setItem('dd_cookie', DD.cookies); } catch (e) {}
+      document.dispatchEvent(new CustomEvent('dd:cookies', { detail: DD.cookies }));   /* сюда подключается аналитика, если выбран вариант all */
+      setTimeout(function () { ck.remove(); }, 700);
+    }); });
   }
+  /* ---------- кнопка «Наверх» (замечание заказчика 27.10.2026): появляется, когда прокручен первый экран ---------- */
+  var up = document.createElement('button'); up.className = 'bx bx--ic up'; up.type = 'button'; up.setAttribute('aria-label', 'Back to top');
+  up.innerHTML = '<span class="bx__f"></span>' + DD.ic('down', 'up__i');
+  document.body.appendChild(up);
+  var upSet = function () { up.classList.toggle('on', window.scrollY > window.innerHeight * .9); };
+  window.addEventListener('scroll', upSet, { passive: true }); upSet();
+  up.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: DD.reduced ? 'auto' : 'smooth' }); var t = document.querySelector('.hd a'); if (t) t.focus({ preventScroll: true }); });
+
   /* ---------- вкладки: смена раз в 6 секунд до первого клика ---------- */
   DD.tabs = function (q) {
     var tabs = q.querySelectorAll('.q__tabs button'), panels = q.querySelectorAll('.q__p'), idx = 0, timer = null, manual = false, hov = false, vis = false;
@@ -143,12 +159,12 @@
   var ftp = $('#ftp');
   if (ftp) {
     var col = function (h, items) { return '<div><h3>' + h + '</h3><ul>' + items.map(function (x) { return '<li><a href="' + DD.url(x[1]) + '">' + x[0] + '</a></li>'; }).join('') + '</ul></div>'; };
-    ftp.innerHTML = '<div class="ft__t"><div class="ft__br"><img src="' + R + '../assets/logo/logo3b.svg" alt="Darlein Defense"><p>A Russian DefenseTech company. A unified ecosystem of technologies and services for the defense and defense-adjacent market.</p></div>' +
+    ftp.innerHTML = '<div class="ft__t"><div class="ft__br"><img src="' + R + '../assets/logo/logo3b.svg" alt="Darlein Defense"><p>Darlein Defense — a new take on the private defense company in Russia.</p></div>' +
       col('Company', [['About', 'company.html'], ['Investors', 'investors.html'], ['Careers', 'careers.html'], ['News', 'intel.html'], ['Press', 'intel.html#media']]) +
       col('Projects', [['All projects', 'projects.html'], ['DROPFIELD', 'dropfield.html'], ['AGATA', 'agata.html'], ['ELZA', 'elza.html'], ['BLACKFLY', 'blackfly.html'], ['WARDEN', 'warden.html'], ['9 more projects', 'projects.html#directions']]) +
       col('Contact', [['Contact', 'contacts.html'], ['Partners and vendors', 'partners.html'], ['info@darlein.ru', 'mailto:info@darlein.ru'], ['Telegram', '#']]) +
       '<div><h3>Company details</h3><p class="ft__lg">DARLEIN DEFENSE LLC<br>INN 9701331416<br>KPP 770101001<br>OGRN 1267700273477</p><ul>' +
-      [['Personal data policy', 'legal.html#policy'], ['Consent to processing', 'legal.html#consent'], ['Terms of use', 'legal.html#terms']].map(function (x) { return '<li><a href="' + DD.url(x[1]) + '">' + x[0] + '</a></li>'; }).join('') + '</ul></div></div>' +
+      [['Personal data policy', 'legal.html#policy'], ['Consent to processing', 'legal.html#consent'], ['Cookie policy', 'legal.html#cookies'], ['Mailing consent', 'legal.html#ads'], ['Terms of use', 'legal.html#terms']].map(function (x) { return '<li><a href="' + DD.url(x[1]) + '">' + x[0] + '</a></li>'; }).join('') + '</ul></div></div>' +
       /* требования к сайтам в РФ (19.10.2026): хранение персональных данных в России (152-ФЗ), без передачи третьим лицам, авторские права */
       '<div class="ft__law">' + [
         ['Data storage', 'Users’ personal data is stored and processed on servers in the Russian Federation in accordance with Federal Law No.&nbsp;152-FZ of 27.07.2006 “On&nbsp;Personal Data”.'],
