@@ -136,6 +136,14 @@
       setTimeout(function () { ck.remove(); }, 700);
     }); });
   }
+  /* ---------- кнопка «Наверх» (замечание заказчика 27.10.2026): появляется, когда прокручен первый экран ---------- */
+  var up = document.createElement('button'); up.className = 'bx bx--ic up'; up.type = 'button'; up.setAttribute('aria-label', 'Наверх');
+  up.innerHTML = '<span class="bx__f"></span>' + DD.ic('down', 'up__i');
+  document.body.appendChild(up);
+  var upSet = function () { up.classList.toggle('on', window.scrollY > window.innerHeight * .9); };
+  window.addEventListener('scroll', upSet, { passive: true }); upSet();
+  up.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: DD.reduced ? 'auto' : 'smooth' }); var t = document.querySelector('.hd a'); if (t) t.focus({ preventScroll: true }); });
+
   /* ---------- вкладки: смена раз в 6 секунд до первого клика ---------- */
   DD.tabs = function (q) {
     var tabs = q.querySelectorAll('.q__tabs button'), panels = q.querySelectorAll('.q__p'), idx = 0, timer = null, manual = false, hov = false, vis = false;
@@ -151,7 +159,7 @@
   var ftp = $('#ftp');
   if (ftp) {
     var col = function (h, items) { return '<div><h3>' + h + '</h3><ul>' + items.map(function (x) { return '<li><a href="' + DD.url(x[1]) + '">' + x[0] + '</a></li>'; }).join('') + '</ul></div>'; };
-    ftp.innerHTML = '<div class="ft__t"><div class="ft__br"><img src="' + R + 'assets/logo/logo3b.svg" alt="Darlein Defense"><p>Российская DefenseTech-компания. Единая экосистема технологий и сервисов для оборонного и околовоенного рынка.</p></div>' +
+    ftp.innerHTML = '<div class="ft__t"><div class="ft__br"><img src="' + R + 'assets/logo/logo3b.svg" alt="Darlein Defense"><p>Darlein Defense — новый взгляд на частную оборонную компанию в России.</p></div>' +
       col('Компания', [['О компании', 'company.html'], ['Инвесторам', 'investors.html'], ['Карьера', 'careers.html'], ['Новости', 'intel.html'], ['Для СМИ', 'intel.html#media']]) +
       col('Проекты', [['Все проекты', 'projects.html'], ['DROPFIELD', 'dropfield.html'], ['AGATA', 'agata.html'], ['ELZA', 'elza.html'], ['BLACKFLY', 'blackfly.html'], ['WARDEN', 'warden.html'], ['Еще 9 проектов', 'projects.html#directions']]) +
       col('Связь', [['Контакты', 'contacts.html'], ['Партнерам и вендорам', 'partners.html'], ['info@darlein.ru', 'mailto:info@darlein.ru'], ['Telegram', '#']]) +

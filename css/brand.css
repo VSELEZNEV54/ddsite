@@ -162,3 +162,9 @@
 p,li{overflow-wrap:break-word}   /* длинный адрес или связка слов не выталкивает строку за край экрана */
 .prow .st{white-space:normal}   /* длинный статус в списке проектов главной переносится, а не заходит на соседнюю колонку */
 @media(max-width:640px){.mis .mis__d{text-align:left}}
+/* кнопка «Наверх» (27.10.2026): справа внизу, после первого экрана; пока открыт баннер cookie — не показывается */
+.up{position:fixed;right:var(--gut);bottom:var(--gut);z-index:150;background:rgba(9,10,12,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-radius:50%;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .4s var(--out),transform .5s var(--out),visibility 0s .4s,color .3s var(--out)}
+.up.on{opacity:1;visibility:visible;transform:none;transition:opacity .4s var(--out),transform .5s var(--out),color .3s var(--out)}
+.up .up__i{transform:rotate(180deg)}
+body:has(.ck.on) .up,body.lock .up{opacity:0;visibility:hidden}
+@media(max-width:640px){.up{width:46px;height:46px}}
