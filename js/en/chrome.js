@@ -98,7 +98,7 @@
     '<nav class="mm__n" aria-label="Menu">' + DD.nav.map(function (n, i) { return '<a href="' + DD.url(n[1]) + '" style="--i:' + i + '">' + n[0] + DD.ic('ne') + '</a>'; }).join('') + '</nav>' +
     '<a class="bx bx--l svc mm__df" href="' + DD.url('dropfield.html') + '"><span class="bx__f"></span><span class="st st--soon"><i></i>DROPFIELD</span>' + DD.ic('ne', 'ic--s') + '</a>' +
     '<div class="mm__s"><span class="svc">Language</span><div class="mm__lang">' + LANGS.map(function (l) { return '<button class="bx bx--s svc' + (l[0] === LANG ? ' bx--on' : '') + '" type="button" data-lang="' + l[0] + '"><span class="bx__f"></span>' + l[1] + '</button>'; }).join('') + '</div></div>' +
-    '<div class="mm__u">' + [[['investors.html', 'Investors'], ['intel.html#media', 'Press']], [['legal.html', 'Personal data policy'], ['legal.html#terms', 'Terms of use']], [['mailto:info@darlein.ru', 'info@darlein.ru'], ['#', 'Telegram']]].map(function (g) {
+    '<div class="mm__u">' + [[['investors.html', 'Investors'], ['intel.html#media', 'Press']], [['legal.html', 'Personal data policy'], ['legal.html#terms', 'Terms of use']], [['mailto:info@darleindefense.com', 'info@darleindefense.com'], ['https://t.me/darleindefense', 'Telegram channel'], ['https://t.me/darleindefenseagent', 'Telegram agent']]].map(function (g) {
       return '<div class="mm__g">' + g.map(function (x) { return '<a href="' + DD.url(x[0]) + '">' + x[1] + '</a>'; }).join('') + '</div>';
     }).join('') + '</div>';
   document.body.appendChild(mm);
@@ -158,11 +158,11 @@
   /* ---------- подвал ---------- */
   var ftp = $('#ftp');
   if (ftp) {
-    var col = function (h, items) { return '<div><h3>' + h + '</h3><ul>' + items.map(function (x) { return '<li><a href="' + DD.url(x[1]) + '">' + x[0] + '</a></li>'; }).join('') + '</ul></div>'; };
+    var col = function (h, items) { return '<div><h3>' + h + '</h3><ul>' + items.map(function (x) { return '<li><a href="' + DD.url(x[1]) + '"' + (/^https:/.test(x[1]) ? ' target="_blank" rel="noopener"' : '') + '>' + x[0] + '</a></li>'; }).join('') + '</ul></div>'; };
     ftp.innerHTML = '<div class="ft__t"><div class="ft__br"><img src="' + R + '../assets/logo/logo3b.svg" alt="Darlein Defense"><p>Darlein Defense — a new take on the private defense company in Russia.</p></div>' +
       col('Company', [['About', 'company.html'], ['Investors', 'investors.html'], ['Careers', 'careers.html'], ['News', 'intel.html'], ['Press', 'intel.html#media']]) +
       col('Projects', [['All projects', 'projects.html'], ['DROPFIELD', 'dropfield.html'], ['AGATA', 'agata.html'], ['ELZA', 'elza.html'], ['BLACKFLY', 'blackfly.html'], ['WARDEN', 'warden.html'], ['9 more projects', 'projects.html#directions']]) +
-      col('Contact', [['Contact', 'contacts.html'], ['Partners and vendors', 'partners.html'], ['info@darlein.ru', 'mailto:info@darlein.ru'], ['Telegram', '#']]) +
+      col('Contact', [['Contact', 'contacts.html'], ['Partners and vendors', 'partners.html'], ['info@darleindefense.com', 'mailto:info@darleindefense.com'], ['Telegram channel', 'https://t.me/darleindefense'], ['Telegram agent', 'https://t.me/darleindefenseagent']]) +
       '<div><h3>Company details</h3><p class="ft__lg">DARLEIN DEFENSE LLC<br>INN 9701331416<br>KPP 770101001<br>OGRN 1267700273477</p><ul>' +
       [['Personal data policy', 'legal.html#policy'], ['Consent to processing', 'legal.html#consent'], ['Cookie policy', 'legal.html#cookies'], ['Mailing consent', 'legal.html#ads'], ['Terms of use', 'legal.html#terms']].map(function (x) { return '<li><a href="' + DD.url(x[1]) + '">' + x[0] + '</a></li>'; }).join('') + '</ul></div></div>' +
       /* требования к сайтам в РФ (19.10.2026): хранение персональных данных в России (152-ФЗ), без передачи третьим лицам, авторские права */

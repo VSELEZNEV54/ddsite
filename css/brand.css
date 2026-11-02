@@ -168,3 +168,11 @@ p,li{overflow-wrap:break-word}   /* длинный адрес или связк�
 .up .up__i{transform:rotate(180deg)}
 body:has(.ck.on) .up,body.lock .up{opacity:0;visibility:hidden}
 @media(max-width:640px){.up{width:46px;height:46px}}
+/* «Контакты»: шесть карточек; длинные адреса на кнопках всегда в одну строку (02.11.2026) */
+.cells--ch{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cells--ch .acts2{gap:8px}
+@media(max-width:1240px){.cells--ch{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.cells--ch{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:640px){.cells--ch .bx,.cta .bx--lt{gap:8px;padding-left:14px;padding-right:12px;font-size:clamp(12px,3.75vw,15px)}.cells--ch .bx{width:100%;justify-content:space-between}}
+/* подвал: длинный адрес не заходит на соседнюю колонку */
+.ft li a{overflow-wrap:anywhere}
